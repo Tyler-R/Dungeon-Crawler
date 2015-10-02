@@ -1,9 +1,15 @@
-//Created By: Sarah Kim Dao
-// Constructors
+/*AREA CLASS
 
-#include "area.h" //declarations for queue functions
+This is a game class that contains attributes and methods for each area contained in the game world.
+
+Created By: Sarah Kim Dao
+*/
+
+
+#include "area.h"
 #include <iostream>
 
+/*Constructors*/
 Area::Area(){ 
 	
 }
@@ -16,14 +22,15 @@ Area::Area(string name,string desc){
 }
 
 Area::Area(char id){ 
-
+	//will construct new area based on pre-existing information contained in game text files
 }
 
-// Destructor
+/*Destructor*/
 Area::~Area(){
 		
 }
 
+/*Getters and Setters*/
 string Area::getName(){
 	return Name;
 }
@@ -42,7 +49,7 @@ vector<monster> Area::getMonsters(){
 }
 */
 
-	
+
 Area Area::getNorth(){
 	return *North;
 }
