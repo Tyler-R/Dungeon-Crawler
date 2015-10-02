@@ -1,1 +1,1 @@
-add_library(serverClass Server.cpp)
+add_library(serverLibrary Server.cpp)
