@@ -1,7 +1,7 @@
 #include "Server.h"
-extern "C" {
-    int uv_tcp_init(uv_loop_t *loop, uv_tcp_t *handler);
-}
+// extern "C" {
+//     int uv_tcp_init(uv_loop_t *loop, uv_tcp_t *handler);
+// }
 
 Server::Server() {
     using namespace std;
@@ -11,7 +11,7 @@ Server::Server() {
     free(loop);
 
     uv_tcp_t server;
-    uv_tcp_init(&loop, &server);
+    uv_tcp_init(loop, &server);
 
 
 
