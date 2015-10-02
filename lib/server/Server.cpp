@@ -1,22 +1,25 @@
 #include "Server.h"
-// extern "C" {
-//     int uv_tcp_init(uv_loop_t *loop, uv_tcp_t *handler);
-// }
+
 
 Server::Server() {
     using namespace std;
-    cout << "waiting for client to connect" << endl;
-    uv_loop_t *loop = (uv_loop_t*)malloc(sizeof(*loop));
-    cout << loop->data << endl;
-    free(loop);
+    cout << "waiting for 5 seconds" << endl;
 
-    uv_tcp_t server;
-    uv_tcp_init(loop, &server);
+    boost::asio::io_service io;
+    boost::asio::deadline_timer timer(io, boost::posix_time::seconds(5));
+    timer.async_wait(Server::print);
 
+    io.run();
+
+    cout << "hello world" << endl;
 
 
     cout << "hello world this is the real server" << endl;
 
+}
+
+void Server::print(const boost::system::error_code&) {
+    std::cout << "threaded world" << std::endl;
 }
 
 Server::~Server() {

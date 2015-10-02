@@ -4,24 +4,12 @@ project(server)
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
-include(ExternalProject)
 
+set(BOOST_ROOT /opt/boost)
+set(Boost_USE_STATIC_LIBS ON)
+find_package(Boost COMPONENTS system)
 
-externalProject_Add(project_libuv
-    URL http://dist.libuv.org/dist/v1.6.0/libuv-v1.6.0.tar.gz
-    PREFIX ${CMAKE_CURRENT_BINARY_DIR}/ext/libuv-1.6.0
-    UPDATE_COMMAND "${CMAKE_CURRENT_BINARY_DIR}/ext/libuv-1.6.0/src/project_libuv/autogen.sh"
-    CONFIGURE_COMMAND "${CMAKE_CURRENT_BINARY_DIR}/ext/libuv-1.6.0/src/project_libuv/configure"
-    BUILD_COMMAND make
-    INSTALL_COMMAND make install PREFIX=${CMAKE_CURRENT_BINARY_DIR}/install/libuv-1.6.0
-)
-
-ExternalProject_GET_Property(project_libuv install_dir)
-
-add_library(libuv STATIC IMPORTED)
-set_property(TARGET libuv PROPERTY IMPORTED_LOCATION ${install_dir}/ext/libuv-1.6.0)
-add_dependencies(libuv project_libuv)
-
+include_directories(${Boost_INCLUDE_DIR})
 
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11") # -Wall -Werror
