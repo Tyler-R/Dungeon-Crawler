@@ -4,9 +4,18 @@ project(server)
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+
+set(BOOST_ROOT /opt/boost)
+set(Boost_USE_STATIC_LIBS ON)
+find_package(Boost COMPONENTS system)
+
+include_directories(${Boost_INCLUDE_DIR})
+
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11") # -Wall -Werror
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib")
 
+add_subdirectory(ext)
 add_subdirectory(lib)
 add_subdirectory(tools)
