@@ -1,15 +1,20 @@
 #pragma once
 #include <iostream>
 #include <boost/asio.hpp>
+#include <boost/bind.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
-
+#include <string>
 class Server {
 public:
-    Server();
+    Server(int port);
     ~Server();
 
-    static void print(const boost::system::error_code&);
+    void listenForConnection();
+
+    void print();
     void sendMessage();
 private:
+    int port;
 
+    boost::asio::io_service io;
 };
