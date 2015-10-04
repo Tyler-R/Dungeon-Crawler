@@ -10,19 +10,37 @@ int main() {
 	Client client(serverAddress, port);
 	client.connect();
 
-	for(;;) {
-		try {
-			std::string message = "";
-			std::cout << "enter your message: \n";
-			getline(std::cin, message);
+	auto exampleCallback = [](char* buffer, int length) {
+		auto message = (std::string) buffer;
+		message = message.substr(0, length);
 
-			client.sendMessage(message);
+		std::cout << message << std::endl;
+		std::cout << "callback called" << std::endl;
+	};
 
-			// std::cout << client.getServerResponse();
-		} catch (std::exception &e) {
-			std::cout << e.what() << std::endl;
-			break;
-		}
-	}
+	client.handleServerResponse(exampleCallback);
+
+	auto writeCallback = []() -> std::string {
+		std::string message = "";
+
+		std::cout << "enter your message: ";
+		std::getline(std::cin, message);
+
+		return message;
+	};
+
+	client.sendUserInput(writeCallback);
+	// for(;;) {
+	// 	try {
+	// 		std::string message = "";
+	// 		std::cout << "enter your message: ";
+	// 		getline(std::cin, message);
+	//
+	// 		client.sendMessage(message);
+	// 	} catch (std::exception &e) {
+	// 		std::cout << e.what() << std::endl;
+	// 		break;
+	// 	}
+	// }
 
 }

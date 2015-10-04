@@ -42,6 +42,43 @@ void Client::sendMessage(std::string message) {
 
 }
 
+void Client::sendUserInput(std::function<std::string(void)> callback) {
+
+    std::string message = callback();
+
+    boost::asio::async_write(*socket, boost::asio::buffer(message.c_str(), message.size()),
+        [this, callback](boost::system::error_code errorCode, std::size_t length) {
+            if(!errorCode) {
+                sendUserInput(callback);
+            } else {
+                //handle client disconnecting
+                std::cout << "server disconnected" << std::endl;
+                return;
+            }
+        }
+    );
+
+    io_service.run();
+}
+
+void Client::handleServerResponse(std::function<void(char*, int)> callback) {
+    char *receiveBuffer = new char[RECEIVE_BUFFER_SIZE];
+
+    socket->async_read_some(boost::asio::buffer(receiveBuffer, RECEIVE_BUFFER_SIZE),
+        [this, callback, receiveBuffer](boost::system::error_code errorCode, std::size_t length) {
+            if(!errorCode) {
+                // handle command
+                callback(receiveBuffer, length);
+            } else {
+                std::cout << "server disconnected" << std::endl;
+                return;
+            }
+
+            handleServerResponse(callback);
+        }
+    );
+}
+
 std::string Client::getServerResponse() throw(boost::system::system_error) {
     boost::array<char, RECEIVE_BUFFER_SIZE> buf;
     boost::system::error_code error;

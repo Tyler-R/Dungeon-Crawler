@@ -25,6 +25,9 @@ public:
 
     std::string getNextCommand();
 
+    void sendMessage(std::string message);
+
+    bool isAlive = true;
 private:
     tcp::socket socket;
 

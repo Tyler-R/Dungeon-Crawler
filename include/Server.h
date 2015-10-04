@@ -18,7 +18,7 @@ public:
     ~Server();
 
     void start();
-
+    
     void sendMessage();
 private:
     int port;

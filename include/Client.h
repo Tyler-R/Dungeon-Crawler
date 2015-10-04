@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+#include <functional>
+
 #include <boost/array.hpp>
 #include <boost/asio.hpp>
 
@@ -13,6 +15,10 @@ public:
     void connect();
     std::string getServerResponse() throw(boost::system::system_error);
     void sendMessage(std::string message);
+
+    void handleServerResponse(std::function<void(char*, int)> callback);
+
+    void sendUserInput(std::function<std::string(void)> callback);
 
 private:
     const std::string serverAddress;

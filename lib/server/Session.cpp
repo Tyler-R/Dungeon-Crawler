@@ -43,6 +43,18 @@ std::string Session::getNextCommand() {
     }
 }
 
+void Session::sendMessage(std::string message) {
+
+    boost::system::error_code error;
+    size_t bitesWritten = boost::asio::write(socket, boost::asio::buffer(message), boost::asio::transfer_all(), error);
+
+    std::cout << "SENDING MESSAGE" << std::endl;
+
+    if(error) {
+        isAlive = false;
+        throw boost::system::system_error(error);
+    }
+}
 
 
 Session::~Session() {

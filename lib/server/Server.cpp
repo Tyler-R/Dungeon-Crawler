@@ -30,15 +30,23 @@ void Server::listenForConnections() {
 }
 
 void Server::handleCommands() {
-    try{
-        std::cout << "checking for session input" << std::endl;
-        for(auto session : sessions) {
-            // handle commands that will manipulate the world
-            // send data back to clients
-            // wait untill next tick
-            std::cout << session->getNextCommand() << std::endl;
+    std::cout << "checking for session input" << std::endl;
+    for(auto session : sessions) {
+        // handle commands that will manipulate the world
+        // send data back to clients
+        // wait untill next tick
+        try {
+            if(session->isAlive) {
+                auto nextCommand = session->getNextCommand();
+                std::cout << nextCommand << std::endl;
+                session->sendMessage(nextCommand);
+            }
+        } catch(std::exception &e) {
+            session->isAlive = false;
         }
+    }
 
+    try{
         std::cout << "sleeping for 3 seconds" << std::endl;
         boost::asio::deadline_timer timer(ioService, boost::posix_time::seconds(3));
         timer.async_wait(boost::bind(&Server::handleCommands, this));
