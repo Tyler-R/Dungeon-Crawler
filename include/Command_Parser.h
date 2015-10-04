@@ -7,7 +7,7 @@
 
 /*
 validate user input, and then passed the command to game model.
-return actual command;
+return validated command;
  */
 
 class Command_Parser{
