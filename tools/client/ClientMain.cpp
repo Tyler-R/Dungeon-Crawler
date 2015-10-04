@@ -12,8 +12,13 @@ int main() {
 
 	for(;;) {
 		try {
-			auto serverResponse = client.getServerResponse();
-			std::cout.write(serverResponse.c_str(), serverResponse.size());
+			std::string message = "";
+			std::cout << "enter your message: \n";
+			getline(std::cin, message);
+
+			client.sendMessage(message);
+
+			// std::cout << client.getServerResponse();
 		} catch (std::exception &e) {
 			std::cout << e.what() << std::endl;
 			break;

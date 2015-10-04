@@ -1,55 +1,51 @@
 #include "Server.h"
 
 
-Server::Server(int port) : port(port) {
+Server::Server(int port) : port(port), acceptor(ioService, tcp::endpoint(tcp::v4(), port)), socket(ioService) {
     using namespace std;
-    using boost::asio::ip::tcp;
 
-    cout << port << endl;
+    cout << "waiting on port: " << port << endl;
 
-    try {
+}
 
-        boost::asio::io_service ioService;
+void Server::start() {
+    listenForConnections();
+    handleCommands();
+}
 
-        cout << "waiting for 2 seconds" << endl;
-        cout << "waiting on port = " << port << endl;
 
-        tcp::acceptor acceptor(ioService, tcp::endpoint(tcp::v4(), port));
+void Server::listenForConnections() {
+    std::cout << "waiting on port = " << port << std::endl;
 
-        for(;;) {
-            tcp::socket socket(ioService);
-            acceptor.accept(socket);
+    acceptor.async_accept(socket,
+        [this](boost::system::error_code errorCode) {
+            if(!errorCode) {
+                sessions.emplace_back(std::make_shared<Session>(std::move(socket)));
+                sessions.back()->listenForCommands();
+            }
 
-            boost::system::error_code ignored_error;
+            listenForConnections();
+        }
+    );
+}
 
-            std::string message = "welcome to my server\n";
-
-            boost::asio::write(socket, boost::asio::buffer(message), boost::asio::transfer_all(), ignored_error);
-
+void Server::handleCommands() {
+    try{
+        std::cout << "checking for session input" << std::endl;
+        for(auto session : sessions) {
+            // handle commands that will manipulate the world
+            // send data back to clients
+            // wait untill next tick
+            std::cout << session->getNextCommand() << std::endl;
         }
 
-        boost::asio::deadline_timer timer(ioService, boost::posix_time::seconds(2));
-        timer.async_wait(boost::bind(&Server::print, this));
-
-        io.run();
-
-        cout << "hello world" << endl;
-
-
-        cout << "hello world this is the real server" << endl;
-
-    } catch (std::exception& e) {
+        std::cout << "sleeping for 3 seconds" << std::endl;
+        boost::asio::deadline_timer timer(ioService, boost::posix_time::seconds(3));
+        timer.async_wait(boost::bind(&Server::handleCommands, this));
+        ioService.run();
+    } catch(std::exception &e) {
         std::cerr << e.what() << std::endl;
     }
-
-}
-
-void Server::print() {
-    std::cout << "threaded world" << std::endl;
-}
-
-void Server::listenForConnection() {
-
 }
 
 Server::~Server() {

@@ -12,6 +12,7 @@ public:
 
     void connect();
     std::string getServerResponse() throw(boost::system::system_error);
+    void sendMessage(std::string message);
 
 private:
     const std::string serverAddress;

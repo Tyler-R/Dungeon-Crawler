@@ -32,6 +32,16 @@ void Client::connect() {
     }
 }
 
+void Client::sendMessage(std::string message) {
+    boost::system::error_code error;
+    size_t bitesWritten = boost::asio::write(*socket, boost::asio::buffer(message), boost::asio::transfer_all(), error);
+
+    if(error) {
+        throw boost::system::system_error(error);
+    }
+
+}
+
 std::string Client::getServerResponse() throw(boost::system::system_error) {
     boost::array<char, RECEIVE_BUFFER_SIZE> buf;
     boost::system::error_code error;

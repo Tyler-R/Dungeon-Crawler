@@ -6,5 +6,5 @@ int main() {
 	auto port = 8080;
 
 	Server server(port);
-	server.listenForConnection();
+	server.start();
 }
