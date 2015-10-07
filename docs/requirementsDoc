@@ -48,12 +48,17 @@ Remarks:
 			A PLAYER may die if their health runs out.
 
 	Server Functional Requirements
-		The SERVER recieves inputs and sends outputs in a time unit called a 'HEARTBEAT'.
-
-		A HEARTBEAT consists of two phases.
-
-			In PHASE ONE, the SERVER recieves information from CLIENTs and the Game World within a set amount of time.
-			In PHASE TWO, the SERVER outputs information to the CLIENT and the Game World.
+		The SERVER processes inputs and sends outputs in a time unit called a 'HEARTBEAT'.
+        
+        The SERVER listens for connections from CLIENTs and handles those connections
+        
+        The SERVER listens and receives commands from the CLIENT
+        The SERVER processes one command per heartbeat
+        The SERVER allows for a backlog of commands if more than one command is entered per heartbeat
+        The SERVER sends an error message to the client if more than a max number of commands are in the backlog.
+            
+		The SERVER processes information from CLIENTs and the Game World within a set amount of time.
+	    The SERVER outputs information to the CLIENT and the Game World.
 
 		When the SERVER recieves inputs, these inputs are prioritized in a queue.
 			The SERVER processes inputs in batches, on a first-come-first-serve basis.
@@ -102,6 +107,3 @@ Remarks:
 ---Non Functional Requirements---
 
 	The game will be developed using C/C++
-	
-	
-
