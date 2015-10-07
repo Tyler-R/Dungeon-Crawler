@@ -1,0 +1,109 @@
+Requirements
+
+Created by: Sarah Kim Dao
+
+Remarks:
+-will add numbers later. probably.  -Sarah
+
+---Functional Requirements---
+
+	The game will support multiplayer capabilities.
+
+	User Functional Requirements
+
+		A USER must Log In when they want to use the program and Log Out when they exit.
+		A USER may be an ADMIN or a PLAYER
+		A USER may interact with the program by typing input commands.
+
+	Administrator Functional Requirements
+
+		An ADMIN may create new LOCATIONs
+			An ADMIN may input the name and description for the LOCATION.
+			An ADMIN may choose the ITEMs and MONSTERs that can be found in that LOCATION.
+			An ADMIN may build a new LOCATION from pre-existing data contained in text files.
+
+
+	Player Functional Requirements
+		A PLAYER has a name
+		A PLAYER has an inventory
+		A PLAYER has a unique id
+
+		A PLAYER interacts with the Game World using input commands
+
+		A PLAYER may travel from one LOCATION to another.
+			A Player can travel to another LOCATION using the 'Move' command
+			A Player may move North, South, East, or West from their current LOCATION.
+
+		A PLAYER may interact with ITEMs.
+			A PLAYER may carry ITEMs in an 'Inventory'
+			A PLAYER can use ITEMs in their Inventory using the 'Use' command
+			A PLAYER can pick up new ITEMs in their current LOCATION using the 'Get' command
+			A PLAYER can drop ITEMs in their Inventory using the 'Drop' command.
+
+		
+		A PLAYER may interact with MONSTERs.
+			A PLAYER may attack a MONSTER using the 'Attack' command.
+
+		A PLAYER has a limited amount of health.
+			A PLAYER may die if their health runs out.
+
+	Server Functional Requirements
+		The SERVER processes inputs and sends outputs in a time unit called a 'HEARTBEAT'.
+        
+        The SERVER listens for connections from CLIENTs and handles those connections
+        
+        The SERVER listens and receives commands from the CLIENT
+        The SERVER processes one command per heartbeat
+        The SERVER allows for a backlog of commands if more than one command is entered per heartbeat
+        The SERVER sends an error message to the client if more than a max number of commands are in the backlog.
+            
+		The SERVER processes information from CLIENTs and the Game World within a set amount of time.
+	    The SERVER outputs information to the CLIENT and the Game World.
+
+		When the SERVER recieves inputs, these inputs are prioritized in a queue.
+			The SERVER processes inputs in batches, on a first-come-first-serve basis.
+
+
+	
+	Client Functional Requirements
+		The CLIENT sends the USER's input commands to the SERVER.
+		The CLIENT receives information from the SERVER and displays them to the USER
+
+
+	Game World Functional Requirements
+
+		The Game World contains LOCATIONs
+
+			A LOCATION has a unique id number.
+			A LOCATION has a name and a description
+			A LOCATION is connected to other LOCATIONs
+				Players may travel from one location LOCATION
+			A LOCATION may contain PLAYERS, MONSTERS, and ITEMs
+			A LOCATION may be added by the ADMIN
+			A LOCATION may be created from pre-existing data contained in text files.
+
+			A LOCATION may contain PLAYERs
+
+			A LOCATION may contain NPCs
+				An NPC has a unique id number.
+				An NPC has a name and a description.
+				An NPC may be created from pre-existing data contained in text files.
+
+			A LOCATION may contain MONSTERs
+				A MONSTER has a unique id number.
+				A MONSTER has a name and a description.
+				A MONSTER may be created from pre-existing data contained in text files.
+				A MONSTER has a limited amount of health
+					A MONSTER can die if their health runs out.
+					A MONSTER may leave behind ITEMs when they die.
+				A MONSTER can attack the player.
+
+			A LOCATION may contain ITEMs
+				An ITEM has a unique id number.
+				An ITEM has a name and a description.
+				An ITEM may be created from pre-existing data contained in text files.
+				An ITEM may or may not be consumable.
+			
+---Non Functional Requirements---
+
+	The game will be developed using C/C++
