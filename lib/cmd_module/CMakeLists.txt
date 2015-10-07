@@ -1,1 +1,1 @@
-add_library(Command_Parser Command_Parser.cpp)
+add_library(CommandParser CommandParser.cpp)

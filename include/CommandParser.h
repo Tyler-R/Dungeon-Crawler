@@ -10,11 +10,11 @@ validate user input, and then passed the command to game model.
 return validated command;
  */
 
-class Command_Parser{
+class CommandParser{
 public:
     //Command_Parser();
     //~Command_Parser();
-    void tokenize_input(std::string in);
+    void tokenizeInput(std::string in);
     //bool is_Validated(std::vector<std::string>);
 
 prvivate:
