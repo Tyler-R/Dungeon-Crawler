@@ -1,0 +1,115 @@
+AREA:
+  name: Smurf Village
+
+__________________________________________________________________________________
+NPCS:
+- description:
+  - A cute little blue smurf with a white hat and white boots.  You have a sudden
+  - urge to crush him.
+  id: 101
+  keywords: smurf~
+  longdesc:
+  - A smurf is singing and walking along.
+  shortdesc: a smurf
+
+  what is up with the ~ after a keyword
+  are description / longdesc multip line?
+  can shortdesc be more than 1 line?
+
+
+NPC's have:
+    multi-line description
+    unique id,
+    keyword,
+    multi-line long description
+    single-line short description
+_________________________________________________________________________________
+
+OBJECTS:
+- extra: []
+  id: 100
+  keywords: bunch berries smurfberries~
+  longdesc:
+  - A bunch of delicious looking smurfberries lie here.
+  shortdesc: A bunch of smurfberries
+
+
+  - extra:
+    - desc:
+      - It is quite heavy.  The blade is made of some metal that you can't even
+      - spell.  The edge of the blade looks as if it could cut through anything
+      - or anyone.
+      keywords: axe blade~
+    id: 3005
+    keywords: axe blade~
+    longdesc:
+    - An executioner's axe is here waiting to possess its next user.
+    shortdesc: an executioner's axe
+
+  does [] mean you can have multiple of the object and no [] mean you can have only 1
+
+objects have:
+    multi-line description
+    unique id
+    keywords
+    multi-line long description
+    a single line short description
+_______________________________________________________________________________________
+RESETS: []
+    why is this blank in both files.  what does it mean
+
+
+
+_____________________________________________________________________________________
+ROOMS
+- desc:
+  - This section of the road is badly worn and frequently traversed.  There is
+  - faint singing to the north.  The road back to the forest lies to the south.
+  doors:
+  - desc:
+    - The path continues toward the village.
+    dir: north
+    keywords: []
+    to: 103
+  - desc:
+    - The dimly lit path.
+    dir: south
+    keywords: []
+    to: 101
+  extended_descriptions:
+  - desc:
+    - A small well is here.  Just the right size if you're a smurf.  But big
+    - enough for you to get some water from.  I'm sure the smurfs wont mind.
+    keywords: smurfy well~
+  id: 102
+  name: Dimly Lit Path
+
+-------------------------------------------------------------------------------------
+
+  - desc:
+    - This is Gargamel's Castle.  His big black kettle is in the middle of the room.
+    - Where else would he put it?  The place has only one room.
+    doors:
+    - desc:
+      - Outside Gargamel's Castle
+      dir: south
+      keywords:
+      - door
+      to: 127
+    extended_descriptions: []
+    id: 128
+    name: Gargamel's Castle
+
+
+rooms have
+    multi-line description
+    upto 4 doors which include
+        multi-line description
+        direction
+        keywords
+        to id (id of location that player will be at if they take the door)
+    extended description
+        multi-line description
+        keywords
+    unique id
+    name (not unique)
