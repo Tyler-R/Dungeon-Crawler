@@ -5,6 +5,7 @@
 #### Install boost
 * **Discalimer!!!: don't run sudo on school computers, IT will be notified.**
 * **REQUIRE SUDO access**
+
 ```
 $ bash sudoBoostInstall.sh
 ```
