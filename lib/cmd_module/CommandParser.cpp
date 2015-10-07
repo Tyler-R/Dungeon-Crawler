@@ -7,7 +7,7 @@ Command_Parser::Command_Parser(){
 }
 */
 
-void Command_Parser::tokenizeInput(std::string in){
+std::vector<std::string> v; Command_Parser::tokenizeInput(std::string in){
     std::vector<std::string> usr_input;
     typedef boost::tokenizer<boost::char_separator<char> > tokenizer;
     boost:: char_separator<char> delm(" ");
