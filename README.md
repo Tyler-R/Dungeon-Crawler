@@ -1,9 +1,26 @@
-in order to compile libuv I have identified 4 things that must be done.
-    Discalimer!!!: don't run sudo on school computers, IT will be notified.
-    1. intall automake "sudo apt-get install automake"
-    2. install libtoolize "sudo apt-get install libtool"
-    3. all of the folders leading upto the project must have no spaces
-        Ex.
-        bad: "home/user/my directory/textadventure" will throw a compiler error
-        good: "home/user/my_directory/textadventure" will compile nicely
-    4. if "make" does not work run "sudo make"
+# textadventure
+
+## Library Dependencies
+---
+#### Install boost
+* **Discalimer!!!: don't run sudo on school computers, IT will be notified.**
+* **REQUIRE SUDO access**
+
+```
+$ bash sudoBoostInstall.sh
+```
+
+## Build
+---
+```
+$ git clone https://csil-git1.cs.surrey.sfu.ca/373-15-3-piragua/textadventure.git
+$ cd textadventure
+$ mkdir <tmpbuild>
+$ cd <tmpbuild>
+$ cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ /path/to/project/
+```
+## Iterations
+---
+1. **Oct 14**
+2. **Nov 4**
+3. **Dec 7**
