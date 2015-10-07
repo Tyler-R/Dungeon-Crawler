@@ -1,0 +1,2 @@
+add_executable(cmd_test command_test.cpp)
+target_link_libraries(Command_Parser Command_Module)
