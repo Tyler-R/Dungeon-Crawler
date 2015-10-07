@@ -1,5 +1,5 @@
-#textadventure
-##Dependency library
+# textadventure
+## Dependency library
 #### Install boost
 * **Discalimer!!!: don't run sudo on school computers, IT will be notified.**
 * **REQUIRE SUDO access**
@@ -14,7 +14,7 @@ $ mkdir <tmpbuild>
 $ cd <tmpbuild>
 $ cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ /path/to/project/
 ```
-##Iterations
+## Iterations
 1. **Oct 14**
 2. **Nov 4**
 3. **Dec 7**
