@@ -12,4 +12,5 @@ add_subdirectory(tools)
 add_executable(test_only tools/testProgram/main.cpp 
 		lib/monster/monster.cpp 
 		lib/creature/creature.cpp 
-		lib/item/item.cpp)
+		lib/item/item.cpp
+		lib/npc/npcs.cpp)
