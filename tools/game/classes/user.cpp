@@ -7,42 +7,90 @@
 #include "user.h"
 #include <iostream>
 #include <string>
+#include <vector>
 
-User::User() {
-  setUserType();
-  createUserName();
-  createPassword();
+User::User(){
+}
+
+/*User constructor for setting up basic information*/
+User::User(bool isAdmin, string userName, string password, Room currentRoom) {
+  setUserType(isAdmin);
+  setUserName(userName);
+  setPassword(password);
+  inventory = new Inventory();
+  setRoom(currentRoom);
   playerHealth = playerMaxHealth;
 }
 
 User::~User() {
-
 }
 
-void setUserType(){
-  bool isSelecting = TRUE;
-  string userType;
-
-  while(isSelecting){
-    cout << "Are you an administrator?(yes/no)" << endl;
-    cin >> userType;
-    userType = userType.toLower();
-
-    if(userType == "yes"){
-      isAdmin = TRUE;
-      isSelecting = FALSE;
-    }
-    else if(userType == "no"){
-      isAdmin = FALSE;
-      isSelecting = FALSE;
-    }
-    else {
-      cout << "Invalid response. Please use 'yes' or 'no'" << endl;
-    }
-  }
+void setUserName(string userName){
+  this->userName = userName;
 }
-    
+
+string getUserName(){
+  return userName;
+}
+
+void setPassword(string password){
+  this->password = password;
+}
+
+string getPassword(){
+  return password;
+}
+
+void setUserType(bool isAdmin){
+  this->isAdmin = isAdmin;
+}
+
+bool getUserType(){
+  return isAdmin;
+}
+
+void setInventory(Inventory inventory){
+  this->inventory = inventory;
+}
+
+vector<Item> getInventory() {
+  return inventory;
+}
+
+void setRoom(Room currentRoom){
+  this->currentRoom = currentRoom;
+}
+
+Room getRoom(){
+  return currentRoom;
+}
+
+void setPlayerHealth(int health){
+  this->health = health;
+}
+
+int getPlayerHealth(){
+  return playerHealth;
+}
+
+void setPlayerAttack(int attack){
+  this->attack = attack;
+}
+
+int getPlayerAttack(){
+  return playerAttack;
+}
+
+void setPlayerDefense(int defense){
+  this->defense = defense);
+}
+
+int getPlayerDefense(){
+  return playerDefense;
+}
+
 /* prompts for a userName and requests a use check before accepting it */
+/*
 void createUserName() {
   bool nameIsUseable = false;
 
@@ -89,27 +137,4 @@ void createPassword() {
 
   cout << "You've successfully created your character!" << endl;
 }
-
-vector<Item> getInventory() {
-  return inventory;
-}
-
-Location getLocation(){
-  return currentLocation;
-}
-
-bool isAdmin(){
-  return isAdmin;
-}
-
-int getPlayerHealth(){
-  return playerHealth;
-}
-
-int getPlayerAttack(){
-  return playerAttack;
-}
-
-int getPlayerDefense(){
-  return playerDefense;
-}
+*/
