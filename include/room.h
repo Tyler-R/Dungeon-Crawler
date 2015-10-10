@@ -6,14 +6,11 @@ Created By: Sarah Kim Dao
 #include <vector>
 #include <string>
 
-
 using namespace std;
-
-
 
 class Room {
 	private:
-		string id;
+		//string id;
 		string name;
 		string desc;  	  	   	
 		string extDesc;
@@ -28,23 +25,27 @@ class Room {
 			string desc;
 		};
 
-		Door *North;			
-		Door *South;
-		Door *East;
-		Door *West;	
-		Door *Up;			
-		Door *Down;
-
+		Door *north;			
+		Door *south;
+		Door *east;
+		Door *west;	
+		Door *up;			
+		Door *down;
 
 	public: 
-		Room(); 
+
+		Room();
+
+		Room(Room &obj);
+
+		Room(string input_name, string input_desc, string input_extDesc); 
 
 		/* Construct New Room from Info Contained in Text Files */
 		Room(char id); 
 
 		~Room();
  
-		string getId();
+		//string getId();
 		string getName();
 		string getDesc();
 		string getExtDesc();
@@ -53,7 +54,7 @@ class Room {
 		//vector<User> getUsers();	
 		//vector<NPC> NPCs();	
 		
-		void getId(string s);
+		//void getId(string s);
 		void setName(string s);
 		void setDesc(string s);
 		void setExtDesc(string s);
@@ -75,8 +76,23 @@ class Room {
 		Door getWest();
 		Door getUp();
 		Door getDown();
-
-
 		
+		string lookNorth();
+		string lookSouth();
+		string lookEast();
+		string lookWest();
+		string lookUp();
+		string lookDown();
 
+		Room * getNorthLeadsTo();
+
+		void goNorth(Room * current);
+
+		/*
+		void goSouth(Room *current);
+		void goEast(Room *current);
+		void goWest(Room *current);
+		void goUp(Room *current);
+		void goDown(Room *current);	
+		*/
 };
