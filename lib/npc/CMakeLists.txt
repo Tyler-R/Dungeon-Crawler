@@ -1,1 +1,1 @@
-add_library(npc npcs.cpp)
+add_library(npc npc.cpp)

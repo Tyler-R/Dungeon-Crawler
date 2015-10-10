@@ -13,4 +13,5 @@ add_executable(test_only tools/testProgram/main.cpp
 		lib/monster/monster.cpp 
 		lib/creature/creature.cpp 
 		lib/item/item.cpp
-		lib/npc/npcs.cpp)
+		lib/npc/npc.cpp
+		lib/object/object.cpp)
