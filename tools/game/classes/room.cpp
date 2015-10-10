@@ -5,32 +5,110 @@ This is a game class that contains attributes and methods for each room containe
 Created By: Sarah Kim Dao
 */
 
-
 #include "room.h"
 
 
 Room::Room(){ 
+	name = "no_name";
+	desc = "no_desc";
+	extDesc = "no_extDesc";
+
+	north = new Door;
+	setNorth(NULL, "You see nothing to the north.");
+
+	south = new Door;
+	setSouth(NULL, "You see nothing to the south.");
+
+	east = new Door;
+	setEast(NULL, "You see nothing to the east.");
+
+	west = new Door;
+	setWest(NULL, "You see nothing to the west.");
+
+	up = new Door;
+	setUp(NULL, "You see nothing in the upward direction.");
+
+	down = new Door;
+	setDown(NULL, "You see nothing in the downward direction.");
 
 }
 
+Room::Room(string input_name, string input_desc, string input_extDesc){ 
+	name = input_name;
+	desc = input_desc;
+	extDesc = input_extDesc;
+
+	north = new Door;
+	setNorth(NULL, "You see nothing to the north.");
+
+	south = new Door;
+	setSouth(NULL, "You see nothing to the south.");
+
+	east = new Door;
+	setEast(NULL, "You see nothing to the east.");
+
+	west = new Door;
+	setWest(NULL, "You see nothing to the west.");
+
+	up = new Door;
+	setUp(NULL, "You see nothing in the upward direction.");
+
+	down = new Door;
+	setDown(NULL, "You see nothing in the downward direction.");
+}
+
+Room::Room(Room &obj){
+	name = obj.getName();
+	desc = obj.getDesc();
+	extDesc = obj.getExtDesc();
+
+	north = new Door;
+	setNorth(obj.getNorth().leadsTo, obj.getNorth().desc);
+
+	south = new Door;
+	setSouth(obj.getSouth().leadsTo, obj.getSouth().desc);
+
+	east = new Door;
+	setEast(obj.getEast().leadsTo, obj.getEast().desc);
+
+	west = new Door;
+	setWest(obj.getWest().leadsTo, obj.getWest().desc);
+
+	up = new Door;
+	setUp(obj.getUp().leadsTo, obj.getUp().desc);
+
+	down = new Door;
+	setDown(obj.getDown().leadsTo, obj.getDown().desc);
+}
 
 Room::Room(char id){ 
-	//will construct new Room based on pre-existing information contained in game text files
-}
 
+}
 
 Room::~Room(){
-		delete North;
-		delete South;
-		delete East;
-		delete West;
-		delete Up;
-		delete Down;
+	//setNorth(NULL, "You see nothing to the north.");
+	delete north;
+	
+	//setSouth(NULL, "You see nothing to the south.");
+	delete south;
+	
+	//setEast(NULL, "You see nothing to the east.");
+	delete east;
+
+	//setWest(NULL, "You see nothing to the west.");
+	delete west;
+
+	//setUp(NULL, "You see nothing in the upward direction.");
+	delete up;
+
+	//setDown(NULL, "You see nothing in the downward direction.");
+	delete down;
+
 }
 
-string Room::getId(){
-	return id;
-}
+//string Room::getId(){
+//	return id;
+//}
 
 string Room::getName(){
 	return name;
@@ -59,9 +137,9 @@ vector<monster> Room::getMonsters(){
 */
 
 
-void Room::getId(string s){
-	id = s;
-}
+//void Room::getId(string s){
+//	id = s;
+//}
 
 void Room::setName(string s){
 	name = s;
@@ -91,60 +169,142 @@ void Room::setKeywords(vector<monster> m){
 
 
 void Room::setNorth(Room *input_id, string input_desc){
-	North->leadsTo = input_id;
-	North->desc = input_desc;
+	north->leadsTo = input_id;
+	north->desc = input_desc;
 }
 
 void Room::setSouth(Room *input_id, string input_desc){
-	South->leadsTo = input_id;
-	South->desc = input_desc;
+	south->leadsTo = input_id;
+	south->desc = input_desc;
 }
 
 void Room::setEast(Room *input_id, string input_desc){
-	East->leadsTo = input_id;
-	East->desc = input_desc;
+	east->leadsTo = input_id;
+	east->desc = input_desc;
 }	
 
 void Room::setWest(Room *input_id, string input_desc){
-	West->leadsTo = input_id;
-	West->desc = input_desc;
+	west->leadsTo = input_id;
+	west->desc = input_desc;
 }
 
 void Room::setUp(Room *input_id, string input_desc){
-	Up->leadsTo = input_id;
-	Up->desc = input_desc;
+	up->leadsTo = input_id;
+	up->desc = input_desc;
 }
 
 void Room::setDown(Room *input_id, string input_desc){
-	Down->leadsTo = input_id;
-	Down->desc = input_desc;
+	down->leadsTo = input_id;
+	down->desc = input_desc;
 }
 
 
 Room::Door Room::getNorth(){
-	return *North;
+	return *north;
 }
 
-
 Room::Door Room::getSouth(){
-	return *South;
+	return *south;
 }
 
 Room::Door Room::getEast(){
-	return *East;
+	return *east;
 }
 
 Room::Door Room::getWest(){
-	return *West;
+	return *west;
 }
 
 Room::Door Room::getUp(){
-	return *Up;
+	return *up;
 }
 
 Room::Door Room::getDown(){
-	return *Down;
+	return *down;
+}
+
+
+string Room::lookNorth(){
+	return north->desc;
+}
+
+string Room::lookSouth(){
+	return south->desc;
+}
+
+string Room::lookEast(){
+	return east->desc;
+}
+
+string Room::lookWest(){
+	return west->desc;
+}
+
+string Room::lookUp(){
+	return up->desc;
+}
+
+string Room::lookDown(){
+	return down->desc;
+}
+
+
+Room * Room::getNorthLeadsTo(){
+	return (getNorth().leadsTo);
+}
+
+Room * Room::getSouthLeadsTo(){
+	return (getSouth().leadsTo);
+}
+
+Room * Room::getEastLeadsTo(){
+	return (getEast().leadsTo);
+}
+
+Room * Room::getWestLeadsTo(){
+	return (getWest().leadsTo);
+}
+
+Room * Room::getUpLeadsTo(){
+	return (getUp().leadsTo);
+}
+
+Room * Room::getDownLeadsTo(){
+	return (getDown().leadsTo);
+}
+
+void Room::goNorth(Room * current){
+	*current = *(getNorth().leadsTo);
+	//LEAKS
 }
 
 
 
+/*
+
+void Room::goSouth(Room *current){
+	*current = *(*current.getSouth().leadsTo);
+	return current;
+}
+
+void Room::goEast(Room *current){
+	*current = *(*current.getEast().leadsTo);
+	return current;
+}
+
+void Room::goWest(Room *current){
+	*current = *(*current.getWest().leadsTo);
+	return current;
+}
+
+void Room::goUp(Room *current){
+	*current = *(*current.getUp().leadsTo);
+	return current;
+}
+
+void Room::goDown(Room *current){
+	*current = *(*current.getDown().leadsTo);
+	return current;
+}
+
+*/
