@@ -40,11 +40,12 @@ public:
 
 private:
     // attributes
-	string npcName();
-	string npcType();
-	int npcHP();
-	bool isAlive();
-	int npcDamage();
+    string npcID;
+	string npcName;
+	string npcType;
+	int npcHP;
+	bool isAlive;
+	int npcDamage;
 
     // functions
 	void setName(string s);

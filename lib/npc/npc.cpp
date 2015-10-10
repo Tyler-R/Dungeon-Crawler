@@ -16,61 +16,71 @@ NPC::NPC(string type, string id){
         
         setID(id);
 		setName(tempMonster.getName());
-        setType(tempMonster.getType());
+        setType(type);
+        setHP(tempMonster.getHP());
+        setAlive(tempMonster.getAlive());
+        setDamage(tempMonster.getDamage());
+	
+    }else if(type == "creature") {
+        Creature tempCreature;
         
-        
-	}else if(type == "creature") {
-
-	}else {
+        setID(id);
+        setName(tempCreature.getType());
+        setType(type);
+        setHP(tempCreature.getHP);
+        setAlive(tempCreature.getAlive());
+        setDamage(int(0));
+	
+    }else {
 		return -1;
 	}
 }
 
 
 void NPC::setID(string id) {
-
+    npcID = id;
 }
 void NPC::setName(string s) {
-
+    npcName = s;
 }
 
 void NPC::setType(string s) {
-
+    npcType = s;
 }
 
 void NPC::setHP(int i) {
-
+    npcHP = i;
 }
 
 void NPC::setAlive(bool b) {
-
+    isAlive = b;
 }
 
 void NPC::setDamage(int i) {
-
+    npcDamage = i;
 }
 
 
 string NPC::getID() const{
-
+    return npcID;
 }
 
 string NPC::getName() const{
-
+    return npcName;
 }
 
 string NPC::getType() const{
-
+    return npcType;
 }
 
 int NPC::getHP() const{
-
+    return npcHP;
 }
 
 bool NPC::getAlive() const{
-
+    return isAlive;
 }
 
 int NPC::getDamage() const{
-	
+    return npcDamage;
 }
