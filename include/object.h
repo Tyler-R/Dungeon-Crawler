@@ -37,4 +37,8 @@ public:
 	string getType() const;
 	int getDamage() const;
 	bool getPositive() const;
-}
+    
+    // helper function
+    void checkObject() const;   // print out all attributes of object
+};
+#endif

@@ -10,6 +10,8 @@
 #include "monster.h"
 #include "creature.h"
 #include "item.h"
+#include "npc.h"
+#include "object.h"
 
 
 int main(int argc, const char * argv[]) {
@@ -29,6 +31,22 @@ int main(int argc, const char * argv[]) {
     cout << "\n";
     item1.CheckItem();
 
+    cout << "\n\n";
+
+    // check npc monster
+    NPC npcMonster("monster", "id:111");
+    npcMonster.CheckNPC();
+    cout << "\n\n";
+
+    // check npc creature
+    NPC npcCreature("creature", "id:222");
+    npcCreature.CheckNPC();
+    cout << "\n\n";
+
+    // check object
+    Object objectItem("id:333");
+    objectItem.CheckObject();
+    cout << "\n\n";
 
     cout << "\n";
     cout << "\n";

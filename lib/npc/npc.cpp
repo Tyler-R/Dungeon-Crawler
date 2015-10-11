@@ -32,7 +32,7 @@ NPC::NPC(string type, string id){
         setDamage(int(0));
 	
     }else {
-		return -1;
+		cout << "!!!!!! no such NPC !!!!!! \n";
 	}
 }
 
@@ -83,4 +83,22 @@ bool NPC::getAlive() const{
 
 int NPC::getDamage() const{
     return npcDamage;
+}
+
+// helper function
+void NPC::CheckNPC() const{
+    std::cout << "          NPC check function \n";
+    std::cout << "the id is                     " << getID();
+    std::cout << "\n";
+    std::cout << "the name is                   " << getName();
+    std::cout << "\n";
+    std::cout << "the type is                   " << getType();
+    std::cout << "\n";
+    std::cout << "the HP is                     " << getHP();
+    std::cout << "\n";
+    std::cout << "the damage is                 " << getDamage();
+    std::cout << "\n";
+    std::cout << "is live(1) or dead(0)?        " << getAlive();
+    std::cout << "\n";
+    std::cout << "\n";
 }

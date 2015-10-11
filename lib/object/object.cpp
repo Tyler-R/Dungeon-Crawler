@@ -14,9 +14,9 @@ Object::Object(string id) {
     Item tempItem;
     
     setID(id);
-    setType(tempItem.GetType());
-    setDamage(tempItem.GetDamage());
-    setPositive(tempItem.GetPositive());
+    setType(tempItem.getType());
+    setDamage(tempItem.getDamage());
+    setPositive(tempItem.getPositive());
 }
 
 void Object::setID(string id) {
@@ -49,4 +49,18 @@ int Object::getDamage() const{
 
 bool Object::getPositive() const{
     return objectPositive;
+}
+
+// helper function -- check attributes
+void Object::CheckObject() const{
+    std::cout << "          Object check function \n";
+    std::cout << "the ID is                     " << getID();
+    std::cout << "\n";
+    std::cout << "the type is                   " << getType();
+    std::cout << "\n";
+    std::cout << "good(1) or bad(0)             " << getPositive();
+    std::cout << "\n";
+    std::cout << "good(+) or bad(-)             " << getDamage();
+    std::cout << "\n";
+    std::cout << "\n";
 }
