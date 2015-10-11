@@ -28,8 +28,12 @@ private:
 
 public:
 
+	// constructor
 	Object(string id);
 
+	// destructor
+	~Object();
+	
 	// functions
 	void setID(string id);
 	

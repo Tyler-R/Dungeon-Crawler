@@ -38,8 +38,10 @@ private:
     void setDamage();   // set damage for monster
     
 public:
-    // Constructors
+    // Constructor
     Monster();	// Default constructor
+    // Destructor
+    ~Monster();
     
     
     // Functions

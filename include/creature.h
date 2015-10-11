@@ -36,9 +36,10 @@ private:
     
 public:
     
-    // Constructors
+    // Constructor
     Creature();
-    
+    // Destructor
+    ~Creature();
     
     // Functions (getters)
     string getType() const;

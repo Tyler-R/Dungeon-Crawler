@@ -19,6 +19,13 @@ Item::Item() {
     setAll();
 }
 
+//destructor
+Item::~Item() {
+    delete itemType;
+    delete itemDamage;
+    delete itemPositive;
+}
+
 void Item::setAll(){
     std::string tempType[] = {"energy", "axe", "poison", "trap"};
     int randType = rand() % (4);

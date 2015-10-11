@@ -36,6 +36,8 @@ private:
 public:
     // constructor
     Item();
+    //destructor
+    ~Item();
     
     // functions
     string getType() const;         // return item type (or name)

@@ -20,6 +20,15 @@ Monster::Monster() {
     setDamage();
 }
 
+// destructor
+Monster::~Monster() {
+    delete monsterName;
+    delete monsterType;
+    delete monsterHP;
+    delete monsterDamage;
+    delete isAlive;
+}
+
 //------------------------------- Set Methods ----------------------------------
 // set name
 void Monster::setName() {

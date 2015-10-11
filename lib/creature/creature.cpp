@@ -19,6 +19,13 @@ Creature::Creature() {
     setAlive();
 }
 
+// destructor
+Creature::~Creature() {
+    delete creatureType;
+    delete creatureHP;
+    delete isAlive;
+}
+
 
 // set name
 void Creature::setType() {

@@ -19,6 +19,14 @@ Object::Object(string id) {
     setPositive(tempItem.getPositive());
 }
 
+// destructor
+Object::~Object() {
+    delete objectID;
+    delete objectType;
+    delete objectDamage;
+    delete objectPositive;
+}
+
 void Object::setID(string id) {
     objectID = id;
 }

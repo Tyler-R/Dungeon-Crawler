@@ -10,6 +10,7 @@
 #include "npc.h"
 
 
+// constructor
 NPC::NPC(string type, string id){
 	if (type == "monster") {
 		Monster tempMonster;
@@ -34,6 +35,16 @@ NPC::NPC(string type, string id){
     }else {
 		cout << "!!!!!! no such NPC !!!!!! \n";
 	}
+}
+
+// destructor
+NPC::~NPC() {
+    delete npcID;
+    delete npcName;
+    delete npcType;
+    delete npcHP;
+    delete npcDamage;
+    delete isAlive;
 }
 
 
