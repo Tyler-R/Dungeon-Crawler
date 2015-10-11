@@ -47,7 +47,7 @@ public:
     
     
     // Helper Functions
-    void CheckCreature() const;
+    void checkCreature() const;
     
     
 };

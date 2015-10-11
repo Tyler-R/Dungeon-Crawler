@@ -52,7 +52,7 @@ bool Object::getPositive() const{
 }
 
 // helper function -- check attributes
-void Object::CheckObject() const{
+void Object::checkObject() const{
     std::cout << "          Object check function \n";
     std::cout << "the ID is                     " << getID();
     std::cout << "\n";

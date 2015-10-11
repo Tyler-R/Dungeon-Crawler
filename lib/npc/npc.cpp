@@ -27,7 +27,7 @@ NPC::NPC(string type, string id){
         setID(id);
         setName(tempCreature.getType());
         setType(type);
-        setHP(tempCreature.getHP);
+        setHP(tempCreature.getHP());
         setAlive(tempCreature.getAlive());
         setDamage(int(0));
 	
@@ -86,7 +86,7 @@ int NPC::getDamage() const{
 }
 
 // helper function
-void NPC::CheckNPC() const{
+void NPC::checkNPC() const{
     std::cout << "          NPC check function \n";
     std::cout << "the id is                     " << getID();
     std::cout << "\n";

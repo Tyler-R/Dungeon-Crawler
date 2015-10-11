@@ -25,27 +25,27 @@ int main(int argc, const char * argv[]) {
     Item item1;
 
     
-    monster1.CheckMonster();
+    monster1.checkMonster();
     cout << "\n";
-    creature1.CheckCreature();
+    creature1.checkCreature();
     cout << "\n";
-    item1.CheckItem();
+    item1.checkItem();
 
     cout << "\n\n";
 
     // check npc monster
     NPC npcMonster("monster", "id:111");
-    npcMonster.CheckNPC();
+    npcMonster.checkNPC();
     cout << "\n\n";
 
     // check npc creature
     NPC npcCreature("creature", "id:222");
-    npcCreature.CheckNPC();
+    npcCreature.checkNPC();
     cout << "\n\n";
 
     // check object
     Object objectItem("id:333");
-    objectItem.CheckObject();
+    objectItem.checkObject();
     cout << "\n\n";
 
     cout << "\n";
