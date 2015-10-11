@@ -31,11 +31,11 @@ private:
     int monsterDamage;  // monster's damage
     
     // Functions
-    void SetName();		// set name of monster
-    void SetType();		// set type of monster
-    void SetHP();		// set HP of monster
-    void SetAlive();		// set isAlive of monster(must live)
-    void SetDamage();   // set damage for monster
+    void setName();		// set name of monster
+    void setType();		// set type of monster
+    void setHP();		// set HP of monster
+    void setAlive();		// set isAlive of monster(must live)
+    void setDamage();   // set damage for monster
     
 public:
     // Constructors
@@ -43,15 +43,15 @@ public:
     
     
     // Functions
-    string GetName() const;		// get name of monster
-    string GetType() const;		// get type of monster
-    int GetHP() const;		// get HP of monster
-    bool GetAlive() const;	// get isAlive of monster (live or dead)
-    int GetDamage() const;  // get monster's damage
+    string getName() const;		// get name of monster
+    string getType() const;		// get type of monster
+    int getHP() const;		// get HP of monster
+    bool getAlive() const;	// get isAlive of monster (live or dead)
+    int getDamage() const;  // get monster's damage
     
     
     // HelpFunctions
-    void CheckMonster();
+    void checkMonster();
 };
 
 

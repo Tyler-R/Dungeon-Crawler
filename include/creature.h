@@ -28,9 +28,9 @@ private:
     bool isAlive;
     
     // Functions (mutators)
-    void SetType();
-    void SetHP();
-    void SetAlive();
+    void setType();
+    void setHP();
+    void setAlive();
     
     
     
@@ -41,9 +41,9 @@ public:
     
     
     // Functions (getters)
-    string GetType() const;
-    int GetHP() const;
-    bool GetAlive()const;
+    string getType() const;
+    int getHP() const;
+    bool getAlive()const;
     
     
     // Helper Functions

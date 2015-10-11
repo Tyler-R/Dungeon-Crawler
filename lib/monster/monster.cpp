@@ -13,16 +13,16 @@
 // constructor
 Monster::Monster() {
 
-    SetName();
-    SetType();
-    SetHP();
-    SetAlive();
-    SetDamage();
+    setName();
+    setType();
+    setHP();
+    setAlive();
+    setDamage();
 }
 
 //------------------------------- Set Methods ----------------------------------
 // set name
-void Monster::SetName() {
+void Monster::setName() {
     std::string tempNames[] = {"alec", "jason", "salah", "jorden", "tyler"};
     int randName = rand() % (5);
     
@@ -30,7 +30,7 @@ void Monster::SetName() {
 }
 
 // set type
-void Monster::SetType() {
+void Monster::setType() {
     std::string tempTypes[] = {"type1", "type2", "type3", "type4", "type5"};
     int randType = rand() % (5);
     
@@ -38,19 +38,19 @@ void Monster::SetType() {
 }
 
 // set HP
-void Monster::SetHP() {
+void Monster::setHP() {
     int randNum = rand() % (5) + 1;
     
     monsterHP = randNum;
 }
 
 // set isAlive
-void Monster::SetAlive() {
+void Monster::setAlive() {
     isAlive = true;
 }
 
 // set Damage -- set monster's damage to int(1) temporarily
-void Monster::SetDamage() {
+void Monster::setDamage() {
     int tempDamage = int (1);
 
     monsterDamage = tempDamage;
@@ -58,43 +58,43 @@ void Monster::SetDamage() {
 
 // ------------------------------- Get Methods ---------------------------------
 // get name
-string Monster::GetName() const{
+string Monster::getName() const{
     return monsterName;
 }
 
 // get type
-string Monster::GetType() const{
+string Monster::getType() const{
     return monsterType;
 }
 
 // get HP
-int Monster::GetHP() const{
+int Monster::getHP() const{
     return monsterHP;
 }
 
 // get isAlive
-bool Monster::GetAlive() const{
+bool Monster::getAlive() const{
     return isAlive;
 }
 
 // get Damage
-int Monster::GetDamage() const{
+int Monster::getDamage() const{
     return monsterDamage;
 }
 
 
 // Helper Function - Check Monster's attributes
-void Monster::CheckMonster() {
+void Monster::checkMonster() {
     std::cout << "Monster check function \n";
-    std::cout << "the name is                   " << GetName();
+    std::cout << "the name is                   " << getName();
     std::cout << "\n";
-    std::cout << "the type is                   " << GetType();
+    std::cout << "the type is                   " << getType();
     std::cout << "\n";
-    std::cout << "the HP is                     " << GetHP();
+    std::cout << "the HP is                     " << getHP();
     std::cout << "\n";
-    std::cout << "the damage is                 " << GetDamage();
+    std::cout << "the damage is                 " << getDamage();
     std::cout << "\n";
-    std::cout << "is live(1) or dead(0)?        " << GetAlive();
+    std::cout << "is live(1) or dead(0)?        " << getAlive();
     std::cout << "\n";
     std::cout << "\n";
 }

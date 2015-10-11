@@ -14,54 +14,54 @@
 Creature::Creature() {
     // srand(static_cast<unsigned int>(time(0)));
     
-    SetType();
-    SetHP();
-    SetAlive();
+    setType();
+    setHP();
+    setAlive();
 }
 
 
 // set name
-void Creature::SetType() {
+void Creature::setType() {
     std::string totalType[] = {"deel", "bear", "wolf", "lion", "tiger"};
     int randType = rand() % (5);
     creatureType = totalType[randType];
 }
 
 // set HP
-void Creature::SetHP() {
+void Creature::setHP() {
     int randNum = rand() % (5) + 1;
     creatureHP = randNum;
 }
 
 // set isAlive
-void Creature::SetAlive() {
+void Creature::setAlive() {
     isAlive = true;
 }
 
 
 // get name
-string Creature::GetType() const{
+string Creature::getType() const{
     return creatureType;
 }
 
 // get HP
-int Creature::GetHP() const{
+int Creature::getHP() const{
     return creatureHP;
 }
 
 // get isAlive
-bool Creature::GetAlive() const{
+bool Creature::getAlive() const{
     return isAlive;
 }
 
 // Helper Function - Check Creature's attributes
-void Creature::CheckCreature() const {
+void Creature::checkCreature() const {
     std::cout << "Creature check function \n";
-    std::cout << "the type is                   " << GetType();
+    std::cout << "the type is                   " << getType();
     std::cout << "\n";
-    std::cout << "the HP is                     " << GetHP();
+    std::cout << "the HP is                     " << getHP();
     std::cout << "\n";
-    std::cout << "is live(1) or dead(0)?        " << GetAlive();
+    std::cout << "is live(1) or dead(0)?        " << getAlive();
     std::cout << "\n";
     std::cout << "\n";
 }

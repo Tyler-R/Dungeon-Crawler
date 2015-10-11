@@ -16,10 +16,10 @@ Item::Item() {
 //    SetType();
 //    SetDamage();
 //    SetPositive();
-    SetAll();
+    setAll();
 }
 
-void Item::SetAll(){
+void Item::setAll(){
     std::string tempType[] = {"energy", "axe", "poison", "trap"};
     int randType = rand() % (4);
     itemType = tempType[randType];
@@ -34,26 +34,26 @@ void Item::SetAll(){
     }
 }
 
-string Item::GetType() const{
+string Item::getType() const{
     return itemType;
 }
 
-int Item::GetDamage() const{
+int Item::getDamage() const{
     return itemDamage;
 }
 
-bool Item::GetPositive() const{
+bool Item::getPositive() const{
     return itemPositive;
 }
 
 
-void Item::CheckItem() const {
+void Item::checkItem() const {
     std::cout << "Item check function \n";
-    std::cout << "the type is                   " << GetType();
+    std::cout << "the type is                   " << getType();
     std::cout << "\n";
-    std::cout << "good(1) or bad(0) bool #      " << GetPositive();
+    std::cout << "good(1) or bad(0) bool #      " << getPositive();
     std::cout << "\n";
-    std::cout << "good(+) or bad(-) int #       " << GetDamage();
+    std::cout << "good(+) or bad(-) int #       " << getDamage();
     std::cout << "\n";
     std::cout << "\n";
 }

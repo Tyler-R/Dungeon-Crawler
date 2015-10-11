@@ -30,7 +30,7 @@ private:
 //    void SetType();
 //    void SetDamage();
 //    void SetPositive();
-    void SetAll();
+    void setAll();
     
     
 public:
@@ -38,11 +38,11 @@ public:
     Item();
     
     // functions
-    string GetType() const;         // return item type (or name)
-    int GetDamage() const;          // return the damage (positive or negative int #)
-    bool GetPositive() const;       // if positive restore HP, otherwise reduce HP
+    string getType() const;         // return item type (or name)
+    int getDamage() const;          // return the damage (positive or negative int #)
+    bool getPositive() const;       // if positive restore HP, otherwise reduce HP
     
-    void CheckItem() const;         // Check Item attributes
+    void checkItem() const;         // Check Item attributes
     
 };
 
