@@ -32,7 +32,7 @@ public:
 	Object(string id);
 
 	// destructor
-	~Object();
+	// ~Object();
 	
 	// functions
 	void setID(string id);

@@ -20,11 +20,11 @@ Item::Item() {
 }
 
 //destructor
-Item::~Item() {
-    delete itemType;
-    delete itemDamage;
-    delete itemPositive;
-}
+// Item::~Item() {
+//     delete itemType;
+//     delete itemDamage;
+//     delete itemPositive;
+// }
 
 void Item::setAll(){
     std::string tempType[] = {"energy", "axe", "poison", "trap"};

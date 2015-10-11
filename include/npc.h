@@ -36,7 +36,7 @@ public:
     //constructor
 	NPC(string type, string ID); // type(monster or creature), the ID of this NPC
     //destructor
-    ~NPC();
+    // ~NPC();
     
     // functions
 	void setID(string id);

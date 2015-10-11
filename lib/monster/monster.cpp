@@ -21,13 +21,13 @@ Monster::Monster() {
 }
 
 // destructor
-Monster::~Monster() {
-    delete monsterName;
-    delete monsterType;
-    delete monsterHP;
-    delete monsterDamage;
-    delete isAlive;
-}
+// Monster::~Monster() {
+//     delete monsterName;
+//     delete monsterType;
+//     delete monsterHP;
+//     delete monsterDamage;
+//     delete isAlive;
+// }
 
 //------------------------------- Set Methods ----------------------------------
 // set name

@@ -41,7 +41,7 @@ public:
     // Constructor
     Monster();	// Default constructor
     // Destructor
-    ~Monster();
+    // ~Monster();
     
     
     // Functions

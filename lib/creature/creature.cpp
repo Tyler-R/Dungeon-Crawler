@@ -20,11 +20,11 @@ Creature::Creature() {
 }
 
 // destructor
-Creature::~Creature() {
-    delete creatureType;
-    delete creatureHP;
-    delete isAlive;
-}
+// Creature::~Creature() {
+//     delete creatureType;
+//     delete creatureHP;
+//     delete isAlive;
+// }
 
 
 // set name

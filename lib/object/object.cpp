@@ -17,15 +17,16 @@ Object::Object(string id) {
     setType(tempItem.getType());
     setDamage(tempItem.getDamage());
     setPositive(tempItem.getPositive());
+    
 }
 
 // destructor
-Object::~Object() {
-    delete objectID;
-    delete objectType;
-    delete objectDamage;
-    delete objectPositive;
-}
+//Object::~Object() {
+//    delete objectID;
+//    delete objectType;
+//    delete objectDamage;
+//    delete objectPositive;
+//}
 
 void Object::setID(string id) {
     objectID = id;

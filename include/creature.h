@@ -39,7 +39,7 @@ public:
     // Constructor
     Creature();
     // Destructor
-    ~Creature();
+    // ~Creature();
     
     // Functions (getters)
     string getType() const;

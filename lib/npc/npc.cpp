@@ -21,7 +21,7 @@ NPC::NPC(string type, string id){
         setHP(tempMonster.getHP());
         setAlive(tempMonster.getAlive());
         setDamage(tempMonster.getDamage());
-	
+        
     }else if(type == "creature") {
         Creature tempCreature;
         
@@ -31,21 +31,21 @@ NPC::NPC(string type, string id){
         setHP(tempCreature.getHP());
         setAlive(tempCreature.getAlive());
         setDamage(int(0));
-	
+        
     }else {
 		cout << "!!!!!! no such NPC !!!!!! \n";
 	}
 }
 
 // destructor
-NPC::~NPC() {
-    delete npcID;
-    delete npcName;
-    delete npcType;
-    delete npcHP;
-    delete npcDamage;
-    delete isAlive;
-}
+// NPC::~NPC() {
+//     delete npcID;
+//     delete npcName;
+//     delete npcType;
+//     delete npcHP;
+//     delete npcDamage;
+//     delete isAlive;
+// }
 
 
 void NPC::setID(string id) {
