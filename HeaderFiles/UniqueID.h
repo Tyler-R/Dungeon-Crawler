@@ -1,4 +1,8 @@
+#ifndef __Authentication__UserID__
+#define __Authentication__UserID__
+
 #include <iostream>
+#include "UserSignUp.h"
 
 class UniqueID {
     
@@ -16,3 +20,4 @@ public:
     int getUniqueID();
 };
 
+#endif

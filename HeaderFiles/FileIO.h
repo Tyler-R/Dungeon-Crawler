@@ -1,3 +1,6 @@
+#ifndef __Authentication__FileIO__
+#define __Authentication__FileIO__
+
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
@@ -12,20 +15,20 @@ private:
     std::string userName;
     std::string userPassword;
     std::ofstream outFile;
-    
-    // This is the path to store user records
+    std::ifstream inFile;
     const std::string USER_RECORDS = "/Users/Arsalan/Desktop/records.txt";
     
 public:
-    FileIO(UserSignUp userInfo);
-    FileIO();
+    FileIO(std::string userName, std::string userPassword, int userID);
+    FileIO(std::string userName, std::string userPassword);
     void openFileConnectionToWrite();
-    void writeToFile();
+    bool writeToFile();
     void closeWriteFileConnection();
     void openFileConnectionToRead();
-    void ReadFromFile();
+    bool readFromFile();
     void closeReadFileConnection();
     bool isUserLoggedIn();
-    void readFromFile();
     
 };
+
+#endif

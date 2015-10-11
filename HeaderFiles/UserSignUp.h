@@ -1,7 +1,13 @@
+
+#ifndef Authentication_UserInformation_h
+#define Authentication_UserInformation_h
+
 #include <string>
 #include "UniqueID.h"
+#include "FileIO.h"
 
 class UserSignUp {
+    
 private:
     int userID;
     std::string userName;
@@ -14,9 +20,10 @@ public:
     std::string getUserPassword();
     void generateUserID();
     int getUserID();
-    bool userIsLoggedIn();
+    bool IsUserSignedUp();
     bool isUserActivce();
     
-    
+
 };
 
+#endif
