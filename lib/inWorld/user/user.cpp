@@ -9,10 +9,18 @@
 #include <string>
 #include <vector>
 
+/* Default constructor setting up basic values */
 User::User(){
+  setUsetType(true);
+  setUserName(testUser);
+  setPassword("password");
+  inventory = new Inventory();
+  setRoom(new Room());
+  playerHealth = playerMaxHealth;
+  usedDefaultConstructor = true;
 }
 
-/*User constructor for setting up basic information*/
+/* User constructor for setting up basic information */
 User::User(bool isAdmin, string userName, string password, Room currentRoom) {
   setUserType(isAdmin);
   setUserName(userName);
@@ -20,9 +28,16 @@ User::User(bool isAdmin, string userName, string password, Room currentRoom) {
   inventory = new Inventory();
   setRoom(currentRoom);
   playerHealth = playerMaxHealth;
+  usedDefaultConstructor = false;
 }
 
+/* Ensures deletion of the player's inventory and currentRoom if default constructor used*/
 User::~User() {
+  delete inventory;
+
+  if(usedDefaultConstructor){
+    delete currentRoom;
+  }
 }
 
 void setUserName(string userName){
@@ -87,6 +102,14 @@ void setPlayerDefense(int defense){
 
 int getPlayerDefense(){
   return playerDefense;
+}
+
+void setLivingStatus(bool isAlive){
+  this->isAlive = isAlive;
+}
+
+bool getLivingStatus(){
+  return isAlive;
 }
 
 /* prompts for a userName and requests a use check before accepting it */
