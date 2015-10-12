@@ -7,3 +7,4 @@ bin
 *.a
 *.sh
 personalNotes.txt
+.DS_Store
