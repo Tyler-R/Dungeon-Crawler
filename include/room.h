@@ -85,14 +85,22 @@ class Room {
 		string lookDown();
 
 		Room * getNorthLeadsTo();
-
-		void goNorth(Room * current);
+		Room * getSouthLeadsTo();
+		Room * getEastLeadsTo();
+		Room * getWestLeadsTo();
+		Room * getUpLeadsTo();
+		Room * getDownLeadsTo();
 
 		/*
+
+		WARNING: The below methods currently leak.
+
+		*/
+
+		void goNorth(Room *current);
 		void goSouth(Room *current);
 		void goEast(Room *current);
 		void goWest(Room *current);
 		void goUp(Room *current);
 		void goDown(Room *current);	
-		*/
 };
