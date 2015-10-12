@@ -20,6 +20,7 @@ private:
     std::ofstream outFile;
     std::ifstream inFile;
     const std::string USER_RECORDS = "/home/textadventure/docs/records.txt";
+    bool recordExist();
     
 public:
     FileIO(std::string userName, std::string userPassword, int userID);

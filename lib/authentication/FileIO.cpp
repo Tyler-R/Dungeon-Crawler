@@ -24,11 +24,18 @@ void FileIO::openFileConnectionToWrite(){
 
 bool FileIO::writeToFile(){
     
-    outFile << userID << " " ;
-    outFile << userName << " ";
-    outFile << userPassword << " ";
-    outFile << std::endl;
-    return true;
+    bool userFound = recordExist();
+    
+    if(userFound == true){
+        return false;
+    }
+    else{
+        outFile << userID << " " ;
+        outFile << userName << " ";
+        outFile << userPassword << " ";
+        outFile << std::endl;
+        return true;
+    }
     
 }
 
@@ -39,6 +46,32 @@ void FileIO::closeWriteFileConnection(){
 
 bool FileIO::isUserLoggedIn(){
     
+    return false;
+}
+
+bool FileIO::recordExist(){
+    
+    openFileConnectionToRead();
+    std::string record;
+    std::vector<std::string> vec;
+    
+    while(getline(inFile, record)) {
+        
+        vec.push_back(record);
+        
+    }
+    for (int i = 0; i < vec.size();i++){
+        std::istringstream buf(vec[i]);
+        std::istream_iterator<std::string> beg(buf), end;
+        std::vector<std::string> tokens(beg, end);
+        if (tokens[1] == userName && tokens[2] == userPassword){
+            closeReadFileConnection();
+            return true;
+        }
+        
+    }
+    
+    closeReadFileConnection();
     return false;
 }
 
