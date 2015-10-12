@@ -16,9 +16,10 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -std=c++11") # -Wall -Werror
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib")
 
-#add_subdirectory(ext)
+add_subdirectory(ext)
 add_subdirectory(lib)
 add_subdirectory(tools)
+
 
 add_executable(Authentication lib/authentication/Authentication.cpp
 				lib/authentication/FileIO.cpp
