@@ -16,7 +16,7 @@ private:
     std::string userPassword;
     std::ofstream outFile;
     std::ifstream inFile;
-    const std::string USER_RECORDS = "/Users/Arsalan/Desktop/records.txt";
+    const std::string USER_RECORDS = "/home/textadventure/docs/records.txt";
     
 public:
     FileIO(std::string userName, std::string userPassword, int userID);
