@@ -3,7 +3,7 @@ cmake_install.cmake
 CMakeFiles
 CMakeCache.txt
 bin
-ext
+!ext/CMakeLists.txt
 *.a
 *.sh
 personalNotes.txt
