@@ -41,7 +41,7 @@ class Room {
 		Room(string input_name, string input_desc, string input_extDesc); 
 
 		/* Construct New Room from Info Contained in Text Files */
-		Room(char id); 
+		//Room(char id); 
 
 		~Room();
  
