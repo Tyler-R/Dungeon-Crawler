@@ -23,7 +23,7 @@ int main()
     std::cout << "enter a command: ";
     std::getline(std::cin, str);
     response = cp.processCommand(str);
-    std::cout<<"getting response.."<<std::endl;
+    // std::cout<<"getting response.."<<std::endl;
     std::cout<<response<<std::endl;
   }
 

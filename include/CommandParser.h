@@ -2,8 +2,8 @@
 #include <string>
 #include <vector>
 #include <boost/tokenizer.hpp>
+// #include "CommandSet.h"
 
-using namespace std;
 
 /*include "player.h"*/
 
@@ -14,25 +14,17 @@ return validated command;
 
 class CommandParser{
 public:
-    //Command_Parser();
-    //~Command_Parser();
 
-    string processCommand(string &in);
-    //bool is_Validated(std::vector<std::string>);
+
+    std::string processCommand(std::string &in);
 
  private:
-    vector<string> tokenizeInput(string &in);
-    void toLowerCase(string &str);
-    string invokeCommand()
 
-   //  const string CommandSet[3] = {
-   //  "move", "kill", "lookat"
-   // };
-  // std::vector<std::string> tokenizeInput(std::string in);
-    //std::vector<std::string> input_tokens;
-    //enum Command_Set{ MOVE, KILL, USE };
-    /*may need to search for a file that lists of  */
-   // bool lookup_Command_Set(std::string cmd);
-   /* lookup_User_Command_Alias(std::String cmd, Player id);*/
+    std::vector<std::string> tokenizeInput(std::string &in);
+    void toLowerCase(std::string &str);
+    void reformatTokens(std::vector<std::string>& tokens);
+    std::string validateMoveArgv(std::vector<std::string>& cmd);
+
+
 
 };

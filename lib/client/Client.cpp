@@ -1,6 +1,5 @@
 #include "Client.h"
 #include <iostream>
-#include "uv.h"
 
 Client::Client() {
     using namespace std;
