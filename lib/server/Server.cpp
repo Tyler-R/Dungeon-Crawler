@@ -2,10 +2,9 @@
 
 
 Server::Server(int port) : port(port), acceptor(ioService, tcp::endpoint(tcp::v4(), port)), socket(ioService) {
-    using namespace std;
+}
 
-    cout << "waiting on port: " << port << endl;
-
+Server::~Server() {
 }
 
 void Server::start() {
@@ -30,7 +29,6 @@ void Server::listenForConnections() {
 }
 
 void Server::handleCommands() {
-    std::cout << "checking for session input" << std::endl;
     for(auto session : sessions) {
         // handle commands that will manipulate the world
         // send data back to clients
@@ -38,7 +36,6 @@ void Server::handleCommands() {
         try {
             if(session->isAlive) {
                 auto nextCommand = session->getNextCommand();
-                std::cout << nextCommand << std::endl;
                 session->sendMessage(nextCommand);
             }
         } catch(std::exception &e) {
@@ -47,16 +44,10 @@ void Server::handleCommands() {
     }
 
     try{
-        std::cout << "sleeping for 1 second" << std::endl;
-        boost::asio::deadline_timer timer(ioService, boost::posix_time::seconds(1));
+        boost::asio::deadline_timer timer(ioService, boost::posix_time::millisec(16));
         timer.async_wait(boost::bind(&Server::handleCommands, this));
         ioService.run();
     } catch(std::exception &e) {
         std::cerr << e.what() << std::endl;
     }
-}
-
-Server::~Server() {
-
-
 }
