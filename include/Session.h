@@ -1,10 +1,13 @@
 #pragma once
 #include <iostream>
 #include <memory>
+#include <functional>
 #include <utility>
 #include <queue>
 
 #include <boost/asio.hpp>
+
+#include <Authentication.h>
 
 using boost::asio::ip::tcp;
 
@@ -27,11 +30,26 @@ public:
 
     void sendMessage(std::string message);
 
-    bool isAlive = true;
+    void offerOptionToRegisterOrLogin();
+
+    bool isLoggedIn();
+    bool isAlive();
+
+    // sets isAlive to false
+    void kill();
 private:
     tcp::socket socket;
 
     void addCommandToQueue(Command command);
 
+    void login();
+    void registerNewPlayer();
+
     std::queue<Command> commandBacklog;
+
+    std::function<void(void)> messageReceivedCallback;
+
+    bool loggedIn = false;
+    bool alive = true;
+
 };

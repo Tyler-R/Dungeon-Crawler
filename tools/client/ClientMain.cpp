@@ -19,7 +19,7 @@ int main() {
 		auto message = (std::string) buffer;
 		message = message.substr(0, length);
 
-		std::cout << message << std::endl;
+		std::cout << message;
 		std::cout.flush();
 	};
 
