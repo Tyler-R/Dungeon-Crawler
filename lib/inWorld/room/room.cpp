@@ -81,9 +81,9 @@ Room::Room(Room &obj){
 	setDown(obj.getDown().leadsTo, obj.getDown().desc);
 }
 
-Room::Room(char id){ 
+/*Room::Room(char id){ 
 
-}
+}*/
 
 Room::~Room(){
 	//setNorth(NULL, "You see nothing to the north.");
@@ -283,26 +283,37 @@ current = *(current.getNorth().leadsTo);
 
 
 void Room::goNorth(Room *current){
-	*current = *(getNorth().leadsTo);
+	if (current!= NULL){
+		*current = *(getNorth().leadsTo);
+	}
 }
 
 void Room::goSouth(Room *current){
-	*current = *(getSouth().leadsTo);
+	if (current!= NULL){
+		*current = *(getSouth().leadsTo);
+	}
 }
 
 void Room::goEast(Room *current){
-	*current = *(getEast().leadsTo);
+	if (current!= NULL){
+		*current = *(getEast().leadsTo);
+	}
 }
 
 void Room::goWest(Room *current){
-	*current = *(getWest().leadsTo);
+	if (current!= NULL){
+		*current = *(getWest().leadsTo);
+	}
 }
 
 void Room::goUp(Room *current){
-	*current = *(getUp().leadsTo);
+	if (current!= NULL){
+		*current = *(getUp().leadsTo);
+	}
 }
 
 void Room::goDown(Room *current){
-	*current = *(getDown().leadsTo);
+	if (current!= NULL){
+		*current = *(getDown().leadsTo);
+	}
 }
-
