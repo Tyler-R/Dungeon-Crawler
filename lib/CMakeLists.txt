@@ -6,4 +6,5 @@ add_subdirectory(monster)
 add_subdirectory(npc)
 add_subdirectory(creature)
 add_subdirectory(item)
+add_subdirectory(object)
 
