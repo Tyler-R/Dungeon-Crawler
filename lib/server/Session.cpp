@@ -65,12 +65,13 @@ void Session::offerOptionToRegisterOrLogin() {
 
         int choice = atoi(message.c_str());
 
-        std::cout << message << "   hello world " << choice << std::endl;
-
         if(choice == 1) {
             login();
         } else if(choice == 2) {
             registerNewPlayer();
+        } else {
+            sendMessage("that is not an option. try again.\n");
+            offerOptionToRegisterOrLogin();
         }
     };
 
@@ -90,6 +91,7 @@ void Session::login() {
 
             Authentication authentication(username, password);
             if(authentication.login()) {
+                loggedIn = true;
                 sendMessage("You are logged in as " + username + "\n");
                 messageReceivedCallback = [](){
                     //do nothing
@@ -103,7 +105,24 @@ void Session::login() {
 }
 
 void Session::registerNewPlayer() {
+    sendMessage("Enter your new username: ");
+    messageReceivedCallback = [this]() {
+        sendMessage("Enter your new password: ");
+        this->messageReceivedCallback = [this]() {
+            std::string username = getNextCommand();
+            std::string password = getNextCommand();
 
+            Authentication authentication(username, password);
+            if(authentication.signUp()) {
+                sendMessage(username + " was created"  + "\n");
+                login();
+
+            } else {
+                sendMessage("username already exists. Try again.\n");
+                registerNewPlayer();
+            }
+        };
+    };
 }
 
 void Session::sendMessage(std::string message) {

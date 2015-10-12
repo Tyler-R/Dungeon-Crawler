@@ -37,7 +37,9 @@ void Server::handleCommands() {
         try {
             if(session->isAlive() && session->isLoggedIn()) {
                 auto nextCommand = session->getNextCommand();
-                session->sendMessage(nextCommand);
+                if(nextCommand.compare("") != 0) {
+                    session->sendMessage(nextCommand + "\n");
+                }
             }
         } catch(std::exception &e) {
             session->kill();
