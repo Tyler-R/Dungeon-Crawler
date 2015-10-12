@@ -6,6 +6,9 @@
 #include <fstream>
 #include <string>
 #include "UserSignUp.h"
+#include <sstream>
+#include <vector>
+#include <iterator>
 
 class FileIO {
 

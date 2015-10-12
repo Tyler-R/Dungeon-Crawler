@@ -1,0 +1,61 @@
+=====================To use Authentication API===============
+
+
+For Iteration 1:
+
+	- 3 methods include:
+
+			bool login();
+			bool logout();
+			bool signUp();
+
+
+	- Authentication constructor takes 2 arguments
+		- first argument --> username, type --> string
+		- second argument --> password, type --> string 
+
+ ======= login()=========
+
+ - checks if the user already exists in the "records" file
+
+ 		-if yes, it returns true (login successful), else returns false (login unsuccessful)
+
+
+======= logout()==========
+
+- checks if the user already is active in system
+	
+		-if yes, it returns true (logout successful), else returns false (logout unsuccessful)
+
+
+======= signUp()==========
+
+- checks if the user already does not exist in the "records" file
+
+	- if yes, returns true (signUp successful), else returns false (signUp unsuccessful)
+
+
+
+
+============== Example to use login(), logout(), signUp()==============
+
+
+Authentication user("Username", "Password");
+
+user.login();
+	Or
+user.logout();
+	Or
+user.signUP();
+
+
+============== Note on logout =============
+
+logout() is not fully functional still working on it 
+
+
+
+
+
+
+
