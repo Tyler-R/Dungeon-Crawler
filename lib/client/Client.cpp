@@ -1,4 +1,5 @@
 #include "Client.h"
+#include <iostream>
 
 Client::Client(std::string serverAddress, int port) : serverAddress(serverAddress), port(port), input(io_service, ::dup(STDIN_FILENO)) {
 

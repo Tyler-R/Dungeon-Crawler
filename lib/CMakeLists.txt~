@@ -1,3 +1,14 @@
 add_subdirectory(server)
-#add_subdirectory(client)
+add_subdirectory(client)
+<<<<<<< HEAD
 add_subdirectory(authentication)
+
+add_subdirectory(monster)
+add_subdirectory(npc)
+add_subdirectory(creature)
+add_subdirectory(item)
+add_subdirectory(object)
+
+=======
+add_subdirectory(cmd_module)
+>>>>>>> 0ad93455bfc975a7d9f978bed387e8c75ae6f1fa
