@@ -1,8 +1,8 @@
 Makefile
 cmake_install.cmake
-CMakeFiles
+CMakeFiles/
 CMakeCache.txt
-bin
+bin/
 !ext/CMakeLists.txt
 *.a
 *.sh
