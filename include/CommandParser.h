@@ -24,7 +24,7 @@ public:
     void toLowerCase(std::string &str);
     void reformatTokens(std::vector<std::string>& tokens);
     std::string validateMoveArgv(std::vector<std::string>& cmd);
-
+    std::string validateLookArgv(std::vector<std::string>& cmd);
 
 
 };
