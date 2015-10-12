@@ -273,38 +273,36 @@ Room * Room::getDownLeadsTo(){
 	return (getDown().leadsTo);
 }
 
-void Room::goNorth(Room * current){
-	*current = *(getNorth().leadsTo);
-	//LEAKS
-}
-
-
-
 /*
 
+WARNING: The below methods currently leak.  Currently working on a solution but as a work around, use this instead: 
+
+current = *(current.getNorth().leadsTo);
+
+*/
+
+
+void Room::goNorth(Room *current){
+	*current = *(getNorth().leadsTo);
+}
+
 void Room::goSouth(Room *current){
-	*current = *(*current.getSouth().leadsTo);
-	return current;
+	*current = *(getSouth().leadsTo);
 }
 
 void Room::goEast(Room *current){
-	*current = *(*current.getEast().leadsTo);
-	return current;
+	*current = *(getEast().leadsTo);
 }
 
 void Room::goWest(Room *current){
-	*current = *(*current.getWest().leadsTo);
-	return current;
+	*current = *(getWest().leadsTo);
 }
 
 void Room::goUp(Room *current){
-	*current = *(*current.getUp().leadsTo);
-	return current;
+	*current = *(getUp().leadsTo);
 }
 
 void Room::goDown(Room *current){
-	*current = *(*current.getDown().leadsTo);
-	return current;
+	*current = *(getDown().leadsTo);
 }
 
-*/
