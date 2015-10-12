@@ -19,7 +19,6 @@ public:
 
     void start();
 
-    void sendMessage();
 private:
     int port;
 
@@ -30,7 +29,7 @@ private:
     std::vector<std::shared_ptr<Session>> sessions;
 
     void listenForConnections();
-    void listenForMessages();
 
     void handleCommands();
+
 };
