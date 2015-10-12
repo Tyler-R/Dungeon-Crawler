@@ -3,6 +3,8 @@
 #include <vector>
 #include <boost/tokenizer.hpp>
 
+using namespace std;
+
 /*include "player.h"*/
 
 /*
@@ -14,10 +16,19 @@ class CommandParser{
 public:
     //Command_Parser();
     //~Command_Parser();
-    void tokenizeInput(std::string in);
+
+    string processCommand(string &in);
     //bool is_Validated(std::vector<std::string>);
 
-prvivate:
+ private:
+    vector<string> tokenizeInput(string &in);
+    void toLowerCase(string &str);
+    string invokeCommand()
+
+   //  const string CommandSet[3] = {
+   //  "move", "kill", "lookat"
+   // };
+  // std::vector<std::string> tokenizeInput(std::string in);
     //std::vector<std::string> input_tokens;
     //enum Command_Set{ MOVE, KILL, USE };
     /*may need to search for a file that lists of  */

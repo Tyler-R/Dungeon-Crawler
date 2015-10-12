@@ -7,3 +7,4 @@ ext
 *.a
 *.sh
 personalNotes.txt
+tmpbuild/
