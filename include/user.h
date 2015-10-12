@@ -46,6 +46,9 @@ class User {
 
 		void setPlayerDefense(int defense);
 		int getPlayerDefense();
+
+		void setLivingStatus(bool isAlive);
+		bool getLivingStatus();
 		
 	private:
 		string userName;
@@ -53,6 +56,8 @@ class User {
 		Room currentRoom;
 		vector<Item> inventory;
 		bool isAdmin;
+		bool isAlive;
+		bool usedDefaultConstructor;
 
 		const int playerMaxHealth = 10;
 		int playerPlayerHealth;
