@@ -4,6 +4,18 @@ Session::Session(tcp::socket socket) : socket(std::move(socket)) {
 
 }
 
+
+//listen for login
+    // sendMessage("enter your username")
+    // socket.async_read_some() {
+        // sendMessage("enter your password")
+        // async_read_some()... {
+            //login(...)
+            //send loginMessageToCLient()
+            // listenForCommands();
+        //}
+    //}
+
 void Session::listenForCommands() {
     auto self(shared_from_this());
     Command *command = new Command();
@@ -35,11 +47,11 @@ std::string Session::getNextCommand() {
         commandBacklog.pop();
 
         std::string data = command.buffer;
-        data = data.substr(0, command.length);
+        data = "---" + data.substr(0, command.length);
 
         return data;
     } else {
-        return "No command for session";
+        return "";
     }
 }
 

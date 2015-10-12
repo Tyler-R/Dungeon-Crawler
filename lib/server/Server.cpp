@@ -47,8 +47,8 @@ void Server::handleCommands() {
     }
 
     try{
-        std::cout << "sleeping for 3 seconds" << std::endl;
-        boost::asio::deadline_timer timer(ioService, boost::posix_time::seconds(3));
+        std::cout << "sleeping for 1 second" << std::endl;
+        boost::asio::deadline_timer timer(ioService, boost::posix_time::seconds(1));
         timer.async_wait(boost::bind(&Server::handleCommands, this));
         ioService.run();
     } catch(std::exception &e) {
