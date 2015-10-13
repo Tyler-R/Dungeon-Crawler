@@ -49,9 +49,10 @@ World::World(){
 	//cout << (*creature).getDes() << endl;
 
 	(*lobby).getNPCs().push_back(*monster);
+
 	(*lobby).getNPCs().push_back(*creature);
 
-	//cout << (*lobby).getNPCs().size << endl;
+	//string monstername=(*lobby).getNPCs().at[0].getName();
 	
 }
 
