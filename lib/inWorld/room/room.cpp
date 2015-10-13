@@ -121,6 +121,10 @@ string Room::getDesc(){
 string Room::getExtDesc(){
 	return extDesc;
 }
+
+vector<NPC> Room::getNPCs(){
+	return npcList;
+}
 /*	
 
 vector<keyword> Room::getKeywords(){
@@ -224,7 +228,7 @@ Room::Door Room::getDown(){
 }
 
 
-string Room::lookNorth(){
+string Room::lookNorth(){ 
 	return north->desc;
 }
 
@@ -282,38 +286,114 @@ current = *(current.getNorth().leadsTo);
 */
 
 
-void Room::goNorth(Room *current){
+string Room::goNorth(Room *current){
 	if (current!= NULL){
 		*current = *(getNorth().leadsTo);
 	}
+	else return "Cannot move there.";
+	return (*current).getDesc();
+	
 }
 
-void Room::goSouth(Room *current){
+string Room::goSouth(Room *current){
 	if (current!= NULL){
 		*current = *(getSouth().leadsTo);
+		
 	}
+	else return "Cannot move there.";
+	return (*current).getDesc();
 }
 
-void Room::goEast(Room *current){
+string Room::goEast(Room *current){
 	if (current!= NULL){
 		*current = *(getEast().leadsTo);
 	}
+	else return "Cannot move there.";
+	return (*current).getDesc();
 }
 
-void Room::goWest(Room *current){
+string Room::goWest(Room *current){
 	if (current!= NULL){
 		*current = *(getWest().leadsTo);
 	}
+	else return "Cannot move there.";
+	return (*current).getDesc();
 }
 
-void Room::goUp(Room *current){
+string Room::goUp(Room *current){
 	if (current!= NULL){
 		*current = *(getUp().leadsTo);
 	}
+	else return "Cannot move there.";
+	return (*current).getDesc();
 }
 
-void Room::goDown(Room *current){
+string Room::goDown(Room *current){
 	if (current!= NULL){
 		*current = *(getDown().leadsTo);
 	}
+	else return "Cannot move there.";
+	return (*current).getDesc();
+
+}
+
+
+//LookAround
+
+vector<string> Room::lookAroundDesc(){
+	vector<string> lookAroundVector;
+	
+	lookAroundVector.push_back(lookNorth());
+	lookAroundVector.push_back(lookSouth());
+	lookAroundVector.push_back(lookEast());
+	lookAroundVector.push_back(lookWest());
+	lookAroundVector.push_back(lookUp());
+	lookAroundVector.push_back(lookDown());
+
+	return lookAroundVector;
+}
+
+
+vector<string> Room::lookAroundName(){
+
+	vector<string> lookAroundVector;
+
+	if (getNorthLeadsTo() != NULL){
+		lookAroundVector.push_back(((getNorth().leadsTo)->name));
+	}
+
+	if (getSouthLeadsTo() != NULL){
+		lookAroundVector.push_back(((getSouth().leadsTo)->name));
+	}
+
+	if (getEastLeadsTo() != NULL){
+		lookAroundVector.push_back(((getEast().leadsTo)->name));
+	}
+
+	if (getWestLeadsTo() != NULL){
+		lookAroundVector.push_back(((getWest().leadsTo)->name));
+	}
+
+	if (getUpLeadsTo() != NULL){
+		lookAroundVector.push_back(((getUp().leadsTo)->name));
+	}
+
+	if (getDownLeadsTo() != NULL){
+		lookAroundVector.push_back(((getDown().leadsTo)->name));
+	}
+
+	cout << getNPCs().at(0).getName() << endl;
+
+	/*for(auto &str:getNPCs()){
+		cout << "string" << endl;
+	}
+	*/
+	/*
+	for (int i = 0; i<(getNPCs().size()); i++){
+		lookAroundVector.push_back((getNPCs().at(i)).getName());
+		cout << (getNPCs().at(i)).getName() << endl;
+	}
+	*/
+		
+	return lookAroundVector;
 }
