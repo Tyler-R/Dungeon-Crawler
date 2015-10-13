@@ -5,6 +5,9 @@ Created By: Sarah Kim Dao
 #include <iostream>
 #include <vector>
 #include <string>
+#include "npc.h"
+#include "monster.h"
+#include "creature.h"
 
 using namespace std;
 
@@ -15,9 +18,13 @@ class Room {
 		string desc;  	  	   	
 		string extDesc;
 
+		vector<NPC> npcList;
+
 		//vector<Keyword> keywords;
-		//vector<Player> playerPop;	
-		//vector<NPC> npcPop;
+
+		//vector<User> userPop;
+	
+			
 
 		struct Door {
 			//keywords<string> Keywords;
@@ -30,7 +37,8 @@ class Room {
 		Door *east;
 		Door *west;	
 		Door *up;			
-		Door *down;
+		Door *down;	
+
 
 	public: 
 
@@ -46,13 +54,16 @@ class Room {
 		~Room();
  
 		//string getId();
+
 		string getName();
-		string getDesc();
+		string getDesc();  
 		string getExtDesc();
+		vector<NPC> getNPCs();
 
 		//vector<Keyword> getKeywords();
 		//vector<User> getUsers();	
-		//vector<NPC> NPCs();	
+		//vector<NPC> NPCs();
+
 		
 		//void getId(string s);
 		void setName(string s);
@@ -60,7 +71,7 @@ class Room {
 		void setExtDesc(string s);
 
 		//void setKeywords(vector<Keyword> keywords);
-		//void setUser(vector<Player> p);	
+		//void setUser(vector<User> p);	
 		//void setNPC(vector<NPC> m);	
 
 		void setNorth(Room *input_id, string input_desc);
@@ -97,10 +108,13 @@ class Room {
 
 		*/
 
-		void goNorth(Room *current);
-		void goSouth(Room *current);
-		void goEast(Room *current);
-		void goWest(Room *current);
-		void goUp(Room *current);
-		void goDown(Room *current);	
+		string goNorth(Room *current);
+		string goSouth(Room *current);
+		string goEast(Room *current);
+		string goWest(Room *current);
+		string goUp(Room *current);
+		string goDown(Room *current);
+
+		vector<string> lookAroundDesc();	
+		vector<string> lookAroundName();
 };
