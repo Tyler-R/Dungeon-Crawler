@@ -27,6 +27,7 @@ private:
     string monsterType; 	// type of the monster
     int monsterHP; 		// health points of the monster
     bool isAlive;		// after monsterHP reduce to 0, it considered died
+    string monsterDes;  // description of monster
 
     int monsterDamage;  // monster's damage
     
@@ -34,8 +35,9 @@ private:
     void setName();		// set name of monster
     void setType();		// set type of monster
     void setHP();		// set HP of monster
-    void setAlive();		// set isAlive of monster(must live)
+    void setAlive();	// set isAlive of monster(must live)
     void setDamage();   // set damage for monster
+    void setDes();      // set description for monsetr
     
 public:
     // Constructor
@@ -50,6 +52,7 @@ public:
     int getHP() const;		// get HP of monster
     bool getAlive() const;	// get isAlive of monster (live or dead)
     int getDamage() const;  // get monster's damage
+    string getDes() const;  // get description for monster
     
     
     // HelpFunctions
