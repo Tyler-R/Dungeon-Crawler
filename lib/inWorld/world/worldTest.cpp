@@ -30,41 +30,42 @@ int main() {
 
 	//Sets current room as starting room (index 0 in room List)
 	cout << endl << "--Setting up Current Room--" << endl;
-	Room* current= newWorld.getRoom(0);
-
-	//Looks at current Room
+	//Room* current= newWorld.getRoom(1);
+	
 	cout << endl << "--Looking at Current Room--" << endl;
-	cout << (*current).getDesc() << endl;
+	cout << newWorld.getCurrentRoom()->getDesc() << endl;
 
 	cout << endl << "--Looking at Doors of Current Room--" << endl;
-	cout << (*current).lookNorth() << endl;
-	cout << (*current).lookSouth() << endl;
-	cout << (*current).lookEast() << endl;
-	cout << (*current).lookWest() << endl;
-	cout << (*current).lookUp() << endl;
-	cout << (*current).lookDown() << endl;
-
-
+	cout << newWorld.getCurrentRoom()->lookNorth() << endl;
+	cout << newWorld.getCurrentRoom()->lookSouth() << endl;
+	cout << newWorld.getCurrentRoom()->lookEast() << endl;
+	cout << newWorld.getCurrentRoom()->lookWest() << endl;
+	cout << newWorld.getCurrentRoom()->lookUp() << endl;
+	cout << newWorld.getCurrentRoom()->lookDown() << endl;
+	/*
 	cout << endl << "--Moving North--" << endl;
-	//Non-Leaking Method to move North
-	//current = ((*current).getNorthLeadsTo());
 
-	//Leaking Method to move North
-	(*current).goNorth(current);
-
-	cout << endl << "--Looking at Current Room--" << endl;
-	//Looks at current Room after moving north.
-	cout << (*current).getDesc() << endl;
+	cout << newWorld.getCurrentRoom()->goNorth(newWorld.getCurrentRoom()) << endl;
 
 	cout << endl << "--Looking at Doors of Current Room--" << endl;
-	cout << (*current).lookNorth() << endl;
-	cout << (*current).lookSouth() << endl;
-	cout << (*current).lookEast() << endl;
-	cout << (*current).lookWest() << endl;
-	cout << (*current).lookUp() << endl;
-	cout << (*current).lookDown() << endl;
+	cout << newWorld.getCurrentRoom()->lookNorth() << endl;
+	cout << newWorld.getCurrentRoom()->lookSouth() << endl;
+	cout << newWorld.getCurrentRoom()->lookEast() << endl;
+	cout << newWorld.getCurrentRoom()->lookWest() << endl;
+	cout << newWorld.getCurrentRoom()->lookUp() << endl;
+	cout << newWorld.getCurrentRoom()->lookDown() << endl;
 
-	cout << endl << "--End Test--" << endl;
+	
+	cout << endl << "--Moving South--" << endl;
+
+	cout << newWorld.getCurrentRoom()->goSouth(newWorld.getCurrentRoom()) << endl;
+	*/
+
+	cout << endl << "--Getting List of Objects--" << endl;
+	for(auto &str:newWorld.getCurrentRoom()->lookAroundName()){
+		cout << str << endl;
+	}
+	
 
 	return 0;
 }
