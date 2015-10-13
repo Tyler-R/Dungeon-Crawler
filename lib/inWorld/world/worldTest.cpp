@@ -35,17 +35,8 @@ int main() {
 	cout << endl << "--Looking at Current Room--" << endl;
 	cout << newWorld.getCurrentRoom()->getDesc() << endl;
 
-	cout << endl << "--Looking at Doors of Current Room--" << endl;
-	cout << newWorld.getCurrentRoom()->lookNorth() << endl;
-	cout << newWorld.getCurrentRoom()->lookSouth() << endl;
-	cout << newWorld.getCurrentRoom()->lookEast() << endl;
-	cout << newWorld.getCurrentRoom()->lookWest() << endl;
-	cout << newWorld.getCurrentRoom()->lookUp() << endl;
-	cout << newWorld.getCurrentRoom()->lookDown() << endl;
-	/*
-	cout << endl << "--Moving North--" << endl;
-
-	cout << newWorld.getCurrentRoom()->goNorth(newWorld.getCurrentRoom()) << endl;
+	cout << endl << "--Getting a Good Look at the Room--" << endl;
+	cout << newWorld.getCurrentRoom()->lookAround()  << endl;
 
 	cout << endl << "--Looking at Doors of Current Room--" << endl;
 	cout << newWorld.getCurrentRoom()->lookNorth() << endl;
@@ -54,17 +45,80 @@ int main() {
 	cout << newWorld.getCurrentRoom()->lookWest() << endl;
 	cout << newWorld.getCurrentRoom()->lookUp() << endl;
 	cout << newWorld.getCurrentRoom()->lookDown() << endl;
+
+	cout << endl << "--Getting List of Objects--" << endl;
+	for(auto &str:newWorld.getCurrentRoom()->getObjList()){
+		cout << str << endl;
+	}
+
+	cout << endl << "--Looking for a Study--" << endl;
+	cout << newWorld.getCurrentRoom()->getObjDesc("None") << endl;
+	
+	cout << endl << "--Moving East--" << endl;
+
+	cout << newWorld.getCurrentRoom()->goEast(newWorld.getCurrentRoom()) << endl;
+
+	cout << endl << "--Looking at Doors of Current Room--" << endl;
+	cout << newWorld.getCurrentRoom()->lookNorth() << endl;
+	cout << newWorld.getCurrentRoom()->lookSouth() << endl;
+	cout << newWorld.getCurrentRoom()->lookEast() << endl;
+	cout << newWorld.getCurrentRoom()->lookWest() << endl;
+	cout << newWorld.getCurrentRoom()->lookUp() << endl;
+	cout << newWorld.getCurrentRoom()->lookDown() << endl;
+
+	cout << endl << "--Getting List of Objects--" << endl;
+	for(auto &str:newWorld.getCurrentRoom()->getObjList()){
+		cout << str << endl;
+	}
 
 	
 	cout << endl << "--Moving South--" << endl;
 
 	cout << newWorld.getCurrentRoom()->goSouth(newWorld.getCurrentRoom()) << endl;
-	*/
 
+	cout << endl << "--Moving North--" << endl;
+
+	cout << newWorld.getCurrentRoom()->goNorth(newWorld.getCurrentRoom()) << endl;
+
+	cout << endl << "--Moving East--" << endl;
+
+	cout << newWorld.getCurrentRoom()->goEast(newWorld.getCurrentRoom()) << endl;
+
+	cout << endl << "--Getting a Good Look at the Room--" << endl;
+	cout << newWorld.getCurrentRoom()->lookAround()  << endl;
+
+	cout << endl << "--Looking at Doors of Current Room--" << endl;
+	cout << newWorld.getCurrentRoom()->lookNorth() << endl;
+	cout << newWorld.getCurrentRoom()->lookSouth() << endl;
+	cout << newWorld.getCurrentRoom()->lookEast() << endl;
+	cout << newWorld.getCurrentRoom()->lookWest() << endl;
+	cout << newWorld.getCurrentRoom()->lookUp() << endl;
+	cout << newWorld.getCurrentRoom()->lookDown() << endl;
+
+	cout << endl << "--Moving West--" << endl;
+
+	cout << newWorld.getCurrentRoom()->goWest(newWorld.getCurrentRoom()) << endl;
+
+	cout << endl << "--Looking at Doors of Current Room--" << endl;
+	cout << newWorld.getCurrentRoom()->lookNorth() << endl;
+	cout << newWorld.getCurrentRoom()->lookSouth() << endl;
+	cout << newWorld.getCurrentRoom()->lookEast() << endl;
+	cout << newWorld.getCurrentRoom()->lookWest() << endl;
+	cout << newWorld.getCurrentRoom()->lookUp() << endl;
+	cout << newWorld.getCurrentRoom()->lookDown() << endl;
+	
 	cout << endl << "--Getting List of Objects--" << endl;
-	for(auto &str:newWorld.getCurrentRoom()->lookAroundName()){
+	for(auto &str:newWorld.getCurrentRoom()->getObjList()){
 		cout << str << endl;
 	}
+
+	cout << endl << "--Getting List of Doors--" << endl;
+	for(auto &str:newWorld.getCurrentRoom()->getDoorList()){
+		cout << str << endl;
+	}
+
+	cout << endl << "--Getting a Good Look at the Room--" << endl;
+	cout << newWorld.getCurrentRoom()->lookAround()  << endl;
 	
 
 	return 0;

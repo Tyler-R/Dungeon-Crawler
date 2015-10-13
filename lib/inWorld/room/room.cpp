@@ -125,6 +125,7 @@ string Room::getExtDesc(){
 vector<NPC> Room::getNPCs(){
 	return npcList;
 }
+
 /*	
 
 vector<keyword> Room::getKeywords(){
@@ -287,52 +288,51 @@ current = *(current.getNorth().leadsTo);
 
 
 string Room::goNorth(Room *current){
-	if (current!= NULL){
-		*current = *(getNorth().leadsTo);
+	if (!(getNorth().leadsTo)){
+		return "Cannot move there.";
 	}
-	else return "Cannot move there.";
+	*current = *(getNorth().leadsTo);
 	return (*current).getDesc();
 	
 }
 
 string Room::goSouth(Room *current){
-	if (current!= NULL){
-		*current = *(getSouth().leadsTo);
-		
+	if (!(getSouth().leadsTo)){
+		return "Cannot move there.";
 	}
-	else return "Cannot move there.";
+	*current = *(getSouth().leadsTo);
 	return (*current).getDesc();
 }
 
 string Room::goEast(Room *current){
-	if (current!= NULL){
-		*current = *(getEast().leadsTo);
+	if (!(getEast().leadsTo)){
+		return "Cannot move there.";
 	}
-	else return "Cannot move there.";
+	*current = *(getEast().leadsTo);
 	return (*current).getDesc();
 }
 
 string Room::goWest(Room *current){
-	if (current!= NULL){
-		*current = *(getWest().leadsTo);
+	if (!(getWest().leadsTo)){
+		return "Cannot move there.";
 	}
-	else return "Cannot move there.";
+	*current = *(getWest().leadsTo);
 	return (*current).getDesc();
 }
 
 string Room::goUp(Room *current){
-	if (current!= NULL){
-		*current = *(getUp().leadsTo);
+	if (!(getUp().leadsTo)){
+		return "Cannot move there.";
 	}
-	else return "Cannot move there.";
+	*current = *(getUp().leadsTo);
 	return (*current).getDesc();
 }
 
 string Room::goDown(Room *current){
-	if (current!= NULL){
-		*current = *(getDown().leadsTo);
+	if (!(getDown().leadsTo)){
+		return "Cannot move there.";
 	}
-	else return "Cannot move there.";
+	*current = *(getDown().leadsTo);
 	return (*current).getDesc();
 
 }
@@ -340,49 +340,49 @@ string Room::goDown(Room *current){
 
 //LookAround
 
-vector<string> Room::lookAroundDesc(){
-	vector<string> lookAroundVector;
+vector<string> Room::getDoorList(){
+	vector<string> doorList;
 	
-	lookAroundVector.push_back(lookNorth());
-	lookAroundVector.push_back(lookSouth());
-	lookAroundVector.push_back(lookEast());
-	lookAroundVector.push_back(lookWest());
-	lookAroundVector.push_back(lookUp());
-	lookAroundVector.push_back(lookDown());
+	doorList.push_back(lookNorth());
+	doorList.push_back(lookSouth());
+	doorList.push_back(lookEast());
+	doorList.push_back(lookWest());
+	doorList.push_back(lookUp());
+	doorList.push_back(lookDown());
 
-	return lookAroundVector;
+	return doorList;
 }
 
 
-vector<string> Room::lookAroundName(){
+vector<string> Room::getObjList(){
 
-	vector<string> lookAroundVector;
+	vector<string> objList;
 
 	if (getNorthLeadsTo() != NULL){
-		lookAroundVector.push_back(((getNorth().leadsTo)->name));
+		objList.push_back(((getNorth().leadsTo)->name));
 	}
 
 	if (getSouthLeadsTo() != NULL){
-		lookAroundVector.push_back(((getSouth().leadsTo)->name));
+		objList.push_back(((getSouth().leadsTo)->name));
 	}
 
 	if (getEastLeadsTo() != NULL){
-		lookAroundVector.push_back(((getEast().leadsTo)->name));
+		objList.push_back(((getEast().leadsTo)->name));
 	}
 
 	if (getWestLeadsTo() != NULL){
-		lookAroundVector.push_back(((getWest().leadsTo)->name));
+		objList.push_back(((getWest().leadsTo)->name));
 	}
 
 	if (getUpLeadsTo() != NULL){
-		lookAroundVector.push_back(((getUp().leadsTo)->name));
+		objList.push_back(((getUp().leadsTo)->name));
 	}
 
 	if (getDownLeadsTo() != NULL){
-		lookAroundVector.push_back(((getDown().leadsTo)->name));
+		objList.push_back(((getDown().leadsTo)->name));
 	}
 
-	cout << getNPCs().at(0).getName() << endl;
+	//cout << getNPCs().at(0).getName() << endl;
 
 	/*for(auto &str:getNPCs()){
 		cout << "string" << endl;
@@ -395,5 +395,67 @@ vector<string> Room::lookAroundName(){
 	}
 	*/
 		
-	return lookAroundVector;
+	return objList;
 }
+
+string Room::lookAround(){
+		return getExtDesc();
+	}
+
+string Room::getObjDesc(string objName){
+
+	vector<Room*> doorList;
+
+	if (getNorthLeadsTo() != NULL){
+		doorList.push_back(getNorthLeadsTo());
+	} 
+
+	if (getSouthLeadsTo() != NULL){
+		doorList.push_back(getSouthLeadsTo());
+	}
+
+	if (getEastLeadsTo() != NULL){
+		doorList.push_back(getEastLeadsTo());
+	}
+
+	if (getWestLeadsTo() != NULL){
+		doorList.push_back(getWestLeadsTo());
+	}
+
+	if (getUpLeadsTo() != NULL){
+		doorList.push_back(getUpLeadsTo());
+	}
+
+	if (getDownLeadsTo() != NULL){
+		doorList.push_back(getDownLeadsTo());
+	}
+
+
+	for (int i=0; i<doorList.size(); i++){
+
+		//cout << "Matching " << objList[i]->getName() << " with " << objName << endl;
+		if ( doorList[i]->getName() == objName ){
+			//cout << "Match Found!" << endl;
+			return doorList[i]->getDesc();
+		}
+	}
+
+	//vector<NPC> npcList = getNPCs();
+
+	//cout << "getting NPC Name " << (getNPCs()[0]).getName() << " with " << objName << endl;
+
+	//for (int i=0; i<npcList.size(); i++){
+
+		//cout << "Matching " << npcList[i]->getName() << " with " << objName << endl;
+		//if ( npcList[i].getName() == objName ){
+			//cout << "Match Found!" << endl;
+			//return npcList[i]->getDes();
+		//}
+	//}
+
+	return "Object not found!";
+
+}
+
+
+

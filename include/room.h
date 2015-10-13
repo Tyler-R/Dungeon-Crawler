@@ -20,6 +20,7 @@ class Room {
 
 		vector<NPC> npcList;
 
+
 		//vector<Keyword> keywords;
 
 		//vector<User> userPop;
@@ -115,6 +116,9 @@ class Room {
 		string goUp(Room *current);
 		string goDown(Room *current);
 
-		vector<string> lookAroundDesc();	
-		vector<string> lookAroundName();
+		vector<string> getDoorList();	
+		vector<string> getObjList();
+	
+		string lookAround();
+		string getObjDesc(string objName);
 };

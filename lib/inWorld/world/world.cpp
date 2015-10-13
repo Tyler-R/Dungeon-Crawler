@@ -1,6 +1,6 @@
 /*World CLASS
 
-This is a game class that will instantiate the world its rooms.
+This is a game class that contains attributes and methods for each room contained in the game world.
 
 Created By: Sarah Kim Dao
 */
@@ -30,9 +30,9 @@ World::World(){
 	(*bedroom).setDown(lobby,"Downstairs leads to the Lobby");
 	(*basement).setUp(lobby,"Upstairs leads to the Lobby");
 
-	roomList.push_back(lobby);
-	roomList.push_back(bathroom);
-	roomList.push_back(kitchen);
+	roomList.push_back(lobby); 
+	roomList.push_back(bathroom);	
+	roomList.push_back(kitchen);	
 	roomList.push_back(porch);
 	roomList.push_back(study);
 	roomList.push_back(bedroom);
@@ -43,9 +43,15 @@ World::World(){
 	NPC* monster = new NPC("monster","id:111");
 	NPC* creature = new NPC("creature","id:222");
 
-	
+	//cout << (*monster).getName() << endl;
+	//cout << (*creature).getName() << endl;
+	//cout << (*monster).getDes() << endl;
+	//cout << (*creature).getDes() << endl;
+
 	(*lobby).getNPCs().push_back(*monster);
 	(*lobby).getNPCs().push_back(*creature);
+
+	//cout << (*lobby).getNPCs().size << endl;
 	
 }
 
@@ -67,7 +73,5 @@ Room* World::getRoom(int i){
 Room* World::getCurrentRoom(){
 	return currentRoom;
 }
-
-
 
 
