@@ -11,6 +11,8 @@ using namespace std;
 
 class World {
 	private:
+		Room* currentRoom;
+
 		vector<Room*> roomList;
 	public:
 		World();
@@ -20,5 +22,9 @@ class World {
 		~World();
 
 		Room* getRoom(int i);
+		
+		Room* getCurrentRoom();
+
+		
 
 };
