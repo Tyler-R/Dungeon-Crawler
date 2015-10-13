@@ -48,10 +48,32 @@ user.logout();
 	Or
 user.signUP();
 
+============== Structure of Authentication API===================
 
-============== Note on logout =============
+    - Involved 5 classes --> Authentication.h, UserLogin.h , UserSignUp.h , FileIO.h, UniqueID.h
+    - Authentication.h is the interface for other modules and components
+    - FileIO.h is the only class that interacts with "records.txt" file
+ 
+    
+************** Note on logout() ******************
 
-logout() is not fully functional still working on it 
+logout() will be fully implemented in second iteration.
+
+    Steps to get logout() to work properly:
+        - A fourth column must be added to the "records.txt" file which contains a boolean value
+                - 1 --> indicates that user already has an ongoing session
+                - 0 --> indicates that user has not allocated any session
+                
+
+The boolean value change to 1 if users sucessfully login and turns to 0 if the users logout successfully
+    - needs a class --> userLogout to keep track of the boolean value
+
+
+
+************* Note on FileIO class*****************
+    
+    - There exist some duplicate code which must be refactored in the Second Iteration
+    - Variable Names also must become more meaningful in the Second Iteration
 
 
 
