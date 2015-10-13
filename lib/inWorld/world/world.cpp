@@ -1,6 +1,6 @@
 /*World CLASS
 
-This is a game class that contains attributes and methods for each room contained in the game world.
+This is a game class that will instantiate the world its rooms.
 
 Created By: Sarah Kim Dao
 */
@@ -16,9 +16,9 @@ World::World(){
 	Room* bedroom = new Room("Bedroom","This is a bedroom","The bedroom is brightly lit.");
 	Room* basement = new Room("Basement","This is a basement","The basement is dark and damp.");
 
-	(*lobby).setNorth(bathroom,"The North Door leads to the Bathroom");
-	(*lobby).setSouth(kitchen,"The South Door leads to the Kitchen");
-	(*lobby).setEast(porch,"The East Door leads to the Porch");
+	(*lobby).setNorth(bathroom,"The North Door leads to the Bathroom \n hint: enter\'move north\' ");
+	(*lobby).setSouth(kitchen,"The South Door leads to the Kitchen \n hint: enter\'move south\'");
+	(*lobby).setEast(porch,"The East Door leads to the Porch \n hint: enter\'move north\'");
 	(*lobby).setWest(study,"The West Door leads to the Study");
 	(*lobby).setUp(bedroom,"Upstairs leads to the Bedroom");
 	(*lobby).setDown(basement,"Downstairs leads to the Basement");
@@ -36,7 +36,17 @@ World::World(){
 	roomList.push_back(porch);
 	roomList.push_back(study);
 	roomList.push_back(bedroom);
-	roomList.push_back(basement);
+	roomList.push_back(basement);	 
+	
+	currentRoom = lobby;
+
+	NPC* monster = new NPC("monster","id:111");
+	NPC* creature = new NPC("creature","id:222");
+
+	
+	(*lobby).getNPCs().push_back(*monster);
+	(*lobby).getNPCs().push_back(*creature);
+	
 }
 
 World::~World(){
@@ -53,4 +63,11 @@ vector<Room*> World::getRoomList(){
 Room* World::getRoom(int i){
 	return roomList.at(i);
 }
+
+Room* World::getCurrentRoom(){
+	return currentRoom;
+}
+
+
+
 
