@@ -18,7 +18,7 @@ class Room {
 		string desc;  	  	   	
 		string extDesc;
 
-		vector<NPC> npcList;
+		vector<NPC*> npcList;
 
 
 		//vector<Keyword> keywords;
@@ -59,7 +59,7 @@ class Room {
 		string getName();
 		string getDesc();  
 		string getExtDesc();
-		vector<NPC> getNPCs();
+		vector<NPC*> getNPCs();
 
 		//vector<Keyword> getKeywords();
 		//vector<User> getUsers();	
@@ -105,7 +105,7 @@ class Room {
 
 		/*
 
-		WARNING: The below methods currently leak.
+		WARNING: The 'movement' methods currently leak.
 
 		*/
 
@@ -116,9 +116,13 @@ class Room {
 		string goUp(Room *current);
 		string goDown(Room *current);
 
+		//
+
 		vector<string> getDoorList();	
 		vector<string> getObjList();
 	
 		string lookAround();
 		string getObjDesc(string objName);
+
+		void createNPC();
 };

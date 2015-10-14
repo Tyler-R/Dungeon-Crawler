@@ -16,6 +16,7 @@ class World {
 		vector<Room*> roomList;
 	public:
 		World();
+		World(World &obj);
 
 		vector<Room*> getRoomList();
 
