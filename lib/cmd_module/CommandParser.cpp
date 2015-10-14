@@ -59,7 +59,7 @@ string CommandParser::validateMoveArgv(vector<string> &cmd){
         return newWorld.getCurrentRoom()->goDown(newWorld.getCurrentRoom());
     }
     else {
-        return "\"" +cmd.at(1)+"\"" + " is not a valid input";
+        return "\"" +cmd.at(1)+"\"" + " is not a valid input\n";
     }
 }
 
