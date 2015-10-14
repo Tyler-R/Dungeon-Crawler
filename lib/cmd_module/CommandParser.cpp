@@ -59,7 +59,7 @@ string CommandParser::validateMoveArgv(vector<string> &cmd){
         return newWorld.getCurrentRoom()->goDown(newWorld.getCurrentRoom());
     }
     else {
-        return "\"" +cmd.at(1)+"\"" + " is not a valid input\n";
+        return "\"" +cmd.at(1)+"\"" + " is not a valid input";
     }
 }
 
@@ -109,7 +109,7 @@ string CommandParser::processCommand(string &in){
    // cout<<"processing..."<<words.front()<<endl;
    if((words.front().compare("move") == 0)){
         // cout<<words.front();
-        return validateMoveArgv(words);
+        return validateMoveArgv(words) + "\n";
    }
    /*
    else if(words.front().compare("kill") == 0){
@@ -121,7 +121,7 @@ string CommandParser::processCommand(string &in){
         return validateLookArgv(words);
    }
    else {
-    return "invalid command\n";
+    return "invalid command";
    }
 
 }

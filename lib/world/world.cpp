@@ -21,12 +21,12 @@ World::World(){
 
 	(*start).setNorth(lobby,"no_desc");
 
-	(*lobby).setNorth(bathroom,"The North Door leads to the Bathroom \n hint: enter\'move north\' ");
-	(*lobby).setSouth(kitchen,"The South Door leads to the Kitchen \n hint: enter\'move south\'");
-	(*lobby).setEast(porch,"The East Door leads to the Porch \n hint: enter\'move north\'");
-	(*lobby).setWest(study,"The West Door leads to the Study");
-	(*lobby).setUp(bedroom,"Upstairs leads to the Bedroom");
-	(*lobby).setDown(basement,"Downstairs leads to the Basement");
+	(*lobby).setNorth(bathroom,"The North Door leads to the Bathroom \n hint: enter\'move north\' \n");
+	(*lobby).setSouth(kitchen,"The South Door leads to the Kitchen \n hint: enter\'move south\'\n");
+	(*lobby).setEast(porch,"The East Door leads to the Porch \n hint: enter\'move north\'\n");
+	(*lobby).setWest(study,"The West Door leads to the Study\n");
+	(*lobby).setUp(bedroom,"Upstairs leads to the Bedroom\n");
+	(*lobby).setDown(basement,"Downstairs leads to the Basement\n");
 	bathroom->createNPC();
 	lobby->createNPC();
 	bathroom->createNPC();
@@ -101,5 +101,3 @@ Room* World::getRoom(int i){
 Room* World::getCurrentRoom(){
 	return currentRoom;
 }
-
-
