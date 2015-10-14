@@ -16,11 +16,12 @@ return validated command;
 class CommandParser{
 public:
 
-    CommandParser(World& worldModel);
+    CommandParser(World& newWorld);
     std::string processCommand(std::string &in);
 
+
  private:
-    World world;
+    World newWorld;
     std::vector<std::string> tokenizeInput(std::string &in);
     void toLowerCase(std::string &str);
     void reformatTokens(std::vector<std::string>& tokens);

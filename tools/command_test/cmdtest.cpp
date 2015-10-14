@@ -15,8 +15,8 @@ int main()
   std::string str = "";
   // std::cout<<"this is sample input: "<<std::endl;
   // std::cout<< str << std::endl;
-  World newworld;
-  CommandParser cp(newworld);
+  World newWorld;
+  CommandParser cp(newWorld);
 
   std::string response = "";
 
