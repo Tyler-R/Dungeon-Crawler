@@ -65,5 +65,6 @@ private:
     bool alive = true;
 
     World myWorld;
+    CommandParser *commandParser;
 
 };

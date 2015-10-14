@@ -1,10 +1,11 @@
 #include "Session.h"
 
 Session::Session(tcp::socket socket) : socket(std::move(socket)){
-
+    commandParser = new CommandParser(myWorld);
 }
 
 Session::~Session() {
+    delete commandParser;
 }
 
 void Session::listenForCommands() {
@@ -155,7 +156,5 @@ void Session::sendMessage(std::string message) {
 }
 
 std::string Session::executeCommand(std::string command) {
-    CommandParser commandParser(myWorld);
-
-    return commandParser.processCommand(command);
+    return commandParser->processCommand(command);
 }
