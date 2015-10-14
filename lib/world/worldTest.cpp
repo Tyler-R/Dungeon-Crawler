@@ -44,13 +44,19 @@ int main() {
 	cout << newWorld.getCurrentRoom()->lookUp() << endl;
 	cout << newWorld.getCurrentRoom()->lookDown() << endl;
 
+
+	
+
 	cout << endl << "--Getting List of Objects--" << endl;
 	for(auto &str:newWorld.getCurrentRoom()->getObjList()){
 		cout << str << endl;
 	}
 
+	cout << endl << "--Looking for a Weaponsmith--" << endl;
+	cout << newWorld.getCurrentRoom()->getObjDesc("weaponsmith") << endl;
+
 	cout << endl << "--Looking for a Study--" << endl;
-	cout << newWorld.getCurrentRoom()->getObjDesc("None") << endl;
+	cout << newWorld.getCurrentRoom()->getObjDesc("Study") << endl;
 	
 	cout << endl << "--Moving North--" << endl;
 
@@ -317,6 +323,7 @@ int main() {
 	for(auto &str:newWorld.getCurrentRoom()->getObjList()){
 		cout << str << endl;
 	}
+
 	
 	cout << endl << "--EndTest--" << endl;
 	return 0;

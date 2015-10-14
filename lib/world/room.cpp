@@ -122,7 +122,7 @@ string Room::getExtDesc(){
 	return extDesc;
 }
 
-vector<NPC> Room::getNPCs(){
+vector<NPC*> Room::getNPCs(){
 	return npcList;
 }
 
@@ -382,18 +382,10 @@ vector<string> Room::getObjList(){
 		objList.push_back(((getDownLeadsTo())->name));
 	}
 
-	//cout << getNPCs().at(0).getName() << endl;
-
-	/*for(auto &str:getNPCs()){
-		cout << "string" << endl;
-	}
-	*/
-	/*
 	for (int i = 0; i<(getNPCs().size()); i++){
-		lookAroundVector.push_back((getNPCs().at(i)).getName());
-		cout << (getNPCs().at(i)).getName() << endl;
+		objList.push_back(npcList.at(i)->getName());
+
 	}
-	*/
 		
 	return objList;
 }
@@ -432,29 +424,31 @@ string Room::getObjDesc(string objName){
 
 
 	for (int i=0; i<doorList.size(); i++){
-
-		//cout << "Matching " << objList[i]->getName() << " with " << objName << endl;
 		if ( doorList[i]->getName() == objName ){
-			//cout << "Match Found!" << endl;
 			return doorList[i]->getDesc();
 		}
 	}
 
-	//vector<NPC> npcList = getNPCs();
 
-	//cout << "getting NPC Name " << (getNPCs()[0]).getName() << " with " << objName << endl;
+	for (int i=0; i<npcList.size(); i++){
 
-	//for (int i=0; i<npcList.size(); i++){
+		if ( npcList.at(i)->getName() == objName ){
+			return npcList.at(i)->getDes();
+		}
+	}
 
-		//cout << "Matching " << npcList[i]->getName() << " with " << objName << endl;
-		//if ( npcList[i].getName() == objName ){
-			//cout << "Match Found!" << endl;
-			//return npcList[i]->getDes();
-		//}
-	//}
+	return  objName + "not found!";
 
-	return "Object not found!";
+}
 
+
+void Room::createNPC(){
+		
+		NPC* monster = new NPC("monster","id:111");
+		NPC* creature = new NPC("creature","id:222");
+
+		npcList.push_back(monster);
+		npcList.push_back(creature);
 }
 
 

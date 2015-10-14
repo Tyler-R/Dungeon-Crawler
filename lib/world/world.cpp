@@ -28,6 +28,8 @@ World::World(){
 	(*lobby).setUp(bedroom,"Upstairs leads to the Bedroom");
 	(*lobby).setDown(basement,"Downstairs leads to the Basement");
 
+	lobby->createNPC();
+
 	(*bathroom).setSouth(lobby,"The South Door leads to the Lobby");
 	(*kitchen).setNorth(lobby,"The North Door leads to the Lobby");
 	(*porch).setWest(lobby,"The West Door leads to the Lobby");
@@ -51,17 +53,17 @@ World::World(){
 
 	getCurrentRoom()->goNorth(getCurrentRoom());
 
-	NPC* monster = new NPC("monster","id:111");
-	NPC* creature = new NPC("creature","id:222");
+	//NPC* monster = new NPC("monster","id:111");
+	//NPC* creature = new NPC("creature","id:222");
 
 	//cout << (*monster).getName() << endl;
 	//cout << (*creature).getName() << endl;
 	//cout << (*monster).getDes() << endl;
 	//cout << (*creature).getDes() << endl;
 
-	(*lobby).getNPCs().push_back(*monster);
+	//(*lobby).getNPCs().push_back(*monster);
 
-	(*lobby).getNPCs().push_back(*creature);
+	//(*lobby).getNPCs().push_back(*creature);
 
 	//string monstername=(*lobby).getNPCs().at[0].getName();
 	
