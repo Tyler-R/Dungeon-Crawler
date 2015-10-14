@@ -1,0 +1,107 @@
+Lab 1 notes:
+
+text adventure game - flowers, plague squerels, save clan, attack squirel, interact!!!,
+explore, breadth of imagination, not limited to flowers, can build house,
+hammer, tools ect used to build things / do things.
+alot like minecraft.
+wide variety of enemies to interact with, some enemies interact with you. might need resources to consume probably not.
+need materials to build house.
+
+multiplayer, multiple people can play together
+can play with eachother and fight with eachother.
+has arena to kill scrubs.
+
+have to create a time system
+might have stronger and evolve over time to get different attributes. (we might see what it does later).
+
+goal: no end, goes on forever. may have multiple ends. a final accomplishment.
+interaction: use text based interaction.
+someone should be able to change the world.
+
+respawn the squirels
+go North east south west. 30 mins later squirel comes back.
+squirel respawns at a place...
+
+some people experience the world and some people create the world.
+Have a GM system and players.
+GM can log in and creates new worlds.
+
+can instantiate a squirel in a room and players can kill the squirel and it will respawn
+can have multiple GM's edit the same section of the map.
+
+named locals. can travel from 1 named location to another.  moving from 1 location to another should be addressable based on location name
+multiple locations should be able to have the same name
+
+looking around you should be able to see other players.
+
+can start form empty world or use data to make a base.
+
+have to worry about server client architecture.
+n x n fights for pvp.
+
+can switch PvP mode on or off.
+cant force someone to fight you in pvp mode.
+
+disconnect could be a forfit
+
+defualt to making modifications and then saving the changes so that modifications are not made in real time.
+can also add item immediately to the map when make the map.
+
+can have multiple different servers running with different versions of the map.
+
+login account**
+
+can save -
+maybe can pick where u start or use options. equiptment.
+can create player***
+Flexible world
+
+can create start points for player that GM creates. (not stated)
+
+can have GM make items that they can create
+reset character
+
+single account = a person
+
+can use localhost or a server
+
+
+
+
+Lab 2 notes:
+
+NPC in specific location
+
+- description of what is there
+- all data on server
+-
+
+risk or priority of how we do something
+player vs. admin abilities
+admin can be player
+
+server client networking how does everything interact
+
+backend storage
+world, areas / zones
+player management / login / NO security
+
+server sends out text / and accepts text.
+player types commands (command system). easy to add new commands
+verb / noun system
+
+list commands
+different commands for different players.
+configurable commands? maybe?
+
+communication between players.
+
+
+questing system is higher than command system
+
+
+group related requirements
+
+
+FIRST ITERATION:
+    we get to pick what we want to do

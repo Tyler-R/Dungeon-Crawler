@@ -1,0 +1,15 @@
+use java programming style
+
+queue for heartbeat on server
+avoid threading
+want to serialize concurrent actions
+use non blocking asynchronous server connection.
+
+boost ausio too complex
+libuv
+cpp libu
+dont worry about low higher archy
+worry about high level ideas
+
+yamel readable XML
+navigation on server side.
