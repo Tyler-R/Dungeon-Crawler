@@ -19,6 +19,9 @@ void Session::listenForCommands() {
                 command->length = length;
                 addCommandToQueue(*command);
                 messageReceivedCallback();
+
+                delete command;
+
             } else {
                 //handle client disconnecting
                 std::cout << "client disconnected" << std::endl;
@@ -41,6 +44,7 @@ std::string Session::getNextCommand() {
 
         std::string data = command.buffer;
         data = data.substr(0, command.length);
+
 
         return data;
     } else {
