@@ -5,7 +5,9 @@ Command_Parser::Command_Parser(){
 
 }
 */
-
+CommandParser::CommandParser(World& world){
+  newWorld = world;
+}
 string CommandParser::validateLookArgv(vector<string> &cmd){
     /*call a function that returns a list of
     objects that can be look at; then iterate through to
@@ -13,48 +15,48 @@ string CommandParser::validateLookArgv(vector<string> &cmd){
     /*same goes to same kind of commands that require a lookup
     to the players current postion and objects*/
     if(cmd.at(1).compare("north") ==0){
-      return "look north";
+      return newWorld.getCurrentRoom()->lookNorth();
     }
     else if (cmd.at(1).compare("south") ==0){
-      return "look south";
+      return newWorld.getCurrentRoom()->lookSouth();
     }
     else if (cmd.at(1).compare("west") ==0){
-      return "look west";
+      return newWorld.getCurrentRoom()->lookWest();
     }
     else if (cmd.at(1).compare("east") ==0){
-      return "look east";
+      return newWorld.getCurrentRoom()->lookEast();
     }
     else if (cmd.at(1).compare("up") == 0){
-      return "look up";
+      return newWorld.getCurrentRoom()->lookUp();
     }
     else if (cmd.at(1).compare("down") ==0){
-      return "look down";
+      return newWorld.getCurrentRoom()->lookDown();
     }
     else if (cmd.at(1).compare("around") ==0){
-      return "look around";
+      return newWorld.getCurrentRoom()->lookAround();
     }
     else{
-      return "\"" + cmd.at(1) + "\"" + " not found";
+      return newWorld.getCurrentRoom()->getObjDesc(cmd.at(1));
     }
 }
 string CommandParser::validateMoveArgv(vector<string> &cmd){
     if(cmd.at(1).compare("north") == 0){
-        return "go north";
+        return newWorld.getCurrentRoom()->goNorth(newWorld.getCurrentRoom());
     }
     else if (cmd.at(1).compare("south") == 0 ){
-        return "go south";
+        return newWorld.getCurrentRoom()->goSouth(newWorld.getCurrentRoom());
     }
     else if (cmd.at(1).compare("east") == 0){
-        return "go east";
+        return newWorld.getCurrentRoom()->goEast(newWorld.getCurrentRoom());
     }
     else if (cmd.at(1).compare("west") == 0){
-        return "go west";
+        return newWorld.getCurrentRoom()->goWest(newWorld.getCurrentRoom());
     }
     else if (cmd.at(1).compare("up") ==0){
-      return "go up";
+        return newWorld.getCurrentRoom()->goUp(newWorld.getCurrentRoom());
     }
     else if (cmd.at(1).compare("down")==0){
-      return "go down";
+        return newWorld.getCurrentRoom()->goDown(newWorld.getCurrentRoom());
     }
     else {
         return "\"" +cmd.at(1)+"\"" + " is not a valid input";
@@ -105,9 +107,8 @@ string CommandParser::processCommand(string &in){
    vector<string> words = tokenizeInput(in);
    reformatTokens(words);
    // cout<<"processing..."<<words.front()<<endl;
-   if((words.front().compare("move") == 0) ){
+   if((words.front().compare("move") == 0)){
         // cout<<words.front();
-        cout << words.front()<< " should be move or go"<<endl;
         return validateMoveArgv(words);
    }
    /*
@@ -117,7 +118,6 @@ string CommandParser::processCommand(string &in){
    }
    */
    else if(words.front().compare("look") == 0){
-        cout<< words.front() << " should be look"<<endl;
         return validateLookArgv(words);
    }
    else {
