@@ -7,7 +7,7 @@ Created By: Sarah Kim Dao
 
 #include "world.h"
 
-World::World(){ 
+World::World(){
 	Room* start = new Room("Start","no_desc","no_extDesc");
 	Room* lobby = new Room("Lobby","This is a lobby","The lobby is cool and clean");
 	Room* bathroom = new Room("Bathroom","This is a bathroom","The bathroom has heated floors.");
@@ -41,14 +41,14 @@ World::World(){
 	(*shower).setSouth(bathroom,"The South Door leads to the bathroom");
 
 	roomList.push_back(start);
-	roomList.push_back(lobby); 
-	roomList.push_back(bathroom);	
-	roomList.push_back(kitchen);	
+	roomList.push_back(lobby);
+	roomList.push_back(bathroom);
+	roomList.push_back(kitchen);
 	roomList.push_back(porch);
 	roomList.push_back(study);
 	roomList.push_back(bedroom);
-	roomList.push_back(basement);	 
-	
+	roomList.push_back(basement);
+
 	currentRoom = start;
 
 	getCurrentRoom()->goNorth(getCurrentRoom());
@@ -66,7 +66,7 @@ World::World(){
 	//(*lobby).getNPCs().push_back(*creature);
 
 	//string monstername=(*lobby).getNPCs().at[0].getName();
-	
+
 }
 
 World::~World(){

@@ -1,7 +1,7 @@
 /*Header file for World.cpp
 Created By: Sarah Kim Dao
 */
-
+#pragma once
 #include <iostream>
 #include <vector>
 #include <string>
@@ -23,9 +23,9 @@ class World {
 		~World();
 
 		Room* getRoom(int i);
-		
+
 		Room* getCurrentRoom();
 
-		
+
 
 };

@@ -5,7 +5,9 @@ Command_Parser::Command_Parser(){
 
 }
 */
-
+CommandParser::CommandParser(World& worldModel){
+  world = worldModel;
+}
 string CommandParser::validateLookArgv(vector<string> &cmd){
     /*call a function that returns a list of
     objects that can be look at; then iterate through to
@@ -105,7 +107,7 @@ string CommandParser::processCommand(string &in){
    vector<string> words = tokenizeInput(in);
    reformatTokens(words);
    // cout<<"processing..."<<words.front()<<endl;
-   if((words.front().compare("move") == 0) ){
+   if((words.front().compare("move") == 0)){
         // cout<<words.front();
         cout << words.front()<< " should be move or go"<<endl;
         return validateMoveArgv(words);
