@@ -8,6 +8,8 @@
 #include <boost/asio.hpp>
 
 #include <Authentication.h>
+#include <world.h>
+#include <CommandParser.h>
 
 using boost::asio::ip::tcp;
 
@@ -27,6 +29,8 @@ public:
     void listenForCommands();
 
     std::string getNextCommand();
+
+    std::string executeCommand(std::string command);
 
     void sendMessage(std::string message);
 
@@ -59,5 +63,7 @@ private:
 
     bool loggedIn = false;
     bool alive = true;
+
+    World myWorld;
 
 };

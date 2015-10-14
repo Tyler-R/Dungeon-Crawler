@@ -1,6 +1,6 @@
 #include "Session.h"
 
-Session::Session(tcp::socket socket) : socket(std::move(socket)) {
+Session::Session(tcp::socket socket) : socket(std::move(socket)){
 
 }
 
@@ -152,4 +152,10 @@ void Session::sendMessage(std::string message) {
         kill();
         throw boost::system::system_error(error);
     }
+}
+
+std::string Session::executeCommand(std::string command) {
+    CommandParser commandParser(myWorld);
+
+    return commandParser.processCommand(command);
 }
