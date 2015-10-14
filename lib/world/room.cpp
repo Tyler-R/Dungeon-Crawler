@@ -445,6 +445,11 @@ string Room::getObjDesc(string objName){
 			return doorList[i]->getDesc();
 		}
 	}
+	for (auto &npc : npcList){
+		if(objName.compare(npc->getName())==0){
+			return npc->getDes();
+		}
+	}
 
 	//vector<NPC> npcList = getNPCs();
 
