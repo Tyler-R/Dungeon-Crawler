@@ -12,7 +12,30 @@ string CommandParser::validateLookArgv(vector<string> &cmd){
     check whether input has a match */
     /*same goes to same kind of commands that require a lookup
     to the players current postion and objects*/
-    return "";
+    if(cmd.at(1).compare("north") ==0){
+      return "look north";
+    }
+    else if (cmd.at(1).compare("south") ==0){
+      return "look south";
+    }
+    else if (cmd.at(1).compare("west") ==0){
+      return "look west";
+    }
+    else if (cmd.at(1).compare("east") ==0){
+      return "look east";
+    }
+    else if (cmd.at(1).compare("up") == 0){
+      return "look up";
+    }
+    else if (cmd.at(1).compare("down") ==0){
+      return "look down";
+    }
+    else if (cmd.at(1).compare("around") ==0){
+      return "look around";
+    }
+    else{
+      return "\"" + cmd.at(1) + "\"" + " not found";
+    }
 }
 string CommandParser::validateMoveArgv(vector<string> &cmd){
     if(cmd.at(1).compare("north") == 0){
@@ -26,6 +49,12 @@ string CommandParser::validateMoveArgv(vector<string> &cmd){
     }
     else if (cmd.at(1).compare("west") == 0){
         return "go west";
+    }
+    else if (cmd.at(1).compare("up") ==0){
+      return "go up";
+    }
+    else if (cmd.at(1).compare("down")==0){
+      return "go down";
     }
     else {
         return "\"" +cmd.at(1)+"\"" + " is not a valid input";
@@ -76,17 +105,20 @@ string CommandParser::processCommand(string &in){
    vector<string> words = tokenizeInput(in);
    reformatTokens(words);
    // cout<<"processing..."<<words.front()<<endl;
-   if(words.front().compare("move") == 0){
+   if((words.front().compare("move") == 0) ){
         // cout<<words.front();
+        cout << words.front()<< " should be move or go"<<endl;
         return validateMoveArgv(words);
    }
+   /*
    else if(words.front().compare("kill") == 0){
 
         return  words.front();
    }
+   */
    else if(words.front().compare("look") == 0){
-
-        return words.front();
+        cout<< words.front() << " should be look"<<endl;
+        return validateLookArgv(words);
    }
    else {
     return "invalid command";
