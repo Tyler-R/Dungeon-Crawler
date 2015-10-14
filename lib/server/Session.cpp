@@ -80,12 +80,12 @@ void Session::offerOptionToRegisterOrLogin() {
 
 }
 
-void Session::askForUsername(std::function<void(void)> onSuccess, std::string message) {
+void Session::askForUsername(std::string message, std::function<void(void)> onSuccess) {
     messageReceivedCallback = onSuccess;
     sendMessage(message);
 }
 
-void Session::askForPassword(std::function<void(void)> onSuccess, std::string message) {
+void Session::askForPassword(std::string message, std::function<void(void)> onSuccess) {
     messageReceivedCallback = onSuccess;
     sendMessage(message);
 }
@@ -112,11 +112,11 @@ void Session::login() {
     assert(!loggedIn);
 
     // ask for username and password and then attempt to login.
-    askForUsername([this]() {
-        askForPassword([this](){
+    askForUsername("Enter your username: " ,[this]() {
+        askForPassword("Enter your password: ", [this](){
             attemptLogin();
-        }, "Enter your password: ");
-    }, "Enter your username: ");
+        });
+    });
 }
 
 void Session::attemptToRegisterPlayer() {
@@ -135,11 +135,12 @@ void Session::attemptToRegisterPlayer() {
 }
 
 void Session::registerNewPlayer() {
-    askForUsername([this]() {
-        askForPassword([this]() {
+
+    askForUsername("Enter your new username: ", [this]() {
+        askForPassword("Enter your new password: ", [this]() {
             attemptToRegisterPlayer();
-        }, "Enter your new password: ");
-    }, "Enter your new username: ");
+        });
+    });
 }
 
 void Session::sendMessage(std::string message) {

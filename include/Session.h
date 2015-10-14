@@ -44,8 +44,8 @@ private:
 
     void login();
 
-    void askForUsername(std::function<void(void)> onSuccess, std::string message);
-    void askForPassword(std::function<void(void)> onSuccess, std::string message);
+    void askForUsername(std::string message, std::function<void(void)> onSuccess);
+    void askForPassword(std::string message, std::function<void(void)> onSuccess);
 
     void attemptLogin();
 
