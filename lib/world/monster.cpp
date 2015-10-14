@@ -43,15 +43,15 @@ void Monster::setName() {
 // set Description
 void Monster::setDes() {
     if (monsterName.compare("wizard") == 0) {
-        monsterDes = "A wizard walks around behind the counter, talking to himself.";
+        monsterDes = "A wizard walks around behind the counter, talking to himself.\n";
     }else if (monsterName.compare("baker") == 0) {
-        monsterDes = "The baker looks at you calmly, wiping flour from his face with one hand.";
+        monsterDes = "The baker looks at you calmly, wiping flour from his face with one hand.\n";
     }else if (monsterName.compare("grocer") == 0) {
-        monsterDes = "A grocer stands at the counter, with a slightly impatient look on his face.";
+        monsterDes = "A grocer stands at the counter, with a slightly impatient look on his face.\n";
     }else if (monsterName.compare("weaponsmith") == 0) {
-        monsterDes = "A young weaponsmith, who still has lots to learn.";
+        monsterDes = "A young weaponsmith, who still has lots to learn.\n";
     }else { //(monsterName == "thief") 
-        monsterDes = "A thief, all dressed in black";
+        monsterDes = "A thief, all dressed in black\n";
     }
 }
 
@@ -129,5 +129,3 @@ void Monster::checkMonster() {
     std::cout << "description: \n" << getDes();
     std::cout << "\n";
 }
-
-
