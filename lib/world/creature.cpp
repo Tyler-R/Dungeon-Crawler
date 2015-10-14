@@ -38,15 +38,15 @@ void Creature::setName() {
 // set description
 void Creature::setDes() {
     if(creatureName.compare("brainy") == 0) {
-        creatureDes = "Brainy Smurf is here, numbling something to himself.";
+        creatureDes = "Brainy Smurf is here, numbling something to himself.\n";
     }else if (creatureName.compare("handy") == 0) {
-        creatureDes = "Handy Smurf is building something here.";
+        creatureDes = "Handy Smurf is building something here.\n";
     }else if (creatureName.compare("sleepy") == 0) {
-        creatureDes = "Sleepy Smurf is sleep walking here.";
+        creatureDes = "Sleepy Smurf is sleep walking here.\n";
     }else if (creatureName.compare("hefty") == 0) {
-        creatureDes = "Hefty Smurf is lifting weights here.";
+        creatureDes = "Hefty Smurf is lifting weights here.\n";
     }else { // creatureName == "grumpy"
-        creatureDes = "Grumpy Smurf is here, swearing.";
+        creatureDes = "Grumpy Smurf is here, swearing.\n";
     }
 }
 
