@@ -8,6 +8,7 @@ Created By: Sarah Kim Dao
 #include "world.h"
 
 World::World(){ 
+	Room* start = new Room("Start","no_desc","no_extDesc");
 	Room* lobby = new Room("Lobby","This is a lobby","The lobby is cool and clean");
 	Room* bathroom = new Room("Bathroom","This is a bathroom","The bathroom has heated floors.");
 	Room* kitchen = new Room("Kitchen","This is a kitchen","The kitchen is sparkling.");
@@ -15,6 +16,10 @@ World::World(){
 	Room* study = new Room("Study","This is a study","The study is tidy and full of books.");
 	Room* bedroom = new Room("Bedroom","This is a bedroom","The bedroom is brightly lit.");
 	Room* basement = new Room("Basement","This is a basement","The basement is dark and damp.");
+	Room* shower = new Room("Shower","This is a shower","The shower is dry.");
+
+
+	(*start).setNorth(lobby,"no_desc");
 
 	(*lobby).setNorth(bathroom,"The North Door leads to the Bathroom \n hint: enter\'move north\' ");
 	(*lobby).setSouth(kitchen,"The South Door leads to the Kitchen \n hint: enter\'move south\'");
@@ -30,6 +35,10 @@ World::World(){
 	(*bedroom).setDown(lobby,"Downstairs leads to the Lobby");
 	(*basement).setUp(lobby,"Upstairs leads to the Lobby");
 
+	(*bathroom).setNorth(shower,"The North Door leads to the shower");
+	(*shower).setSouth(bathroom,"The South Door leads to the bathroom");
+
+	roomList.push_back(start);
 	roomList.push_back(lobby); 
 	roomList.push_back(bathroom);	
 	roomList.push_back(kitchen);	
@@ -38,7 +47,9 @@ World::World(){
 	roomList.push_back(bedroom);
 	roomList.push_back(basement);	 
 	
-	currentRoom = lobby;
+	currentRoom = start;
+
+	getCurrentRoom()->goNorth(getCurrentRoom());
 
 	NPC* monster = new NPC("monster","id:111");
 	NPC* creature = new NPC("creature","id:222");
@@ -57,8 +68,16 @@ World::World(){
 }
 
 World::~World(){
-	for (int i = 0; i<(roomList.size()); i++){
-		delete roomList.at(i);
+	//for (int i = 0; i<(roomList.size()); i++){
+	//	delete roomList.at(i);
+	//}
+}
+
+World::World(World &obj){
+	//currentRoom = obj.getCurrentRoom();
+
+	for (int i=0; i<obj.roomList.size(); i++){
+		roomList.push_back(obj.roomList[i]);
 	}
 }
 
