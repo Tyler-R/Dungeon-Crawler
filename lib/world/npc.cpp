@@ -21,16 +21,18 @@ NPC::NPC(string type, string id){
         setHP(tempMonster.getHP());
         setAlive(tempMonster.getAlive());
         setDamage(tempMonster.getDamage());
+        setDes(tempMonster.getDes());
         
     }else if(type == "creature") {
         Creature tempCreature;
         
         setID(id);
-        setName(tempCreature.getType());
+        setName(tempCreature.getName());
         setType(type);
         setHP(tempCreature.getHP());
         setAlive(tempCreature.getAlive());
         setDamage(int(0));
+        setDes(tempCreature.getDes());
         
     }else {
 		cout << "!!!!!! no such NPC !!!!!! \n";
@@ -38,14 +40,14 @@ NPC::NPC(string type, string id){
 }
 
 // destructor
-// NPC::~NPC() {
-//     delete npcID;
-//     delete npcName;
-//     delete npcType;
-//     delete npcHP;
-//     delete npcDamage;
-//     delete isAlive;
-// }
+//NPC::~NPC() {
+//    delete npcID;
+//    delete npcName;
+//    delete npcType;
+//    delete npcHP;
+//    delete npcDamage;
+//    delete isAlive;
+//}
 
 
 void NPC::setID(string id) {
@@ -69,6 +71,10 @@ void NPC::setAlive(bool b) {
 
 void NPC::setDamage(int i) {
     npcDamage = i;
+}
+
+void NPC::setDes(string des) {
+    npcDes = des;
 }
 
 
@@ -96,6 +102,10 @@ int NPC::getDamage() const{
     return npcDamage;
 }
 
+string NPC::getDes() const{
+    return npcDes;
+}
+
 // helper function
 void NPC::checkNPC() const{
     std::cout << "          NPC check function \n";
@@ -111,5 +121,6 @@ void NPC::checkNPC() const{
     std::cout << "\n";
     std::cout << "is live(1) or dead(0)?        " << getAlive();
     std::cout << "\n";
+    std::cout << "description: \n" << getDes();
     std::cout << "\n";
 }

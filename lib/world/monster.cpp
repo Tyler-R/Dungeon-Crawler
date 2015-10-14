@@ -18,24 +18,41 @@ Monster::Monster() {
     setHP();
     setAlive();
     setDamage();
+    setDes();
 }
 
 // destructor
-// Monster::~Monster() {
-//     delete monsterName;
-//     delete monsterType;
-//     delete monsterHP;
-//     delete monsterDamage;
-//     delete isAlive;
-// }
+//Monster::~Monster() {
+//    delete monsterName;
+//    delete monsterType;
+//    delete monsterHP;
+//    delete monsterDamage;
+//    delete isAlive;
+//    delete monsterDes;
+//}
 
 //------------------------------- Set Methods ----------------------------------
 // set name
 void Monster::setName() {
-    std::string tempNames[] = {"alec", "jason", "salah", "jorden", "tyler"};
+    std::string tempNames[] = {"wizard", "baker", "grocer", "weaponsmith", "thief"};
     int randName = rand() % (5);
     
     monsterName = tempNames[randName];
+}
+
+// set Description
+void Monster::setDes() {
+    if (monsterName.compare("wizard") == 0) {
+        monsterDes = "A wizard walks around behind the counter, talking to himself.\n";
+    }else if (monsterName.compare("baker") == 0) {
+        monsterDes = "The baker looks at you calmly, wiping flour from his face with one hand.\n";
+    }else if (monsterName.compare("grocer") == 0) {
+        monsterDes = "A grocer stands at the counter, with a slightly impatient look on his face.\n";
+    }else if (monsterName.compare("weaponsmith") == 0) {
+        monsterDes = "A young weaponsmith, who still has lots to learn.\n";
+    }else { //(monsterName == "thief") 
+        monsterDes = "A thief, all dressed in black\n";
+    }
 }
 
 // set type
@@ -91,6 +108,10 @@ int Monster::getDamage() const{
     return monsterDamage;
 }
 
+// get Description
+string Monster::getDes() const{
+    return monsterDes;
+}
 
 // Helper Function - Check Monster's attributes
 void Monster::checkMonster() {
@@ -105,7 +126,6 @@ void Monster::checkMonster() {
     std::cout << "\n";
     std::cout << "is live(1) or dead(0)?        " << getAlive();
     std::cout << "\n";
+    std::cout << "description: \n" << getDes();
     std::cout << "\n";
 }
-
-

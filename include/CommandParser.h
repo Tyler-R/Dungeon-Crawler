@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <boost/tokenizer.hpp>
+#include "world.h"
 // #include "CommandSet.h"
 
 
@@ -15,11 +16,12 @@ return validated command;
 class CommandParser{
 public:
 
-
+    CommandParser(World& newWorld);
     std::string processCommand(std::string &in);
 
- private:
 
+ private:
+    World newWorld;
     std::vector<std::string> tokenizeInput(std::string &in);
     void toLowerCase(std::string &str);
     void reformatTokens(std::vector<std::string>& tokens);

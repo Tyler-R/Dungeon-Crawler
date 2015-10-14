@@ -24,6 +24,7 @@ private:
     int npcHP;
     bool isAlive;
     int npcDamage;
+    string npcDes;
     
     // functions
     void setName(string s);
@@ -31,6 +32,7 @@ private:
     void setHP(int i);
     void setAlive(bool b);
     void setDamage(int i);
+    void setDes(string des);
 
 public:
     //constructor
@@ -46,6 +48,7 @@ public:
 	int getHP() const;
 	int getDamage()const;
 	bool getAlive()const;	// live or dead
+    string getDes()const;
 
 	// helper function
 	void checkNPC() const;	// print out all attributes of npc

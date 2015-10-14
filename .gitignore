@@ -7,8 +7,6 @@ bin/
 *.a
 *.sh
 personalNotes.txt
-<<<<<<< HEAD
 .DS_Store
-=======
 tmpbuild/
->>>>>>> 0ad93455bfc975a7d9f978bed387e8c75ae6f1fa
+CMakeLists.txt~

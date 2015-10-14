@@ -23,15 +23,16 @@ class Creature {
 private:
     
     // attributes
-    string creatureType;
+    string creatureName;
     int creatureHP;
     bool isAlive;
+    string creatureDes;
     
     // Functions (mutators)
-    void setType();
+    void setName();
     void setHP();
     void setAlive();
-    
+    void setDes();
     
     
 public:
@@ -42,9 +43,10 @@ public:
     // ~Creature();
     
     // Functions (getters)
-    string getType() const;
+    string getName() const;
     int getHP() const;
     bool getAlive()const;
+    string getDes() const;
     
     
     // Helper Functions

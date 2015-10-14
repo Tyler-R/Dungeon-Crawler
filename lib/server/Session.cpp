@@ -1,10 +1,11 @@
 #include "Session.h"
 
-Session::Session(tcp::socket socket) : socket(std::move(socket)) {
-
+Session::Session(tcp::socket socket) : socket(std::move(socket)){
+    commandParser = new CommandParser(myWorld);
 }
 
 Session::~Session() {
+    delete commandParser;
 }
 
 void Session::listenForCommands() {
@@ -17,6 +18,10 @@ void Session::listenForCommands() {
                 // handle command
                 command->length = length;
                 addCommandToQueue(*command);
+                messageReceivedCallback();
+
+                delete command;
+
             } else {
                 //handle client disconnecting
                 std::cout << "client disconnected" << std::endl;
@@ -38,12 +43,109 @@ std::string Session::getNextCommand() {
         commandBacklog.pop();
 
         std::string data = command.buffer;
-        data = "---" + data.substr(0, command.length);
+        data = data.substr(0, command.length);
+
 
         return data;
     } else {
         return "";
     }
+}
+
+bool Session::isAlive() {
+    return alive;
+}
+
+bool Session::isLoggedIn() {
+    return loggedIn;
+}
+
+void Session::kill() {
+    alive = false;
+}
+
+void Session::offerOptionToRegisterOrLogin() {
+    messageReceivedCallback = [this]() {
+        std::string message = getNextCommand();
+
+        int choice = atoi(message.c_str());
+
+        if(choice == 1) {
+            login();
+        } else if(choice == 2) {
+            registerNewPlayer();
+        } else {
+            sendMessage("that is not an option. try again.\n");
+            offerOptionToRegisterOrLogin();
+        }
+    };
+
+    sendMessage("Enter 1 to login or 2 to register\n");
+
+
+}
+
+void Session::askForUsername(std::string message, std::function<void(void)> onSuccess) {
+    messageReceivedCallback = onSuccess;
+    sendMessage(message);
+}
+
+void Session::askForPassword(std::string message, std::function<void(void)> onSuccess) {
+    messageReceivedCallback = onSuccess;
+    sendMessage(message);
+}
+
+void Session::attemptLogin() {
+    std::string username = getNextCommand();
+    std::string password = getNextCommand();
+
+    Authentication authentication(username, password);
+    if(authentication.login()) {
+        messageReceivedCallback = [](){
+            //do nothing
+        };
+
+        loggedIn = true;
+        sendMessage("You are logged in as " + username + "\n");
+    } else {
+        sendMessage("Incorrect username or password. Try again.\n");
+        login();
+    }
+}
+
+void Session::login() {
+    assert(!loggedIn);
+
+    // ask for username and password and then attempt to login.
+    askForUsername("Enter your username: " ,[this]() {
+        askForPassword("Enter your password: ", [this](){
+            attemptLogin();
+        });
+    });
+}
+
+void Session::attemptToRegisterPlayer() {
+    std::string username = getNextCommand();
+    std::string password = getNextCommand();
+
+    Authentication authentication(username, password);
+    if(authentication.signUp()) {
+        sendMessage(username + " was created"  + "\n");
+        login();
+
+    } else {
+        sendMessage("username already exists. Try again.\n");
+        registerNewPlayer();
+    }
+}
+
+void Session::registerNewPlayer() {
+
+    askForUsername("Enter your new username: ", [this]() {
+        askForPassword("Enter your new password: ", [this]() {
+            attemptToRegisterPlayer();
+        });
+    });
 }
 
 void Session::sendMessage(std::string message) {
@@ -52,7 +154,11 @@ void Session::sendMessage(std::string message) {
     size_t bitesWritten = boost::asio::write(socket, boost::asio::buffer(message), boost::asio::transfer_all(), error);
 
     if(error) {
-        isAlive = false;
+        kill();
         throw boost::system::system_error(error);
     }
+}
+
+std::string Session::executeCommand(std::string command) {
+    return commandParser->processCommand(command);
 }

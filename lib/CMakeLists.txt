@@ -1,11 +1,5 @@
 add_subdirectory(server)
 add_subdirectory(client)
 add_subdirectory(authentication)
-add_subdirectory(monster)
-add_subdirectory(npc)
-add_subdirectory(creature)
-add_subdirectory(item)
-add_subdirectory(object)
 add_subdirectory(cmd_module)
-add_subdirectory(inWorld)
-
+add_subdirectory(world)

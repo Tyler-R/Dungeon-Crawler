@@ -1,6 +1,6 @@
 
-#ifndef Authentication_UserInformation_h
-#define Authentication_UserInformation_h
+#ifndef Authentication_UserSignUp_h
+#define Authentication_UserSignUp_h
 
 #include <string>
 #include "UniqueID.h"

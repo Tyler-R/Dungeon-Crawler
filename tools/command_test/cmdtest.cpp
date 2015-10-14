@@ -1,9 +1,9 @@
 // char_sep_example_1.cpp
 #include <iostream>
-#include <CommandParser.h>
 #include <string>
 #include <vector>
-
+#include <CommandParser.h>
+#include "world.h"
 // static const std::string[] COMMAND_SET = {
 //   "move", "kill"
 // };
@@ -15,7 +15,9 @@ int main()
   std::string str = "";
   // std::cout<<"this is sample input: "<<std::endl;
   // std::cout<< str << std::endl;
-  CommandParser cp;
+  World newWorld;
+  CommandParser cp(newWorld);
+
   std::string response = "";
 
   std::cout<<response <<std::endl;

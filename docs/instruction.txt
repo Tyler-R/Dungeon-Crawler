@@ -1,0 +1,83 @@
+=====================To use Authentication API===============
+
+
+For Iteration 1:
+
+	- 3 methods include:
+
+			bool login();
+			bool logout();
+			bool signUp();
+
+
+	- Authentication constructor takes 2 arguments
+		- first argument --> username, type --> string
+		- second argument --> password, type --> string 
+
+ ======= login()=========
+
+ - checks if the user already exists in the "records" file
+
+ 		-if yes, it returns true (login successful), else returns false (login unsuccessful)
+
+
+======= logout()==========
+
+- checks if the user already is active in system
+	
+		-if yes, it returns true (logout successful), else returns false (logout unsuccessful)
+
+
+======= signUp()==========
+
+- checks if the user already does not exist in the "records" file
+
+	- if yes, returns true (signUp successful), else returns false (signUp unsuccessful)
+
+
+
+
+============== Example to use login(), logout(), signUp()==============
+
+
+Authentication user("Username", "Password");
+
+user.login();
+	Or
+user.logout();
+	Or
+user.signUP();
+
+============== Structure of Authentication API===================
+
+    - Involved 5 classes --> Authentication.h, UserLogin.h , UserSignUp.h , FileIO.h, UniqueID.h
+    - Authentication.h is the interface for other modules and components
+    - FileIO.h is the only class that interacts with "records.txt" file
+ 
+    
+************** Note on logout() ******************
+
+logout() will be fully implemented in second iteration.
+
+    Steps to get logout() to work properly:
+        - A fourth column must be added to the "records.txt" file which contains a boolean value
+                - 1 --> indicates that user already has an ongoing session
+                - 0 --> indicates that user has not allocated any session
+                
+
+The boolean value change to 1 if users sucessfully login and turns to 0 if the users logout successfully
+    - needs a class --> userLogout to keep track of the boolean value
+
+
+
+************* Note on FileIO class*****************
+    
+    - There exist some duplicate code which must be refactored in the Second Iteration
+    - Variable Names also must become more meaningful in the Second Iteration
+
+
+
+
+
+
+

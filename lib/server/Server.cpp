@@ -21,6 +21,7 @@ void Server::listenForConnections() {
             if(!errorCode) {
                 sessions.emplace_back(std::make_shared<Session>(std::move(socket)));
                 sessions.back()->listenForCommands();
+                sessions.back()->offerOptionToRegisterOrLogin();
             }
 
             listenForConnections();
@@ -34,12 +35,14 @@ void Server::handleCommands() {
         // send data back to clients
         // wait untill next tick
         try {
-            if(session->isAlive) {
+            if(session->isAlive() && session->isLoggedIn()) {
                 auto nextCommand = session->getNextCommand();
-                session->sendMessage(nextCommand);
+                if(nextCommand.compare("") != 0) {
+                    session->sendMessage(session->executeCommand(nextCommand));
+                }
             }
         } catch(std::exception &e) {
-            session->isAlive = false;
+            session->kill();
         }
     }
 
