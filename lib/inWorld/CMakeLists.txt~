@@ -1,3 +1,0 @@
-include_directories(${CMAKE)SOURE_DIR}/room)
-
-add_subdirectory(room)
