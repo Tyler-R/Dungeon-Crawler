@@ -43,7 +43,15 @@ private:
     void addCommandToQueue(Command command);
 
     void login();
+
+    void askForUsername(std::function<void(void)> onSuccess, std::string message);
+    void askForPassword(std::function<void(void)> onSuccess, std::string message);
+
+    void attemptLogin();
+
     void registerNewPlayer();
+
+    void attemptToRegisterPlayer();
 
     std::queue<Command> commandBacklog;
 

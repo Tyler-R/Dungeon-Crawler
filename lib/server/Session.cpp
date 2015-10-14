@@ -80,49 +80,66 @@ void Session::offerOptionToRegisterOrLogin() {
 
 }
 
-void Session::login() {
-    std::cout << "player trying to login" << std::endl;
-    sendMessage("enter your username: ");
-    messageReceivedCallback = [this]() {
-        sendMessage("enter your password: ");
-        this->messageReceivedCallback = [this]() {
-            std::string username = getNextCommand();
-            std::string password = getNextCommand();
+void Session::askForUsername(std::function<void(void)> onSuccess, std::string message) {
+    messageReceivedCallback = onSuccess;
+    sendMessage(message);
+}
 
-            Authentication authentication(username, password);
-            if(authentication.login()) {
-                loggedIn = true;
-                sendMessage("You are logged in as " + username + "\n");
-                messageReceivedCallback = [](){
-                    //do nothing
-                };
-            } else {
-                sendMessage("Incorrect username or password. Try again.\n");
-                login();
-            }
+void Session::askForPassword(std::function<void(void)> onSuccess, std::string message) {
+    messageReceivedCallback = onSuccess;
+    sendMessage(message);
+}
+
+void Session::attemptLogin() {
+    std::string username = getNextCommand();
+    std::string password = getNextCommand();
+
+    Authentication authentication(username, password);
+    if(authentication.login()) {
+        messageReceivedCallback = [](){
+            //do nothing
         };
-    };
+
+        loggedIn = true;
+        sendMessage("You are logged in as " + username + "\n");
+    } else {
+        sendMessage("Incorrect username or password. Try again.\n");
+        login();
+    }
+}
+
+void Session::login() {
+    assert(!loggedIn);
+
+    // ask for username and password and then attempt to login.
+    askForUsername([this]() {
+        askForPassword([this](){
+            attemptLogin();
+        }, "Enter your password: ");
+    }, "Enter your username: ");
+}
+
+void Session::attemptToRegisterPlayer() {
+    std::string username = getNextCommand();
+    std::string password = getNextCommand();
+
+    Authentication authentication(username, password);
+    if(authentication.signUp()) {
+        sendMessage(username + " was created"  + "\n");
+        login();
+
+    } else {
+        sendMessage("username already exists. Try again.\n");
+        registerNewPlayer();
+    }
 }
 
 void Session::registerNewPlayer() {
-    sendMessage("Enter your new username: ");
-    messageReceivedCallback = [this]() {
-        sendMessage("Enter your new password: ");
-        this->messageReceivedCallback = [this]() {
-            std::string username = getNextCommand();
-            std::string password = getNextCommand();
-
-            Authentication authentication(username, password);
-            if(authentication.signUp()) {
-                sendMessage(username + " was created"  + "\n");
-                login();
-
-            } else {
-                sendMessage("username already exists. Try again.\n");
-                registerNewPlayer();
-            }
-        };
-    };
+    askForUsername([this]() {
+        askForPassword([this]() {
+            attemptToRegisterPlayer();
+        }, "Enter your new password: ");
+    }, "Enter your new username: ");
 }
 
 void Session::sendMessage(std::string message) {
