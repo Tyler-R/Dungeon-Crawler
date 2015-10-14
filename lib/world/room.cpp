@@ -121,6 +121,11 @@ string Room::getDesc(){
 string Room::getExtDesc(){
 	return extDesc;
 }
+
+vector<NPC*> Room::getNPCs(){
+	return npcList;
+}
+
 /*	
 
 vector<keyword> Room::getKeywords(){
@@ -224,7 +229,7 @@ Room::Door Room::getDown(){
 }
 
 
-string Room::lookNorth(){
+string Room::lookNorth(){ 
 	return north->desc;
 }
 
@@ -282,38 +287,169 @@ current = *(current.getNorth().leadsTo);
 */
 
 
-void Room::goNorth(Room *current){
-	if (current!= NULL){
-		*current = *(getNorth().leadsTo);
+string Room::goNorth(Room *current){
+	if (!(getNorthLeadsTo())){
+		return "Cannot move there.";
 	}
+	*current = *(getNorthLeadsTo());
+	return (*current).getDesc();
+	
 }
 
-void Room::goSouth(Room *current){
-	if (current!= NULL){
-		*current = *(getSouth().leadsTo);
+string Room::goSouth(Room *current){
+	if (!(getSouthLeadsTo())){
+		return "Cannot move there.";
 	}
+	*current = *(getSouthLeadsTo());
+	return (*current).getDesc();
 }
 
-void Room::goEast(Room *current){
-	if (current!= NULL){
-		*current = *(getEast().leadsTo);
+string Room::goEast(Room *current){
+	if (!(getEastLeadsTo())){
+		return "Cannot move there.";
 	}
+	*current = *(getEastLeadsTo());
+	return (*current).getDesc();
 }
 
-void Room::goWest(Room *current){
-	if (current!= NULL){
-		*current = *(getWest().leadsTo);
+string Room::goWest(Room *current){
+	if (!(getWestLeadsTo())){
+		return "Cannot move there.";
 	}
+	*current = *(getWestLeadsTo());
+	return (*current).getDesc();
 }
 
-void Room::goUp(Room *current){
-	if (current!= NULL){
-		*current = *(getUp().leadsTo);
+string Room::goUp(Room *current){
+	if (!(getUpLeadsTo())){
+		return "Cannot move there.";
 	}
+	*current = *(getUpLeadsTo());
+	return (*current).getDesc();
 }
 
-void Room::goDown(Room *current){
-	if (current!= NULL){
-		*current = *(getDown().leadsTo);
+string Room::goDown(Room *current){
+	if (!(getDownLeadsTo())){
+		return "Cannot move there.";
 	}
+	*current = *(getDownLeadsTo());
+	return (*current).getDesc();
+
 }
+
+
+//LookAround
+
+vector<string> Room::getDoorList(){
+	vector<string> doorList;
+	
+	doorList.push_back(lookNorth());
+	doorList.push_back(lookSouth());
+	doorList.push_back(lookEast());
+	doorList.push_back(lookWest());
+	doorList.push_back(lookUp());
+	doorList.push_back(lookDown());
+
+	return doorList;
+}
+
+
+vector<string> Room::getObjList(){
+
+	vector<string> objList;
+
+	if (getNorthLeadsTo() != NULL){
+		objList.push_back(((getNorthLeadsTo())->name));
+	}
+
+	if (getSouthLeadsTo() != NULL){
+		objList.push_back(((getSouthLeadsTo())->name));
+	}
+
+	if (getEastLeadsTo() != NULL){
+		objList.push_back(((getEastLeadsTo())->name));
+	}
+
+	if (getWestLeadsTo() != NULL){
+		objList.push_back(((getWestLeadsTo())->name));
+	}
+
+	if (getUpLeadsTo() != NULL){
+		objList.push_back(((getUpLeadsTo())->name));
+	}
+
+	if (getDownLeadsTo() != NULL){
+		objList.push_back(((getDownLeadsTo())->name));
+	}
+
+	for (int i = 0; i<(getNPCs().size()); i++){
+		objList.push_back(npcList.at(i)->getName());
+
+	}
+		
+	return objList;
+}
+
+string Room::lookAround(){
+		return getExtDesc();
+	}
+
+string Room::getObjDesc(string objName){
+
+	vector<Room*> doorList;
+
+	if (getNorthLeadsTo() != NULL){
+		doorList.push_back(getNorthLeadsTo());
+	} 
+
+	if (getSouthLeadsTo() != NULL){
+		doorList.push_back(getSouthLeadsTo());
+	}
+
+	if (getEastLeadsTo() != NULL){
+		doorList.push_back(getEastLeadsTo());
+	}
+
+	if (getWestLeadsTo() != NULL){
+		doorList.push_back(getWestLeadsTo());
+	}
+
+	if (getUpLeadsTo() != NULL){
+		doorList.push_back(getUpLeadsTo());
+	}
+
+	if (getDownLeadsTo() != NULL){
+		doorList.push_back(getDownLeadsTo());
+	}
+
+
+	for (int i=0; i<doorList.size(); i++){
+		if ( doorList[i]->getName() == objName ){
+			return doorList[i]->getDesc();
+		}
+	}
+
+
+	for (int i=0; i<npcList.size(); i++){
+
+		if ( npcList.at(i)->getName() == objName ){
+			return npcList.at(i)->getDes();
+		}
+	}
+
+	return  objName + "not found!";
+
+}
+
+
+void Room::createNPC(){
+		
+		NPC* monster = new NPC("monster","id:111");
+		NPC* creature = new NPC("creature","id:222");
+
+		npcList.push_back(monster);
+		npcList.push_back(creature);
+}
+
+
+

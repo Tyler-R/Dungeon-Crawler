@@ -11,14 +11,21 @@ using namespace std;
 
 class World {
 	private:
+		Room* currentRoom;
+
 		vector<Room*> roomList;
 	public:
 		World();
+		World(World &obj);
 
 		vector<Room*> getRoomList();
 
 		~World();
 
 		Room* getRoom(int i);
+		
+		Room* getCurrentRoom();
+
+		
 
 };
