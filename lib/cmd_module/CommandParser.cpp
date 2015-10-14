@@ -36,7 +36,7 @@ string CommandParser::validateLookArgv(vector<string> &cmd){
       return newWorld.getCurrentRoom()->lookAround();
     }
     else{
-      return "\"" + cmd.at(1) + "\"" + " not found";
+      return newWorld.getCurrentRoom()->getObjDesc(cmd.at(1));
     }
 }
 string CommandParser::validateMoveArgv(vector<string> &cmd){

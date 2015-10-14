@@ -27,9 +27,15 @@ World::World(){
 	(*lobby).setWest(study,"The West Door leads to the Study");
 	(*lobby).setUp(bedroom,"Upstairs leads to the Bedroom");
 	(*lobby).setDown(basement,"Downstairs leads to the Basement");
-
+	bathroom->createNPC();
 	lobby->createNPC();
-
+	bathroom->createNPC();
+	kitchen->createNPC();
+	porch->createNPC();
+	study->createNPC();
+	bedroom->createNPC();
+	basement->createNPC();
+	shower->createNPC();
 	(*bathroom).setSouth(lobby,"The South Door leads to the Lobby");
 	(*kitchen).setNorth(lobby,"The North Door leads to the Lobby");
 	(*porch).setWest(lobby,"The West Door leads to the Lobby");
