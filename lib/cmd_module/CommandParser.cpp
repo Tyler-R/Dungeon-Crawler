@@ -121,7 +121,7 @@ string CommandParser::processCommand(string &in){
         return validateLookArgv(words);
    }
    else {
-    return "invalid command";
+    return "invalid command\n";
    }
 
 }
