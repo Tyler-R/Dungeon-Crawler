@@ -14,22 +14,22 @@ Room::Room(){
 	extDesc = "no_extDesc";
 
 	north = new Door;
-	setNorth(NULL, "You see nothing to the north.");
+	setNorth(NULL, "You see nothing to the north.\n");
 
 	south = new Door;
-	setSouth(NULL, "You see nothing to the south.");
+	setSouth(NULL, "You see nothing to the south.\n");
 
 	east = new Door;
-	setEast(NULL, "You see nothing to the east.");
+	setEast(NULL, "You see nothing to the east.\n");
 
 	west = new Door;
-	setWest(NULL, "You see nothing to the west.");
+	setWest(NULL, "You see nothing to the west.\n");
 
 	up = new Door;
-	setUp(NULL, "You see nothing in the upward direction.");
+	setUp(NULL, "You see nothing in the upward direction.\n");
 
 	down = new Door;
-	setDown(NULL, "You see nothing in the downward direction.");
+	setDown(NULL, "You see nothing in the downward direction.\n");
 
 }
 
@@ -39,22 +39,22 @@ Room::Room(string input_name, string input_desc, string input_extDesc){
 	extDesc = input_extDesc;
 
 	north = new Door;
-	setNorth(NULL, "You see nothing to the north.");
+	setNorth(NULL, "You see nothing to the north.\n");
 
 	south = new Door;
-	setSouth(NULL, "You see nothing to the south.");
+	setSouth(NULL, "You see nothing to the south.\n");
 
 	east = new Door;
-	setEast(NULL, "You see nothing to the east.");
+	setEast(NULL, "You see nothing to the east.\n");
 
 	west = new Door;
-	setWest(NULL, "You see nothing to the west.");
+	setWest(NULL, "You see nothing to the west.\n");
 
 	up = new Door;
-	setUp(NULL, "You see nothing in the upward direction.");
+	setUp(NULL, "You see nothing in the upward direction.\n");
 
 	down = new Door;
-	setDown(NULL, "You see nothing in the downward direction.");
+	setDown(NULL, "You see nothing in the downward direction.\n");
 }
 
 Room::Room(Room &obj){
@@ -86,10 +86,10 @@ Room::Room(Room &obj){
 }*/
 
 Room::~Room(){
-	//setNorth(NULL, "You see nothing to the north.");
+	//setNorth(NULL, "You see nothing to the north.\n");
 	delete north;
 
-	//setSouth(NULL, "You see nothing to the south.");
+	//setSouth(NULL, "You see nothing to the south.\n");
 	delete south;
 
 	//setEast(NULL, "You see nothing to the east.");
@@ -289,7 +289,7 @@ current = *(current.getNorth().leadsTo);
 
 string Room::goNorth(Room *current){
 	if (!(getNorth().leadsTo)){
-		return "Cannot move there.";
+		return "Cannot move there.\n";
 	}
 	*current = *(getNorth().leadsTo);
 	return (*current).getDesc();
@@ -298,7 +298,7 @@ string Room::goNorth(Room *current){
 
 string Room::goSouth(Room *current){
 	if (!(getSouth().leadsTo)){
-		return "Cannot move there.";
+		return "Cannot move there.\n";
 	}
 	*current = *(getSouth().leadsTo);
 	return (*current).getDesc();
@@ -306,7 +306,7 @@ string Room::goSouth(Room *current){
 
 string Room::goEast(Room *current){
 	if (!(getEast().leadsTo)){
-		return "Cannot move there.";
+		return "Cannot move there.\n";
 	}
 	*current = *(getEast().leadsTo);
 	return (*current).getDesc();
@@ -314,7 +314,7 @@ string Room::goEast(Room *current){
 
 string Room::goWest(Room *current){
 	if (!(getWest().leadsTo)){
-		return "Cannot move there.";
+		return "Cannot move there.\n";
 	}
 	*current = *(getWest().leadsTo);
 	return (*current).getDesc();
@@ -322,7 +322,7 @@ string Room::goWest(Room *current){
 
 string Room::goUp(Room *current){
 	if (!(getUp().leadsTo)){
-		return "Cannot move there.";
+		return "Cannot move there.\n";
 	}
 	*current = *(getUp().leadsTo);
 	return (*current).getDesc();
@@ -330,7 +330,7 @@ string Room::goUp(Room *current){
 
 string Room::goDown(Room *current){
 	if (!(getDown().leadsTo)){
-		return "Cannot move there.";
+		return "Cannot move there.\n";
 	}
 	*current = *(getDown().leadsTo);
 	return (*current).getDesc();
@@ -464,7 +464,7 @@ string Room::getObjDesc(string objName){
 		//}
 	//}
 
-	return "\""+objName+"\""+" not found!";
+	return "\""+objName+"\""+" not found!\n";
 
 }
 
@@ -476,4 +476,3 @@ void Room::createNPC(){
 		npcList.push_back(monster);
 		npcList.push_back(creature);
 }
-
