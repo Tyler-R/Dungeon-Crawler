@@ -10,6 +10,7 @@ Server::~Server() {
 void Server::start() {
     listenForConnections();
     handleCommands();
+    ioService.run();
 }
 
 
@@ -49,7 +50,6 @@ void Server::handleCommands() {
     try{
         boost::asio::deadline_timer timer(ioService, boost::posix_time::millisec(16));
         timer.async_wait(boost::bind(&Server::handleCommands, this));
-        ioService.run();
     } catch(std::exception &e) {
         std::cerr << e.what() << std::endl;
     }
