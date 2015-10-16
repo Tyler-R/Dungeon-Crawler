@@ -18,6 +18,8 @@ class Inventory {
 
     vector<string> getInventory();
 
+    string lookAtInventory();
+
     void addItem(Item item);
 
     void removeItem(Item item);
