@@ -47,13 +47,17 @@ void CommandParser::reformatTokens(vector<string>& words){
     }
 }
 vector<string> CommandParser::tokenizeInput(string &in){
+    //suggested to change to deque
+    //use std::copy
+    //std::copy(tokens.begin(), tokens.end(), std::back_inserter(usr_input.begin()));
+    //even better
+    //std::deque<std::string> usr_input(tokens.begin(), tokens.end());
   vector<string> usr_input;
     typedef boost::tokenizer<boost::char_separator<char> > tokenizer;
     boost:: char_separator<char> delm(" ");
     tokenizer tokens(in, delm);
-    for(tokenizer::iterator token_itr = tokens.begin();
-     token_itr != tokens.end(); ++token_itr){
-        usr_input.push_back(*token_itr);
+    for (auto &tokenWord: tokens){
+        usr_input.push_back(tokenWord);
     }
     return usr_input;
 }
