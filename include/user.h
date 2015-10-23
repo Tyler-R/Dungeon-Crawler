@@ -43,11 +43,26 @@ class User {
 		void setPlayerHealth(int health);
 		int getPlayerHealth();
 
-		void setPlayerAttack(int attack);
-		int getPlayerAttack();
+		void setPlayerStrength(int attack);
+		int getPlayerStrength();
 
 		void setPlayerDefense(int defense);
 		int getPlayerDefense();
+
+		void setPlayerIntelligence(int playerIntelligence);
+		int getPlayerIntelligence();
+
+		void setPlayerDexterity(int playerDexterity);
+		int getPlayerDexterity();
+
+		void setPlayerCharisma(int playerCharisma);
+		int getPlayerCharisma();
+
+		void levelPlayerUp();
+		int getPlayerLevel();
+
+		void increasePlayerXP(int additionalXP);
+		int getPlayerXP();
 
 		void setLivingStatus(bool isAlive);
 		bool getLivingStatus();
@@ -63,6 +78,12 @@ class User {
 
 		const int playerMaxHealth = 10;
 		int playerHealth;
-		int playerAttack = 0;
-		int playerDefense = 0;
+		int playerStrength;
+		int playerDefense;
+		int playerIntelligence;
+		int playerDexterity;
+		int playerCharisma;
+
+		int playerLevel;
+		int playerXP;
 };

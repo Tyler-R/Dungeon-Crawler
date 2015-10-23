@@ -89,12 +89,12 @@ int User::getPlayerHealth(){
   return playerHealth;
 }
 
-void User::setPlayerAttack(int playerAttack){
-  this->playerAttack = playerAttack;
+void User::setPlayerStrength(int playerAttack){
+  this->playerStrength = playerStrength;
 }
 
-int User::getPlayerAttack(){
-  return playerAttack;
+int User::getplayerStrength(){
+  return playerStrength;
 }
 
 void User::setPlayerDefense(int playerDefense){
@@ -103,6 +103,46 @@ void User::setPlayerDefense(int playerDefense){
 
 int User::getPlayerDefense(){
   return playerDefense;
+}
+
+void User::setPlayerIntelligence(int playerIntelligence){
+  this->playerIntelligence = playerIntelligence;
+}
+
+int User::getPlayerIntelligence(){
+  return playerIntelligence;
+}
+
+void User::setPlayerDexterity(int playerDexterity){
+  this->playerDexterity = playerDexterity;
+}
+
+int User::getPlayerDexterity(){
+  return playerDexterity;
+}
+
+void User::setPlayerCharisma(int playerCharmisma){
+  this->playerCharmisma = playerCharisma;
+}
+
+int User::getPlayerCharisma(){
+  return playerCharmisma;
+}
+
+void User::levelPlayerUp(){
+  playerLevel += 1;
+}
+
+int User::getPlayerLevel(){
+  return playerLevel;
+}
+
+void User::increasePlayerXP(int additionalXP){
+  playerXP += additionalXP;
+}
+
+int User::getPlayerXP(){
+  return playerXP;
 }
 
 void User::setLivingStatus(bool isAlive){
