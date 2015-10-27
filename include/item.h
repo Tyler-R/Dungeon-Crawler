@@ -22,28 +22,31 @@ class Item{
 private:
     
     // attributes
+    string itemID;          // the Id of the item
     string itemType;        // the type of the item
-    int itemDamage;         // the damage of the item (deal damage to player or monster)
-    bool itemPositive;      // is positive damage or negative damage
+    string itemName;
+    //int itemDamage;         // the damage of the item (deal damage to player or monster)
+    int itemBoost;          // increase the max HP of user
     
-    // functions
-//    void SetType();
-//    void SetDamage();
-//    void SetPositive();
-    void setAll();
+    
+    // functions (3 types of items)
+    void setID(string id);
+    void setAll(string type);       // create potion or weapon or armour
     
     
 public:
     // constructor
-    Item();
+    Item(string type, string id);
     //destructor
     // ~Item();
     
     // functions
-    string getType() const;         // return item type (or name)
-    int getDamage() const;          // return the damage (positive or negative int #)
-    bool getPositive() const;       // if positive restore HP, otherwise reduce HP
-    
+    string getID() const;
+    string getType() const;         // return item type
+    string getName() const;         // return the name of an item
+    //int getDamage() const;          // return the damage (Weapon only)
+    int getBoost() const;
+    // helper function
     void checkItem() const;         // Check Item attributes
     
 };
