@@ -2,121 +2,63 @@
 Created By: Sarah Kim Dao
 */
 
+
 #include <iostream>
 #include <vector>
 #include <string>
-#include "npc.h"
-#include "monster.h"
-#include "creature.h"
+#include <algorithm>
+#include <memory>
 
 using namespace std;
 
+class Door;
+
 class Room {
 	private:
-		//string id;
+		string id;
 		string name;
 		string desc;  	  	   	
 		string extDesc;
 
-		vector<NPC*> npcList;
+		vector<string> keywordList;
 
-
-		//vector<Keyword> keywords;
-
-		//vector<User> userPop;
+		vector<Door*> doorList;
+		//vector<NPC> npcList;
+		//vector<User> userList;
+		
 	
 			
-
-		struct Door {
-			//keywords<string> Keywords;
-			Room *leadsTo;
-			string desc;
-		};
-
-		Door *north;			
-		Door *south;
-		Door *east;
-		Door *west;	
-		Door *up;			
-		Door *down;	
-
-
 	public: 
 
 		Room();
-
 		Room(Room &obj);
 
-		Room(string input_name, string input_desc, string input_extDesc); 
-
-		/* Construct New Room from Info Contained in Text Files */
-		//Room(char id); 
+		Room(string inputId, string inputName, string inputDesc, string inputExtDesc); 
 
 		~Room();
  
-		//string getId();
-
+		string getId();
 		string getName();
 		string getDesc();  
 		string getExtDesc();
-		vector<NPC*> getNPCs();
 
-		//vector<Keyword> getKeywords();
+		vector<string> getKeywords();
+
+		//vector<NPC*> getNPCs();
 		//vector<User> getUsers();	
-		//vector<NPC> NPCs();
 
 		
-		//void getId(string s);
+		void setId(string s);
 		void setName(string s);
 		void setDesc(string s);
 		void setExtDesc(string s);
 
-		//void setKeywords(vector<Keyword> keywords);
-		//void setUser(vector<User> p);	
-		//void setNPC(vector<NPC> m);	
+		void addKeyword(string s);
+		void removeKeyword(string s);
+		string findKeyword(string s);
+		void printKeywords(); //To be used by the Room's Test Module only!
 
-		void setNorth(Room *input_id, string input_desc);
-		void setSouth(Room *input_id, string input_desc);
-		void setEast(Room *input_id, string input_desc);
-		void setWest(Room *input_id, string input_desc);
-		void setUp(Room *input_id, string input_desc);
-		void setDown(Room *input_id, string input_desc);
-
-		Door getNorth();
-		Door getSouth();
-		Door getEast();
-		Door getWest();
-		Door getUp();
-		Door getDown();
-		
-		string lookNorth();
-		string lookSouth();
-		string lookEast();
-		string lookWest();
-		string lookUp();
-		string lookDown();
-
-		Room * getNorthLeadsTo();
-		Room * getSouthLeadsTo();
-		Room * getEastLeadsTo();
-		Room * getWestLeadsTo();
-		Room * getUpLeadsTo();
-		Room * getDownLeadsTo();
-
-		/*
-
-		WARNING: The 'movement' methods currently leak.
-
-		*/
-
-		string goNorth(Room *current);
-		string goSouth(Room *current);
-		string goEast(Room *current);
-		string goWest(Room *current);
-		string goUp(Room *current);
-		string goDown(Room *current);
-
-		//
+		void moveTo(string dir);
 
 		vector<string> getDoorList();	
 		vector<string> getObjList();
@@ -124,5 +66,46 @@ class Room {
 		string lookAround();
 		string getObjDesc(string objName);
 
-		void createNPC();
+		//void addNPC();
+		void addDoor(string inputDir, string inputDesc, Room &inputRoom);
+		Door* findDoor(string inputDir);
+};
+
+
+
+
+class Door {
+	private:
+		string dir;
+		string desc;  	  	   	
+		Room* leadsTo;
+
+		vector<string> keywordList;
+			
+	public: 
+	
+		Door();
+
+		Door(string inputDir, string inputDesc);
+
+		Door(Door &obj);
+
+		~Door();
+
+		void setDir(string s);
+		void setDesc(string s);
+		void setLeadsTo(Room &r);
+
+		string getDir();
+		string getDesc();
+
+		vector<string> getKeywords();
+
+		Room* getLeadsTo();
+		void addKeyword(string s);
+		void removeKeyword(string s);
+		string findKeyword(string s);
+
+		void printKeywords(); //To be used by the Door's Test Module only!
+
 };
