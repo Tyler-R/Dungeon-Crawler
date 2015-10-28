@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include "NPCReset.h"
-#include "DoorReset.h"
-#include "ItemReset.h"
+#include "reset/NPCReset.h"
+#include "reset/DoorReset.h"
+#include "reset/ItemReset.h"
 
 #include <memory>
 

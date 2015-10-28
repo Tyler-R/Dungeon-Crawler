@@ -1,4 +1,4 @@
-#include "ItemReset.h"
+#include "reset/ItemReset.h"
 
 ItemReset::ItemReset(std::shared_ptr<Room> room) : Reset(room) {
 

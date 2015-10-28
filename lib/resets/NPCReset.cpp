@@ -1,4 +1,4 @@
-#include "NPCReset.h"
+#include "reset/NPCReset.h"
 
 NPCReset::NPCReset(std::shared_ptr<Room> room) : Reset(room) {
 

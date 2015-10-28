@@ -1,4 +1,4 @@
-#include "DoorReset.h"
+#include "reset/DoorReset.h"
 
 DoorReset::DoorReset(std::shared_ptr<Room> room) : Reset(room) {
 
