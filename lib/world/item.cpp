@@ -26,21 +26,27 @@ Item::Item(string type, string id) {
 
 void Item::setAll(string type) {
     if(type == "armor"){
-        string tempName[] = {"Shield", "Cloak", "Chest", "Wrist", "Helmet"}
+        string tempName[] = {"Shield", "Cloak", "Chest", "Wrist", "Helmet"};
         itemBoost = increaseMaxHP;
+        int randName = rand() % (5);
+        itemName = tempName[randName];
+        itemType = type;
     }else if(type == "weapon"){
-        string tempName[] = {"Axe", "Mace", "Sword", "Bow", "Gun"}
+        string tempName[] = {"Axe", "Mace", "Sword", "Bow", "Gun"};
         itemBoost = boostDamage;
+        int randName = rand() % (5);
+        itemName = tempName[randName];
+        itemType = type;
     }else if(type == "potion"){
-        string tempName[] = {"Heal potion", "energy potion", "revive potion", "herbs", "healing tonic"}
+        string tempName[] = {"Heal potion", "energy potion", "revive potion", "herbs", "healing tonic"};
         itemBoost = recoverHP;
-    } else {
-        cout << "there is no such item, please choose "weapon", "armor", "potion" \n";
-        break;
+        int randName = rand() % (5);
+        itemName = tempName[randName];
+        itemType = type;
     }
-    int randName = rand() % (5);
-    itemName = tempName[randName];
-    itemType = type;
+    else{
+        cout << "please choose 'weapon', 'armor', 'potion'. \n";
+    }
 }
 
 void Item::setID(string id) {
