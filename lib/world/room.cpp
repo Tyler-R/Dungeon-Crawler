@@ -31,7 +31,9 @@ Room::Room(Room &obj){
 }
 
 Room::~Room(){
-
+	for (auto & door : doorList) {
+	    delete door;
+	}
 }
 
 string Room::getId(){
@@ -90,52 +92,57 @@ void Room::printKeywords(){ //To be used by the Room's Test Module only!
 
 //LookAround
 
-vector<string> Room::getDoorList(){
-	/*
-	vector<string> doorList;
+vector<string> Room::getDoorDescList(){
+	
+	vector<string> doorDescriptions;
 
-	doorList.push_back(lookNorth());
-	doorList.push_back(lookSouth());
-	doorList.push_back(lookEast());
-	doorList.push_back(lookWest());
-	doorList.push_back(lookUp());
-	doorList.push_back(lookDown());
+	for (auto & door : doorList) {
+	    doorDescriptions.push_back(door->getDesc());
+	}
 
-	return doorList;
-	*/
+	return doorDescriptions;
+	
 }
+
 
 
 vector<string> Room::getObjList(){
 
 	vector<string> objList;
 
+	for (auto & door : doorList) {
+	    objList.push_back(door->getLeadsTo()->getName());
+	}
+
+
 	return objList;
 }
 
 string Room::lookAround(){
 
-		/*
+		
 		string objRoom = "";
+
+		/*
 		for(auto &str: npcList){
 			objRoom += str->getName() + " ";
 		}
 		objRoom = "there are " + objRoom + "in the room"+ '\n';
+		*/
 
 		return getExtDesc()+ '\n' + objRoom;
-		*/
+		
 	}
 
-string Room::getObjDesc(string objName){
-	/*
-	for (int i=0; i<doorList.size(); i++){
+string Room::lookAt(string objName){
 
-		//cout << "Matching " << objList[i]->getName() << " with " << objName << endl;
-		if ( doorList[i]->getName() == objName ){
-			//cout << "Match Found!" << endl;
-			return doorList[i]->getDesc();
+	for (auto & door : doorList) {
+		if ( door->getLeadsTo()->getName() == objName ){
+			cout << "Match Found!" << endl;
+			return door->getLeadsTo()->getDesc();
 		}
 	}
+	/*
 	for (auto &npc : npcList){
 		if(objName.compare(npc->getName())==0){
 			return npc->getDes();
@@ -147,10 +154,8 @@ string Room::getObjDesc(string objName){
 }
 
 
-void Room::addDoor(string inputDir, string inputDesc, Room &inputRoom){
-	shared_ptr<Door> newDoor;
-	//newDoor.setDir = inputDir;
-	//newDoor.setLeadsTo() = inputRoom;
+void Room::addDoor(string inputId,string inputDir, string inputDesc, Room &inputRoom){
+	doorList.push_back(new Door(inputId,inputDir,inputDesc, inputRoom));
 }
 
 Door* Room::findDoor(string inputDir){
@@ -169,13 +174,14 @@ Door* Room::findDoor(string inputDir){
 
 
 
-/*
+
 void Room::createNPC(){
-		
+		/*
 		NPC* monster = new NPC("monster","id:111");
 		NPC* creature = new NPC("creature","id:222");
 
 		npcList.push_back(monster);
 		npcList.push_back(creature);
+		*/
 }
-*/
+

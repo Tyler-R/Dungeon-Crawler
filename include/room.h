@@ -60,14 +60,14 @@ class Room {
 
 		void moveTo(string dir);
 
-		vector<string> getDoorList();	
+		vector<string> getDoorDescList();	
 		vector<string> getObjList();
 	
 		string lookAround();
-		string getObjDesc(string objName);
+		string lookAt(string objName);
 
-		//void addNPC();
-		void addDoor(string inputDir, string inputDesc, Room &inputRoom);
+		void createNPC();
+		void addDoor(string inputId, string inputDir, string inputDesc, Room &inputRoom);
 		Door* findDoor(string inputDir);
 };
 
@@ -76,6 +76,7 @@ class Room {
 
 class Door {
 	private:
+		string id;
 		string dir;
 		string desc;  	  	   	
 		Room* leadsTo;
@@ -86,16 +87,19 @@ class Door {
 	
 		Door();
 
-		Door(string inputDir, string inputDesc);
+		Door(string inputId, string inputDir, string inputDesc, Room &inputLeadsTo);
 
 		Door(Door &obj);
 
 		~Door();
 
+		void setId(string s);
 		void setDir(string s);
 		void setDesc(string s);
 		void setLeadsTo(Room &r);
 
+
+		string getId();
 		string getDir();
 		string getDesc();
 

@@ -9,18 +9,21 @@ Created By: Sarah Kim Dao
 #include "room.h"
 
 Door::Door(){
+	id = "no_id";
 	leadsTo = NULL;
 	dir = "no_dir";
 	desc = "no_desc";  	
 }
 
-Door::Door(string inputDir, string inputDesc){
-	leadsTo = NULL;
+Door::Door(string inputId, string inputDir, string inputDesc, Room &inputLeadsTo){
+	id = inputId;
+	leadsTo = &inputLeadsTo;
 	dir = inputDir;
 	desc = inputDesc;  
 }
 
 Door::Door(Door &obj){
+	id = obj.getId();
 	leadsTo = obj.getLeadsTo();
 	dir = obj.getDir();
 	desc = obj.getDesc();  
@@ -32,6 +35,10 @@ Door::Door(Door &obj){
 
 Door::~Door(){
 
+}
+
+void Door::setId(string s){
+	id = s;
 }
 
 void Door::setDir(string s){
@@ -46,6 +53,10 @@ void Door::setLeadsTo(Room &r){
 	leadsTo = &r;
 }
 
+
+string Door::getId(){
+	return id;
+}
 
 string Door::getDir(){
 	return dir;

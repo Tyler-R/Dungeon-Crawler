@@ -20,15 +20,33 @@ int main() {
 	Room basement("7","Basement","This is a basement","The basement is dark and damp.");
 	Room shower("8","Shower","This is a shower","The shower is dry.");
 
-	lobby.addDoor("north", "The north door leads to the bathroom", bathroom);
+	cout << endl << "Creating Doors" << endl;
 
-	
+	lobby.addDoor("1","north", "The north door leads to the bathroom", bathroom);
+	lobby.addDoor("2","south", "The south door leads to the kitchen", kitchen);
+	lobby.addDoor("3","east", "The east door leads to the porch", porch);
+	lobby.addDoor("4","west", "The west door leads to the study", study);
+	lobby.addDoor("5","up", "The upstairs leads to the bedroom", bedroom);
+	lobby.addDoor("6","down", "The downstairs leads to the basement", basement);
+	bathroom.addDoor("7","north", "The north door leads to the shower", shower);
+
+	for (auto & doorDesc : lobby.getDoorDescList()) {
+	    cout << endl << doorDesc << endl;
+	}
+
+	for (auto & objName : lobby.getObjList()) {
+	    cout << endl << objName << endl;
+	}
+
+
+
+	/*
 	Door current();
-	Door center("Center","This is the center door");
-	Door north("North","This is the north door");
-	Door south("South","This is the south door");
-	Door east("East","This is the east door");
-	Door west("West","This is the west door");
+	Door center("0","Center","This is the center door",bathroom);
+	Door north("1","North","This is the north door",bathroom);
+	Door south("2","South","This is the south door",bathroom);
+	Door east("3","East","This is the east door",bathroom);
+	Door west("4","West","This is the west door",bathroom);
 
 	cout << "Setting up door's leadTos" << endl;
 	north.setLeadsTo(bathroom);
@@ -49,4 +67,7 @@ int main() {
 
 	cout << endl << "Keyword Central is " << center.findKeyword("Central") << endl;
 	cout << endl << "Keyword Windy is " << center.findKeyword("Windy") << endl;
+
+*/
 }
+
