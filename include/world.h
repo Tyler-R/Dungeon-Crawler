@@ -5,27 +5,30 @@ Created By: Sarah Kim Dao
 #include <iostream>
 #include <vector>
 #include <string>
+#include <algorithm>
+#include <memory>
 #include "room.h"
 
 using namespace std;
 
 class World {
 	private:
-		Room* currentRoom;
+		shared_ptr<Room> currentRoom;
 
-		vector<Room*> roomList;
+		vector<shared_ptr<Room>> roomList;
 	public:
 		World();
 		World(World &obj);
 
-		vector<Room*> getRoomList();
-
 		~World();
 
-		Room* getRoom(int i);
-
-		Room* getCurrentRoom();
+		shared_ptr<Room> getCurrentRoom();
 
 
+		vector<shared_ptr<Room>>  getRoomList();
+
+		shared_ptr<Room> getRoom(int i);
+
+		void setCurrentRoom(shared_ptr<Room> newRoom);
 
 };
