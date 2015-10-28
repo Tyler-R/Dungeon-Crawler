@@ -1,6 +1,6 @@
 #include "reset/NPCReset.h"
 
-NPCReset::NPCReset(std::shared_ptr<Room> room) : Reset(room) {
+NPCReset::NPCReset(std::shared_ptr<Room> room, NPC npc, int npcLimit) : Reset(room), npc(npc), npcLimit(npcLimit) {
 
 }
 

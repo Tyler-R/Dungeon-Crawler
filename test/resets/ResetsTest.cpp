@@ -10,9 +10,13 @@ int main() {
 
     shared_ptr<Room> room = make_shared<Room>();
 
-    NPCReset npcReset(room);
-    DoorReset doorReset(room);
-    ItemReset itemReset(room);
+    NPC npc("monster", "42");
+    // Item item;
+
+
+    NPCReset npcReset(room, npc, 10);
+    DoorReset doorReset(room, 5, "Lock");
+    ItemReset itemReset(room); //item
 
 
     npcReset.performReset();

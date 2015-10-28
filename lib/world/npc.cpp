@@ -11,10 +11,10 @@
 
 
 // constructor
-NPC::NPC(string type, string id){
+NPC::NPC(string type, string id) {
 	if (type == "monster") {
 		Monster tempMonster;
-        
+
         setID(id);
 		setName(tempMonster.getName());
         setType(type);
@@ -22,10 +22,10 @@ NPC::NPC(string type, string id){
         setAlive(tempMonster.getAlive());
         setDamage(tempMonster.getDamage());
         setDes(tempMonster.getDes());
-        
+
     }else if(type == "creature") {
         Creature tempCreature;
-        
+
         setID(id);
         setName(tempCreature.getName());
         setType(type);
@@ -33,7 +33,7 @@ NPC::NPC(string type, string id){
         setAlive(tempCreature.getAlive());
         setDamage(int(0));
         setDes(tempCreature.getDes());
-        
+
     }else {
 		cout << "!!!!!! no such NPC !!!!!! \n";
 	}
