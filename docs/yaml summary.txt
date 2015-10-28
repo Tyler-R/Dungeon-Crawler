@@ -54,10 +54,82 @@ objects have:
     keywords
     multi-line long description
     a single line short description
-_______________________________________________________________________________________
-RESETS: []
-    why is this blank in both files.  what does it mean
 
+
+_______________________________________________________________________________________
+RESETS:
+- action: npc
+  comment: The executioner
+  id: 3011
+  limit: 1
+  room: 3001
+
+- action: equip
+  comment: wield the executioners blade
+  id: 3005
+  slot: 16
+
+- action: object
+  comment: Donation pit
+  id: 3010
+  room: 3054
+
+- action: give
+  comment: Give potion of see invisible.
+  id: 3041
+
+- action: door
+  comment: Lock Captain's door from outside
+  id: 3
+  room: 3110
+  state: locked
+
+- action: put
+  comment: Put brass key in desk
+  container: 3130
+  id: 3123
+
+===============================================================
+
+action: npc (spawns an NPC)
+    comment: is what is stated to all the players in the room when the NPC is spawned (reset).
+    id: id of the NPC to spawn
+    limit: max number of NPC's that can be in the room
+    room in which the NPC is spawned
+
+action: equip (equip an item to an npc) must come after an NPC
+    comment: comment that is stated when the reset occurs
+    id: corresponds to object (item) that will be equipt.
+    slot: inventory slot item is equip to
+
+action: give (gives an item to an NPC) (must be after an NPC)
+    comment: what is stated when give is performed
+    id: id of object to be given
+
+=================================================================
+
+action: object (place an object on the ground)
+    comment: comment when item is spawned
+    id: id of object that is spawned
+    room: room where object is spawned
+
+action: put (places an object inside another "container" object) (must happen after an object tag)
+            (note there is no such thing as a container object and thus any object can be infront of this action)
+    comment: comment to display when action is performed
+    container: id of the container object that the object (specified below by id) will be placed in
+    id: id of object that will be placed in the container object.
+
+==================================================================
+
+action: door (changes the state of a door)
+    comment: what is stated when the door changes state.
+    id: id of the door locking actions.  in other words there are atleast 3 other "actions: door" in the yaml file with id's 0, 1, 2
+    room: id of room whose state will be changed.
+    state: new state for the room
+
+
+NOTE:
+    comments are optional on all actions
 
 
 _____________________________________________________________________________________
