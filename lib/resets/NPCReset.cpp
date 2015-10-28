@@ -9,7 +9,5 @@ NPCReset::~NPCReset() {
 }
 
 void NPCReset::performReset() {
-
-    std::cout << "your reset was performed" << std::endl;
-
+    std::cout << "your NPC reset was performed" << std::endl;
 }
