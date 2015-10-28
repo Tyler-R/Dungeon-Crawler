@@ -16,10 +16,10 @@ User::User(){
   setUserType(true);
   setUserName("testUser");
   setPassword("password");
-  playerHealth = playerMaxHealth;
   usedDefaultConstructor = true;
-
-  /*inventory = new Inventory(); */
+  userStats = new abilityStats();
+  playerLevel = START_LEVEL;
+  inventory = new Inventory();
 }
 
 /* User constructor for setting up basic information */
@@ -28,15 +28,15 @@ User::User(bool isAdmin, string userName, string password, Room currentRoom) {
   setUserName(userName);
   setPassword(password);
   setRoom(currentRoom);
-  playerHealth = playerMaxHealth;
   usedDefaultConstructor = false;
-
-  /* inventory = new Inventory(); */
+  userStats = new abilityStats();
+  playerLevel = START_LEVEL;
+  inventory = new Inventory();
 }
 
 /* Ensures deletion of the player's inventory and currentRoom if default constructor used*/
 User::~User() {
-   /* delete inventory; */
+  delete inventory;
 }
 
 void User::setUserName(string userName){
@@ -63,16 +63,6 @@ bool User::getUserType(){
   return isAdmin;
 }
 
- /*
-void User::setInventory(Inventory inventory){
-  this->inventory = inventory;
-}
-
-vector<Item> User::getInventory() {
-  return inventory;
-}
-*/
-
 void User::setRoom(Room currentRoom){
   this->currentRoom = currentRoom;
 }
@@ -81,64 +71,24 @@ Room User::getRoom(){
   return currentRoom;
 }
 
-void User::setPlayerHealth(int playerHealth){
-  this->playerHealth = playerHealth;
-}
-
-int User::getPlayerHealth(){
-  return playerHealth;
-}
-
-void User::setPlayerStrength(int playerAttack){
-  this->playerStrength = playerStrength;
-}
-
-int User::getplayerStrength(){
-  return playerStrength;
-}
-
-void User::setPlayerDefense(int playerDefense){
-  this->playerDefense = playerDefense;
-}
-
-int User::getPlayerDefense(){
-  return playerDefense;
-}
-
-void User::setPlayerIntelligence(int playerIntelligence){
-  this->playerIntelligence = playerIntelligence;
-}
-
-int User::getPlayerIntelligence(){
-  return playerIntelligence;
-}
-
-void User::setPlayerDexterity(int playerDexterity){
-  this->playerDexterity = playerDexterity;
-}
-
-int User::getPlayerDexterity(){
-  return playerDexterity;
-}
-
-void User::setPlayerCharisma(int playerCharmisma){
-  this->playerCharmisma = playerCharisma;
-}
-
-int User::getPlayerCharisma(){
-  return playerCharmisma;
-}
-
-void User::levelPlayerUp(){
+//TODO: Add method calls to increase player stats appropriately
+void User::levelUp(){
   playerLevel += 1;
 }
 
-int User::getPlayerLevel(){
+int User::getLevel(){
   return playerLevel;
 }
 
-void User::increasePlayerXP(int additionalXP){
+/* Inceases XP and call levelUP if user has passed next 1000XP increment */
+void User::increaseXP(int additionalXP){
   playerXP += additionalXP;
+
+  int levelUpCalc = playerXP / playerLevel;
+
+  if(playerLevel = levelUpCalc){
+    levelUp();
+  }
 }
 
 int User::getPlayerXP(){
@@ -151,4 +101,56 @@ void User::setLivingStatus(bool isAlive){
 
 bool User::getLivingStatus(){
   return isAlive;
+}
+
+/* ABILITY STAT GETTERS */
+
+int User::getCharisma(){
+  return userStats.getCharisma();
+}
+
+int User::getDefense(){
+  return userStats.getDefense();
+}
+
+int User::getDexterity(){
+  return userStats.getDexterity;
+}
+
+int User::getHealth(){
+  return userStats.getHealth();
+}
+
+int User::getIntelligence(){
+  return userStats.getIntelligence();
+}
+
+int User::getStrength(){
+  return userStats.getStrength();
+}
+
+/* ABILTY STAT SETTERS */
+
+void User::setCharisma(int charmisma){
+  userStats.setCharisma(charsima);
+}
+
+void User::setDefense(int defense){
+  userStats.setDefense(defense);
+}
+
+void User::setDexterity(int dexterity){
+  userStats.setDexterity(dexterity);
+}
+
+void User::setHealth(int health){
+  userStats.setHealth(health);
+}
+
+void User::setIntelligence(int intelligence){
+  userStats.setIntelligence(intelligence);
+}
+
+void User::setStrength(int strength){
+  userStats.setStrength(strength);
 }

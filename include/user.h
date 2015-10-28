@@ -10,80 +10,65 @@ Created By: Jordan Nielsen
 using namespace std;
 
 class User {
-	public:
-		User();
+  public:
+    User();
 
-		/*User constructor for setting up basic information*/
-		User(bool isAdmin, string userName, string password, Room currentRoom);
+    /*User constructor for setting up basic information*/
+    User(bool isAdmin, string userName, string password, Room currentRoom);
 
-		~User();
+    ~User();
 
-		/*
-		void createUserName();
+    void setUserName(string userName);
+    string getUserName();
 
-		void createPassword();
-		*/
+    void setPassword(string password);
+    string getPassword();
 
-		void setUserName(string userName);
-		string getUserName();
-
-		void setPassword(string password);
-		string getPassword();
-
-		void setUserType(bool isAdmin);
-		bool getUserType();
-
-		/*void setInventory(Inventory inventory);
-		vector<Item> getInventory;
-`		*/
+    void setUserType(bool isAdmin);
+    bool getUserType();
 		
-		void setRoom(Room currentRoom);
-		Room getRoom();
+    void setRoom(Room currentRoom);
+    Room getRoom();
 
-		void setPlayerHealth(int health);
-		int getPlayerHealth();
+    void levelUp();
+    int getLevel();
 
-		void setPlayerStrength(int attack);
-		int getPlayerStrength();
+    void increaseXP(int additionalXP);
+    int getXP();
 
-		void setPlayerDefense(int defense);
-		int getPlayerDefense();
+    void setLivingStatus(bool isAlive);
+    bool getLivingStatus();
 
-		void setPlayerIntelligence(int playerIntelligence);
-		int getPlayerIntelligence();
-
-		void setPlayerDexterity(int playerDexterity);
-		int getPlayerDexterity();
-
-		void setPlayerCharisma(int playerCharisma);
-		int getPlayerCharisma();
-
-		void levelPlayerUp();
-		int getPlayerLevel();
-
-		void increasePlayerXP(int additionalXP);
-		int getPlayerXP();
-
-		void setLivingStatus(bool isAlive);
-		bool getLivingStatus();
+    int getCharisma();
+    int getDefense();
+    int getDexterity();
+    int getHealth();
+    int getIntelligence();
+    int getStrength();
 		
-	private:
-		string userName;
-		string password;
-		Room currentRoom;
-		/* vector<Item> inventory; */
-		bool isAdmin;
-		bool isAlive;
-		bool usedDefaultConstructor;
+ private:
+    const int START_LEVEL = 1;
+    
+    string userName;
+    string password;
+    Room currentRoom;
+    userAbilityStats userStats;
+    int playerLevel;
 
-		const int playerMaxHealth = 10;
-		int playerHealth;
-		int playerStrength;
-		int playerDefense;
-		int playerIntelligence;
-		int playerDexterity;
-		int playerCharisma;
+    Inventory inventory;
+		
+    bool usedDefaultConstructor;
 
-		int playerLevel;
-		int playerXP;
+    int playerLevel;
+    int playerXP;
+
+    bool isAdmin;
+    bool isAlive;
+
+    void setCharisma(int charisma);
+    void setDefense(int defense);
+    void setDexterity(int dexterity);
+    void setHealth(int health);
+    void setIntelligence(int intelligence);
+    void setStrength(int strength);
 };

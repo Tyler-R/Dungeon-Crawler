@@ -1,3 +1,4 @@
+add_subdirectory(abilityStats)
 add_subdirectory(authentication)
 add_subdirectory(client)
 add_subdirectory(cmd_module)
