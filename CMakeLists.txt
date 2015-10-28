@@ -20,6 +20,8 @@ add_subdirectory(ext)
 add_subdirectory(lib)
 add_subdirectory(tools)
 
+add_subdirectory(test)
+
 
 add_executable(Authentication lib/authentication/Authentication.cpp
 				lib/authentication/FileIO.cpp
