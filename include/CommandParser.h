@@ -1,8 +1,10 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <memory>
 #include <boost/tokenizer.hpp>
 #include "world.h"
+#include "room.h"
 // #include "CommandSet.h"
 
 

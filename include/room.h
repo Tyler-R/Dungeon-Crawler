@@ -2,6 +2,7 @@
 Created By: Sarah Kim Dao
 */
 
+#pragma once
 
 #include <iostream>
 #include <vector>

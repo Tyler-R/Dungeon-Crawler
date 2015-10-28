@@ -14,53 +14,14 @@ string CommandParser::validateLookArgv(vector<string> &cmd){
     check whether input has a match */
     /*same goes to same kind of commands that require a lookup
     to the players current postion and objects*/
-    if(cmd.at(1).compare("north") ==0){
-      return newWorld.getCurrentRoom()->lookNorth();
-    }
-    else if (cmd.at(1).compare("south") ==0){
-      return newWorld.getCurrentRoom()->lookSouth();
-    }
-    else if (cmd.at(1).compare("west") ==0){
-      return newWorld.getCurrentRoom()->lookWest();
-    }
-    else if (cmd.at(1).compare("east") ==0){
-      return newWorld.getCurrentRoom()->lookEast();
-    }
-    else if (cmd.at(1).compare("up") == 0){
-      return newWorld.getCurrentRoom()->lookUp();
-    }
-    else if (cmd.at(1).compare("down") ==0){
-      return newWorld.getCurrentRoom()->lookDown();
-    }
-    else if (cmd.at(1).compare("around") ==0){
-      return newWorld.getCurrentRoom()->lookAround();
-    }
-    else{
-      return newWorld.getCurrentRoom()->getObjDesc(cmd.at(1));
-    }
+
+    return newWorld.getCurrentRoom()->lookAt(cmd.at(1));
+
 }
 string CommandParser::validateMoveArgv(vector<string> &cmd){
-    if(cmd.at(1).compare("north") == 0){
-        return newWorld.getCurrentRoom()->goNorth(newWorld.getCurrentRoom());
-    }
-    else if (cmd.at(1).compare("south") == 0 ){
-        return newWorld.getCurrentRoom()->goSouth(newWorld.getCurrentRoom());
-    }
-    else if (cmd.at(1).compare("east") == 0){
-        return newWorld.getCurrentRoom()->goEast(newWorld.getCurrentRoom());
-    }
-    else if (cmd.at(1).compare("west") == 0){
-        return newWorld.getCurrentRoom()->goWest(newWorld.getCurrentRoom());
-    }
-    else if (cmd.at(1).compare("up") ==0){
-        return newWorld.getCurrentRoom()->goUp(newWorld.getCurrentRoom());
-    }
-    else if (cmd.at(1).compare("down")==0){
-        return newWorld.getCurrentRoom()->goDown(newWorld.getCurrentRoom());
-    }
-    else {
-        return "\"" +cmd.at(1)+"\"" + " is not a valid input";
-    }
+  shared_ptr<Room> currentRoom(newWorld.getCurrentRoom());
+
+    return newWorld.getCurrentRoom()->moveTo(cmd.at(1), currentRoom);
 }
 
 void CommandParser::reformatTokens(vector<string>& words){

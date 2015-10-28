@@ -95,7 +95,7 @@ bool Room::findKeyword(string s){
 	   	}
 	}
 		return false;
-	
+
 }
 void Room::printKeywords(){ //To be used by the Room's Test Module only!
 	for (auto & keyword : keywordList) {
@@ -107,7 +107,7 @@ void Room::printKeywords(){ //To be used by the Room's Test Module only!
 //LookAround
 
 vector<string> Room::getDoorDescList(){
-	
+
 	vector<string> doorDescriptions;
 
 	for (auto & door : doorList) {
@@ -115,7 +115,7 @@ vector<string> Room::getDoorDescList(){
 	}
 
 	return doorDescriptions;
-	
+
 }
 
 
@@ -130,7 +130,7 @@ vector<string> Room::getObjList(){
 
 string Room::lookAround(){
 
-		
+
 		string objRoom = "";
 
 		/*
@@ -141,11 +141,11 @@ string Room::lookAround(){
 		*/
 
 		return getExtDesc()+ '\n' + objRoom;
-		
+
 	}
 
 string Room::lookAt(string objName){
-	
+
 	//Search by Location Name
 	for (auto & door : doorList) {
 		if ( door->getLeadsTo()->findKeyword(objName)){
@@ -168,7 +168,7 @@ string Room::lookAt(string objName){
 	*/
 
 	return "\""+objName+"\""+" not found!\n";
-	
+
 }
 
 string Room::moveTo(string dir, shared_ptr<Room> &currentRoom){
@@ -205,7 +205,3 @@ Door* Room::getDoor(string inputDir){
 	}
 	return NULL;
 }
-
-
-
-
