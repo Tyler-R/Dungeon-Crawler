@@ -31,7 +31,7 @@ class Room {
 	public: 
 
 		Room();
-		Room(Room &obj);
+		Room(Room &room);
 
 		Room(string inputId, string inputName, string inputDesc, string inputExtDesc); 
 
@@ -55,10 +55,9 @@ class Room {
 
 		void addKeyword(string s);
 		void removeKeyword(string s);
-		string findKeyword(string s);
-		void printKeywords(); //To be used by the Room's Test Module only!
+		bool findKeyword(string s);
 
-		void moveTo(string dir);
+		void printKeywords(); //To be used by the Room's Test Module only!	
 
 		vector<string> getDoorDescList();	
 		vector<string> getObjList();
@@ -66,9 +65,12 @@ class Room {
 		string lookAround();
 		string lookAt(string objName);
 
+		string moveTo(string dir, shared_ptr<Room> &currentRoom);
+
 		void createNPC();
-		void addDoor(string inputId, string inputDir, string inputDesc, Room &inputRoom);
-		Door* findDoor(string inputDir);
+		void addDoor(string inputId, string inputDir, string inputDesc, shared_ptr<Room> inputRoom);
+
+		Door* getDoor(string inputDir);
 };
 
 
@@ -79,7 +81,7 @@ class Door {
 		string id;
 		string dir;
 		string desc;  	  	   	
-		Room* leadsTo;
+		shared_ptr<Room> leadsTo;
 
 		vector<string> keywordList;
 			
@@ -87,7 +89,7 @@ class Door {
 	
 		Door();
 
-		Door(string inputId, string inputDir, string inputDesc, Room &inputLeadsTo);
+		Door(string inputId, string inputDir, string inputDesc, shared_ptr<Room> &inputLeadsTo);
 
 		Door(Door &obj);
 
@@ -96,7 +98,7 @@ class Door {
 		void setId(string s);
 		void setDir(string s);
 		void setDesc(string s);
-		void setLeadsTo(Room &r);
+		void setLeadsTo(shared_ptr<Room> r);
 
 
 		string getId();
@@ -105,11 +107,10 @@ class Door {
 
 		vector<string> getKeywords();
 
-		Room* getLeadsTo();
+		shared_ptr<Room> getLeadsTo();
 		void addKeyword(string s);
 		void removeKeyword(string s);
-		string findKeyword(string s);
-
+		bool findKeyword(string s);
 		void printKeywords(); //To be used by the Door's Test Module only!
 
 };

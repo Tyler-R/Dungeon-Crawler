@@ -5,7 +5,7 @@ This is a game class that contains attributes and methods for doors that allow t
 Created By: Sarah Kim Dao
 */
 
-
+#include <strings.h>
 #include "room.h"
 
 Door::Door(){
@@ -15,11 +15,13 @@ Door::Door(){
 	desc = "no_desc";  	
 }
 
-Door::Door(string inputId, string inputDir, string inputDesc, Room &inputLeadsTo){
+Door::Door(string inputId, string inputDir, string inputDesc, shared_ptr<Room> &inputLeadsTo){
 	id = inputId;
-	leadsTo = &inputLeadsTo;
+	leadsTo = inputLeadsTo;
 	dir = inputDir;
 	desc = inputDesc;  
+
+	keywordList.push_back(inputDir);
 }
 
 Door::Door(Door &obj){
@@ -49,8 +51,8 @@ void Door::setDesc(string s){
 	desc = s;
 }
 
-void Door::setLeadsTo(Room &r){
-	leadsTo = &r;
+void Door::setLeadsTo(shared_ptr<Room> r){
+	leadsTo = r;
 }
 
 
@@ -70,7 +72,7 @@ vector<string> Door::getKeywords(){
 	return keywordList;
 }
 
-Room* Door::getLeadsTo(){
+shared_ptr<Room> Door::getLeadsTo(){
 	return leadsTo;
 }
 		
@@ -83,13 +85,13 @@ void Door::removeKeyword(string s){
 }
 	
 		
-string Door::findKeyword(string s){
-
-	if(find(keywordList.begin(), keywordList.end(), s) != keywordList.end()){
-		return "Keyword found!";
+bool Door::findKeyword(string s){
+	for (auto & keyword : keywordList) {
+		if(0 == strcasecmp(s.c_str(), keyword.c_str())){
+			return true;
+	   	}
 	}
-		return "Keyword not found!";
-	
+	return false;
 }
 
 
