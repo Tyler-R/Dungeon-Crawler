@@ -21,7 +21,6 @@ class User {
     void setUserName(string userName);
     string getUserName();
 
-    void setPassword(string password);
     string getPassword();
 
     void setUserType(bool isAdmin);
@@ -39,6 +38,8 @@ class User {
     void setLivingStatus(bool isAlive);
     bool getLivingStatus();
 
+    void notifySession(string notification);
+
     int getCharisma();
     int getDefense();
     int getDexterity();
@@ -52,6 +53,7 @@ class User {
     string userName;
     string password;
     Room currentRoom;
+    Session session;
     userAbilityStats userStats;
     int playerLevel;
 
@@ -64,6 +66,8 @@ class User {
 
     bool isAdmin;
     bool isAlive;
+
+    void setPassword(string password);
 
     void setCharisma(int charisma);
     void setDefense(int defense);

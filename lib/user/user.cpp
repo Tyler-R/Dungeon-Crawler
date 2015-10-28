@@ -8,6 +8,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "Session.h"
 
 using namespace std;
 
@@ -23,11 +24,12 @@ User::User(){
 }
 
 /* User constructor for setting up basic information */
-User::User(bool isAdmin, string userName, string password, Room currentRoom) {
+User::User(bool isAdmin, string userName, string password, Room currentRoom, Session session) {
   setUserType(isAdmin);
   setUserName(userName);
   setPassword(password);
   setRoom(currentRoom);
+  this->session = session;
   usedDefaultConstructor = false;
   userStats = new abilityStats();
   playerLevel = START_LEVEL;
@@ -101,6 +103,10 @@ void User::setLivingStatus(bool isAlive){
 
 bool User::getLivingStatus(){
   return isAlive;
+}
+
+void User::notifySession(string notification){
+  session.sendMessage(notification);
 }
 
 /* ABILITY STAT GETTERS */
