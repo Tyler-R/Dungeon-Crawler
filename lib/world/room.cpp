@@ -35,6 +35,10 @@ Room::Room(Room &room){
 	    keywordList.push_back(keyword);
 	}
 
+	for (auto & door : room.getDoorList()) {
+	    doorList.push_back(door);
+	}
+
 }
 
 Room::~Room(){
@@ -103,6 +107,9 @@ void Room::printKeywords(){ //To be used by the Room's Test Module only!
 	}
 }
 
+vector<Door*> Room::getDoorList(){
+	return doorList;
+}
 
 //LookAround
 
@@ -146,7 +153,12 @@ string Room::lookAround(){
 
 string Room::lookAt(string objName){
 
-	//Search by Location Name
+
+	if ( findKeyword(objName) ){
+		return extDesc;
+	}
+
+
 	for (auto & door : doorList) {
 		if ( door->getLeadsTo()->findKeyword(objName)){
 			return door->getLeadsTo()->getDesc();
@@ -170,17 +182,6 @@ string Room::lookAt(string objName){
 	return "\""+objName+"\""+" not found!\n";
 
 }
-
-string Room::moveTo(string dir, shared_ptr<Room> &currentRoom){
-	for (auto & door : doorList) {
-		if(door->findKeyword(dir) || door->getLeadsTo()->findKeyword(dir)){		//will search both door keywords and room keywords for next destination
-			currentRoom = (door->getLeadsTo());
-			return (currentRoom)->getDesc();
-		}
-	}
-	return "Cannot go there";
-}
-
 
 void Room::createNPC(){
 		/*

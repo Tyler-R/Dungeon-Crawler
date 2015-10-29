@@ -24,11 +24,12 @@ class World {
 
 		shared_ptr<Room> getCurrentRoom();
 
-
 		vector<shared_ptr<Room>>  getRoomList();
 
 		shared_ptr<Room> getRoom(int i);
 
 		void setCurrentRoom(shared_ptr<Room> newRoom);
+
+		string moveTo(string dir);
 
 };

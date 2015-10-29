@@ -21,7 +21,7 @@ string CommandParser::validateLookArgv(vector<string> &cmd){
 string CommandParser::validateMoveArgv(vector<string> &cmd){
   shared_ptr<Room> currentRoom(newWorld.getCurrentRoom());
 
-    return newWorld.getCurrentRoom()->moveTo(cmd.at(1), currentRoom);
+    return newWorld.moveTo(cmd.at(1));
 }
 
 void CommandParser::reformatTokens(vector<string>& words){

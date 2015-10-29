@@ -60,13 +60,15 @@ class Room {
 
 		void printKeywords(); //To be used by the Room's Test Module only!	
 
+		vector<Door*> getDoorList();
+
 		vector<string> getDoorDescList();	
 		vector<string> getObjList();
 	
 		string lookAround();
 		string lookAt(string objName);
 
-		string moveTo(string dir, shared_ptr<Room> &currentRoom);
+		void changeLocation(shared_ptr<Room> &oldRoom, shared_ptr<Room> & newRoom);
 
 		void createNPC();
 		void addDoor(string inputId, string inputDir, string inputDesc, shared_ptr<Room> inputRoom);

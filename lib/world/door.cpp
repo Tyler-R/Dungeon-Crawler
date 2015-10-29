@@ -17,7 +17,7 @@ Door::Door(){
 
 Door::Door(string inputId, string inputDir, string inputDesc, shared_ptr<Room> &inputLeadsTo){
 	id = inputId;
-	leadsTo = inputLeadsTo;
+	leadsTo = inputLeadsTo;	//LEAK
 	dir = inputDir;
 	desc = inputDesc;  
 
@@ -26,7 +26,7 @@ Door::Door(string inputId, string inputDir, string inputDesc, shared_ptr<Room> &
 
 Door::Door(Door &obj){
 	id = obj.getId();
-	leadsTo = obj.getLeadsTo();
+	leadsTo = obj.getLeadsTo(); //LEAK
 	dir = obj.getDir();
 	desc = obj.getDesc();  
 
