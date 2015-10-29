@@ -66,16 +66,22 @@ public:
 
     // descriptions
     void addDescription(string s);
-    void addKeyword(vector<string>& s);
     void addLongDesc(string s);
     void addShortDesc(string s);
 
     string getDescription()const;
-    vector<string> getKeyword()const;
     string getLongDesc()const;
     string getShortDesc()const;
-
+    // keyword
+    void addKeyword(vector<string>& s);
+    bool searchKeyword(string s) const;
+    void removeKeyword(string s);
+    void removeAllKeyword();
+    vector<string> getKeyword()const;
     void printVector() const;
+
+
+
 
 	// helper function
 	void checkNPC() const;	// print out all attributes of npc

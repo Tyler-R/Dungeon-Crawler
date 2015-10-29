@@ -53,13 +53,9 @@ NPC::NPC(string id){
 //    delete isAlive;
 //}
 
+// Description functions
 void NPC::addDescription(string s){
     npcDescription = s;
-}
-void NPC::addKeyword(vector<string>& s){
-    for(int i=0; i < s.length(); i++){
-        keyword.pushback(s[i]); 
-    }
 }
 void NPC::addLongDesc(string s){
     longDesc = s;
@@ -71,16 +67,43 @@ void NPC::addShortDesc(string s){
 string NPC::getDescription()const{
     return npcDescription;
 }
-vector<string> NPC::getKeyword()const{
-    return keyword;
-}
 string NPC::getLongDesc()const{
     return longDesc;
 }
 string NPC::getShortDesc()const{
     return shortDesc;
 }
-
+// Keyword functions
+void NPC::addKeyword(vector<string>& s){
+    for(int i=0; i < s.length(); i++){
+        keyword.push_back(s[i]); 
+    }
+}
+bool NPC::searchKeyword(string s)const{
+    for(int i=0; i < keyword.length(); i++){
+        if(keyword[i] == s) {
+            return true;
+        }
+    }
+    return false;
+}
+void removeKeyword(string s) {
+    if(searchKeyword(s) == true){
+        for(int i=0; i < keyword.length(); i++){
+            if(keyword[i] == s){
+                keyword.erase(keyword.begin()+i);
+            }
+        }
+    }else{
+        cout << "The Keyword are not exist!!!"<<endl;
+    }
+}
+void removeAllKeyword(){
+    keyword.clear();
+}
+vector<string> NPC::getKeyword()const{
+    return keyword;
+}
 void NPC::printVector()const{
     for(int i = 0; i < keyword.length(); i++){
         cout <<keyword[i] << endl;
