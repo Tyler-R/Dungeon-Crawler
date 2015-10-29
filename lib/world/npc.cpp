@@ -11,32 +11,36 @@
 
 
 // constructor
-NPC::NPC(string type, string id){
-	if (type == "monster") {
-		Monster tempMonster;
+// NPC::NPC(string type, string id){
+// 	if (type == "monster") {
+// 		Monster tempMonster;
         
-        setID(id);
-		setName(tempMonster.getName());
-        setType(type);
-        setHP(tempMonster.getHP());
-        setAlive(tempMonster.getAlive());
-        setDamage(tempMonster.getDamage());
-        setDes(tempMonster.getDes());
+//         setID(id);
+// 		setName(tempMonster.getName());
+//         setType(type);
+//         setHP(tempMonster.getHP());
+//         setAlive(tempMonster.getAlive());
+//         setDamage(tempMonster.getDamage());
+//         setDes(tempMonster.getDes());
         
-    }else if(type == "creature") {
-        Creature tempCreature;
+//     }else if(type == "creature") {
+//         Creature tempCreature;
         
-        setID(id);
-        setName(tempCreature.getName());
-        setType(type);
-        setHP(tempCreature.getHP());
-        setAlive(tempCreature.getAlive());
-        setDamage(int(0));
-        setDes(tempCreature.getDes());
+//         setID(id);
+//         setName(tempCreature.getName());
+//         setType(type);
+//         setHP(tempCreature.getHP());
+//         setAlive(tempCreature.getAlive());
+//         setDamage(int(0));
+//         setDes(tempCreature.getDes());
         
-    }else {
-		cout << "!!!!!! no such NPC !!!!!! \n";
-	}
+//     }else {
+// 		cout << "!!!!!! no such NPC !!!!!! \n";
+// 	}
+// }
+
+NPC::NPC(string id){
+    setID();
 }
 
 // destructor
@@ -48,6 +52,40 @@ NPC::NPC(string type, string id){
 //    delete npcDamage;
 //    delete isAlive;
 //}
+
+void NPC::addDescription(string s){
+    npcDescription = s;
+}
+void NPC::addKeyword(vector<string>& s){
+    for(int i=0; i < s.length(); i++){
+        keyword.pushback(s[i]); 
+    }
+}
+void NPC::addLongDesc(string s){
+    longDesc = s;
+}
+void NPC::addShortDesc(string s){
+    shortDesc = s;
+}
+
+string NPC::getDescription()const{
+    return npcDescription;
+}
+vector<string> NPC::getKeyword()const{
+    return keyword;
+}
+string NPC::getLongDesc()const{
+    return longDesc;
+}
+string NPC::getShortDesc()const{
+    return shortDesc;
+}
+
+void NPC::printVector()const{
+    for(int i = 0; i < keyword.length(); i++){
+        cout <<keyword[i] << endl;
+    }
+}
 
 
 void NPC::setID(string id) {
@@ -106,6 +144,18 @@ string NPC::getDes() const{
     return npcDes;
 }
 
+// action
+void NPC::getHit() {
+    if(npcHP > 1) { // reduce npc' HP by 1
+        npcHP = npcHP - 1;
+    }
+    if(npcHP == 0){ // npc died
+        isAlive = false;
+    }
+}
+
+
+
 // helper function
 void NPC::checkNPC() const{
     std::cout << "          NPC check function \n";
@@ -124,3 +174,5 @@ void NPC::checkNPC() const{
     std::cout << "description: \n" << getDes();
     std::cout << "\n";
 }
+
+
