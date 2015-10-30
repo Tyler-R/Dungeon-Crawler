@@ -9,6 +9,7 @@ Created By: Sarah Kim Dao
 #include "room.h"
 
 
+
 Room::Room(){
 	id = "no_id";
 	name = "no_name";
@@ -45,7 +46,6 @@ Room::~Room(){
 	for (auto & door : doorList) {
 	    delete door;
 	}
-	//cout << endl << "room " << getName() << " deleted." endl;
 }
 
 string Room::getId(){
@@ -69,6 +69,14 @@ vector<string> Room::getKeywords(){
 	return keywordList;
 }
 
+vector<NPC*> Room::getNPCs(){
+	return npcList;
+}
+
+vector<Item*> Room::getItems(){
+	return itemList;
+}
+
 
 void Room::setId(string s){
 	id = s;
@@ -90,9 +98,16 @@ void Room::addKeyword(string s){
 	keywordList.push_back(s);
 }
 
-void Room::removeKeyword(string s){
-	//Removes Keyword from KeywordList
+void Room::addKeywords(vector<string> inputKeywords){
+	for (auto & keyword : inputKeywords) {
+	    addKeyword(keyword);
+	}
 }
+
+void Room::removeKeyword(string s){
+	//
+}
+
 bool Room::findKeyword(string s){
 	for (auto & keyword : keywordList) {
 		if(0 == strcasecmp(s.c_str(), keyword.c_str())){
@@ -100,8 +115,8 @@ bool Room::findKeyword(string s){
 	   	}
 	}
 		return false;
-
 }
+
 void Room::printKeywords(){ //To be used by the Room's Test Module only!
 	for (auto & keyword : keywordList) {
 	    cout << keyword << endl;
@@ -174,8 +189,14 @@ string Room::lookAt(string objName){
 
 	/*
 	for (auto &npc : npcList){
-		if(objName.compare(npc->getName())==0){
-			return npc->getDes();
+		if(npc->findKeyword(objName)){
+			return npc->getDesc();
+		}
+	}
+
+	for (auto &item : itemList){
+		if(item->findKeyword(objName)){
+			return item->getDesc();
 		}
 	}
 	*/
@@ -184,7 +205,7 @@ string Room::lookAt(string objName){
 
 }
 
-void Room::createNPC(){
+//void Room::createNPC(){
 		/*
 		NPC* monster = new NPC("monster","id:111");
 		NPC* creature = new NPC("creature","id:222");
@@ -192,18 +213,9 @@ void Room::createNPC(){
 		npcList.push_back(monster);
 		npcList.push_back(creature);
 		*/
-}
+//}
 
 
 void Room::addDoor(string inputId,string inputDir, string inputDesc, shared_ptr<Room>inputRoom){
 	doorList.push_back(new Door(inputId,inputDir,inputDesc, inputRoom));
-}
-
-Door* Room::getDoor(string inputDir){
-	for (auto & door : doorList) {
-	    if (inputDir.compare(door->getDir())==0){
-		return door;
-	    }
-	}
-	return NULL;
 }

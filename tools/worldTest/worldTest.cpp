@@ -43,6 +43,7 @@ int main() {
 	newWorld.getCurrentRoom()->printKeywords();
 
 	cout << endl << "--Testing Lobby's Keywords--" << endl;
+	
 	cout << endl << "--Looking at 'Lobby'--" << endl;
 	cout << newWorld.getCurrentRoom()->lookAt("Lobby") << endl;
 
@@ -55,7 +56,7 @@ int main() {
 	cout << endl << "--Looking at 'caboose'--" << endl;
 	cout << newWorld.getCurrentRoom()->lookAt("caboose") << endl;
 
-	cout << endl << "--Moving to Bathroom--" << endl;
+	cout << endl << "--Moving 'north' from bathroom--" << endl;
 
 	cout << newWorld.moveTo("north") << endl;	
 
@@ -67,6 +68,8 @@ int main() {
 
 	cout << endl << "--Getting List of Objects--" << endl;
 
+
+
 	for (auto & door : newWorld.getCurrentRoom()->getDoorDescList()) {
 	    cout << door << endl;
 	}
@@ -77,13 +80,16 @@ int main() {
 	    cout << door << endl;
 	}
 
+	vector<string> bathroomKeywords;
+
+	bathroomKeywords.push_back("Washroom");
+	bathroomKeywords.push_back("Restroom");
+	bathroomKeywords.push_back("Powder Room");
+
 	cout << endl << "--Adding New Keywords to Bathroom--" << endl;
-	newWorld.getCurrentRoom()->addKeyword("Washroom");
-	newWorld.getCurrentRoom()->addKeyword("Restroom");
-	newWorld.getCurrentRoom()->addKeyword("Powder Room");
+	newWorld.getCurrentRoom()->addKeywords(bathroomKeywords);
 
 	newWorld.getCurrentRoom()->printKeywords();
-
 
 	cout << endl << "--Moving to Shower--" << endl;
 
@@ -129,13 +135,35 @@ int main() {
 	    cout << door << endl;
 	}
 
+	cout << endl << "--Moving to 'east' (an invalid location)--" << endl;
 
+	cout << newWorld.moveTo("east") << endl;	
 
+	cout << endl << "--Moving to 'library' (an invalid location)--" << endl;
 
+	cout << newWorld.moveTo("library") << endl;	
 
+	cout << endl << "--Moving to 'foyer'--" << endl;
 
+	cout << newWorld.moveTo("foyer") << endl;	
 
+	cout << endl << "--Looking at Current Room--" << endl;
+	cout << newWorld.getCurrentRoom()->getDesc() << endl;
 
+	cout << endl << "--Getting a Good Look at the Room--" << endl;
+	cout << newWorld.getCurrentRoom()->lookAround()  << endl;
+
+	cout << endl << "--Getting List of Objects--" << endl;
+
+	for (auto & door : newWorld.getCurrentRoom()->getDoorDescList()) {
+	    cout << door << endl;
+	}
+
+	cout << endl << "--Getting List of Doors--" << endl;
+
+	for (auto & door : newWorld.getCurrentRoom()->getObjList()) {
+	    cout << door << endl;
+	}
 
 
 

@@ -10,6 +10,12 @@ Created By: Sarah Kim Dao
 #include <algorithm>
 #include <memory>
 
+#include "npc.h"
+#include "creature.h"
+#include "monster.h"
+#include "item.h"
+
+
 using namespace std;
 
 class Door;
@@ -24,8 +30,9 @@ class Room {
 		vector<string> keywordList;
 
 		vector<Door*> doorList;
-		//vector<NPC> npcList;
-		//vector<User> userList;
+		vector<NPC*> npcList;
+		vector<Item*> itemList;
+		//vector<User*> userList;
 		
 	
 			
@@ -44,8 +51,8 @@ class Room {
 		string getExtDesc();
 
 		vector<string> getKeywords();
-
-		//vector<NPC*> getNPCs();
+		vector<NPC*> getNPCs();
+		vector<Item*> getItems();
 		//vector<User> getUsers();	
 
 		
@@ -55,25 +62,33 @@ class Room {
 		void setExtDesc(string s);
 
 		void addKeyword(string s);
+		void addKeywords(vector<string> inputKeywords);
 		void removeKeyword(string s);
 		bool findKeyword(string s);
-
 		void printKeywords(); //To be used by the Room's Test Module only!	
 
+		void addDoor(string inputId, string inputDir, string inputDesc, shared_ptr<Room> inputRoom);
 		vector<Door*> getDoorList();
-
 		vector<string> getDoorDescList();	
 		vector<string> getObjList();
 	
 		string lookAround();
 		string lookAt(string objName);
 
-		void changeLocation(shared_ptr<Room> &oldRoom, shared_ptr<Room> & newRoom);
+		//void createNPC();
+		
+/*
+		void addUser();
+		void removeUser();
 
-		void createNPC();
-		void addDoor(string inputId, string inputDir, string inputDesc, shared_ptr<Room> inputRoom);
+		void addNPC();
+		void removeNPC();
 
-		Door* getDoor(string inputDir);
+		void additem();
+		void removeItem();
+
+		string roomAnnouncement(string news);
+*/
 };
 
 
@@ -84,7 +99,7 @@ class Door {
 		string id;
 		string dir;
 		string desc;  	  	   	
-		shared_ptr<Room> leadsTo;
+		weak_ptr<Room> leadsTo;
 
 		vector<string> keywordList;
 			
@@ -107,10 +122,9 @@ class Door {
 		string getId();
 		string getDir();
 		string getDesc();
+		shared_ptr<Room> getLeadsTo();
 
 		vector<string> getKeywords();
-
-		shared_ptr<Room> getLeadsTo();
 		void addKeyword(string s);
 		void removeKeyword(string s);
 		bool findKeyword(string s);
