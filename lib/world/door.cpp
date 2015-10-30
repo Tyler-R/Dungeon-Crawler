@@ -94,6 +94,10 @@ bool Door::findKeyword(string s){
 	return false;
 }
 
+void Door::setState(string newState) {
+	state = newState;
+}
+
 
 void Door::printKeywords(){
 	for (auto & keyword : keywordList) {

@@ -75,6 +75,8 @@ class Room {
 		string lookAround();
 		string lookAt(string objName);
 
+		void setDoorState(int doorNumber, string newState);
+
 		//void createNPC();
 		
 /*
@@ -102,6 +104,7 @@ class Door {
 		weak_ptr<Room> leadsTo;
 
 		vector<string> keywordList;
+		string state = "unlocked";
 			
 	public: 
 	
@@ -130,4 +133,6 @@ class Door {
 		bool findKeyword(string s);
 		void printKeywords(); //To be used by the Door's Test Module only!
 
+		void setState(string newState);
+		
 };

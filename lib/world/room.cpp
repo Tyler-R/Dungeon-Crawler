@@ -205,6 +205,10 @@ string Room::lookAt(string objName){
 
 }
 
+void Room::setDoorState(int doorNumber, string newState) {
+	doorList[doorNumber]->setState(newState); // probably needs tweaking
+}
+
 //void Room::createNPC(){
 		/*
 		NPC* monster = new NPC("monster","id:111");

@@ -14,6 +14,7 @@ public:
 
 private:
 
+protected:
     std::shared_ptr<Room> room;
 
 };

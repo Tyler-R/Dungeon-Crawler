@@ -11,5 +11,5 @@ DoorReset::~DoorReset() {
 
 void DoorReset::performReset() {
     std::cout << "your door reset was performed" << std::endl;
-    // room.setState(doorNumber, newDoorState); (not implemented yet)
+    room->setDoorState(doorNumber, newDoorState);
 }
