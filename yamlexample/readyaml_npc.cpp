@@ -21,9 +21,9 @@ void ClassName::functionName(string name){
 		}
 
 		// get npc id
-		int npcID=rootNode[i]["id"].as<int>();
-		// get npc keyword (string or vector<string>)
-		string npcKeyword=charNode[i]["keywords"].as<string>();
+		string npcID = rootNode[i]["id"].as<string>();
+		// get npc keyword (string or vector<string> ?)
+		string npcKeyword = rootNode[i]["keywords"].as<string>();
 		// get long desc
 		string npcLongDesc = rootNode[i]["longdesc"].as<string>();
 		// get short desc
