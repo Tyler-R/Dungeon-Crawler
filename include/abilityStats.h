@@ -40,4 +40,4 @@ class AbilityStats {
     int intelligence;
     int dexterity;
     int charisma;
-}
+};

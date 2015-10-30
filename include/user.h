@@ -4,6 +4,8 @@ Created By: Jordan Nielsen
 
 #include <iostream>
 #include "room.h"
+#include "abilityStats.h"
+//#include "session.h"
 #include <string>
 #include <vector>
 
@@ -13,8 +15,11 @@ class User {
   public:
     User();
 
+    //TODO: USE THIS ONE WHEN MERGED AND SESSION.H IS AVAILABLE!!
     /*User constructor for setting up basic information*/
-    User(bool isAdmin, string userName, string password, Room currentRoom);
+    // User(bool isAdmin, string userName, string password, Room currentRoom,Session session, string description);
+
+     User(bool isAdmin, string userName, string password, Room currentRoom, string description);
 
     ~User();
 
@@ -29,6 +34,9 @@ class User {
     void setRoom(Room currentRoom);
     Room getRoom();
 
+    void setDescription(string description);
+    string getDescription();
+
     void levelUp();
     int getLevel();
 
@@ -38,26 +46,35 @@ class User {
     void setLivingStatus(bool isAlive);
     bool getLivingStatus();
 
-    void notifySession(string notification);
 
+    // void notifySession(string notification);
+
+    /*
     int getCharisma();
     int getDefense();
     int getDexterity();
     int getHealth();
     int getIntelligence();
     int getStrength();
+    */
 		
  private:
     const int START_LEVEL = 1;
     
     string userName;
     string password;
+    string description;
     Room currentRoom;
-    Session session;
-    userAbilityStats userStats;
-    int playerLevel;
 
-    Inventory inventory;
+
+    // Session session;
+
+
+    //AbilityStats userStats;
+
+
+    // Inventory inventory;
+
 		
     bool usedDefaultConstructor;
 
@@ -69,10 +86,13 @@ class User {
 
     void setPassword(string password);
 
+    /*
     void setCharisma(int charisma);
     void setDefense(int defense);
     void setDexterity(int dexterity);
     void setHealth(int health);
     void setIntelligence(int intelligence);
     void setStrength(int strength);
+
+    */
 };

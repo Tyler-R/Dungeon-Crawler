@@ -3,7 +3,7 @@ add_subdirectory(authentication)
 add_subdirectory(client)
 add_subdirectory(cmd_module)
 add_subdirectory(creature)
-add_subdirectory(inventory)
+
 add_subdirectory(inWorld)
 add_subdirectory(item)
 add_subdirectory(monster)

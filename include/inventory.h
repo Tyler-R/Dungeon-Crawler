@@ -6,8 +6,30 @@ Created By: Jordan Nielsen
 #include <iostream>
 #include <string>
 #include <vector>
-
+//#include "item.h"
 using namespace std;
+
+
+class Item {
+
+ public:
+  Item(){
+    name = "Item 1";
+  }
+
+  ~Item(){}
+
+  string getName(){
+    return name;
+  }
+
+ private:
+  string name;
+};
+
+
+
+
 
 class Inventory {
 
@@ -16,7 +38,7 @@ class Inventory {
 
     ~Inventory();
 
-    vector<string> getInventory();
+    //vector<string> getInventory();
 
     string lookAtInventory();
 
@@ -31,9 +53,9 @@ class Inventory {
     string useItem(string item);
 
   private:
-    static const inventoryMaxSize = 10;
+    static const int inventoryMaxSize = 10;
     vector<Item> inventory;
 
   
-
+};
     

@@ -4,25 +4,26 @@
 	Created by: Jordan Nielsen
 */
 #include <algorithm>
+#include <string>
 #include "inventory.h"
-
-using namespace std;
 
 Inventory::Inventory(){
   inventory = new vector<Item>;
 }
 
-~Inventory::Inventory(){
+Inventory::~Inventory(){
   delete inventory;
 }
 
+/*
 vector<string> Inventory::getInventory(){
   vector<string> inventoryOutput = new vector<string>;
-  for(string item : inventory){
-    inventoryOutput.push_back(item);
+  for(Item item : inventory){
+    inventoryOutput.push_back(item.getName());
   }
   return inventoryOutput;
 }
+*/
 
 /* TODO: fix the naming of item keyword as well as find out if Item or Object class is used. */
 string Inventory::lookAtInventory(){

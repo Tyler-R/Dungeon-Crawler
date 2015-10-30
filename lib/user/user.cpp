@@ -18,27 +18,45 @@ User::User(){
   setUserName("testUser");
   setPassword("password");
   usedDefaultConstructor = true;
-  userStats = new abilityStats();
+  //userStats = new AbilityStats();
   playerLevel = START_LEVEL;
-  inventory = new Inventory();
+ 
+  //inventory = new Inventory();
 }
 
+//TODO: USE THIS ONE WHEN MERGED AND SESSION.H IS AVAILABLE!!
 /* User constructor for setting up basic information */
-User::User(bool isAdmin, string userName, string password, Room currentRoom, Session session) {
+/*User::User(bool isAdmin, string userName, string password, Room currentRoom, Session session, string description) {
   setUserType(isAdmin);
   setUserName(userName);
   setPassword(password);
   setRoom(currentRoom);
+  setDescription(description);
   this->session = session;
   usedDefaultConstructor = false;
-  userStats = new abilityStats();
+  userStats = new AbilityStats();
   playerLevel = START_LEVEL;
-  inventory = new Inventory();
-}
+ 
+  //inventory = new Inventory();
+  }*/
+
+User::User(bool isAdmin, string userName, string password, Room currentRoom, string description) {
+  setUserType(isAdmin);
+  setUserName(userName);
+  setPassword(password);
+  setRoom(currentRoom);
+  setDescription(description);
+  //this->session = session;
+  usedDefaultConstructor = false;
+  // userStats = new AbilityStats();
+  playerLevel = START_LEVEL;
+ 
+  //inventory = new Inventory();
+  }
 
 /* Ensures deletion of the player's inventory and currentRoom if default constructor used*/
 User::~User() {
-  delete inventory;
+  // delete inventory;
 }
 
 void User::setUserName(string userName){
@@ -73,6 +91,14 @@ Room User::getRoom(){
   return currentRoom;
 }
 
+void User::setDescription(string description){
+  this->description = description;
+}
+
+string User::getDescription(){
+  return description;
+}
+
 //TODO: Add method calls to increase player stats appropriately
 void User::levelUp(){
   playerLevel += 1;
@@ -88,12 +114,12 @@ void User::increaseXP(int additionalXP){
 
   int levelUpCalc = playerXP / playerLevel;
 
-  if(playerLevel = levelUpCalc){
+  if(playerLevel == levelUpCalc){
     levelUp();
   }
 }
 
-int User::getPlayerXP(){
+int User::getXP(){
   return playerXP;
 }
 
@@ -105,12 +131,13 @@ bool User::getLivingStatus(){
   return isAlive;
 }
 
-void User::notifySession(string notification){
+/*void User::notifySession(string notification){
   session.sendMessage(notification);
-}
+  }*/
 
 /* ABILITY STAT GETTERS */
 
+/*
 int User::getCharisma(){
   return userStats.getCharisma();
 }
@@ -120,7 +147,7 @@ int User::getDefense(){
 }
 
 int User::getDexterity(){
-  return userStats.getDexterity;
+  return userStats.getDexterity();
 }
 
 int User::getHealth(){
@@ -134,11 +161,13 @@ int User::getIntelligence(){
 int User::getStrength(){
   return userStats.getStrength();
 }
+*/
 
 /* ABILTY STAT SETTERS */
 
+/*
 void User::setCharisma(int charmisma){
-  userStats.setCharisma(charsima);
+  userStats.setCharisma(charisima);
 }
 
 void User::setDefense(int defense){
@@ -160,3 +189,4 @@ void User::setIntelligence(int intelligence){
 void User::setStrength(int strength){
   userStats.setStrength(strength);
 }
+*/
