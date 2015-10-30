@@ -19,14 +19,14 @@ using namespace std;
 class NPC {
     
 private:
-    // attributes
+    // attributes (yaml)
     string npcID;
     string npcDescription;
     string longDesc;
     string shortDesc;
-    vector<string> keyword;
+    vector<string> keywords;
 
-    // save for later
+    // save for later (status)
     string npcName;
     string npcType;
     int npcHP;
@@ -35,7 +35,7 @@ private:
     string npcDes;
 
     
-    // functions
+    // functions (status)
     void setName(string s);
     void setType(string s);
     void setHP(int i);
@@ -54,7 +54,7 @@ public:
 	void setID(string id);
 	string getID() const;
 
-    // save for later
+    // save for later (status)
 	string getType() const;
 	string getName() const;
 	int getHP() const;
@@ -68,22 +68,22 @@ public:
     void addDescription(string s);
     void addLongDesc(string s);
     void addShortDesc(string s);
-
     string getDescription()const;
     string getLongDesc()const;
     string getShortDesc()const;
+    
     // keyword
-    void addKeyword(vector<string>& s);
+    void addKeyword(string s);
+    void addKeywords(vector<string>& s);
     bool searchKeyword(string s) const;
     void removeKeyword(string s);
     void removeAllKeyword();
     vector<string> getKeyword()const;
+    // helper function ( check keywords )
     void printVector() const;
 
 
-
-
-	// helper function
+	// helper function (status)
 	void checkNPC() const;	// print out all attributes of npc
 
     // action

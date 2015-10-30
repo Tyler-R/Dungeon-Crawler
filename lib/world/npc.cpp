@@ -73,15 +73,19 @@ string NPC::getLongDesc()const{
 string NPC::getShortDesc()const{
     return shortDesc;
 }
+
 // Keyword functions
-void NPC::addKeyword(vector<string>& s){
+void NPC::addKeyword(string s){
+    keywords.push_back(s);
+}
+void NPC::addKeywords(vector<string>& s){
     for(int i=0; i < s.length(); i++){
-        keyword.push_back(s[i]); 
+        keywords.push_back(s[i]); 
     }
 }
 bool NPC::searchKeyword(string s)const{
-    for(int i=0; i < keyword.length(); i++){
-        if(keyword[i] == s) {
+    for(int i=0; i < keywords.length(); i++){
+        if(keywords[i] == s) {
             return true;
         }
     }
@@ -89,9 +93,9 @@ bool NPC::searchKeyword(string s)const{
 }
 void removeKeyword(string s) {
     if(searchKeyword(s) == true){
-        for(int i=0; i < keyword.length(); i++){
-            if(keyword[i] == s){
-                keyword.erase(keyword.begin()+i);
+        for(int i=0; i < keywords.length(); i++){
+            if(keywords[i] == s){
+                keywords.erase(keyword.begin()+i);
             }
         }
     }else{
@@ -99,21 +103,27 @@ void removeKeyword(string s) {
     }
 }
 void removeAllKeyword(){
-    keyword.clear();
+    keywords.clear();
 }
 vector<string> NPC::getKeyword()const{
-    return keyword;
+    return keywords;
 }
 void NPC::printVector()const{
-    for(int i = 0; i < keyword.length(); i++){
-        cout <<keyword[i] << endl;
+    for(auto &  kw : keywords){
+        cout << kw << endl;
     }
 }
-
-
+// ID -- set, get
 void NPC::setID(string id) {
     npcID = id;
 }
+string NPC::getID() const{
+    return npcID;
+}
+
+
+
+// save for later (status)
 void NPC::setName(string s) {
     npcName = s;
 }
@@ -136,11 +146,6 @@ void NPC::setDamage(int i) {
 
 void NPC::setDes(string des) {
     npcDes = des;
-}
-
-
-string NPC::getID() const{
-    return npcID;
 }
 
 string NPC::getName() const{
