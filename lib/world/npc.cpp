@@ -10,7 +10,7 @@
 #include "npc.h"
 
 
-// constructor
+// constructor (type, id)
 // NPC::NPC(string type, string id){
 // 	if (type == "monster") {
 // 		Monster tempMonster;
@@ -39,8 +39,9 @@
 // 	}
 // }
 
+// constructor (id)
 NPC::NPC(string id){
-    setID();
+    setID(id);
 }
 
 // destructor
@@ -79,30 +80,30 @@ void NPC::addKeyword(string s){
     keywords.push_back(s);
 }
 void NPC::addKeywords(vector<string>& s){
-    for(int i=0; i < s.length(); i++){
+    for(int i=0; i < s.size(); i++){
         keywords.push_back(s[i]); 
     }
 }
 bool NPC::searchKeyword(string s)const{
-    for(int i=0; i < keywords.length(); i++){
+    for(int i=0; i < keywords.size(); i++){
         if(keywords[i] == s) {
             return true;
         }
     }
     return false;
 }
-void removeKeyword(string s) {
+void NPC::removeKeyword(string s) {
     if(searchKeyword(s) == true){
-        for(int i=0; i < keywords.length(); i++){
+        for(int i=0; i < keywords.size(); i++){
             if(keywords[i] == s){
-                keywords.erase(keyword.begin()+i);
+                keywords.erase(keywords.begin()+i);
             }
         }
     }else{
         cout << "The Keyword are not exist!!!"<<endl;
     }
 }
-void removeAllKeyword(){
+void NPC::removeAllKeyword(){
     keywords.clear();
 }
 vector<string> NPC::getKeyword()const{
