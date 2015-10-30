@@ -55,7 +55,7 @@ public:
     // keyword
     void addKeyword(string s);
     void addKeywords(vector<string>& s);
-    void searchKeyword(string s) const;
+    bool searchKeyword(string s) const;
     void removeKeyword(string s);
     void removeAllKeyword();
     vector<string> getKeyword()const;

@@ -14,11 +14,11 @@ const int boostDamage = 1;      // increase damage by 1 (weapon)
 const int recoverHP = 1;        // recover hp by 1 (potion)
 const int increaseMaxHP = 1;    // increase max hp by 1 (armor)
 
-//Constructor
-Item::Item(string type, string id) {
-    setID(id);
-    //setAll(type);
-}
+//Constructor (type, id)
+// Item::Item(string type, string id) {
+//     setID(id);
+//     //setAll(type);
+// }
 
 //destructor
 // Item::~Item() {
@@ -49,6 +49,11 @@ Item::Item(string type, string id) {
 //     }
 // }
 
+// Constructor (id)
+Item::Item(string id){
+    setID(id);
+}
+
 
 // Description functions
 void Item::addLongDesc(string s){
@@ -72,7 +77,7 @@ void Item::addKeywords(vector<string>& s){
         keywords.push_back(tempKey);
     }
 }
-void Item::searchKeyword(string s)const{
+bool Item::searchKeyword(string s)const{
     for(auto & tempKey : keywords){
         if(tempKey == s){
             return true;
@@ -84,7 +89,7 @@ void Item::removeKeyword(string s){
     if(searchKeyword(s) == true){
         for(auto & tempKey : keywords){
             if(tempKey == s){
-                keywords.erase(keyword.begin()+i);
+                keywords.erase(keywords.begin()+1);
             }
         }
     }else{
