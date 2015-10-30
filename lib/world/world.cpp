@@ -73,8 +73,28 @@ shared_ptr<Room> World::getRoom(int i){
 	return roomList.at(i);
 }
 
+shared_ptr<Room> World::getRoom(string roomID) {
+	for(auto &room : roomList) {
+		if(roomID.compare(room->getId()) == 0) {
+			return room;
+		}
+	}
+
+	return nullptr;
+}
+
 void World::setCurrentRoom(shared_ptr<Room> newRoom){
 	currentRoom = newRoom;
+}
+
+void World::addReset(shared_ptr<Reset> reset) {
+	resets.push_back(reset);
+}
+
+void World::performResets() {
+	for(auto &reset : resets) {
+		reset->performReset();
+	}
 }
 
 

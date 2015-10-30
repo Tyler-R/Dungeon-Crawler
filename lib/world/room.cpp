@@ -184,7 +184,7 @@ string Room::lookAt(string objName){
 	for (auto & door : doorList) {
 		if(door->findKeyword(objName)){
 			return door->getDesc();
-		}
+		}s
 	}
 
 	/*

@@ -10,7 +10,7 @@ ItemReset::~ItemReset() {
 
 void ItemReset::performReset() {
     std::cout << "TODO: add item to constructor -- your item reset was performed" << std::endl;
-    // bool itemDoesNotExistInRoom = !(room.itemExistsInRoom(item.getID()));
+    // bool itemDoesNotExistInRoom = !(room.doesItemExist(item.getID()));
     //
     // if(itemDoesNotExistInRoom) {
     //     room.addItem(item);
