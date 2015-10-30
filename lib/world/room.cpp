@@ -206,6 +206,7 @@ string Room::lookAt(string objName){
 }
 
 void Room::setDoorState(int doorNumber, string newState) {
+	assert(doorNumber < doorList.size());
 	doorList[doorNumber]->setState(newState); // probably needs tweaking
 }
 

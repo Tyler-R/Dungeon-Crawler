@@ -9,6 +9,7 @@ Created By: Sarah Kim Dao
 #include <string>
 #include <algorithm>
 #include <memory>
+#include <assert.h>
 
 #include "npc.h"
 #include "creature.h"
