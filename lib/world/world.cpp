@@ -43,6 +43,7 @@ World::World(){
 	roomList.push_back(study);
 	roomList.push_back(bedroom);
 	roomList.push_back(basement);
+	roomList.push_back(shower);
 
 	currentRoom = lobby;
 }

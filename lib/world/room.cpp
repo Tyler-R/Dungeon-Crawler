@@ -45,6 +45,7 @@ Room::~Room(){
 	for (auto & door : doorList) {
 	    delete door;
 	}
+	//cout << endl << "room " << getName() << " deleted." endl;
 }
 
 string Room::getId(){

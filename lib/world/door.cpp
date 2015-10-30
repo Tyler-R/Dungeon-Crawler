@@ -10,7 +10,7 @@ Created By: Sarah Kim Dao
 
 Door::Door(){
 	id = "no_id";
-	leadsTo = NULL;
+	//leadsTo = NULL;
 	dir = "no_dir";
 	desc = "no_desc";  	
 }
@@ -73,7 +73,7 @@ vector<string> Door::getKeywords(){
 }
 
 shared_ptr<Room> Door::getLeadsTo(){
-	return leadsTo;
+	return leadsTo.lock();
 }
 		
 void Door::addKeyword(string s){
