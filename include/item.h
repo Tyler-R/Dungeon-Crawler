@@ -41,6 +41,7 @@ public:
     // constructor
     Item(string type, string id); // status
     Item(string id); // yaml
+    Item(Item &item); // copy
     //destructor
     // ~Item();
 

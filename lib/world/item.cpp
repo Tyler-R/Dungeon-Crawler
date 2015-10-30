@@ -52,7 +52,16 @@ const int increaseMaxHP = 1;    // increase max hp by 1 (armor)
 Item::Item(string id){
     setID(id);
 }
+// copy
+Item::Item(Item &item){
+    itemID = item.getID();
+    longDesc = item.getLongDesc();
+    shortDesc = item.getShortDesc();
 
+    for(auto & key : item.getKeyword()){
+        keywords.push_back(key);
+    }   
+}
 
 // Description functions
 void Item::addLongDesc(string s){
@@ -73,7 +82,7 @@ void Item::addKeyword(string s){
 }
 void Item::addKeywords(vector<string> s){
     for(auto & tempKey : s ){
-        keywords.push_back(tempKey);
+        addKeyword(tempKey);
     }
 }
 bool Item::searchKeyword(string s)const{
