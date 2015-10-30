@@ -21,29 +21,54 @@ class Item{
 
 private:
     
-    // attributes
+    // attributes (yaml)
+    string itemID;          // the Id of the item
+    string longDesc;
+    string shortDesc;
+    vector<string> keywords;
+
+
+    //save for late (status)
     string itemType;        // the type of the item
-    int itemDamage;         // the damage of the item (deal damage to player or monster)
-    bool itemPositive;      // is positive damage or negative damage
-    
-    // functions
-//    void SetType();
-//    void SetDamage();
-//    void SetPositive();
-    void setAll();
+    string itemName;
+    //int itemDamage;         // the damage of the item (deal damage to player or monster)
+    int itemBoost;          // increase the max HP of user
+    // functions (status)
+    void setAll(string type);       // create potion or weapon or armour
     
     
 public:
     // constructor
-    Item();
+    Item(string type, string id); // status
+    Item(string id); // yaml
+    Item(Item &item); // copy
     //destructor
     // ~Item();
-    
-    // functions
-    string getType() const;         // return item type (or name)
-    int getDamage() const;          // return the damage (positive or negative int #)
-    bool getPositive() const;       // if positive restore HP, otherwise reduce HP
-    
+
+    // ID set,get
+    void setID(string id);
+    string getID() const;
+    // descriptions 
+    void addLongDesc(string s);
+    void addShortDesc(string s);
+    string getLongDesc()const;
+    string getShortDesc()const;
+    // keyword
+    void addKeyword(string s);
+    void addKeywords(vector<string> s);
+    bool searchKeyword(string s) const;
+    void removeKeyword(string s);
+    void removeAllKeyword();
+    vector<string> getKeyword()const;
+    void printVector() const;
+
+
+    // functions (status) save for later
+    string getType() const;         // return item type
+    string getName() const;         // return the name of an item
+    //int getDamage() const;          // return the damage (Weapon only)
+    int getBoost() const;
+    // helper function
     void checkItem() const;         // Check Item attributes
     
 };
