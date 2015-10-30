@@ -71,7 +71,7 @@ string Item::getShortDesc()const{
 void Item::addKeyword(string s){
     keywords.push_back(s);
 }
-void Item::addKeywords(vector<string>& s){
+void Item::addKeywords(vector<string> s){
     for(auto & tempKey : s ){
         keywords.push_back(tempKey);
     }

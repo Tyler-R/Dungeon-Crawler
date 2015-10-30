@@ -79,14 +79,14 @@ string NPC::getShortDesc()const{
 void NPC::addKeyword(string s){
     keywords.push_back(s);
 }
-void NPC::addKeywords(vector<string>& s){
+void NPC::addKeywords(vector<string> s){
     for(int i=0; i < s.size(); i++){
         keywords.push_back(s[i]); 
     }
 }
 bool NPC::searchKeyword(string s)const{
-    for(int i=0; i < keywords.size(); i++){
-        if(keywords[i] == s) {
+    for(auto & tempKey : keywords){
+        if(strcasecmp(s.c_str(),tempKey.c_str()) == 0) {
             return true;
         }
     }
@@ -95,7 +95,7 @@ bool NPC::searchKeyword(string s)const{
 void NPC::removeKeyword(string s) {
     if(searchKeyword(s) == true){
         for(int i=0; i < keywords.size(); i++){
-            if(keywords[i] == s){
+            if(strcasecmp(s.c_str(),keywords[i].c_str()) == 0){
                 keywords.erase(keywords.begin()+i);
             }
         }
