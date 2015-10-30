@@ -47,7 +47,7 @@ public:
     //constructor
 	NPC(string type, string ID); // type(monster or creature), the ID of this NPC
     NPC(string id);
-    NPC(NPC &npc); // copy
+    NPC(NPC *npc); // copy
     //destructor
     // ~NPC();
     

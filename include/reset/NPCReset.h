@@ -5,12 +5,12 @@
 
 class NPCReset : public Reset {
 public:
-    NPCReset(std::shared_ptr<Room> room, NPC npc, int npcLimit);
+    NPCReset(std::shared_ptr<Room> room, shared_ptr<NPC> npc, int npcLimit);
     ~NPCReset();
 
     virtual void performReset();
 
 private:
-    NPC npc;
+    shared_ptr<NPC> npc;
     int npcLimit;
 };

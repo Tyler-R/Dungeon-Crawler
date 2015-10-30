@@ -44,13 +44,13 @@ NPC::NPC(string id){
 }
 
 // for copy
-NPC::NPC(NPC &npc){
-    npcID = npc.getID();
-    npcDescription = npc.getDescription();
-    longDesc = npc.getLongDesc();
-    shortDesc = npc.getShortDesc();
+NPC::NPC(NPC *npc){
+    npcID = npc->getID();
+    npcDescription = npc->getDescription();
+    longDesc = npc->getLongDesc();
+    shortDesc = npc->getShortDesc();
 
-    for(auto & key : npc.getKeyword()){
+    for(auto & key : npc->getKeyword()){
         keywords.push_back(key);
     }
 }
@@ -97,7 +97,7 @@ void NPC::addKeywords(vector<string> s){
 }
 bool NPC::searchKeyword(string s)const{
     for(auto & tempKey : keywords){
-        if(strcasecmp(s.c_str(),tempKey.c_str()) == 0) {
+        if(s.compare(tempKey) == 0) {
             return true;
         }
     }
@@ -106,7 +106,7 @@ bool NPC::searchKeyword(string s)const{
 void NPC::removeKeyword(string s) {
     if(searchKeyword(s) == true){
         for(int i=0; i < keywords.size(); i++){
-            if(strcasecmp(s.c_str(),keywords[i].c_str()) == 0){
+            if(s.compare(keywords[i]) == 0) {
                 keywords.erase(keywords.begin()+i);
             }
         }

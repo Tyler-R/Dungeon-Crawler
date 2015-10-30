@@ -10,7 +10,7 @@ int main() {
 
     shared_ptr<Room> room = make_shared<Room>();
 
-    NPC npc("monster", "42");
+    shared_ptr<NPC> npc = make_shared<NPC>("50");
     // Item item;
 
 

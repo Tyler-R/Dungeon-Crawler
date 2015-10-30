@@ -30,7 +30,7 @@ class Room {
 		vector<string> keywordList;
 
 		vector<Door*> doorList;
-		vector<NPC*> npcList;
+		vector<shared_ptr<NPC>> npcList;
 		vector<Item*> itemList;
 		//vector<User*> userList;
 		
@@ -51,7 +51,7 @@ class Room {
 		string getExtDesc();
 
 		vector<string> getKeywords();
-		vector<NPC*> getNPCs();
+		vector<shared_ptr<NPC>> getNPCs();
 		vector<Item*> getItems();
 		//vector<User> getUsers();	
 
@@ -79,18 +79,18 @@ class Room {
 
 		//void createNPC();
 		
-/*
-		void addUser();
-		void removeUser();
 
-		void addNPC();
-		void removeNPC();
+		// void addUser();
+		// void removeUser();
 
-		void additem();
-		void removeItem();
+		void addNPC(shared_ptr<NPC> npc);
+		// void removeNPC();
+
+		// void additem();
+		// void removeItem();
 
 		string roomAnnouncement(string news);
-*/
+
 };
 
 
