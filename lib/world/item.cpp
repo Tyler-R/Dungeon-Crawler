@@ -17,38 +17,92 @@ const int increaseMaxHP = 1;    // increase max hp by 1 (armor)
 //Constructor
 Item::Item(string type, string id) {
     setID(id);
-    setAll(type);
+    //setAll(type);
 }
 
 //destructor
 // Item::~Item() {
 // }
 
-void Item::setAll(string type) {
-    if(type == "armor"){
-        string tempName[] = {"Shield", "Cloak", "Chest", "Wrist", "Helmet"};
-        itemBoost = increaseMaxHP;
-        int randName = rand() % (5);
-        itemName = tempName[randName];
-        itemType = type;
-    }else if(type == "weapon"){
-        string tempName[] = {"Axe", "Mace", "Sword", "Bow", "Gun"};
-        itemBoost = boostDamage;
-        int randName = rand() % (5);
-        itemName = tempName[randName];
-        itemType = type;
-    }else if(type == "potion"){
-        string tempName[] = {"Heal potion", "energy potion", "revive potion", "herbs", "healing tonic"};
-        itemBoost = recoverHP;
-        int randName = rand() % (5);
-        itemName = tempName[randName];
-        itemType = type;
-    }
-    else{
-        cout << "please choose 'weapon', 'armor', 'potion'. \n";
+// void Item::setAll(string type) {
+//     if(type == "armor"){
+//         string tempName[] = {"Shield", "Cloak", "Chest", "Wrist", "Helmet"};
+//         itemBoost = increaseMaxHP;
+//         int randName = rand() % (5);
+//         itemName = tempName[randName];
+//         itemType = type;
+//     }else if(type == "weapon"){
+//         string tempName[] = {"Axe", "Mace", "Sword", "Bow", "Gun"};
+//         itemBoost = boostDamage;
+//         int randName = rand() % (5);
+//         itemName = tempName[randName];
+//         itemType = type;
+//     }else if(type == "potion"){
+//         string tempName[] = {"Heal potion", "energy potion", "revive potion", "herbs", "healing tonic"};
+//         itemBoost = recoverHP;
+//         int randName = rand() % (5);
+//         itemName = tempName[randName];
+//         itemType = type;
+//     }
+//     else{
+//         cout << "please choose 'weapon', 'armor', 'potion'. \n";
+//     }
+// }
+
+
+// Description functions
+void Item::addLongDesc(string s){
+    longDesc = s;
+}
+void Item::addShortDesc(string s){
+    shortDesc = s;
+}
+string Item::getLongDesc()const{
+    return longDesc;
+}
+string Item::getShortDesc()const{
+    return shortDesc;
+}
+// Keyword functions
+void Item::addKeyword(string s){
+    keywords.push_back(s);
+}
+void Item::addKeywords(vector<string>& s){
+    for(auto & tempKey : s ){
+        keywords.push_back(tempKey);
     }
 }
-
+void Item::searchKeyword(string s)const{
+    for(auto & tempKey : keywords){
+        if(tempKey == s){
+            return true;
+        }
+    }
+    return false;
+}
+void Item::removeKeyword(string s){
+    if(searchKeyword(s) == true){
+        for(auto & tempKey : keywords){
+            if(tempKey == s){
+                keywords.erase(keyword.begin()+i);
+            }
+        }
+    }else{
+        cout<<"The Keyword are not exist!!!"<<endl;
+    }
+}
+void Item::removeAllKeyword(){
+    keywords.clear();
+}
+vector<string> Item::getKeyword()const{
+    return keywords;
+}
+void Item::printVector()const{
+    for(auto & kw : keywords){
+        cout << kw << endl;
+    }
+}
+// ID -- setter, getter
 void Item::setID(string id) {
     itemID = id;
 }
@@ -57,6 +111,10 @@ string Item::getID() const {
     return itemID;
 }
 
+
+
+
+// save for later (status)
 string Item::getType() const{
     return itemType;
 }
