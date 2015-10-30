@@ -12,21 +12,30 @@
 #include "monster.h"
 #include "creature.h"
 
+#include <vector>
+
 using namespace std;
 
 class NPC {
     
 private:
-    // attributes
+    // attributes (yaml)
     string npcID;
+    string npcDescription;
+    string longDesc;
+    string shortDesc;
+    vector<string> keywords;
+
+    // save for later (status)
     string npcName;
     string npcType;
     int npcHP;
     bool isAlive;
     int npcDamage;
     string npcDes;
+
     
-    // functions
+    // functions (status)
     void setName(string s);
     void setType(string s);
     void setHP(int i);
@@ -37,12 +46,16 @@ private:
 public:
     //constructor
 	NPC(string type, string ID); // type(monster or creature), the ID of this NPC
+    NPC(string id);
+    NPC(NPC &npc); // copy
     //destructor
     // ~NPC();
     
     // functions
 	void setID(string id);
 	string getID() const;
+
+    // save for later (status)
 	string getType() const;
 	string getName() const;
 	int getHP() const;
@@ -50,8 +63,31 @@ public:
 	bool getAlive()const;	// live or dead
     string getDes()const;
 
-	// helper function
+
+
+    // descriptions
+    void addDescription(string s);
+    void addLongDesc(string s);
+    void addShortDesc(string s);
+    string getDescription()const;
+    string getLongDesc()const;
+    string getShortDesc()const;
+    
+    // keyword
+    void addKeyword(string s);
+    void addKeywords(vector<string> s);
+    bool searchKeyword(string s) const;
+    void removeKeyword(string s);
+    void removeAllKeyword();
+    vector<string> getKeyword()const;
+    // helper function ( check keywords )
+    void printVector() const;
+
+
+	// helper function (status)
 	void checkNPC() const;	// print out all attributes of npc
 
+    // action
+    void getHit(); // reduce HP by 1
 };
 #endif

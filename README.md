@@ -6,6 +6,9 @@
 * **Discalimer!!!: don't run sudo on school computers, IT will be notified.**
 * **REQUIRE SUDO access**
 
+* **add a yaml example in the folder yamlexample**
+* **it only read NPCS block**
+
 ```
 $ bash sudoBoostInstall.sh
 ```
