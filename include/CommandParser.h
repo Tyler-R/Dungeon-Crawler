@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <boost/tokenizer.hpp>
+#include </usr/local/include/yaml-cpp/yaml.h>
 // #include "CommandSet.h"
 
 
@@ -25,6 +26,7 @@ public:
     void reformatTokens(std::vector<std::string>& tokens);
     std::string validateMoveArgv(std::vector<std::string>& cmd);
     std::string validateLookArgv(std::vector<std::string>& cmd);
-
+    bool isMoveCmd(std::vector<std::string>& word);
+    bool isLookCmd(std::vector<std::string>& word);
 
 };

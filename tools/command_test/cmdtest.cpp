@@ -12,11 +12,11 @@ bool isMatch(std::string);
 
 int main()
 {
-  std::string str = "";
+  std::string str;
   // std::cout<<"this is sample input: "<<std::endl;
   // std::cout<< str << std::endl;
   CommandParser cp;
-  std::string response = "";
+  std::string response;
 
   std::cout<<response <<std::endl;
   while(1){

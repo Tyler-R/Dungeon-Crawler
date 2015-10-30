@@ -1,3 +1,4 @@
+#include <fstream>
 #include "CommandParser.h"
 using namespace std;
 /*
@@ -7,29 +8,12 @@ Command_Parser::Command_Parser(){
 */
 
 string CommandParser::validateLookArgv(vector<string> &cmd){
-    /*call a function that returns a list of
-    objects that can be look at; then iterate through to
-    check whether input has a match */
-    /*same goes to same kind of commands that require a lookup
-    to the players current postion and objects*/
-    return "";
+    reformatTokens(cmd);
+    return "look at" + cmd.at(1);
 }
 string CommandParser::validateMoveArgv(vector<string> &cmd){
-    if(cmd.at(1).compare("north") == 0){
-        return "go north";
-    }
-    else if (cmd.at(1).compare("south") == 0 ){
-        return "go south";
-    }
-    else if (cmd.at(1).compare("east") == 0){
-        return "go east";
-    }
-    else if (cmd.at(1).compare("west") == 0){
-        return "go west";
-    }
-    else {
-        return "\"" +cmd.at(1)+"\"" + " is not a valid input";
-    }
+    reformatTokens(cmd);
+    return"go to" +cmd.at(1);
 }
 
 void CommandParser::reformatTokens(vector<string>& words){
@@ -40,10 +24,11 @@ void CommandParser::reformatTokens(vector<string>& words){
             tmp = words.back() +" "+ tmp;
             words.pop_back();
         }
-    if(tmp.back() == ' '){
-        tmp.pop_back();
-    }
-    words.push_back(tmp);
+        while(tmp.back() == ' '){
+            tmp.pop_back();
+        }
+
+        words.push_back(tmp);
     }
 }
 vector<string> CommandParser::tokenizeInput(string &in){
@@ -69,6 +54,31 @@ void CommandParser::toLowerCase(string &str){
     }
 }
 
+bool CommandParser::isMoveCmd(vector<string> &words){
+   fstream fs;
+   bool matchFound = false;
+   fs.open ("../../yaml/command/move.txt");
+   string cmd;
+   while(fs >> cmd){
+    if(words.front().compare(cmd) == 0){
+        matchFound = true;
+    }
+   }
+   return matchFound;
+}
+
+bool CommandParser::isLookCmd(vector<string> &words){
+    fstream fs;
+    bool matchFound = false;
+    fs.open("../../yaml/command/look.txt");
+    string cmd;
+    while(fs >> cmd){
+    if(words.front().compare(cmd) ==0){
+        matchFound = true;
+        }
+    }
+    return matchFound;
+}
 
 // string CommandParser::invokeCommand(vector<string> cmd){
 
@@ -76,11 +86,15 @@ void CommandParser::toLowerCase(string &str){
 
 /*entry point for the cmd_module api*/
 string CommandParser::processCommand(string &in){
+    if(in.empty()){
+        return "invalid command: [empty]";
+    }
    toLowerCase(in);
    vector<string> words = tokenizeInput(in);
-   reformatTokens(words);
+   // YAML::Node config = YAML::Load("./Commands.yaml");
+
    // cout<<"processing..."<<words.front()<<endl;
-   if(words.front().compare("move") == 0){
+   if(isMoveCmd(words)){
         // cout<<words.front();
         return validateMoveArgv(words);
    }
@@ -88,9 +102,9 @@ string CommandParser::processCommand(string &in){
 
         return  words.front();
    }
-   else if(words.front().compare("look") == 0){
+   else if(isLookCmd(words)){
 
-        return words.front();
+        return validateLookArgv(words);
    }
    else {
     return "invalid command";
