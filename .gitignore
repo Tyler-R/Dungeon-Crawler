@@ -10,3 +10,7 @@ personalNotes.txt
 .DS_Store
 tmpbuild/
 CMakeLists.txt~
+<<<<<<< HEAD
+=======
+*~
+>>>>>>> inventory

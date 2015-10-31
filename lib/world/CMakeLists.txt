@@ -1,7 +1,10 @@
 add_library(world world.cpp
                   creature.cpp
                   monster.cpp
-		          npc.cpp
-		          room.cpp	
-				door.cpp				
+		  npc.cpp
+		  room.cpp	
+	          door.cpp
+		  
+	          abilityStats.cpp
+                  user.cpp			
 )
