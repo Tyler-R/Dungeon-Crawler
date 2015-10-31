@@ -148,6 +148,10 @@ vector<string> Room::getObjList(){
 	for (auto & door : doorList) {
 	    objList.push_back(door->getLeadsTo()->getName());
 	}
+
+	for (auto & npc : npcList) {
+	    objList.push_back(npc->getName());
+	}
 	return objList;
 }
 
@@ -210,15 +214,11 @@ void Room::setDoorState(int doorNumber, string newState) {
 	doorList[doorNumber]->setState(newState); // probably needs tweaking
 }
 
-//void Room::createNPC(){
-		/*
-		NPC* monster = new NPC("monster","id:111");
-		NPC* creature = new NPC("creature","id:222");
-
-		npcList.push_back(monster);
-		npcList.push_back(creature);
-		*/
-//}
+void Room::createNPC(string type, string id){
+		shared_ptr<NPC> npc(new NPC(id));
+		cout << "Creating NPC" << endl;
+		addNPC(npc);
+}
 
 
 void Room::addDoor(string inputId,string inputDir, string inputDesc, shared_ptr<Room>inputRoom){

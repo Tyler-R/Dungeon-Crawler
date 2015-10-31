@@ -9,6 +9,9 @@ Created By: Sarah Kim Dao
 
 
 World::World(){
+	//The Constructor initializes the room.
+
+	//Instantiate Rooms
 	shared_ptr<Room> lobby( new Room("001","Lobby","This is a lobby","The lobby is cool and clean"));
 	shared_ptr<Room> bathroom( new Room("002","Bathroom","This is a bathroom","The bathroom has heated floors."));
 	shared_ptr<Room> kitchen( new Room("003","Kitchen","This is a kitchen","The kitchen is sparkling."));
@@ -18,15 +21,14 @@ World::World(){
 	shared_ptr<Room> basement( new Room("007","Basement","This is a basement","The basement is dark and damp."));
 	shared_ptr<Room> shower( new Room("008","Shower","This is a shower","The shower is dry."));
 
+	//Instantiate Doors in Rooms
 	lobby->addDoor("1","north", "The north door leads to the bathroom", bathroom);
-	
 	lobby->addDoor("2","south", "The south door leads to the kitchen", kitchen);
 	lobby->addDoor("3","east", "The east door leads to the porch", porch);
 	lobby->addDoor("4","west", "The west door leads to the study", study);
 	lobby->addDoor("5","up", "The upstairs leads to the bedroom", bedroom);
 	lobby->addDoor("6","down", "The downstairs leads to the basement", basement);
 
-	
 	kitchen->addDoor("2","north", "The north door leads to the lobby", lobby);
 	porch->addDoor("3","west", "The west door leads to the lobby", lobby);
 	study->addDoor("4","east", "The east door leads to the lobby", lobby);
@@ -35,6 +37,10 @@ World::World(){
 	shower->addDoor("6","south", "The south leads to the bathroom", bathroom);
 	bathroom->addDoor("6","north", "The north leads to the shower", shower);
 	bathroom->addDoor("1","south", "The south door leads to the lobby", lobby);
+
+	//Instantiate NPC in Rooms
+	lobby->createNPC("monster","id:111");
+	lobby->createNPC("creature","id:222");
 	
 	roomList.push_back(lobby);
 	roomList.push_back(bathroom);
