@@ -6,30 +6,8 @@ Created By: Jordan Nielsen
 #include <iostream>
 #include <string>
 #include <vector>
-//#include "item.h"
+#include "item.h"
 using namespace std;
-
-
-class Item {
-
- public:
-  Item(){
-    name = "Item 1";
-  }
-
-  ~Item(){}
-
-  string getName(){
-    return name;
-  }
-
- private:
-  string name;
-};
-
-
-
-
 
 class Inventory {
 

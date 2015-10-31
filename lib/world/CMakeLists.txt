@@ -4,7 +4,7 @@ add_library(world world.cpp
 		  npc.cpp
 		  room.cpp	
 	          door.cpp
-		  
+		  inventory.cpp
 	          abilityStats.cpp
                   user.cpp			
 )

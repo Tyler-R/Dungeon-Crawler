@@ -9,11 +9,11 @@
 #include "item.h"
 
 Inventory::Inventory(){
-  inventory = new vector<Item>;
+  //inventory = new vector<Item>;
 }
 
 Inventory::~Inventory(){
-  delete inventory;
+  //delete inventory;
 }
 
 /*
@@ -29,25 +29,26 @@ vector<string> Inventory::getInventory(){
 /* TODO: fix the naming of item keyword as well as find out if Item or Object class is used. */
 string Inventory::lookAtInventory(){
   string inventoryDescOutput = "";
-  inventoryDescOutput.push_back("Your inventory contains: \n");
-
+  inventoryDescOutput + "Your inventory contains: \n";
+/*
   if(inventory.getInventorySize() == 0){
-    inventoryDescOutput.push_back("NOTHING");
+    inventoryDescOutput +"NOTHING";
     return inventoryDescOutput;
   }
-
+  
   else {
     for(Item item : inventory) {
-      inventoryDescOutput.push_back(" - ");
-      inventoryDescOutput.push_back(item.keyword);
-      inventoryDescOutput.push_back("\n");
+      inventoryDescOutput + " - ";
+      inventoryDescOutput.push_back(item.getName());
+      inventoryDescOutput.push_back + "\n";
     }
   }
-
+  */
   return inventoryDescOutput;
 }
-  
 
+  
+/*
 void Inventory::addItem(Item item){
   inventory.push_back(item);
   sort(inventory.begin(), inventory.end())
@@ -70,3 +71,4 @@ int Inventory::getInventoryMaxSize(){
 String Inventory::useItem(string item){
 
 }
+*/
