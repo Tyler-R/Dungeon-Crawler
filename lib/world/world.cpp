@@ -39,8 +39,15 @@ World::World(){
 	bathroom->addDoor("1","south", "The south door leads to the lobby", lobby);
 
 	//Instantiate NPC in Rooms
-	lobby->createNPC("monster","id:111");
-	lobby->createNPC("creature","id:222");
+	lobby->createNPC();  
+
+	shared_ptr<NPC> knight( new NPC("002"));
+	knight->setName("Sir Knight");
+	knight->addShortDesc("There is knight standing nearby.");
+	knight->addLongDesc("The knight is practicing his swordsmanship.");
+	knight->addKeyword("swordsman");
+
+	lobby->addNPC(knight);
 	
 	roomList.push_back(lobby);
 	roomList.push_back(bathroom);

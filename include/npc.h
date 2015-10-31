@@ -34,7 +34,8 @@ private:
     int npcDamage;
     string npcDes;
 
-    
+public:
+
     // functions (status)
     void setName(string s);
     void setType(string s);
@@ -42,8 +43,7 @@ private:
     void setAlive(bool b);
     void setDamage(int i);
     void setDes(string des);
-
-public:
+    
     //constructor
 	NPC(string type, string ID); // type(monster or creature), the ID of this NPC
     NPC(string id);

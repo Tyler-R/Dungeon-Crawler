@@ -130,7 +130,7 @@ vector<Door*> Room::getDoorList(){
 //LookAround
 
 vector<string> Room::getDoorDescList(){
-
+	//This method returns a description of all of the room's doors.
 	vector<string> doorDescriptions;
 
 	for (auto & door : doorList) {
@@ -144,6 +144,7 @@ vector<string> Room::getDoorDescList(){
 
 
 vector<string> Room::getObjList(){
+	//This method returns a list of strings containing the names of every door, npc, item, and user in the room.
 	vector<string> objList;
 	for (auto & door : doorList) {
 	    objList.push_back(door->getLeadsTo()->getName());
@@ -156,7 +157,7 @@ vector<string> Room::getObjList(){
 }
 
 string Room::lookAround(){
-
+		//This method is used if the user types the "look <noun>" command and <noun> is their current room.
 
 		string objRoom = "";
 
@@ -172,7 +173,7 @@ string Room::lookAround(){
 	}
 
 string Room::lookAt(string objName){
-
+	//This method is used if the user types the "look <noun>" command.  <noun> can be a valid keyword.
 
 	if ( findKeyword(objName) ){
 		return extDesc;
@@ -191,13 +192,14 @@ string Room::lookAt(string objName){
 		}
 	}
 
-	/*
+	
 	for (auto &npc : npcList){
-		if(npc->findKeyword(objName)){
-			return npc->getDesc();
+		if(npc->searchKeyword(objName)){
+			return npc->getLongDesc();
 		}
 	}
 
+	/*
 	for (auto &item : itemList){
 		if(item->findKeyword(objName)){
 			return item->getDesc();
@@ -214,10 +216,19 @@ void Room::setDoorState(int doorNumber, string newState) {
 	doorList[doorNumber]->setState(newState); // probably needs tweaking
 }
 
-void Room::createNPC(string type, string id){
-		shared_ptr<NPC> npc(new NPC(id));
-		cout << "Creating NPC" << endl;
+void Room::createNPC(){
+		//Will create new instances of an NPC to place into room.
+		//This is the function that should eventually Parse from YAML file and take input strings to create NPCs.
+		// 'Butler Jeeves' is just a hard-coded example for testing purposes.
+
+		shared_ptr<NPC> npc( new NPC("001"));
+		npc->setName("Butler Jeeves");
+		npc->addShortDesc("There is butler standing nearby.");
+		npc->addLongDesc("The butler is busy cleaning up the lobby.");
+		npc->addKeyword("servant");
+
 		addNPC(npc);
+
 }
 
 

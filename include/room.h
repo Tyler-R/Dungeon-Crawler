@@ -78,13 +78,10 @@ class Room {
 
 		void setDoorState(int doorNumber, string newState);
 
-		
-		
-
 		// void addUser();
 		// void removeUser();
 
-		void createNPC(string type, string id);
+		void createNPC();
 		void addNPC(shared_ptr<NPC> npc);
 		// void removeNPC();
 
