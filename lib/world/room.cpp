@@ -123,6 +123,11 @@ void Room::printKeywords(){ //To be used by the Room's Test Module only!
 	}
 }
 
+
+void Room::addDoor(string inputId,string inputDir, string inputDesc, shared_ptr<Room>inputRoom){
+	doorList.push_back(new Door(inputId,inputDir,inputDesc, inputRoom));
+}
+
 vector<Door*> Room::getDoorList(){
 	return doorList;
 }
@@ -231,11 +236,20 @@ void Room::createNPC(){
 
 }
 
-
-void Room::addDoor(string inputId,string inputDir, string inputDesc, shared_ptr<Room>inputRoom){
-	doorList.push_back(new Door(inputId,inputDir,inputDesc, inputRoom));
-}
-
 void Room::addNPC(shared_ptr<NPC> npc) {
 	npcList.push_back(npc);
+}
+
+void Room::createItem(){
+		//Will create new instances of an NPC to place into room.
+		//This is the function that should eventually Parse from YAML file and take input strings to create NPCs.
+		// 'Potion' is just a hard-coded example for testing purposes.
+
+		//shared_ptr<Item> item( new Item("001"));
+
+		//addItem(item);
+}
+
+void Room::addItem(shared_ptr<Item> item){
+	itemList.push_back(item);
 }

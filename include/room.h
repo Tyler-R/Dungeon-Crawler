@@ -85,8 +85,9 @@ class Room {
 		void addNPC(shared_ptr<NPC> npc);
 		// void removeNPC();
 
-		// void additem();
-		// void removeItem();
+		void createItem();
+		void addItem(shared_ptr<Item> item);
+		//void removeItem();
 
 		string roomAnnouncement(string news);
 
