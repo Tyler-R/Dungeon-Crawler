@@ -32,7 +32,7 @@ class Room {
 
 		vector<Door*> doorList;
 		vector<shared_ptr<NPC>> npcList;
-		vector<Item*> itemList;
+		vector<shared_ptr<Item>> itemList;
 		//vector<User*> userList;
 		
 	
@@ -53,7 +53,7 @@ class Room {
 
 		vector<string> getKeywords();
 		vector<shared_ptr<NPC>> getNPCs();
-		vector<Item*> getItems();
+		vector<shared_ptr<Item>> getItems();
 		//vector<User> getUsers();	
 
 		

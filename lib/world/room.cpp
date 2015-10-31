@@ -73,7 +73,7 @@ vector<shared_ptr<NPC>> Room::getNPCs(){
 	return npcList;
 }
 
-vector<Item*> Room::getItems(){
+vector<shared_ptr<Item>> Room::getItems(){
 	return itemList;
 }
 
