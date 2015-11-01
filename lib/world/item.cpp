@@ -87,7 +87,7 @@ void Item::addKeywords(vector<string> s){
 }
 bool Item::searchKeyword(string s)const{
     for(auto & tempKey : keywords){
-        if(strcasecmp(s.c_str(),tempKey.c_str()) == 0){
+        if(s.compare(tempKey) == 0){
             return true;
         }
     }
@@ -96,7 +96,7 @@ bool Item::searchKeyword(string s)const{
 void Item::removeKeyword(string s){
     if(searchKeyword(s) == true){
         for(int i = 0; i < keywords.size(); i++){
-            if(strcasecmp(s.c_str(),keywords[i].c_str()) == 0){
+            if(s.compare(keywords[i]) == 0){
                 keywords.erase(keywords.begin()+i);
             }
         }
