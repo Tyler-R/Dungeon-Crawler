@@ -56,6 +56,7 @@ class User {
     vector<string> lookExits();
     vector<string> lookObjList();
     vector<string> lookObjKeywords(string objName);
+    string takeItem(string objName);
 
     // void notifySession(string notification);
 

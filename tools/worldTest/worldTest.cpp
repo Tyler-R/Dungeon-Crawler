@@ -261,14 +261,17 @@ int main() {
 	    cout << obj << endl;
 	}
 
-	cout << endl << "--Now removing Items from the Room--" << endl;
-	for (auto & item : PlayerOne->getRoom()->getItems()) {
-		PlayerOne->getRoom()->removeItem(item->getID());
-	}
+	cout << endl << "--Now let's have Player One take a potion--" << endl;
+	cout << PlayerOne->takeItem("Potion") << endl;
 
 	for (auto & obj : PlayerOne->lookObjList()) {
 	    cout << obj << endl;
 	}
+	cout << endl << "--Try and take another potion (even though there are none left)--" << endl;
+	cout << PlayerOne->takeItem("Potion") << endl;
 
+	for (auto & obj : PlayerOne->lookObjList()) {
+	    cout << obj << endl;
+	}
 	cout << endl << "--EndTest!--" << endl;
 }

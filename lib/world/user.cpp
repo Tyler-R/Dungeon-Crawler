@@ -212,7 +212,7 @@ string User::moveTo(string dir){
     if(door->findKeyword(dir) || door->getLeadsTo()->findKeyword(dir)){
       getRoom()->transferOutUser(getUserName(), door->getLeadsTo());
       setRoom(door->getLeadsTo());
-      return getRoom()->getDesc();
+      return "You are now in the " + getRoom()->getName() + ".\n" + getRoom()->getDesc();
     }
   }
   return "Cannot go there"; 
@@ -236,4 +236,14 @@ vector<string> User::lookObjList(){
 
 vector<string> User::lookObjKeywords(string objName){
   return getRoom()->getObjKeywords(objName);
+}
+
+string User::takeItem(string objName){
+  for (auto & item : getRoom()->getItems() ) {
+    if(item->searchKeyword(objName)){
+      getRoom()->removeItem(item->getID());
+      return "You took a " + objName;
+    }
+  }
+  return "Cannot take that item.";
 }
