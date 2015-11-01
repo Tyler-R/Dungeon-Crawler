@@ -9,14 +9,12 @@ NPCReset::~NPCReset() {
 }
 
 void NPCReset::performReset() {
-    std::cout << "your NPC reset was performed" << std::endl;
+    int numberOfNPCsInRoom = room->getNumberOfNPCsWithID(npc->getID());
 
-    // int numberOfNPCsInRoom = room->getNumberOfNPCsWithID(stringID);
-
-    // if(numberOfNPCsInRoom < npcLimit) {
+    if(numberOfNPCsInRoom < npcLimit) {
     	shared_ptr<NPC> newNPC(new NPC(&(*npc.get())));
 
     	room->addNPC( newNPC );
-    // }
+    }
 
 }
