@@ -1,0 +1,27 @@
+make user stories for first iteration
+
+> move north 
+can have shorthand
+> north
+configuration file to map spelling to binding of command
+default on server
+many aliases for one command
+> moove north = north
+> move north = north
+
+action -> arguments maybe many arguments but some dont have to take arguments or rest of line is an argument
+say playerName my big string that prints to player
+
+keywords
+refer to something use the keyword 
+look at something with keyword
+look at hammer
+synanyms for multile terms refer to object
+
+can say looking at thor hammer or looking at hammer
+
+papa smurf hit u: use short description
+desccription shown when you look at something
+longdescription shown when you enter an area.
+
+track what we want to do on gitlab

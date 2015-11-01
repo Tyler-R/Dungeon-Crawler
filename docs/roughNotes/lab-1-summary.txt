@@ -1,0 +1,43 @@
+WORLD:
+    - contains monsters which have a respawn time(do they have stats and if they do what are they? Ex. attack, defense, attack range, health).
+    - (do monsters always respond in the same location or do they respawn in a new location / map?)
+
+    - items(how do we obtain the item? from a monster drop or resource gathering or find them on the ground.)
+
+    - crafting system which can be used to make large, placable items such as a house. (how do we control owenership of a dropped item? can people steal them and how do they do that? can you prevent people from stealing your items for a period of time).
+    - (do resources get consumed when you craft something.  is there a difference between somethign that does or does not get consumed or are they the same thing just you set how many get consumed.? Ex. is there a difference between hammers and planks of wood?)
+
+    - might have a clan system(do we have to do this?)
+
+    - has a series of interconnected maps, each with a unique ID / name (can two places have the same name?) and you can move between them going north east south or west (what is maps max size?).
+    - When you enter a map can you move around in the map or do you ocupy the entire map. -> NO
+    - Not randomly generated, may want to do that later.
+
+GAME ADMINS:
+    - can edit the map either in real time while other people are able to see the changes immediately, or edit the entire map and then commit it to the server creating a big change.
+    - can add monsters to the map and create new types of monsters (how do we want to do this, should we have a backlog of items and you can quickly select from one of them).
+    -
+
+PvP:
+    - Create an arena to facilitate PvP.
+    - can turn on or off PvP mode.
+    - can't force someone to fight you
+    - can attack anyone in a map
+
+
+Multiplayer:
+    -
+
+Login system:
+    - make it so people can login (should people also be able to register then, or how does this work.)
+    - do we have to have a password and worry about security(can we store passwords in plane text). -> no security constraints
+
+
+Possible commands:
+[m] Move
+[a] Attack
+[d] Details
+[c] Chat
+[s] Status
+[h] Help
+> m

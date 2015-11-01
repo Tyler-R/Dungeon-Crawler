@@ -1,0 +1,122 @@
+Location:
+    * each location should have a description that is printed when a player enters the location
+    * locations do not have unique names and thus should have unique ID's
+    * all locations are connected in a graph like fashion rather than a grid based fashion
+      Thus, players can move between locations and the new destination of a location is determined by it's ID.
+      Ex. moving north from locations "forests" to "mountains"
+      and then moving south from "mountains" will not necessarily place the player back in the forest
+    * locations contain items, monsters and players.
+    * after having the description displayed the user will get a description of all the entities
+      that are contained in the location.
+    * users will then be able to interact with those entities through their commands.
+
+    CLARIFICATION:
+    start with a description of the location (you entered a dark forest),
+    and then transition into a description of the dynamic monsters / players
+    (you see a squirel with 3 health, a player with 50 health, a diamond lying beside the trees).
+    then allow player to do things like move or attack.
+
+World:
+    * worlds have unique names
+    * can have multiple worlds on same server
+
+Creating world:
+    *
+
+Admins:
+    admins are a type of player that can edit the world (add new locations ect.)
+
+Monsters:
+    * monsters have health.
+    * monsters have respawn time
+    * monsters always respawn in the same location that they died.
+    * monsters have status effects.
+
+Items:
+    * we can find items on the ground.
+    * might want to make it so monsters drop items (not needed at the moment).
+    * should have items that get consumed during crafting and some that don't.
+    * no resource gathering
+
+Placable Items / ownership:
+    * There is no ownership at the moment
+    * can't place items as of yet.
+    * might be able to drop items upon death
+
+Quests: ***
+    * I DONT KNOW HOW THESE WILL WORK ATM
+
+status effects:
+    * stats to be determined
+    * (general idea for everyone having stats) flexible stats
+    FUTURE GOALS:
+    * can create new stats on the fly
+    * can temperarily have stats status effects from item, or quest based state
+    * can have effects for combat like confused  or poisoned,
+    * might want something else to check for this
+    * for quests might wants stats that have you done x or have you done y for quests
+    * also might want status effects that limit ability to moveing around the map.
+      Thus we probably want to tie a status effect check into commands
+    * Nick has not defined what are the core stats vs flexible stats.
+      Thus this is a tradeoff that we have to work on
+
+Crafting:
+    * used to make items.
+    * if you make items you can consume items, you can also use a "tool" as
+      a predicate to allow you to build an item, Ex. hammer.
+      the tool would not get consumed
+
+
+Login System:
+    * login to account
+    * allow for player to register (players have unique names)
+    * give players a unique id when they login to identify them.
+
+
+Players:
+    * players contain an inventory with items in it.
+    * players have attributes such as health, and status effects.
+
+PVP?:
+    * users can toggle pvp on and off
+    * users don't have to respond, or wait for other players, when someone battles them in a pvp environment.
+    * we dont have to implement a clan system at the moment.
+
+Server:
+    * server uses asynchronous non-blocking model.
+
+Command System:
+
+
+Items:
+
+first iteration:
+server running, -
+commnand module that interacts with server -
+user authentication -
+basic UI of moving up down left right -
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+    "Description" : "hello world",
+    "Monsters" : ""
+
+
+
+}

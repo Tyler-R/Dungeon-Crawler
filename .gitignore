@@ -1,9 +1,16 @@
 Makefile
 cmake_install.cmake
-CMakeFiles
+CMakeFiles/
 CMakeCache.txt
-bin
-ext
+bin/
+!ext/CMakeLists.txt
 *.a
 *.sh
 personalNotes.txt
+.DS_Store
+tmpbuild/
+CMakeLists.txt~
+<<<<<<< HEAD
+=======
+*~
+>>>>>>> inventory

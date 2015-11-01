@@ -1,0 +1,62 @@
+Requirements Checklist for Iteration 2
+    Notes: Feel free to choose a requirement that's not being worked on.  If you decide to work on a requirement, mark the checkbox and open a related issue on git.
+    [ ] means requirement is not currently being worked on
+    [-] means requirement is being worked on and has a related issue opened on git
+    [X] means requirement is done (may still require testing)
+    
+    Remarks: It may be easiest simply to update this txt file via the Web Interface.
+    
+--------------------------------------------------------------
+    
+UI
+   [ ]  A clean interface that separates the player's text entry from the feedback from the server and allows them to proceed without interfering.
+   
+World Interaction Tasks
+   [ ]  Look
+   [ ]  Look at keywords in room
+   [ ]  Look at objects, players, or NPCs in room
+   [ ]  Look at keywords associated with objects, players or NPCs in room
+   [ ]  Look at exits
+   [ ]  Look at keywords associated with door
+   [ ]  Look at objects in inventory
+   [ ]  Look at keywords associated with objects in inventory
+    
+   [ ]  "go","move" <direction> or "go", "move" door keyword
+   [ ]  <direction> alone as shorthand
+   [ ]  Doors are flexible and need not be one of the 4 cardinal, 4 intercardinal, or 2 vertical directions.  If the "direction of a door is "inside", then typing "go inside" should take the player through that door.  There is no limit on directions.
+
+   [ ]  As one player does things (get items, fights NPCs, enters/exits a room) other players in the room should be updated/notified.
+    
+Flexible Commands
+   [ ]  Connection between the spelling of a command and the action performed by that command can be specified via YAML
+   [ ]  Some commands are only available to players with desired authentication levels
+
+World Resets
+   [ ]  Every area/zone resets by executing the specified reset commands with a frequency either specified as a part of the area or as a configured default.
+
+World Construction Via Commands
+   [ ]  Players with appropriate administrative privileges can create new areas/zones, rooms, doors, objects, NPCs, reset commands, etc.  OR modify existing ones
+
+Player Attributes & Development
+    PLayers have characteristics like
+       [ ]  an inventory
+       [ ]  appropriate items worn in appropriate places, e.g. a shirt on their torso.
+       [ ]  strength, intelligence, dexterity, charisma
+       [ ]  a measure of experience that can be affected by winning fights, completing quests, or other tasks
+       [ ]  a current level that can change based on changes to experience
+       [ ]  a description of what others see when they look at a player
+       [ ]  skills and associated proficienceies in those skills
+Combat
+   [ ]  Players can fight NPCs
+   [ ]  If a player wants to, they can opt in to fight & be fought by other willing players.
+   [ ]  Rounds of a fight proceed until one party loses or flees
+   [ ]  Damage and defence are determined by attributes & equipment of the player(s) and/or NPCs
+    
+Configurability
+    There should be no magic values, so a configuration file controls
+       [ ]  The port of the server to which players connect
+       [ ]  The default reset time for areas
+       [ ]  Any other global options
+        
+And...
+    [ ]  A criterion to be added via the issue tracker (will add here once the issue is opened by Nick)
