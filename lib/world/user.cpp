@@ -210,6 +210,7 @@ void User::setStrength(int strength){
 string User::moveTo(string dir){
   for (auto & door : getRoom()->getDoorList() ) {
     if(door->findKeyword(dir) || door->getLeadsTo()->findKeyword(dir)){
+      getRoom()->transferOutUser(getUserName(), door->getLeadsTo());
       setRoom(door->getLeadsTo());
       return getRoom()->getDesc();
     }

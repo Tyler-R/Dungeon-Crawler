@@ -15,11 +15,14 @@ Created By: Sarah Kim Dao
 #include "creature.h"
 #include "monster.h"
 #include "item.h"
+#include "user.h"
 
 
 using namespace std;
 
 class Door;
+
+class User; //Forward Declaration since Room class and User class refer to eachother
 
 class Room {
 	private:
@@ -33,7 +36,7 @@ class Room {
 		vector<Door*> doorList;
 		vector<shared_ptr<NPC>> npcList;
 		vector<shared_ptr<Item>> itemList;
-		//vector<User*> userList;
+		vector<shared_ptr<User>> userList;
 		
 	
 			
@@ -54,7 +57,7 @@ class Room {
 		vector<string> getKeywords();
 		vector<shared_ptr<NPC>> getNPCs();
 		vector<shared_ptr<Item>> getItems();
-		//vector<User> getUsers();	
+		vector<shared_ptr<User>> getUsers();	
 
 		int getNumberOfNPCsWithID(string npcID);
 
@@ -81,8 +84,9 @@ class Room {
 
 		void setDoorState(int doorNumber, string newState);
 
-		// void addUser();
-		// void removeUser();
+		void addUser(shared_ptr<User> user);
+		void removeUser(string name);
+		void transferOutUser(string name, shared_ptr<Room> outRoom);
 
 		void createNPC();
 		void addNPC(shared_ptr<NPC> npc);
