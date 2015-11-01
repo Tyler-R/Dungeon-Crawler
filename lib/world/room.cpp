@@ -202,14 +202,22 @@ string Room::lookAround(){
 
 		string objRoom = "";
 
-		/*
-		for(auto &str: npcList){
-			objRoom += str->getName() + " ";
-		}
-		objRoom = "there are " + objRoom + "in the room"+ '\n';
-		*/
+		objRoom += getExtDesc() + "\n"; 
 
-		return getExtDesc()+ '\n' + objRoom;
+		
+		for(auto &npc: npcList){
+			objRoom += "You see " + npc->getName() + " in the Room.\n";
+		}
+
+		for(auto &item: itemList){
+			objRoom += "You see a " + item->getName() + " in the Room.\n";
+		}
+
+		for(auto &user: userList){
+			objRoom += "You see " + user->getUserName() + " in the Room.\n";
+		}
+
+		return objRoom;
 
 	}
 
@@ -353,3 +361,11 @@ int Room::getNumberOfNPCsWithID(string npcID) {
 
 	return npcCount;
 }	
+
+void Room::roomAnnouncement(string news){
+	for(auto &user : userList) {
+	//For every User that's currently in the room
+		//Find each user's session
+		//Supply string news and call a method that outputs string news
+	}
+}
