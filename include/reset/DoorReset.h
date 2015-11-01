@@ -4,10 +4,10 @@
 
 class DoorReset : public Reset {
 public:
-    DoorReset(std::shared_ptr<Room> room, int doorNumber, std::string newDoorState);
-    ~DoorReset();
+    DoorReset( std::shared_ptr< Room > room, int doorNumber, std::string newDoorState );
+    ~DoorReset( );
 
-    virtual void performReset();
+    virtual void performReset( std::chrono::milliseconds currentTimeSinceEpoch );
 
 private:
     int doorNumber;
