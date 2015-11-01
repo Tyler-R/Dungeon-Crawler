@@ -39,7 +39,8 @@ World::World(){
 	bathroom->addDoor("1","south", "The south door leads to the lobby", lobby);
 
 	//Instantiate NPC in Rooms
-	lobby->createNPC();  
+	lobby->createNPC();
+	lobby->createItem();  
 
 	shared_ptr<NPC> knight( new NPC("002"));
 	knight->setName("Sir Knight");

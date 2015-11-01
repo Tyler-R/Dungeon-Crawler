@@ -251,5 +251,24 @@ int main() {
 	for (auto & obj : PlayerOne->lookObjList()) {
 	    cout << obj << endl;
 	}
+
+	cout << endl << "--Now removing all NPCs from the Room--" << endl;
+	for (auto & npc : PlayerOne->getRoom()->getNPCs()) {
+		PlayerOne->getRoom()->removeNPC(npc->getID());
+	}
+
+	for (auto & obj : PlayerOne->lookObjList()) {
+	    cout << obj << endl;
+	}
+
+	cout << endl << "--Now removing Items from the Room--" << endl;
+	for (auto & item : PlayerOne->getRoom()->getItems()) {
+		PlayerOne->getRoom()->removeItem(item->getID());
+	}
+
+	for (auto & obj : PlayerOne->lookObjList()) {
+	    cout << obj << endl;
+	}
+
 	cout << endl << "--EndTest!--" << endl;
 }

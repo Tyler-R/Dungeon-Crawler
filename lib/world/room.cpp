@@ -190,6 +190,10 @@ vector<string> Room::getObjList(){
 	    objList.push_back(user->getUserName());
 	}
 
+	for (auto &item : itemList){
+	    objList.push_back(item->getName());
+	}
+
 	return objList;
 }
 
@@ -235,13 +239,13 @@ string Room::lookAt(string objName){
 		}
 	}
 
-	/*
+	
 	for (auto &item : itemList){
-		if(item->findKeyword(objName)){
-			return item->getDesc();
+		if(item->searchKeyword(objName)){
+			return item->getShortDesc();
 		}
 	}
-	*/
+	
 
 	return "\""+objName+"\""+" not found!\n";
 
@@ -259,7 +263,6 @@ void Room::addUser(shared_ptr<User> user){
 void Room::removeUser(string name){
 	for (int i = 0; i<userList.size(); i++) {
 		if (0 == strcasecmp(name.c_str(), userList.at(i)->getUserName().c_str())){
-			cout << "removing User!" << endl;
 			userList.erase(userList.begin()+i);
 		}
 	}
@@ -294,18 +297,39 @@ void Room::addNPC(shared_ptr<NPC> npc) {
 	npcList.push_back(npc);
 }
 
+void Room::removeNPC(string npcID){
+	for (int i = 0; i<npcList.size(); i++)  {
+		if(npcList.at(i)->getID().compare(npcID) == 0) {
+			npcList.erase(npcList.begin()+i);
+		}
+	}
+}
+
 void Room::createItem(){
 		//Will create new instances of an NPC to place into room.
 		//This is the function that should eventually Parse from YAML file and take input strings to create NPCs.
 		// 'Potion' is just a hard-coded example for testing purposes.
 
-		//shared_ptr<Item> item( new Item("001"));
-
-		//addItem(item);
+		shared_ptr<Item> item( new Item("001"));
+		item->setName("Potion");
+		item->addKeyword("Potion");
+		item->addKeyword("Bottle");
+		item->addKeyword("Medicine");
+		item->addShortDesc("This is a potion.");
+		item->addLongDesc("The potion is contained in a medicine bottle.");
+		addItem(item);
 }
 
 void Room::addItem(shared_ptr<Item> item){
 	itemList.push_back(item);
+}
+
+void Room::removeItem(string itemID){
+	for (int i = 0; i<itemList.size(); i++)  {
+		if(itemList.at(i)->getID().compare(itemID) == 0) {
+			itemList.erase(itemList.begin()+i);
+		}
+	}
 }
 
 bool Room::doesItemExist(string itemID) {

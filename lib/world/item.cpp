@@ -136,6 +136,10 @@ string Item::getName() const{
     return itemName;
 }
 
+void Item::setName(string s){
+    itemName = s;
+}
+
 int Item::getBoost() const{
     return itemBoost;
 }
