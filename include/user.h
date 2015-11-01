@@ -2,13 +2,14 @@
 Created By: Jordan Nielsen
 */
 #pragma once
-#include <iostream>
 #include "room.h"
 #include "abilityStats.h"
-//#include "session.h"
 #include <string>
 #include <vector>
 #include <memory>
+#include <iostream>
+#include <functional>
+
 
 using namespace std;
 
@@ -57,7 +58,8 @@ class User {
     vector<string> lookObjList();
     vector<string> lookObjKeywords(string objName);
 
-    // void notifySession(string notification);
+    void setMessageDisplayer(std::function<void(string)> newMessageDisplayer);
+    void notifySession(string notification);
 
     /*
     int getCharisma();
@@ -78,6 +80,8 @@ class User {
     string password;
     string description;
     weak_ptr<Room> currentRoom;
+
+    std::function<void(string)> messageDisplayer;
 
 
     // Session session;

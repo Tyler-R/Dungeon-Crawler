@@ -5,10 +5,8 @@
 */
 
 #include "user.h"
-#include <iostream>
-#include <string>
-#include <vector>
-//#include "Session.h"
+
+// #include "Session.h"
 
 using namespace std;
 
@@ -145,9 +143,14 @@ bool User::getLivingStatus(){
   return isAlive;
 }
 
-/*void User::notifySession(string notification){
-  session.sendMessage(notification);
-  }*/
+void User::setMessageDisplayer(function<void(string)> newMessageDisplayer) {
+  messageDisplayer = newMessageDisplayer;
+}
+
+
+void User::notifySession(string notification){
+  messageDisplayer(notification);
+}
 
 /* ABILITY STAT GETTERS */
 
