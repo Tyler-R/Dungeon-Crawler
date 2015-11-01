@@ -2,13 +2,14 @@
 Created By: Jordan Nielsen
 */
 #pragma once
-#include <iostream>
 #include "room.h"
 #include "abilityStats.h"
-//#include "session.h"
+//#include "Session.h"
 #include <string>
 #include <vector>
 #include <memory>
+#include <iostream>
+#include <functional>
 
 using namespace std;
 
@@ -22,7 +23,7 @@ class User {
     /*User constructor for setting up basic information*/
     // User(bool isAdmin, string userName, string password, Room currentRoom,Session session, string description);
 
-     User(bool isAdmin, string userName, string password, shared_ptr<Room> currentRoom, string description);
+    User(bool isAdmin, string userName, string password, shared_ptr<Room> currentRoom, string description);
      User(User &user); //Copy constructor added by Sarah
     ~User();
 
@@ -49,6 +50,8 @@ class User {
     void setLivingStatus(bool b);
     bool getLivingStatus();
 
+    //void notifySession(string notification);
+
     //ROOM INTERACTION METHODS added by Sarah
     string moveTo(string dir);
     string lookAt(string objName);
@@ -58,7 +61,8 @@ class User {
     vector<string> lookObjKeywords(string objName);
     string takeItem(string objName);
 
-    // void notifySession(string notification);
+    void setMessageDisplayer(std::function<void(string)> newMessageDisplayer);
+    void notifySession(string notification);
 
     /*
     int getCharisma();
@@ -68,9 +72,6 @@ class User {
     int getIntelligence();
     int getStrength();
     */
-
-
-
 		
  private:
     const int START_LEVEL = 1;
@@ -80,11 +81,13 @@ class User {
     string description;
     weak_ptr<Room> currentRoom;
 
+    std::function<void(string)> messageDisplayer;
 
-    // Session session;
+
+    //Session session;
 
 
-    //AbilityStats userStats;
+    AbilityStats* userStats;
 
 
     // Inventory inventory;

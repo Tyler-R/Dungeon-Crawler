@@ -4,8 +4,6 @@
 #include <memory>
 #include <boost/tokenizer.hpp>
 #include "world.h"
-#include "room.h"
-// #include "CommandSet.h"
 
 
 /*include "player.h"*/
@@ -14,6 +12,8 @@
 validate user input, and then passed the command to game model.
 return validated command;
  */
+
+class World;
 
 class CommandParser{
 public:

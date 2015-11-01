@@ -1,6 +1,0 @@
-add_subdirectory(client)
-add_subdirectory(server)
-<<<<<<< HEAD
-=======
-add_subdirectory(command_test)
->>>>>>> 0ad93455bfc975a7d9f978bed387e8c75ae6f1fa
