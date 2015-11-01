@@ -77,6 +77,10 @@ vector<shared_ptr<Item>> Room::getItems(){
 	return itemList;
 }
 
+vector<shared_ptr<User>> Room::getUsers(){
+	return userList;
+}
+
 
 void Room::setId(string s){
 	id = s;
@@ -105,7 +109,11 @@ void Room::addKeywords(vector<string> inputKeywords){
 }
 
 void Room::removeKeyword(string s){
-	//
+	for (int i = 0; i<keywordList.size(); i++) {
+		if (0 == strcasecmp(s.c_str(), keywordList.at(i).c_str())){
+			keywordList.erase (keywordList.begin()+i);
+		}
+	}
 }
 
 bool Room::findKeyword(string s){
@@ -177,6 +185,11 @@ vector<string> Room::getObjList(){
 	for (auto & npc : npcList) {
 	    objList.push_back(npc->getName());
 	}
+
+	for (auto & user : userList) {
+	    objList.push_back(user->getUserName());
+	}
+
 	return objList;
 }
 
@@ -216,6 +229,11 @@ string Room::lookAt(string objName){
 		}
 	}
 
+	for (auto & user : userList) {
+		if (0 == strcasecmp(objName.c_str(), user->getUserName().c_str())){
+			return user->getDescription();
+		}
+	}
 
 	/*
 	for (auto &item : itemList){
@@ -232,6 +250,28 @@ string Room::lookAt(string objName){
 void Room::setDoorState(int doorNumber, string newState) {
 	assert(doorNumber < doorList.size());
 	doorList[doorNumber]->setState(newState); // probably needs tweaking
+}
+
+void Room::addUser(shared_ptr<User> user){
+	userList.push_back(user);
+}
+
+void Room::removeUser(string name){
+	for (int i = 0; i<userList.size(); i++) {
+		if (0 == strcasecmp(name.c_str(), userList.at(i)->getUserName().c_str())){
+			cout << "removing User!" << endl;
+			userList.erase(userList.begin()+i);
+		}
+	}
+}
+
+void Room::transferOutUser(string name, shared_ptr<Room> outRoom){
+	for (int i = 0; i<userList.size(); i++) {
+		if (0 == strcasecmp(name.c_str(), userList.at(i)->getUserName().c_str())){
+			outRoom->addUser(userList.at(i));
+			userList.erase(userList.begin()+i);
+		}
+	}
 }
 
 void Room::createNPC(){
