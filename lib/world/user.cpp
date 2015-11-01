@@ -8,7 +8,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "Session.h"
+//#include "Session.h"
 
 using namespace std;
 
@@ -40,59 +40,73 @@ User::User(){
   //inventory = new Inventory();
   }*/
 
-User::User(bool isAdmin, string userName, string password, Room currentRoom, string description) {
+User::User(bool isAdmin, string userName, string password, shared_ptr<Room> currentRoom, string description) {
   setUserType(isAdmin);
   setUserName(userName);
   setPassword(password);
   setRoom(currentRoom);
   setDescription(description);
   //this->session = session;
-  usedDefaultConstructor = false;
+  //usedDefaultConstructor = false;
   // userStats = new AbilityStats();
-  playerLevel = START_LEVEL;
+  //playerLevel = START_LEVEL;
  
   //inventory = new Inventory();
   }
+
+//Copy Constructor: added by Sarah
+User::User(User &user){
+  isAdmin = user.getUserType();
+  userName = user.getUserType();
+  password = user.getPassword();
+  currentRoom = user.getRoom();
+  description = user.getDescription();
+
+  usedDefaultConstructor = false;
+
+  playerLevel = user.getLevel();
+
+}
 
 /* Ensures deletion of the player's inventory and currentRoom if default constructor used*/
 User::~User() {
   // delete inventory;
 }
 
-void User::setUserName(string userName){
-  this->userName = userName;
+void User::setUserName(string s){
+  userName = s;
 }
 
 string User::getUserName(){
   return userName;
 }
 
-void User::setPassword(string password){
-  this->password = password;
+void User::setPassword(string s){
+  password = s;
 }
 
 string User::getPassword(){
   return password;
 }
 
-void User::setUserType(bool isAdmin){
-  this->isAdmin = isAdmin;
+void User::setUserType(bool b){
+  isAdmin = b;
 }
 
 bool User::getUserType(){
   return isAdmin;
 }
 
-void User::setRoom(Room currentRoom){
-  this->currentRoom = currentRoom;
+void User::setRoom(shared_ptr<Room> newRoom){
+  this->currentRoom = newRoom;
 }
 
-Room User::getRoom(){
-  return currentRoom;
+shared_ptr<Room> User::getRoom(){
+  return currentRoom.lock();
 }
 
-void User::setDescription(string description){
-  this->description = description;
+void User::setDescription(string s){
+  description = s;
 }
 
 string User::getDescription(){
@@ -123,8 +137,8 @@ int User::getXP(){
   return playerXP;
 }
 
-void User::setLivingStatus(bool isAlive){
-  this->isAlive = isAlive;
+void User::setLivingStatus(bool b){
+  isAlive = b;
 }
 
 bool User::getLivingStatus(){
@@ -190,3 +204,35 @@ void User::setStrength(int strength){
   userStats.setStrength(strength);
 }
 */
+
+////ROOM INTERACTION METHODS Added by Sarah
+
+string User::moveTo(string dir){
+  for (auto & door : getRoom()->getDoorList() ) {
+    if(door->findKeyword(dir) || door->getLeadsTo()->findKeyword(dir)){
+      setRoom(door->getLeadsTo());
+      return getRoom()->getDesc();
+    }
+  }
+  return "Cannot go there"; 
+}
+
+string User::lookAt(string objName){
+  return getRoom()->lookAt(objName);
+}
+
+string User::lookAround(){
+  return getRoom()->lookAround();
+}
+
+vector<string> User::lookExits(){
+  return getRoom()->getDoorDescList();
+}
+
+vector<string> User::lookObjList(){
+  return getRoom()->getObjList();
+}
+
+vector<string> User::lookObjKeywords(string objName){
+  return getRoom()->getObjKeywords(objName);
+}

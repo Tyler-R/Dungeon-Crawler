@@ -45,6 +45,7 @@ World::World(){
 	knight->setName("Sir Knight");
 	knight->addShortDesc("There is knight standing nearby.");
 	knight->addLongDesc("The knight is practicing his swordsmanship.");
+	knight->addKeyword("knight");
 	knight->addKeyword("swordsman");
 
 	lobby->addNPC(knight);
@@ -57,6 +58,7 @@ World::World(){
 	roomList.push_back(bedroom);
 	roomList.push_back(basement);
 	roomList.push_back(shower);
+
 
 	currentRoom = lobby;
 }

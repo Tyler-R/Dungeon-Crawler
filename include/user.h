@@ -1,13 +1,14 @@
 /*Header file for user.cpp
 Created By: Jordan Nielsen
 */
-
+#pragma once
 #include <iostream>
 #include "room.h"
 #include "abilityStats.h"
 //#include "session.h"
 #include <string>
 #include <vector>
+#include <memory>
 
 using namespace std;
 
@@ -19,22 +20,22 @@ class User {
     /*User constructor for setting up basic information*/
     // User(bool isAdmin, string userName, string password, Room currentRoom,Session session, string description);
 
-     User(bool isAdmin, string userName, string password, Room currentRoom, string description);
-
+     User(bool isAdmin, string userName, string password, shared_ptr<Room> currentRoom, string description);
+     User(User &user); //Copy constructor added by Sarah
     ~User();
 
-    void setUserName(string userName);
+    void setUserName(string s);
     string getUserName();
 
     string getPassword();
 
-    void setUserType(bool isAdmin);
+    void setUserType(bool b);
     bool getUserType();
 		
-    void setRoom(Room currentRoom);
-    Room getRoom();
+    void setRoom(shared_ptr<Room> newRoom);
+    shared_ptr<Room> getRoom();
 
-    void setDescription(string description);
+    void setDescription(string s);
     string getDescription();
 
     void levelUp();
@@ -43,9 +44,16 @@ class User {
     void increaseXP(int additionalXP);
     int getXP();
 
-    void setLivingStatus(bool isAlive);
+    void setLivingStatus(bool b);
     bool getLivingStatus();
 
+    //ROOM INTERACTION METHODS added by Sarah
+    string moveTo(string dir);
+    string lookAt(string objName);
+    string lookAround();
+    vector<string> lookExits();
+    vector<string> lookObjList();
+    vector<string> lookObjKeywords(string objName);
 
     // void notifySession(string notification);
 
@@ -57,6 +65,9 @@ class User {
     int getIntelligence();
     int getStrength();
     */
+
+
+
 		
  private:
     const int START_LEVEL = 1;
@@ -64,7 +75,7 @@ class User {
     string userName;
     string password;
     string description;
-    Room currentRoom;
+    weak_ptr<Room> currentRoom;
 
 
     // Session session;
@@ -84,7 +95,7 @@ class User {
     bool isAdmin;
     bool isAlive;
 
-    void setPassword(string password);
+    void setPassword(string s);
 
     /*
     void setCharisma(int charisma);

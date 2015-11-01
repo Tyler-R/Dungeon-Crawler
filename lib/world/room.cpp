@@ -124,6 +124,27 @@ void Room::printKeywords(){ //To be used by the Room's Test Module only!
 }
 
 
+vector<string> Room::getObjKeywords(string objName){ //Gets a List of an Object's Keywords.
+	vector <string> objKeywords;
+
+	if ( findKeyword(objName) ){
+		return getKeywords();
+	}
+
+
+	for (auto & door : doorList) {
+		if ( door->findKeyword(objName)){
+			return door->getKeywords();
+		}
+	}
+
+	for (auto & npc : npcList) {
+		if ( npc->searchKeyword(objName)){
+			return npc->getKeyword();
+		}
+	}
+}
+
 void Room::addDoor(string inputId,string inputDir, string inputDesc, shared_ptr<Room>inputRoom){
 	doorList.push_back(new Door(inputId,inputDir,inputDesc, inputRoom));
 }
@@ -145,8 +166,6 @@ vector<string> Room::getDoorDescList(){
 	return doorDescriptions;
 
 }
-
-
 
 vector<string> Room::getObjList(){
 	//This method returns a list of strings containing the names of every door, npc, item, and user in the room.
@@ -191,18 +210,12 @@ string Room::lookAt(string objName){
 		}
 	}
 
-	for (auto & door : doorList) {
-		if(door->findKeyword(objName)){
-			return door->getDesc();
-		}
-	}
-
-	
-	for (auto &npc : npcList){
-		if(npc->searchKeyword(objName)){
+	for (auto & npc : npcList) {
+		if ( npc->searchKeyword(objName)){
 			return npc->getLongDesc();
 		}
 	}
+
 
 	/*
 	for (auto &item : itemList){
@@ -230,6 +243,7 @@ void Room::createNPC(){
 		npc->setName("Butler Jeeves");
 		npc->addShortDesc("There is butler standing nearby.");
 		npc->addLongDesc("The butler is busy cleaning up the lobby.");
+		npc->addKeyword("butler");
 		npc->addKeyword("servant");
 
 		addNPC(npc);

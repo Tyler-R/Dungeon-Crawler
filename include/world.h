@@ -9,6 +9,7 @@ Created By: Sarah Kim Dao
 #include <memory>
 
 #include "room.h"
+#include "user.h"
 #include "reset/Reset.h"
 
 using namespace std;
