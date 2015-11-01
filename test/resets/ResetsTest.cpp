@@ -135,6 +135,27 @@ void performNPCResetTests() {
     testNPCResetWithMultipleResets();
 }
 
+void testDoorResetLocking() {
+    shared_ptr<Room> room1 = make_shared<Room>();
+    shared_ptr<Room> room2 = make_shared<Room>();
+
+    room1->addDoor("12345", "north", "the door that leads north", room2);
+
+    DoorReset reset(room, 0, "Lock");
+
+    reset->performReset();
+
+    // no real way to chedck that the change occured
+    // should test what the locking / unlocking of doors does
+
+    // we likely want to check that the player cannot move through a locked door.
+
+}
+
+void performDoorResetTests() {
+    testDoorResetLocking();
+}
+
 int main() {
 
     // shared_ptr<Room> room = make_shared<Room>();
@@ -157,6 +178,8 @@ int main() {
 
 
     performNPCResetTests();
+
+    performDoorResetTests();
 
 
 
