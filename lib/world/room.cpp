@@ -267,3 +267,15 @@ void Room::createItem(){
 void Room::addItem(shared_ptr<Item> item){
 	itemList.push_back(item);
 }
+
+int Room::getNumberOfNPCsWithID(string npcID) {
+	int npcCount = 0;
+
+	for(auto &npc : npcList) {
+		if(npc->getID().compare(npcID) == 0) {
+			npcCount++;
+		}
+	}
+
+	return npcCount;
+}	
