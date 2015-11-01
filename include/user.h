@@ -2,13 +2,14 @@
 Created By: Jordan Nielsen
 */
 #pragma once
-#include <iostream>
 #include "room.h"
 #include "abilityStats.h"
 //#include "Session.h"
 #include <string>
 #include <vector>
 #include <memory>
+#include <iostream>
+#include <functional>
 
 using namespace std;
 
@@ -51,6 +52,18 @@ class User {
 
     //void notifySession(string notification);
 
+    //ROOM INTERACTION METHODS added by Sarah
+    string moveTo(string dir);
+    string lookAt(string objName);
+    string lookAround();
+    vector<string> lookExits();
+    vector<string> lookObjList();
+    vector<string> lookObjKeywords(string objName);
+    string takeItem(string objName);
+
+    void setMessageDisplayer(std::function<void(string)> newMessageDisplayer);
+    void notifySession(string notification);
+
     /*
     int getCharisma();
     int getDefense();
@@ -59,17 +72,6 @@ class User {
     int getIntelligence();
     int getStrength();
     */
-
-    //ROOM INTERACTION METHODS added by Sarah
-    string moveTo(string dir);
-    string lookAt(string objName);
-    string lookAround();
-    vector<string> lookExits();
-    vector<string> lookObjList();
-    vector<string> lookObjKeywords(string objName);
-
-
-
 		
  private:
     const int START_LEVEL = 1;
@@ -78,6 +80,8 @@ class User {
     string password;
     string description;
     weak_ptr<Room> currentRoom;
+
+    std::function<void(string)> messageDisplayer;
 
 
     //Session session;

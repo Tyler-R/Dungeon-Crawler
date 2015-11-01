@@ -9,7 +9,7 @@
 #include "item.h"
 
 Inventory::Inventory(){
-  //inventory = new vector<Item>;
+  //inventory = new vector<Item>();
 }
 
 Inventory::~Inventory(){
