@@ -90,6 +90,8 @@ class Room {
 
 		void createItem();
 		void addItem(shared_ptr<Item> item);
+
+		bool doesItemExist(string itemID);
 		//void removeItem();
 
 		string roomAnnouncement(string news);

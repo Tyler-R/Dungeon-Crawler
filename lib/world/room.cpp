@@ -268,6 +268,16 @@ void Room::addItem(shared_ptr<Item> item){
 	itemList.push_back(item);
 }
 
+bool Room::doesItemExist(string itemID) {
+	for(auto &item : itemList) {
+		if(itemID.compare(item->getID()) == 0) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
 int Room::getNumberOfNPCsWithID(string npcID) {
 	int npcCount = 0;
 
