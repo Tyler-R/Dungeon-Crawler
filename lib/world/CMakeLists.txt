@@ -6,5 +6,6 @@ add_library(world world.cpp
 	          door.cpp
 		  inventory.cpp
 	          abilityStats.cpp
-                  user.cpp			
+                  user.cpp	
+                  item.cpp		
 )
