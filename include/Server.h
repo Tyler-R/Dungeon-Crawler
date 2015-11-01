@@ -1,10 +1,12 @@
 #pragma once
 #include "Session.h"
+#include "world.h"
 
 #include <iostream>
 #include <string>
 #include <vector>
 #include <memory>
+
 
 #include <boost/asio.hpp>
 #include <boost/bind.hpp>
@@ -14,10 +16,10 @@ using boost::asio::ip::tcp;
 
 class Server {
 public:
-    Server(int port);
-    ~Server();
+    Server( int port );
+    ~Server( );
 
-    void start();
+    void start( );
 
 private:
     int port;
@@ -28,8 +30,12 @@ private:
 
     std::vector<std::shared_ptr<Session>> sessions;
 
-    void listenForConnections();
+    std::shared_ptr<World> world;
 
-    void handleCommands();
+    void listenForConnections( );
+
+    void handleCommands( );
+
+    void loadWorld( );
 
 };
