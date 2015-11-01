@@ -8,7 +8,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-//#include "Session.h"
 
 using namespace std;
 
@@ -18,7 +17,7 @@ User::User(){
   setUserName("testUser");
   setPassword("password");
   usedDefaultConstructor = true;
-  //userStats = new AbilityStats();
+  userStats = new AbilityStats();
   playerLevel = START_LEVEL;
  
   //inventory = new Inventory();
@@ -40,6 +39,7 @@ User::User(){
   //inventory = new Inventory();
   }*/
 
+
 User::User(bool isAdmin, string userName, string password, shared_ptr<Room> currentRoom, string description) {
   setUserType(isAdmin);
   setUserName(userName);
@@ -48,8 +48,8 @@ User::User(bool isAdmin, string userName, string password, shared_ptr<Room> curr
   setDescription(description);
   //this->session = session;
   //usedDefaultConstructor = false;
-  // userStats = new AbilityStats();
-  //playerLevel = START_LEVEL;
+  userStats = new AbilityStats();
+  playerLevel = START_LEVEL;
  
   //inventory = new Inventory();
   }
@@ -57,7 +57,7 @@ User::User(bool isAdmin, string userName, string password, shared_ptr<Room> curr
 //Copy Constructor: added by Sarah
 User::User(User &user){
   isAdmin = user.getUserType();
-  userName = user.getUserType();
+  userName = user.getUserName();
   password = user.getPassword();
   currentRoom = user.getRoom();
   description = user.getDescription();
@@ -70,6 +70,7 @@ User::User(User &user){
 
 /* Ensures deletion of the player's inventory and currentRoom if default constructor used*/
 User::~User() {
+  delete(userStats);
   // delete inventory;
 }
 
@@ -116,6 +117,7 @@ string User::getDescription(){
 //TODO: Add method calls to increase player stats appropriately
 void User::levelUp(){
   playerLevel += 1;
+  userStats->levelUp();
 }
 
 int User::getLevel(){

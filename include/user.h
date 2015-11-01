@@ -5,7 +5,7 @@ Created By: Jordan Nielsen
 #include <iostream>
 #include "room.h"
 #include "abilityStats.h"
-//#include "session.h"
+//#include "Session.h"
 #include <string>
 #include <vector>
 #include <memory>
@@ -22,7 +22,7 @@ class User {
     /*User constructor for setting up basic information*/
     // User(bool isAdmin, string userName, string password, Room currentRoom,Session session, string description);
 
-     User(bool isAdmin, string userName, string password, shared_ptr<Room> currentRoom, string description);
+    User(bool isAdmin, string userName, string password, shared_ptr<Room> currentRoom, string description);
      User(User &user); //Copy constructor added by Sarah
     ~User();
 
@@ -49,15 +49,7 @@ class User {
     void setLivingStatus(bool b);
     bool getLivingStatus();
 
-    //ROOM INTERACTION METHODS added by Sarah
-    string moveTo(string dir);
-    string lookAt(string objName);
-    string lookAround();
-    vector<string> lookExits();
-    vector<string> lookObjList();
-    vector<string> lookObjKeywords(string objName);
-
-    // void notifySession(string notification);
+    //void notifySession(string notification);
 
     /*
     int getCharisma();
@@ -67,6 +59,14 @@ class User {
     int getIntelligence();
     int getStrength();
     */
+
+    //ROOM INTERACTION METHODS added by Sarah
+    string moveTo(string dir);
+    string lookAt(string objName);
+    string lookAround();
+    vector<string> lookExits();
+    vector<string> lookObjList();
+    vector<string> lookObjKeywords(string objName);
 
 
 
@@ -80,10 +80,10 @@ class User {
     weak_ptr<Room> currentRoom;
 
 
-    // Session session;
+    //Session session;
 
 
-    //AbilityStats userStats;
+    AbilityStats* userStats;
 
 
     // Inventory inventory;
