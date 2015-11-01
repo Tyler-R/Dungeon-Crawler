@@ -4,6 +4,7 @@
 #include "reset/DoorReset.h"
 #include "reset/ItemReset.h"
 
+
 #include <memory>
 
 void testNPCResetWithMultipleResets() {
@@ -141,11 +142,11 @@ void testDoorResetLocking() {
 
     room1->addDoor("12345", "north", "the door that leads north", room2);
 
-    DoorReset reset(room, 0, "Lock");
+    DoorReset reset(room1, 0, "Lock");
 
-    reset->performReset();
+    reset.performReset();
 
-    // no real way to chedck that the change occured
+    // no real way to check that the change occured
     // should test what the locking / unlocking of doors does
 
     // we likely want to check that the player cannot move through a locked door.
@@ -155,6 +156,32 @@ void testDoorResetLocking() {
 void performDoorResetTests() {
     testDoorResetLocking();
 }
+
+void testItemReset() {
+    shared_ptr<Room> room = make_shared<Room>();
+    shared_ptr<Item> item = make_shared<Item>("20");
+
+    ItemReset reset(room, item);
+
+    if( !room->doesItemExist( "20" ) ) {
+        cout << "test passed: item does not exist in room" << endl;
+    } else {
+        cout << "test failed: item exists in room before reset" << endl;
+    }
+
+    reset.performReset();
+
+    if( room->doesItemExist( "20" ) ) {
+        cout << "test passed: item now exists in room" << endl;
+    } else {
+        cout << "test failed: item not added to room properly" << endl;
+    }
+}
+
+void performItemResetTests() {
+    testItemReset();
+}
+
 
 int main() {
 
@@ -180,6 +207,8 @@ int main() {
     performNPCResetTests();
 
     performDoorResetTests();
+
+    performItemResetTests();
 
 
 
