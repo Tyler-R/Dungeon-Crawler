@@ -90,13 +90,14 @@ class Room {
 
 		void createNPC();
 		void addNPC(shared_ptr<NPC> npc);
-		// void removeNPC();
+		void removeNPC(string npcID);
 
 		void createItem();
 		void addItem(shared_ptr<Item> item);
+		void removeItem(string itemID);
 
 		bool doesItemExist(string itemID);
-		//void removeItem();
+		
 
 		string roomAnnouncement(string news);
 

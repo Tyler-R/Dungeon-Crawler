@@ -66,6 +66,7 @@ public:
     // functions (status) save for later
     string getType() const;         // return item type
     string getName() const;         // return the name of an item
+    void setName(string s);         //added by Sarah
     //int getDamage() const;          // return the damage (Weapon only)
     int getBoost() const;
     // helper function

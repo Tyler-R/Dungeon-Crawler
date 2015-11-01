@@ -57,6 +57,7 @@ class User {
     vector<string> lookExits();
     vector<string> lookObjList();
     vector<string> lookObjKeywords(string objName);
+    string takeItem(string objName);
 
     void setMessageDisplayer(std::function<void(string)> newMessageDisplayer);
     void notifySession(string notification);
