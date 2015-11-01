@@ -53,12 +53,12 @@ Item::Item(string id){
     setID(id);
 }
 // copy
-Item::Item(Item &item){
-    itemID = item.getID();
-    longDesc = item.getLongDesc();
-    shortDesc = item.getShortDesc();
+Item::Item(Item *item){
+    itemID = item->getID();
+    longDesc = item->getLongDesc();
+    shortDesc = item->getShortDesc();
 
-    for(auto & key : item.getKeyword()){
+    for(auto & key : item->getKeyword()){
         keywords.push_back(key);
     }   
 }
