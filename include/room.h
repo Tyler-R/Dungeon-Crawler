@@ -99,7 +99,7 @@ class Room {
 		bool doesItemExist(string itemID);
 		
 
-		void roomAnnouncement(string news);
+		void announcement(string news);
 
 };
 

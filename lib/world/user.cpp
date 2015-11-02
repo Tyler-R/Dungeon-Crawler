@@ -210,8 +210,10 @@ void User::setStrength(int strength){
 string User::moveTo(string dir){
   for (auto & door : getRoom()->getDoorList() ) {
     if(door->findKeyword(dir) || door->getLeadsTo()->findKeyword(dir)){
+      getRoom()->announcement(getUserName() + " left the room.");
       getRoom()->transferOutUser(getUserName(), door->getLeadsTo());
       setRoom(door->getLeadsTo());
+      getRoom()->announcement(getUserName() + " has entered the room.");
       return "You are now in the " + getRoom()->getName() + ".\n" + getRoom()->getDesc();
     }
   }
@@ -244,6 +246,7 @@ string User::takeItem(string objName){
     if(item->searchKeyword(objName)){
       getRoom()->removeItem(item->getID());
       inventory->addItem(*item);
+      getRoom()->announcement(getUserName() + " took a " + objName + ".");
       return "You took a " + objName;
     }
   }
