@@ -6,9 +6,12 @@
 class UserInterface
 {
 private:
+	//WINDOW *win;
 	char str[80];
 	char mesg[10]; 
 	int row,col; 
+	int countRows = 0;
+
 
 public:
 	UserInterface();
