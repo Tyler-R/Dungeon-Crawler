@@ -250,17 +250,15 @@ string User::takeItem(string objName){
   return "Cannot take that item.";
 }
 
-/*
-//THESE WON'T RECOGNIZE inventory AS A PROPER IDENTIFIER!!??? WTF
-string viewInventory(){
+string User:: viewInventory(){
   return (inventory->lookAtInventory());
 }
 
-string useItem(string itemName){
+string User::useItem(string itemName){
   string result = (inventory->useItem(itemName));
   return result;
 }
-*/
+
 
 
 // ADMIN ONLY METHODS
