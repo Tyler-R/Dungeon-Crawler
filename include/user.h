@@ -65,6 +65,10 @@ class User {
     void setMessageDisplayer(std::function<void(string)> newMessageDisplayer);
     void notifySession(string notification);
 
+    /*INVENTORY INTERACTION METHODS added by Jordan*/
+    string viewInventory();
+    string useItem(string itemName);
+
     int getCharisma();
     int getDefense();
     int getDexterity();

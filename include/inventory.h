@@ -6,7 +6,6 @@ Created By: Jordan Nielsen
 #include <iostream>
 #include <string>
 #include <vector>
-//#include <algorithm>
 #include "item.h"
 using namespace std;
 
@@ -27,13 +26,13 @@ class Inventory {
 
     void addItem(Item item);
 
-    //string removeItem(string itemName);
+    string removeItem(string itemName);
 
     int getInventorySize();
 
     int getInventoryMaxSize();
 
-    // string useItem(string item);
+    string useItem(string itemName);
 
   private:
     static const int inventoryMaxSize = 20;

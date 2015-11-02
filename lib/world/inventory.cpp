@@ -59,22 +59,20 @@ void Inventory::addItem(Item item){
 }
 
 // TODO
-/*string Inventory::removeItem(string itemName){
+string Inventory::removeItem(string itemName){
   string result = "Item was not in your inventory";
 
   vector<Item>::iterator it = inventory.begin();
   for(it; it < inventory.end(); advance(it, 1)){
-    //Item item = THIS NEED TO GET THE ITEM AT THE CURRENT ITERATOR!!
+    Item item = *it;
     if(item.searchKeyword(itemName)){
-      vector<Item>::iterator it = inventory.begin();
-      
-      inventory.erase(this);
+      inventory.erase(it);
       result = "Item was removed from your inventory";
       break;
     }
   }
   return result;
-  }*/
+}
 
 int Inventory::getInventorySize() {
   return inventory.size();
@@ -83,9 +81,11 @@ int Inventory::getInventorySize() {
 int Inventory::getInventoryMaxSize(){
   return inventoryMaxSize;
 }
-/*
-// TODO
-String Inventory::useItem(string item){
 
+// TODO
+string Inventory::useItem(string itemName){
+  //FILL IN RETRIEVAL OF ITEM EFFECTS  
+
+  return (removeItem(itemName) + " and used. /n");
 }
-*/
+

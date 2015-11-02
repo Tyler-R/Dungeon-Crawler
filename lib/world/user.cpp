@@ -238,15 +238,29 @@ vector<string> User::lookObjKeywords(string objName){
   return getRoom()->getObjKeywords(objName);
 }
 
-////ITEM INTERACTION METHODS Added by Sarah
+////ITEM INTERACTION METHODS Added by Sarah and edited by Jordan
 string User::takeItem(string objName){
   for (auto & item : getRoom()->getItems() ) {
     if(item->searchKeyword(objName)){
       getRoom()->removeItem(item->getID());
+      inventory->addItem(*item);
       return "You took a " + objName;
     }
   }
   return "Cannot take that item.";
 }
+
+/*
+//THESE WON'T RECOGNIZE inventory AS A PROPER IDENTIFIER!!??? WTF
+string viewInventory(){
+  return (inventory->lookAtInventory());
+}
+
+string useItem(string itemName){
+  string result = (inventory->useItem(itemName));
+  return result;
+}
+*/
+
 
 // ADMIN ONLY METHODS
