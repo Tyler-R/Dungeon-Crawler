@@ -1,0 +1,889 @@
+AREA:
+  name: Smurf Village
+NPCS:
+- description:
+  - A cute little blue smurf with a white hat and white boots.  You have a sudden
+  - urge to crush him.
+  id: 101
+  keywords:
+  - smurf
+  longdesc:
+  - A smurf is singing and walking along.
+  shortdesc: a smurf
+- description:
+  - A small smurf is quietly picking berries.  He seems to hardly notice you.
+  id: 102
+  keywords:
+  - smurf
+  longdesc:
+  - A smurf is here, picking berries.
+  shortdesc: a smurf
+- description:
+  - Brainy Smurf has on his usual glasses.  Brainy Smurf isn't liked much by the
+  - other smurfs.  They fear his knowledge.  Knowledge is power!
+  id: 103
+  keywords:
+  - brainy
+  - smurf
+  longdesc:
+  - Brainy Smurf is here, mumbling something to himself.
+  shortdesc: Brainy Smurf
+- description:
+  - Handy is always building something.  He never takes a break.  Why don't you
+  - give him a break, like all of his bones.
+  id: 104
+  keywords:
+  - handy
+  - smurf
+  longdesc:
+  - Handy Smurf is building something here.
+  shortdesc: Handy Smurf
+- description:
+  - Sleepy never gets enough sleep.  You would think he goes to college.  I wonder
+  - if he has ever stayed up a whole night without sleeping.
+  id: 105
+  keywords:
+  - sleepy
+  - smurf
+  longdesc:
+  - Sleepy Smurf is sleep walking here.
+  shortdesc: Sleepy Smurf
+- description:
+  - Hefty is a total health nut.  He lifts weights, eats right, and exercises all
+  - the time.  Won't do him much good when he's DEAD.
+  id: 106
+  keywords:
+  - hefty
+  - smurf
+  longdesc:
+  - Hefty Smurf is lifting weights here.
+  shortdesc: Hefty Smurf
+- description:
+  - Grumpy has never been happy in his whole life.  So why don't you just end it?
+  id: 107
+  keywords:
+  - grumpy
+  - smurf
+  longdesc:
+  - Grumpy Smurf is here, swearing.
+  shortdesc: Grumpy Smurf
+- description:
+  - Jokey loves to give people presents.  Too bad the present explodes when opened.
+  - Oh well, to each his own.
+  id: 108
+  keywords:
+  - jokey
+  - smurf
+  longdesc:
+  - Jokey Smurf is here, holding a present.
+  shortdesc: Jokey Smurf
+- description:
+  - Smurfette is the cutest little smurf you've ever seen.  If only she were your
+  - size.  I wonder how much she charges the other smurfs.
+  id: 109
+  keywords:
+  - smurfette
+  longdesc:
+  - Smurfette is here, looking beautiful.
+  shortdesc: Smurfette
+- description:
+  - Yep, its Papa Smurf all right.  Red hat and boots and the funny little white
+  - beard.  Papa Smurf treats his fellow smurfs with dignity and respect.  That
+  - is why Papa Smurf is so popular among the ladies.
+  id: 110
+  keywords:
+  - papa
+  - smurf
+  longdesc:
+  - Papa Smurf is practicing magic here.
+  shortdesc: Papa Smurf
+- description:
+  - Gargamel has never done anything right in his life.  He has caught smurfs
+  - before but always lets them escape.  He brings true meaning to the word moron.
+  id: 111
+  keywords:
+  - gargamel
+  longdesc:
+  - Gargamel is here, cursing out the smurfs.
+  shortdesc: Gargamel
+- description:
+  - Gargamel's worthless cat.  He is just about as dumb as Gargamel.  He should
+  - just grab a smurf in his teeth and chew away.
+  id: 112
+  keywords:
+  - azreal
+  - cat
+  longdesc:
+  - Azreal is here, licking himself.
+  shortdesc: Azreal
+OBJECTS:
+- extra: []
+  id: 100
+  keywords:
+  - bunch
+  - berries
+  - smurfberries
+  longdesc:
+  - A bunch of delicious looking smurfberries lie here.
+  shortdesc: A bunch of smurfberries
+- extra: []
+  id: 101
+  keywords:
+  - glasses
+  longdesc:
+  - An odd pair of glasses has been left here.
+  shortdesc: A pair of glasses
+- extra: []
+  id: 102
+  keywords:
+  - smurf
+  - hat
+  longdesc:
+  - A smurf hat has been left here.
+  shortdesc: a smurf hat
+- extra: []
+  id: 103
+  keywords:
+  - axe
+  - small
+  longdesc:
+  - A small axe has been dropped here.
+  shortdesc: a small axe
+- extra: []
+  id: 104
+  keywords:
+  - necklace
+  longdesc:
+  - A small necklace is lying on the ground.
+  shortdesc: a small necklace
+- extra: []
+  id: 105
+  keywords:
+  - pink
+  - potion
+  longdesc:
+  - A pink potion is barely visible on the ground.
+  shortdesc: a pink potion
+- extra: []
+  id: 106
+  keywords:
+  - wand
+  longdesc:
+  - A small wand lies on the ground.
+  shortdesc: a small wand
+- extra: []
+  id: 107
+  keywords:
+  - key
+  longdesc:
+  - A tiny key is lying on the ground.
+  shortdesc: a tiny key
+- extra: []
+  id: 108
+  keywords:
+  - well
+  longdesc:
+  - A small smurfy well is here.
+  shortdesc: a smurf well
+- extra: []
+  id: 109
+  keywords:
+  - key
+  longdesc:
+  - A key to Gargamel's door lies here.
+  shortdesc: a small key
+RESETS:
+- action: object
+  id: 108
+  room: 109
+- action: npc
+  comment: Berry picking Smurfs
+  id: 102
+  limit: 3
+  room: 118
+- action: give
+  comment: give each smurfberries
+  id: 100
+- action: npc
+  id: 102
+  limit: 3
+  room: 117
+- action: give
+  id: 100
+- action: npc
+  id: 102
+  limit: 3
+  room: 116
+- action: give
+  id: 100
+- action: npc
+  comment: Regular smurfs
+  id: 101
+  limit: 3
+  room: 105
+- action: npc
+  id: 101
+  limit: 3
+  room: 110
+- action: give
+  id: 102
+- action: npc
+  id: 101
+  limit: 3
+  room: 111
+- action: npc
+  id: 101
+  limit: 3
+  room: 112
+- action: give
+  comment: give hats to some
+  id: 102
+- action: npc
+  id: 101
+  limit: 3
+  room: 107
+- action: npc
+  id: 101
+  limit: 3
+  room: 108
+- action: give
+  id: 102
+- action: npc
+  id: 101
+  limit: 3
+  room: 109
+- action: npc
+  id: 101
+  limit: 3
+  room: 104
+- action: give
+  id: 102
+- action: npc
+  comment: Brainy Smurf
+  id: 103
+  limit: 1
+  room: 119
+- action: equip
+  id: 101
+  slot: 6
+- action: npc
+  comment: Handy Smurf
+  id: 104
+  limit: 1
+  room: 120
+- action: equip
+  id: 103
+  slot: 16
+- action: npc
+  comment: Sleepy Smurf
+  id: 105
+  limit: 1
+  room: 122
+- action: npc
+  comment: Hefty Smurf
+  id: 106
+  limit: 1
+  room: 121
+- action: equip
+  id: 103
+  slot: 16
+- action: npc
+  comment: Grumpy Smurf
+  id: 107
+  limit: 1
+  room: 123
+- action: npc
+  comment: Jokey Smurf
+  id: 108
+  limit: 1
+  room: 124
+- action: npc
+  comment: Smurfette
+  id: 109
+  limit: 1
+  room: 129
+- action: equip
+  id: 104
+  slot: 3
+- action: give
+  id: 107
+- action: npc
+  comment: Papa Smurf
+  id: 110
+  limit: 1
+  room: 125
+- action: give
+  id: 105
+- action: give
+  id: 109
+- action: npc
+  comment: Gargamel
+  id: 111
+  limit: 1
+  room: 128
+- action: equip
+  id: 106
+  slot: 17
+- action: npc
+  comment: Azreal
+  id: 112
+  limit: 1
+  room: 128
+ROOMS:
+- desc:
+  - This path is made of crushed granite with curious blue streaks in it.
+  - The path continues north to a village, or south to the west gate.
+  doors:
+  - desc:
+    - The path continues toward the village.
+    dir: north
+    keywords: []
+    to: 102
+  - desc:
+    - The path back toward the forest.
+    dir: south
+    keywords: []
+    to: 3040
+  extended_descriptions: []
+  id: 101
+  name: Dimly Lit Path
+- desc:
+  - This section of the road is badly worn and frequently traversed.  There is
+  - faint singing to the north.  The road back to the forest lies to the south.
+  doors:
+  - desc:
+    - The path continues toward the village.
+    dir: north
+    keywords: []
+    to: 103
+  - desc:
+    - The dimly lit path.
+    dir: south
+    keywords: []
+    to: 101
+  extended_descriptions: []
+  id: 102
+  name: Dimly Lit Path
+- desc:
+  - This section of the road is badly worn and frequently traversed.  Singing is
+  - getting stronger to the north.  The road back to the forest lies to the south.
+  doors:
+  - desc:
+    - The entrance to smurf village.
+    dir: north
+    keywords: []
+    to: 104
+  - desc:
+    - The dimly lit path.
+    dir: south
+    keywords: []
+    to: 102
+  extended_descriptions: []
+  id: 103
+  name: Dimly Lit Path
+- desc:
+  - You stand at the entrance to a tiny village.  You can see across the whole
+  - village easily.  Little blue creatures with white hats and boots and little
+  - fluffy tails scamper about.  They sing continuously.  The singing is getting
+  - on your nerves and you have the urge to squash them.
+  doors:
+  - desc:
+    - Smurfy Road
+    dir: north
+    keywords: []
+    to: 105
+  - desc:
+    - Dimly Lit Path
+    dir: south
+    keywords: []
+    to: 103
+  extended_descriptions: []
+  id: 104
+  name: Entrance to Smurf Village
+- desc:
+  - You are way too big to be using this road.  But who cares.  Who's gonna stop
+  - you?  These little blue smurfs?  The singing is growing intense.  Your ears
+  - are starting to ring.  Smurfy Road continues to the north, west, and east.
+  - There is still time to turn back and go south.
+  doors:
+  - desc:
+    - Smurfy Road
+    dir: north
+    keywords: []
+    to: 106
+  - desc:
+    - Smurfy Road
+    dir: east
+    keywords: []
+    to: 110
+  - desc:
+    - Entrance to smurf village
+    dir: south
+    keywords: []
+    to: 104
+  - desc:
+    - Smurfy Road
+    dir: west
+    keywords: []
+    to: 111
+  extended_descriptions: []
+  id: 105
+  name: Smurfy Road
+- desc:
+  - You continue to travel down Smurfy Road.  Isn't it just smurfy?  Smurfy road
+  - continues its smurfy path to the smurfy north, smurfy west, and smurfy south.
+  - A smurfy home lies to the smurfy east.
+  doors:
+  - desc:
+    - Smurfy Road
+    dir: north
+    keywords: []
+    to: 107
+  - desc:
+    - Smurfy Home
+    dir: east
+    keywords: []
+    to: 120
+  - desc:
+    - Smurfy Road
+    dir: south
+    keywords: []
+    to: 105
+  - desc:
+    - Smurfy Road
+    dir: west
+    keywords: []
+    to: 112
+  extended_descriptions: []
+  id: 106
+  name: Smurfy Road
+- desc:
+  - Oh boy, another smurfy road!  Smurfy Road goes north and south here.  There
+  - is a smurfy, mushroom home to the west.  A beautiful smurfberry patch is to
+  - the east.
+  doors:
+  - desc:
+    - Smurfy Road
+    dir: north
+    keywords: []
+    to: 108
+  - desc:
+    - Smurfberry Patch
+    dir: east
+    keywords: []
+    to: 116
+  - desc:
+    - Smurfy Road
+    dir: south
+    keywords: []
+    to: 106
+  - desc:
+    - A Smurfy Home
+    dir: west
+    keywords: []
+    to: 129
+  extended_descriptions: []
+  id: 107
+  name: Smurfy Road
+- desc:
+  - Smurfy Road continues to smurf here.  It smurfs to the south and smurfs to
+  - an end to the north.  A smurfberry patch is to the east.  A stone path lies
+  - to the west.
+  doors:
+  - desc:
+    - Smurfy Road
+    dir: north
+    keywords: []
+    to: 109
+  - desc:
+    - Smurfberry patch
+    dir: east
+    keywords: []
+    to: 117
+  - desc:
+    - Smurfy Road
+    dir: south
+    keywords: []
+    to: 107
+  - desc:
+    - A stone path
+    dir: west
+    keywords: []
+    to: 113
+  extended_descriptions: []
+  id: 108
+  name: Smurfy Road
+- desc:
+  - A smurfy well lies here in the middle of Smurfy Road.  A fence separates
+  - the smurfs from harm to the north.  A berry patch is to the east.  Smurfy
+  - Road continues to to the south and west.
+  doors:
+  - desc:
+    - Smurfberry Patch
+    dir: east
+    keywords: []
+    to: 118
+  - desc:
+    - Smurfy Road
+    dir: south
+    keywords: []
+    to: 108
+  - desc:
+    - Smurfy Road
+    dir: west
+    keywords: []
+    to: 114
+  extended_descriptions:
+  - desc:
+    - A small well is here.  Just the right size if you're a smurf.  But big
+    - enough for you to get some water from.  I'm sure the smurfs wont mind.
+    keywords:
+    - smurfy
+    - well
+  id: 109
+  name: Smurfy Road
+- desc:
+  - A corner of smurfy road is where you stand.  A smurfy fence blocks passage
+  - to the east or south.  A smurfy home is to the north.  Smurfy Road goes back
+  - to the west.
+  doors:
+  - desc:
+    - Smurfy Home
+    dir: north
+    keywords: []
+    to: 119
+  - desc:
+    - Smurfy Road
+    dir: west
+    keywords: []
+    to: 105
+  extended_descriptions: []
+  id: 110
+  name: Smurfy Road
+- desc:
+  - Western corner of Smurfy Road.  You can continue to smurf down the road
+  - to the east and north.  You can also smurf into a smurfy home to the south.
+  doors:
+  - desc:
+    - Smurfy Road
+    dir: north
+    keywords: []
+    to: 112
+  - desc:
+    - Smurfy Road
+    dir: east
+    keywords: []
+    to: 105
+  - desc:
+    - Smurfy Home
+    dir: south
+    keywords: []
+    to: 121
+  extended_descriptions: []
+  id: 111
+  name: Smurfy Road
+- desc:
+  - There's no place like smurf.  There's no place like smurf.  Sorry wrong
+  - movie.  A smurfy home is to the west.  Papa Smurf's backyard is to the
+  - north but you can't go there.  Smurfy Road continues to the south and
+  - east.
+  doors:
+  - desc:
+    - Smurfy Road
+    dir: east
+    keywords: []
+    to: 106
+  - desc:
+    - Smurfy Road
+    dir: south
+    keywords: []
+    to: 111
+  - desc:
+    - Smurfy Home
+    dir: west
+    keywords: []
+    to: 122
+  extended_descriptions: []
+  id: 112
+  name: Smurfy Road
+- desc:
+  - You are walking along a cute little stone path.  To the south lies Papa
+  - Smurf's house.  A Smurfy house is to the west.  Smurfy road is to the east.
+  - Everything is so peaceful here.  You could stay forever.
+  doors:
+  - desc:
+    - Smurfy Road
+    dir: east
+    keywords: []
+    to: 108
+  - desc:
+    - Papa Smurf's House
+    dir: south
+    keywords:
+    - door
+    to: 125
+  - desc:
+    - Smurfy House
+    dir: west
+    keywords: []
+    to: 123
+  extended_descriptions: []
+  id: 113
+  name: Stone Path
+- desc:
+  - Yet another part of Smurfy Road.  Hey if you go west its the last
+  - section of Smurfy Road.  You can go back to the smurfy well to the east.
+  doors:
+  - desc:
+    - Smurfy Road
+    dir: east
+    keywords: []
+    to: 109
+  - desc:
+    - Smurfy Road
+    dir: west
+    keywords: []
+    to: 115
+  extended_descriptions: []
+  id: 114
+  name: Smurfy Road
+- desc:
+  - The last piece of Smurfy Road.  You can go back to Smurfy Road to the east.
+  - A nice, beautiful, smurfy, mushroom home is to the south.  In the distance to
+  - the north you can see Gargamel's Castle.
+  doors:
+  - desc:
+    - Path to Gargamel's Castle
+    dir: north
+    keywords: []
+    to: 126
+  - desc:
+    - Smurfy Road
+    dir: east
+    keywords: []
+    to: 114
+  - desc:
+    - Smurfy Home
+    dir: south
+    keywords: []
+    to: 124
+  extended_descriptions: []
+  id: 115
+  name: Smurfy Road
+- desc:
+  - Delicious smurfberries grow here.  You could probably eat a year's worth of
+  - smurfberries in one sitting.  Smurfy Road is back to the west.  Another
+  - smurfberry patch is to the north.
+  doors:
+  - desc:
+    - Smurfberry Patch
+    dir: north
+    keywords: []
+    to: 117
+  - desc:
+    - Smurfy Road
+    dir: west
+    keywords: []
+    to: 107
+  extended_descriptions: []
+  id: 116
+  name: Smurfberry Patch
+- desc:
+  - Another patch of smurfberries is growing here.  The smell is driving your
+  - nostrils crazy.  It almost, ALMOST, makes you forget all the singing going
+  - on.  Smurfy Road is to the west, while smurfberry patches are to the north
+  - and south.
+  doors:
+  - desc:
+    - Smurfberry Patch
+    dir: north
+    keywords: []
+    to: 118
+  - desc:
+    - Smurfberry Patch
+    dir: south
+    keywords: []
+    to: 116
+  - desc:
+    - Smurfy Road
+    dir: west
+    keywords: []
+    to: 108
+  extended_descriptions: []
+  id: 117
+  name: Smurfberry Patch
+- desc:
+  - The northernmost of the smurfberry patches grows here.  It looks just
+  - as scrumptious as all the rest.  Just take a few; they'll never know.  Smurfy
+  - Road is to the west.  A smurfberry patch is to the south.
+  doors:
+  - desc:
+    - Smurfberry Patch
+    dir: south
+    keywords: []
+    to: 117
+  - desc:
+    - Smurfy Road
+    dir: west
+    keywords: []
+    to: 109
+  extended_descriptions: []
+  id: 118
+  name: Smurfberry Patch
+- desc:
+  - You rip the roof of the home to get a good look inside.  You see
+  - many smurfy books.  The print is so small you couldn't even read it
+  - with a magnifying glass.  I wonder if Brainy Smurf minds if you
+  - destroy his home?  Smurfy Road is back to the south.
+  doors:
+  - desc:
+    - Smurfy Road
+    dir: south
+    keywords: []
+    to: 110
+  extended_descriptions: []
+  id: 119
+  name: Brainy Smurf's Home
+- desc:
+  - This home was well built.  Of course, until you rip it apart you big meany
+  - you.  Tools are all over the place.  Too small for you to use.  Smurfy Road is
+  - back to the west.
+  doors:
+  - desc:
+    - Smurfy Road
+    dir: west
+    keywords: []
+    to: 106
+  extended_descriptions: []
+  id: 120
+  name: Handy Smurf's Home
+- desc:
+  - Hefty is anything but wimpy.  So is his house.  It actually took you a
+  - couple of minutes to destroy his house.  Better watch out -- he might be
+  - a little mad at you.  Smurfy Road is back to the north.
+  doors:
+  - desc:
+    - Smurfy Road
+    dir: north
+    keywords: []
+    to: 111
+  extended_descriptions: []
+  id: 121
+  name: Hefty Smurf's Home
+- desc:
+  - Be vewy vewy quiet.  Sleepy Smurf is probably sleeping.  You see so many
+  - beds you can't even tell if he is here.  Maybe you should quietly go back to
+  - Smurfy Road to the east.
+  doors:
+  - desc:
+    - Smurfy Road
+    dir: east
+    keywords: []
+    to: 112
+  extended_descriptions: []
+  id: 122
+  name: Sleepy Smurf's Home
+- desc:
+  - This is Grumpy Smurf's home.  He is pissed at you.  Of course, he is pissed
+  - at everyone.  So don't take it bad.  Maybe you'd better leave before he really
+  - gets mad.  Smurfy Road to the east is your only salvation.
+  doors:
+  - desc:
+    - Smurfy Road
+    dir: east
+    keywords: []
+    to: 113
+  extended_descriptions: []
+  id: 123
+  name: Grumpy Smurf's Home
+- desc:
+  - You pull the top of his house and it explodes in your face.  That Jokey
+  - Smurf, what a kidder.  You can hear his laughter as you wipe the ashes off
+  - your face.  You better get even.  Smurfy Road is to the north.
+  doors:
+  - desc:
+    - Smurfy Road
+    dir: north
+    keywords: []
+    to: 115
+  extended_descriptions: []
+  id: 124
+  name: Jokey Smurf's Home
+- desc:
+  - It's the home of the leader of the smurfs.  Papa Smurf has a nicely decorated
+  - home.  He takes pride in his work.  You could get to know him or just squash
+  - him.  If Papa Smurf is not here he is probably at Smurfette's putting the
+  - moves on her.  A stone path lies to the north.
+  doors:
+  - desc:
+    - Stone Path
+    dir: north
+    keywords:
+    - door
+    to: 113
+  extended_descriptions: []
+  id: 125
+  name: Papa Smurf's Home
+- desc:
+  - You are walking along a path to Gargamel's Castle to the North.
+  - Smurfy Road lies to the south.
+  doors:
+  - desc:
+    - Outside Gargamel's Castle
+    dir: north
+    keywords: []
+    to: 127
+  - desc:
+    - Smurfy Road
+    dir: south
+    keywords: []
+    to: 115
+  extended_descriptions: []
+  id: 126
+  name: Path to Gargamel's Castle
+- desc:
+  - You are standing outside Gargamel's Castle.  You can hear him screaming at
+  - Azreal from inside.  You can also him cursing out those wretched smurfs.
+  - His Castle is to the north while Smurfy Road is to the south.
+  doors:
+  - desc:
+    - Gargamel's Castle
+    dir: north
+    keywords:
+    - door
+    to: 128
+  - desc:
+    - Path to Gargamel's Castle
+    dir: south
+    keywords: []
+    to: 126
+  extended_descriptions: []
+  id: 127
+  name: Outside Gargamel's Castle
+- desc:
+  - This is Gargamel's Castle.  His big black kettle is in the middle of the room.
+  - Where else would he put it?  The place has only one room.
+  doors:
+  - desc:
+    - Outside Gargamel's Castle
+    dir: south
+    keywords:
+    - door
+    to: 127
+  extended_descriptions: []
+  id: 128
+  name: Gargamel's Castle
+- desc:
+  - This house is conveniently next to Papa Smurfs.  Makes it easier for Papa
+  - Smurf to sneak over at night.  I hope he uses protection.  I would hate to
+  - have little smurfs running around.  The only exit is to the east.
+  doors:
+  - desc:
+    - Smurfy Road
+    dir: east
+    keywords: []
+    to: 107
+  extended_descriptions: []
+  id: 129
+  name: Smurfette's House
+

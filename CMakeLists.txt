@@ -8,6 +8,7 @@ include_directories(${CMAKE_SOURCE_DIR}/include)
 set(BOOST_ROOT /opt/boost)
 set(Boost_USE_STATIC_LIBS ON)
 find_package(Boost COMPONENTS system)
+#find_package(YamlCpp)
 
 include_directories(${Boost_INCLUDE_DIR})
 
