@@ -238,6 +238,7 @@ vector<string> User::lookObjKeywords(string objName){
   return getRoom()->getObjKeywords(objName);
 }
 
+////ITEM INTERACTION METHODS Added by Sarah
 string User::takeItem(string objName){
   for (auto & item : getRoom()->getItems() ) {
     if(item->searchKeyword(objName)){
@@ -247,3 +248,5 @@ string User::takeItem(string objName){
   }
   return "Cannot take that item.";
 }
+
+// ADMIN ONLY METHODS

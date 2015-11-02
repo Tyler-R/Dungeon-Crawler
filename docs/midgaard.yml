@@ -1,0 +1,3253 @@
+AREA:
+  name: Midgaard
+NPCS:
+- description:
+  - The wizard looks old and senile, and yet he looks like a very powerful
+  - wizard. He is equipped with fine clothing, and is wearing many fine
+  - rings and bracelets.
+  id: 3000
+  keywords: wizard~
+  longdesc:
+  - A wizard walks around behind the counter, talking to himself.
+  shortdesc: the wizard
+- description:
+  - A fat, nice looking baker. But you can see that he has many scars on his
+  - body.
+  id: 3001
+  keywords: baker~
+  longdesc:
+  - The baker looks at you calmly, wiping flour from his face with one hand.
+  shortdesc: the baker
+- description:
+  - A tall grocer, who moves two 200 pounds bag of flour around on his shoulders.
+  id: 3002
+  keywords: grocer~
+  longdesc:
+  - A grocer stands at the counter, with a slightly impatient look on his face.
+  shortdesc: the grocer
+- description:
+  - A young weaponsmith, who still has lots to learn.
+  id: 3003
+  keywords: weaponsmith~
+  longdesc:
+  - A weaponsmith.
+  shortdesc: the weaponsmith
+- description:
+  - An old but very strong armourer, he has made more armours in his
+  - lifetime than you have ever seen.
+  id: 3004
+  keywords: armourer armorer~
+  longdesc:
+  - An armourer stands here.
+  shortdesc: the armourer
+- description:
+  - Well COUNT your money!
+  id: 3005
+  keywords: thief~
+  longdesc:
+  - A thief, all dressed in black.
+  shortdesc: the thief
+- description:
+  - This captain has killed more sharks than you have eaten peas.
+  id: 3006
+  keywords: captain~
+  longdesc:
+  - A retired captain stands here, selling boats.
+  shortdesc: the captain
+- description:
+  - He looks like a strong, fit sailor.
+  id: 3007
+  keywords: sailor~
+  longdesc:
+  - A sailor stands here, waiting to train you.
+  shortdesc: the sailor
+- description:
+  - He is young and close-cropped and looks quite happy.
+  id: 3008
+  keywords: boy~
+  longdesc:
+  - A pet shop boy is here, humming gently.
+  shortdesc: the pet shop boy
+- description:
+  - He is fat and has a content although watchful look on his face.
+  id: 3009
+  keywords: jeweller~
+  longdesc:
+  - The jeweller is standing behind the desk.
+  shortdesc: the jeweller
+- description:
+  - He looks as an honest, hard-working artisan who only just earns enough to
+  - keep himself going.
+  id: 3010
+  keywords: leather worker~
+  longdesc:
+  - The leather worker is sitting by the table, sewing a leather cap.
+  shortdesc: the leather worker
+- description:
+  - A masked man with muscles bulging all over his body.  You can tell by
+  - the look in his eyes that he enjoys seeing you cower in his presence.
+  id: 3011
+  keywords: executioner~
+  longdesc:
+  - The executioner is here polishing his blade.
+  shortdesc: the executioner
+- description:
+  - Although retired from adventuring, the healer still lends a hand.
+  id: 3012
+  keywords: healer~
+  longdesc:
+  - A healer is here.
+  shortdesc: the healer
+- description:
+  - Even though your guildmaster looks old and tired, you can clearly see the
+  - vast amount of knowledge she possesses. She is wearing fine magic clothing,
+  - and you notice that she is surrounded by a blue shimmering aura.
+  id: 3020
+  keywords: guildmaster master~
+  longdesc:
+  - Your guildmaster is standing here.
+  shortdesc: the guildmaster
+- description:
+  - You are in no doubt that this guildmaster is truly close to your god; he has
+  - a peaceful, loving look. You notice that he is surrounded by a white aura.
+  id: 3021
+  keywords: guildmaster master~
+  longdesc:
+  - Your guildmaster is standing here.
+  shortdesc: the guildmaster
+- description:
+  - 'You realize that whenever your guildmaster moves, you fail to notice it:'
+  - the way of the true thief.  She is dressed in poor clothing, having
+  - the appearance of a beggar.
+  id: 3022
+  keywords: guildmaster master~
+  longdesc:
+  - Your guildmaster is standing here.
+  shortdesc: the guildmaster
+- description:
+  - This is your master.  Big and strong with bulging muscles.  Several scars
+  - across his body prove that he was using arms before you were born.  He
+  - has a calm look on his face.
+  id: 3023
+  keywords: guildmaster master~
+  longdesc:
+  - Your guildmaster is standing here.
+  shortdesc: the guildmaster
+- description:
+  - He is an experienced mage who has specialized in the field of Combat Magic.
+  - He is here to guard the Mage's Guild and his superior knowledge of offensive
+  - as well as defensive spells make him a deadly opponent.
+  id: 3024
+  keywords: sorcerer~
+  longdesc:
+  - A sorcerer is guarding the entrance.
+  shortdesc: the sorcerer
+- description:
+  - He is a specially trained warrior belonging to the military order of the Faith.
+  - His duty is to protect the faithful from persecution and infidel attacks and
+  - his religious devotion combined with his superior skill makes him a deadly
+  - opponent.
+  id: 3025
+  keywords: templar~
+  longdesc:
+  - A knight templar is guarding the entrance.
+  shortdesc: the knight templar
+- description:
+  - He is a thief who has specialized in killing others as effectively as possible,
+  - using all sorts of weapons.  His superior knowledge of how and where to use
+  - them combined with his extraordinary stealth makes him a deadly opponent.
+  id: 3026
+  keywords: assassin~
+  longdesc:
+  - An assassin is guarding the entrance.
+  shortdesc: the assassin
+- description:
+  - He is an expert warrior who has attained knighthood through countless
+  - chivalrous deeds.  His duty is to protect the Guild of Swordsmen and his
+  - extreme skill combined with his experience in warfare makes him a deadly
+  - opponent.
+  id: 3027
+  keywords: knight~
+  longdesc:
+  - A knight is guarding the entrance.
+  shortdesc: the knight
+- description:
+  - A tired looking Bartender who hates trouble in his bar.
+  id: 3040
+  keywords: bartender~
+  longdesc:
+  - A bartender watches you calmly, while he skillfully mixes a drink.
+  shortdesc: the bartender
+- description:
+  - A tired looking waiter.
+  id: 3041
+  keywords: waiter~
+  longdesc:
+  - A waiter is going around from one place to another.
+  shortdesc: the waiter
+- description: []
+  id: 3042
+  keywords: waiter~
+  longdesc:
+  - A man who in his young days was a famous sorcerer but now leads a quiet,
+  - peaceful life as a waiter.
+  shortdesc: the waiter
+- description: []
+  id: 3043
+  keywords: waiter~
+  longdesc:
+  - A waiter who seems to have reached contact with God.
+  shortdesc: the waiter
+- description: []
+  id: 3044
+  keywords: waiter~
+  longdesc:
+  - A waiter who knows where all his customers keep their money.
+  shortdesc: the waiter
+- description: []
+  id: 3045
+  keywords: waiter~
+  longdesc:
+  - A waiter who easily could kill you, and still carry quite a few firebreathers.
+  shortdesc: the waiter
+- description:
+  - Filthy looks real, ehm, dirty. He likes to keep his costumers happy,
+  - but do not mess with him or else he'll get upset.
+  id: 3046
+  keywords: filthy~
+  longdesc:
+  - Filthy is standing here, eager to serve you a special drink.
+  shortdesc: Filthy
+- description:
+  - Aod looks just like the dealer hoodlum you see on T.V.  He's wearing a
+  - concert shirt and Levi 501's.  His hair is pulled back into a pony tail.
+  - A beard and moustache complete the look.  Aod has brought some drugs
+  - with him from Generic Mud.
+  - <worn on penis>      A Trojan (TM) Condom.
+  - ''
+  - 'Since he practices safe sex, '
+  id: 3050
+  keywords: dealer~
+  longdesc:
+  - Aod the Dealer stands in the shadows here.
+  shortdesc: Aod the Dealer
+- description:
+  - A big, strong, helpful, trustworthy guard.
+  id: 3060
+  keywords: cityguard guard~
+  longdesc:
+  - A cityguard stands here.
+  shortdesc: the cityguard
+- description: []
+  id: 3061
+  keywords: janitor~
+  longdesc:
+  - A janitor is walking around, cleaning up.
+  shortdesc: the janitor
+- description:
+  - Fido is a small dog that has a foul smell and pieces of rotted meat hanging
+  - around his teeth.
+  id: 3062
+  keywords: fido dog~
+  longdesc:
+  - Beastly Fido is here.
+  shortdesc: the beastly fido
+- description:
+  - He looks pretty mean.
+  id: 3063
+  keywords: vagabond~
+  longdesc:
+  - A vagabond is here, looking for victims.
+  shortdesc: the vagabond
+- description:
+  - A drunk who seems to be too happy, and to carry too much money.
+  id: 3064
+  keywords: drunk~
+  longdesc:
+  - A singing, happy drunk.
+  shortdesc: the drunk
+- description:
+  - The beggar looks like she is fed up with life.
+  id: 3065
+  keywords: beggar~
+  longdesc:
+  - A beggar is here, asking for a few coins.
+  shortdesc: the beggar
+- description:
+  - The alley cat is half starved and more than a little feral.
+  id: 3066
+  keywords: cat~
+  longdesc:
+  - An alley cat hisses at you.
+  shortdesc: an alley cat
+- description:
+  - A big, strong, helpful, trustworthy guard.
+  id: 3067
+  keywords: cityguard guard~
+  longdesc:
+  - A cityguard is here, guarding the gate.
+  shortdesc: the cityguard
+- description:
+  - A big, strong, helpful, trustworthy guard.
+  id: 3068
+  keywords: cityguard guard~
+  longdesc:
+  - A cityguard is here, guarding the gate.
+  shortdesc: the cityguard
+- description:
+  - A big, strong, helpful, trustworthy guard.
+  id: 3069
+  keywords: cityguard guard~
+  longdesc:
+  - A cityguard is here, guarding the mayor.
+  shortdesc: the cityguard
+- description:
+  - The kitten looks like a cute, little, fierce fighter.
+  id: 3090
+  keywords: kitten~
+  longdesc:
+  - A small loyal kitten is here.
+  shortdesc: the kitten
+- description:
+  - The puppy looks like a cute, little, fierce fighter.
+  id: 3091
+  keywords: puppy~
+  longdesc:
+  - A small loyal puppy is here.
+  shortdesc: the puppy
+- description:
+  - The beagle looks like a fierce fighter.
+  id: 3092
+  keywords: beagle~
+  longdesc:
+  - A small, quick, loyal beagle is here.
+  shortdesc: the beagle
+- description:
+  - The rottweiler looks like a strong, fierce fighter.
+  id: 3093
+  keywords: rottweiler~
+  longdesc:
+  - A large, loyal rottweiler is here.
+  shortdesc: the rottweiler
+- description:
+  - The wolf looks like a strong, fearless fighter.
+  id: 3094
+  keywords: wolf~
+  longdesc:
+  - A large, trained wolf is here.
+  shortdesc: the wolf
+- description:
+  - She is very beautiful with golden hair, and deep blue eyes. A good reason
+  - for coming here more often.
+  id: 3100
+  keywords: maid~
+  longdesc:
+  - The maid is waiting for your order.
+  shortdesc: the maid
+- description:
+  - The sexton looks like he is relaxing after another grave-digging job.
+  id: 3120
+  keywords: sexton~
+  longdesc:
+  - A sexton is sitting here, drinking hot tea.
+  shortdesc: the sexton
+- description:
+  - The white swan is very elegant.
+  id: 3121
+  keywords: swan~
+  longdesc:
+  - A swan is swimming around in the pond.
+  shortdesc: the swan
+- description:
+  - The duckling is adorable, it looks most of all like a tiny furball.
+  id: 3122
+  keywords: duckling~
+  longdesc:
+  - A duckling is swimming around in the pond.
+  shortdesc: the duckling
+- description:
+  - The sparrow looks like it is enjoying life.
+  id: 3123
+  keywords: sparrow~
+  longdesc:
+  - A sparrow is flapping around on the ground.
+  shortdesc: the sparrow
+- description:
+  - The duck is quite fat.  It looks like it is enjoying life.
+  id: 3124
+  keywords: duck~
+  longdesc:
+  - A duck is here, quacking happily.
+  shortdesc: the duck
+- description:
+  - A big, strong, angry captain.
+  id: 3140
+  keywords: captain~
+  longdesc:
+  - The captain of the guard is looking very upset.
+  shortdesc: the captain
+- description:
+  - A big, strong, angry guard.
+  id: 3141
+  keywords: cityguard guard~
+  longdesc:
+  - A cityguard stands here, looking very upset.
+  shortdesc: the cityguard
+- description:
+  - She looks very busy.
+  - The Secretary says 'Sorry, but the Mayor is extremely busy today'.
+  - The Secretary says 'Please sit down and have a seat in the meantime'.
+  id: 3142
+  keywords: secretary~
+  longdesc:
+  - A secretary is sitting at the desk.
+  shortdesc: the secretary
+- description:
+  - He is a stocky, middle-aged man with thin, grey hair.
+  id: 3143
+  keywords: mayor~
+  longdesc:
+  - The mayor is here.  He shakes your hand.
+  shortdesc: the mayor
+- description:
+  - He is very good at his job - completely dissolved in tears.
+  id: 3144
+  keywords: crier~
+  longdesc:
+  - The town crier is here, weeping quietly.
+  shortdesc: the town crier
+OBJECTS:
+- extra: []
+  id: 3000
+  keywords: barrel beer~
+  longdesc:
+  - A beer barrel has been left here.
+  shortdesc: a barrel of beer
+- extra: []
+  id: 3001
+  keywords: bottle beer~
+  longdesc:
+  - A beer bottle has been left here.
+  shortdesc: a bottle of beer
+- extra: []
+  id: 3002
+  keywords: bottle ale~
+  longdesc:
+  - A dark bottle of ale has been left here.
+  shortdesc: a bottle of ale
+- extra: []
+  id: 3003
+  keywords: bottle firebreather~
+  longdesc:
+  - A firebreather has been left here.
+  shortdesc: a bottle of firebreather
+- extra: []
+  id: 3004
+  keywords: bottle local~
+  longdesc:
+  - A dark bottle has been left here.
+  shortdesc: a bottle of local specialty
+- extra:
+  - desc:
+    - It is quite heavy.  The blade is made of some metal that you can't even
+    - spell.  The edge of the blade looks as if it could cut through anything
+    - or anyone.
+    keywords: axe blade~
+  id: 3005
+  keywords: axe blade~
+  longdesc:
+  - An executioner's axe is here waiting to possess its next user.
+  shortdesc: an executioner's axe
+- extra: []
+  id: 3009
+  keywords: potpie pot pie~
+  longdesc:
+  - A big pot pie has been left here.
+  shortdesc: a big pot pie
+- extra:
+  - desc:
+    - This is where you put money and items to help Doz expand this shrine and
+    - convert more people to the belief of Eru our creator.
+    keywords: pit~
+  id: 3010
+  keywords: pit~
+  longdesc:
+  - A pit for sacrifices is in front of the altar.
+  shortdesc: the donation pit
+- extra: []
+  id: 3020
+  keywords: dagger~
+  longdesc:
+  - A dagger with a long thin blade is here.
+  shortdesc: a dagger
+- extra: []
+  id: 3021
+  keywords: sword small~
+  longdesc:
+  - A small sword lies here.
+  shortdesc: a small sword
+- extra: []
+  id: 3022
+  keywords: sword long~
+  longdesc:
+  - A long sword has been left here.
+  shortdesc: a long sword
+- extra: []
+  id: 3030
+  keywords: torch~
+  longdesc:
+  - A large torch.
+  shortdesc: a torch
+- extra:
+  - desc:
+    - It is a large and robust but somewhat battered oil lantern made from brass,
+    - equipped with a handle to make it handy and a hood to protect its flame.
+    - Some letters have been scratched on its bottom.
+    keywords: lantern~
+  - desc:
+    - They say, "Use 'hold lantern' to activate."
+    keywords: letters~
+  id: 3031
+  keywords: lantern~
+  longdesc:
+  - A hooded brass lantern has been left here.
+  shortdesc: a hooded brass lantern
+- extra: []
+  id: 3032
+  keywords: bag~
+  longdesc:
+  - A small bag.
+  shortdesc: a bag
+- extra: []
+  id: 3033
+  keywords: box~
+  longdesc:
+  - A small box.
+  shortdesc: a box
+- extra:
+  - desc:
+    - 'The scroll has a magic formula drawn upon it:'
+    - '     ???'
+    - '    ?   ?'
+    - '       ?'
+    - '      ?'
+    - '      ?'
+    - '      *'
+    keywords: scroll identify~
+  id: 3040
+  keywords: scroll identify~
+  longdesc:
+  - A scroll has carelessly been left here.
+  shortdesc: a scroll of identify
+- extra:
+  - desc:
+    - The potion has a small label 'Detect The Invisible'.
+    keywords: potion yellow~
+  id: 3041
+  keywords: potion yellow~
+  longdesc:
+  - A small yellow potion has carelessly been left here.
+  shortdesc: a yellow potion of see invisible
+- extra:
+  - desc:
+    - The scroll has written a formulae of 'Word of Recall' upon it.
+    keywords: scroll~
+  id: 3042
+  keywords: scroll recall~
+  longdesc:
+  - A scroll has carelessly been left here.
+  shortdesc: a scroll of recall
+- extra: []
+  id: 3045
+  keywords: jacket scale mail~
+  longdesc:
+  - A scale mail jacket is lying on the ground.
+  shortdesc: a scale mail jacket
+- extra: []
+  id: 3046
+  keywords: bronze breast plate~
+  longdesc:
+  - A bronze breast plate is lying on the ground.
+  shortdesc: a bronze breast plate
+- extra:
+  - desc:
+    - The raft looks very primitive.
+    keywords: raft~
+  id: 3050
+  keywords: raft~
+  longdesc:
+  - A raft has been left here.
+  shortdesc: a raft
+- extra:
+  - desc:
+    - The canoe is fairly light.
+    keywords: canoe~
+  id: 3051
+  keywords: canoe~
+  longdesc:
+  - A canoe has been left here.
+  shortdesc: a canoe
+- extra: []
+  id: 3060
+  keywords: jerkin~
+  longdesc:
+  - A leather jerkin is lying on the ground.
+  shortdesc: a leather jerkin
+- extra: []
+  id: 3061
+  keywords: cap~
+  longdesc:
+  - A leather cap is lying on the ground.
+  shortdesc: a leather cap
+- extra: []
+  id: 3062
+  keywords: pants~
+  longdesc:
+  - A pair of leather pants is lying on the ground.
+  shortdesc: a pair of leather pants
+- extra: []
+  id: 3063
+  keywords: boots~
+  longdesc:
+  - A pair of leather boots lies here.
+  shortdesc: a pair of leather boots
+- extra: []
+  id: 3064
+  keywords: gloves~
+  longdesc:
+  - A pair of leather gloves is lying on the ground.
+  shortdesc: a pair of leather gloves
+- extra: []
+  id: 3065
+  keywords: sleeves~
+  longdesc:
+  - A pair of leather sleeves is lying on the ground.
+  shortdesc: a pair of leather sleeves
+- extra: []
+  id: 3066
+  keywords: jerkin~
+  longdesc:
+  - A studded leather jerkin is lying on the ground.
+  shortdesc: a studded leather jerkin
+- extra: []
+  id: 3067
+  keywords: cap~
+  longdesc:
+  - A hard leather cap is lying on the ground.
+  shortdesc: a hard leather cap
+- extra: []
+  id: 3068
+  keywords: pants~
+  longdesc:
+  - A pair of studded leather pants is lying on the ground.
+  shortdesc: a pair of studded leather pants
+- extra: []
+  id: 3069
+  keywords: boots~
+  longdesc:
+  - A pair of hard leather boots lies here.
+  shortdesc: a pair of hard leather boots
+- extra: []
+  id: 3070
+  keywords: gloves~
+  longdesc:
+  - A pair of hard leather gloves is lying on the ground.
+  shortdesc: a pair of hard leather gloves
+- extra: []
+  id: 3071
+  keywords: sleeves~
+  longdesc:
+  - A pair of studded leather sleeves is lying on the ground.
+  shortdesc: a pair of studded leather sleeves
+- extra: []
+  id: 3072
+  keywords: jerkin scale mail~
+  longdesc:
+  - A scale mail jerkin is lying on the ground.
+  shortdesc: a scale mail jerkin
+- extra: []
+  id: 3073
+  keywords: coif scale mail~
+  longdesc:
+  - A scale mail coif is lying on the ground.
+  shortdesc: a scale mail coif
+- extra: []
+  id: 3074
+  keywords: skirt scale mail~
+  longdesc:
+  - A long scale mail skirt is lying on the ground.
+  shortdesc: a long scale mail skirt
+- extra: []
+  id: 3075
+  keywords: boots reinforced~
+  longdesc:
+  - A pair of reinforced boots lies here.
+  shortdesc: a pair of reinforced boots
+- extra: []
+  id: 3076
+  keywords: gloves reinforced~
+  longdesc:
+  - A pair of reinforced gloves is lying on the ground.
+  shortdesc: a pair of reinforced gloves
+- extra: []
+  id: 3077
+  keywords: sleeves scale mail~
+  longdesc:
+  - A pair of scale mail sleeves is lying on the ground.
+  shortdesc: a pair of scale mail sleeves
+- extra: []
+  id: 3097
+  keywords: shield small metal~
+  longdesc:
+  - A small metal shield is lying on the ground.
+  shortdesc: a small metal shield
+- extra:
+  - desc:
+    - It is a small simple cup.
+    keywords: cup~
+  id: 3100
+  keywords: tea cup~
+  longdesc:
+  - A cup has been set here.
+  shortdesc: a cup of tea
+- extra:
+  - desc:
+    - It is a small simple cup.
+    keywords: cup~
+  id: 3101
+  keywords: coffee cup~
+  longdesc:
+  - A cup has been set here.
+  shortdesc: a cup of coffee
+- extra:
+  - desc:
+    - It is a large simple cup.
+    keywords: cup~
+  id: 3102
+  keywords: water cup~
+  longdesc:
+  - A cup has been set here.
+  shortdesc: a cup of water
+- extra: []
+  id: 3105
+  keywords: bracer bronze~
+  longdesc:
+  - A bronze bracer is lying on the ground.
+  shortdesc: a bronze bracer
+- extra: []
+  id: 3106
+  keywords: bracer iron~
+  longdesc:
+  - An iron bracer is lying on the ground.
+  shortdesc: an iron bracer
+- extra:
+  - desc:
+    - The iron key is not special.
+    keywords: key iron~
+  id: 3120
+  keywords: key iron~
+  longdesc:
+  - An iron key has been left here.
+  shortdesc: a key
+- extra:
+  - desc:
+    - The key is a fairly large rusty key.  You notice some fresh dirt on it.
+    keywords: key rusty~
+  id: 3121
+  keywords: key rusty~
+  longdesc:
+  - A rusty key has been left here.
+  shortdesc: a key
+- extra:
+  - desc:
+    - The wooden key is not special.
+    keywords: key wooden~
+  id: 3122
+  keywords: key wooden~
+  longdesc:
+  - A wooden key has been left here.
+  shortdesc: a key
+- extra:
+  - desc:
+    - The brass key is small and looks like it fits a very complicated lock.
+    keywords: key brass~
+  id: 3123
+  keywords: key brass~
+  longdesc:
+  - A brass key has been left here.
+  shortdesc: a key
+- extra:
+  - desc:
+    - This is the ceremonial sword of the Mayor of Midgaard.
+    keywords: sword long~
+  id: 3124
+  keywords: sword long~
+  longdesc:
+  - A long sword has been left here.
+  shortdesc: a long sword
+- extra: []
+  id: 3129
+  keywords: hand cuffs~
+  longdesc:
+  - A pair of hand cuffs has been left here.
+  shortdesc: a pair of hand cuffs
+- extra:
+  - desc:
+    - You notice a keyhole in the drawer.
+    keywords: drawer~
+  id: 3130
+  keywords: desk drawer~
+  longdesc:
+  - A desk is set against the western wall.
+  shortdesc: the desk
+- extra:
+  - desc:
+    - The safe is very heavy.
+    keywords: safe~
+  id: 3131
+  keywords: safe~
+  longdesc:
+  - A safe is placed in a dark corner of the room.
+  shortdesc: the safe
+- extra: []
+  id: 3132
+  keywords: gold coins~
+  longdesc:
+  - A lot of gold is here.
+  shortdesc: the gold
+- extra: []
+  id: 3133
+  keywords: city key~
+  longdesc:
+  - The very big City Key is lying here.
+  shortdesc: the City Key
+- extra:
+  - desc:
+    - It is a quite heavy but very comfortable bench.  It is placed with its front
+    - towards the river so you can sit and watch the river and the houses on the
+    - other side.
+    keywords: bench~
+  id: 3134
+  keywords: bench~
+  longdesc:
+  - A white-painted wooden bench is standing here.
+  shortdesc: the Bench
+- extra:
+  - desc:
+    - It is very nice.  Made from fine white marble.
+    keywords: fountain~
+  id: 3135
+  keywords: fountain water~
+  longdesc:
+  - A small white fountain gushes forth here.
+  shortdesc: a fountain
+- extra: []
+  id: 3136
+  keywords: coins gold~
+  longdesc:
+  - A small pile of gold coins lies here.
+  shortdesc: a small pile of gold coins
+- extra:
+  - desc:
+    - A key of this size must fit a very strong lock.
+    keywords: key steel~
+  id: 3137
+  keywords: key steel~
+  longdesc:
+  - A large steel key has been left here.
+  shortdesc: a steel key
+- extra: []
+  id: 3138
+  keywords: skin water buffalo~
+  longdesc:
+  - A bloated dead buffalo is on the floor.
+  shortdesc: a buffalo water skin
+- extra:
+  - desc:
+    - The letter is written in a bold and feminine Carolinian hand.
+    - ''
+    - '    To whom it may concern,'
+    - ''
+    - '        Merc Industries has installed a new no-rent save and quit'
+    - '        system.  Apparently one can now save and quit at any time'
+    - '        from anywhere inside a town or out.  My services here are'
+    - '        no longer required.'
+    - ''
+    - '    Diana the Receptionist'
+    keywords: letter resignation~
+  id: 3139
+  keywords: letter resignation~
+  longdesc:
+  - The receptionist's letter of resignation is taped to the wall.
+  shortdesc: the receptionist's letter of resignation
+- extra:
+  - desc:
+    - The letter is written in a reserved and dignified Spencer hand.
+    - ''
+    - '    To whom it may concern,'
+    - ''
+    - '        Merc Industries has charmed your money.  Apparently one''s'
+    - '        gold will remain close, even beyond death. We are closing'
+    - '        down our offices and ATM machines.  Our services here are'
+    - '        no longer required.'
+    - ''
+    - '    Midgaard City Bank'
+    keywords: notice liquidation bank~
+  id: 3140
+  keywords: notice liquidation bank~
+  longdesc:
+  - The bank's notice of liquidation is taped to the wall.
+  shortdesc: the bank's notice of liquidation
+- extra:
+  - desc:
+    - 'You see a sword of great craftsmanship.  Imprinted on the side is:'
+    - Merc Industries
+    keywords: sword~
+  id: 3350
+  keywords: sword~
+  longdesc:
+  - You see a standard issue sword here.
+  shortdesc: a standard issue sword
+- extra:
+  - desc:
+    - 'You see a dagger of great craftsmanship.  Imprinted on the side is:'
+    - Merc Industries
+    keywords: dagger~
+  id: 3351
+  keywords: dagger~
+  longdesc:
+  - You see a standard issue dagger here.
+  shortdesc: a standard issue dagger
+- extra:
+  - desc:
+    - 'You see a mace of great craftsmanship.  Imprinted on the side is:'
+    - Merc Industries
+    keywords: mace~
+  id: 3352
+  keywords: mace~
+  longdesc:
+  - You see a standard issue mace here.
+  shortdesc: a standard issue mace
+- extra:
+  - desc:
+    - 'You see a vest of great craftsmanship.  Stamped on the side is:'
+    - Merc Industries
+    keywords: vest~
+  id: 3353
+  keywords: vest~
+  longdesc:
+  - You see a standard issue vest here.
+  shortdesc: a standard issue vest
+- extra:
+  - desc:
+    - 'You see a shield of great craftsmanship.  Imprinted on the side is:'
+    - Merc Industries
+    keywords: shield~
+  id: 3354
+  keywords: shield~
+  longdesc:
+  - You see a standard issue shield here.
+  shortdesc: a standard issue shield
+- extra:
+  - desc:
+    - 'You see a cloak of great craftsmanship.  Imprinted on the side is:'
+    - Merc Industries
+    keywords: cloak~
+  id: 3355
+  keywords: cloak~
+  longdesc:
+  - You see a standard issue cloak here.
+  shortdesc: a standard issue cloak
+- extra:
+  - desc:
+    - 'You see a helmet of great craftsmanship.  Imprinted on the side is:'
+    - Merc Industries
+    keywords: helmet~
+  id: 3356
+  keywords: helmet~
+  longdesc:
+  - You see a standard issue helmet here.
+  shortdesc: a standard issue helmet
+- extra:
+  - desc:
+    - 'You see leggings of great craftsmanship.  Imprinted on the side is:'
+    - Merc Industries
+    keywords: leggings~
+  id: 3357
+  keywords: leggings~
+  longdesc:
+  - You see a pair of standard issue leggings here.
+  shortdesc: a pair of standard issue leggings
+- extra:
+  - desc:
+    - 'You see boots of great craftsmanship.  Imprinted on the side is:'
+    - Merc Industries
+    keywords: boots~
+  id: 3358
+  keywords: boots~
+  longdesc:
+  - You see a pair of standard issue boots here.
+  shortdesc: a pair of standard issue boots
+- extra:
+  - desc:
+    - 'You see gloves of great craftsmanship.  Imprinted on the side is:'
+    - Merc Industries
+    keywords: gloves~
+  id: 3359
+  keywords: gloves~
+  longdesc:
+  - You see a pair of standard issue gloves here.
+  shortdesc: a pair of standard issue gloves
+- extra:
+  - desc:
+    - 'You see sleeves of great craftsmanship.  Imprinted on the side is:'
+    - Merc Industries
+    keywords: sleeves~
+  id: 3360
+  keywords: sleeves~
+  longdesc:
+  - You see a pair of standard issue sleeves here.
+  shortdesc: a pair of standard issue sleeves
+- extra:
+  - desc:
+    - 'You see a cape of great craftsmanship.  Imprinted on the side is:'
+    - Merc Industries
+    keywords: cape~
+  id: 3361
+  keywords: cape~
+  longdesc:
+  - You see a standard issue cape here.
+  shortdesc: a standard issue cape
+- extra:
+  - desc:
+    - 'You see a belt of great craftsmanship.  Imprinted on the side is:'
+    - Merc Industries
+    keywords: belt~
+  id: 3362
+  keywords: belt~
+  longdesc:
+  - You see a standard issue belt here.
+  shortdesc: a standard issue belt
+- extra:
+  - desc:
+    - 'You see a bracer of great craftsmanship.  Imprinted on the side is:'
+    - Merc Industries
+    keywords: bracer~
+  id: 3363
+  keywords: bracer~
+  longdesc:
+  - You see a standard issue bracer here.
+  shortdesc: a standard issue bracer
+- extra: []
+  id: 3364
+  keywords: ring signet~
+  longdesc:
+  - You see a ring with a strange symbol on the floor.
+  shortdesc: a city guard signet ring
+- extra:
+  - desc:
+    - This is the official Merc war banner to see you through the darkest realm!
+    keywords: banner~
+  id: 3365
+  keywords: banner~
+  longdesc:
+  - A war banner is on the floor here.
+  shortdesc: a war banner
+- extra:
+  - desc:
+    - A slender gold band set with a marquise-cut four carat blue-white solitaire.
+    - 'Inscribed on the inside of the band is: ''Your loving husband, House''.'
+    keywords: ring diamond wedding~
+  id: 3371
+  keywords: ring diamond wedding~
+  longdesc:
+  - Vanya's diamond wedding ring has been left here.
+  shortdesc: a diamond wedding ring.
+- extra:
+  - desc:
+    - 'A wide, plain circle of gold inscribed: ''Your loving wife, Vanya''.'
+    keywords: band gold wedding~
+  id: 3372
+  keywords: band gold wedding~
+  longdesc:
+  - House's gold wedding band has been left here.
+  shortdesc: a gold wedding band.
+RESETS: []
+ROOMS:
+- desc:
+  - '   You are in the southern end of the temple hall in the Temple of Midgaard.'
+  - The temple has been constructed from giant marble blocks, eternal in
+  - appearance, and most of the walls are covered by ancient wall paintings
+  - picturing Gods, Giants and peasants.
+  - '   Large steps lead down through the grand temple gate, descending the huge'
+  - mound upon which the temple is built and ends on the temple square below.
+  - '   Equally large steps lead UP through a small door into the ENTRANCE to MUD'
+  - SCHOOL.  (type 'up' to go to MUD SCHOOL.)  A small plaque is on this wall.
+  doors:
+  - desc:
+    - At the northern end of the temple hall is a statue and a huge altar.
+    dir: north
+    keywords: []
+    to: 3054
+  - desc:
+    - You see the temple square.
+    dir: south
+    keywords: []
+    to: 3005
+  - desc:
+    - You see the entrance to Mud School.
+    dir: up
+    keywords: []
+    to: 3700
+  extended_descriptions:
+  - desc:
+    - This entire world has been integrated, modified, debugged, and enhanced by
+    - Hatchet, Kahn, and Furey of MERC Industries to be run by any MERC Mud.
+    - 1992 December 17
+    keywords: plaque~
+  id: 3001
+  name: The Temple Of Midgaard
+- desc:
+  - '   This is the inner sanctum.  A picture of the mighty Thor, is hanging on'
+  - the wall, just above the altar which is set against the western wall.  A well
+  - in the middle of the floor leads down into darkness.  Vile smells waft from
+  - the depths.
+  doors:
+  - desc:
+    - You see your favorite place, the bar of divination.
+    dir: east
+    keywords: []
+    to: 3003
+  - desc:
+    - You can't see what is down there, it is too dark.  Looks like it would be
+    - impossible to climb back up.
+    dir: down
+    keywords: []
+    to: 7026
+  extended_descriptions: []
+  id: 3002
+  name: Cleric's Inner Sanctum
+- desc:
+  - '   The bar is one of the finest in the land, lucky it is members only.  Fine'
+  - furniture is set all around the room.  A small sign is hanging on the wall.
+  doors:
+  - desc:
+    - You see the entrance.
+    dir: south
+    keywords: []
+    to: 3004
+  - desc:
+    - You see the inner sanctum.
+    dir: west
+    keywords: []
+    to: 3002
+  extended_descriptions:
+  - desc:
+    - 'The sign reads:'
+    - 'Free instructions provided by the waiter:'
+    - ''
+    - '   Buy  - Buy something (drinkable) from the waiter.'
+    - '   List - The waiter will show you all the different drinks and'
+    - '          specialties, and tell the price of each.'
+    keywords: sign~
+  id: 3003
+  name: Cleric's Bar
+- desc:
+  - '   The entrance hall is a small modest room, reflecting the true nature of'
+  - the Clerics.  The exit leads east to the temple square.  A small entrance to
+  - the bar is in the northern wall.
+  doors:
+  - desc:
+    - You see the bar, richly decorated with really stylish furniture.
+    dir: north
+    keywords: []
+    to: 3003
+  - desc:
+    - You see the Temple Square.
+    dir: east
+    keywords: []
+    to: 3005
+  extended_descriptions: []
+  id: 3004
+  name: Entrance to Cleric's Guild
+- desc:
+  - '   You are standing on the temple square.  Huge marble steps lead up to the'
+  - temple gate.  The entrance to the Clerics Guild is to the west, and the old
+  - Grunting Boar Inn, is to the east.  Just south of here you see the market
+  - square, the center of Midgaard.
+  doors:
+  - desc:
+    - You see the temple.
+    dir: north
+    keywords: []
+    to: 3001
+  - desc:
+    - You see the good old Grunting Boar Inn.
+    dir: east
+    keywords: []
+    to: 3006
+  - desc:
+    - You see the Market Square.
+    dir: south
+    keywords: []
+    to: 3014
+  - desc:
+    - You see the entrance to the Clerics Guild.
+    dir: west
+    keywords: []
+    to: 3004
+  - desc:
+    - You see the air.
+    dir: up
+    keywords: []
+    to: 3057
+  extended_descriptions: []
+  id: 3005
+  name: The Temple Square
+- desc:
+  - '   You are standing in the entrance hall of the Grunting Boar Inn.  The hall'
+  - has been wisely decorated with simple but functional furniture.  A small
+  - staircase leads up to the defunct reception room and the bar is to the east.
+  doors:
+  - desc:
+    - Surprise! You see the bar.
+    dir: east
+    keywords: []
+    to: 3007
+  - desc:
+    - You see the temple square.
+    dir: west
+    keywords: []
+    to: 3005
+  - desc:
+    - You see the defunct reception room.
+    dir: up
+    keywords: []
+    to: 3008
+  extended_descriptions: []
+  id: 3006
+  name: Entrance to the Grunting Boar Inn
+- desc:
+  - '   You are standing in the bar.  The bar is set against the northern wall, old'
+  - archaic writing, carvings and symbols cover its top.  A fireplace is built into
+  - the western wall, and through the southeastern windows you can see the temple
+  - square.  This place makes you feel like home.
+  - A small sign with big letters is fastened to the bar.
+  doors:
+  - desc:
+    - You see the exit to the entrance hall.
+    dir: west
+    keywords: []
+    to: 3006
+  extended_descriptions:
+  - desc:
+    - 'The sign reads:'
+    - Free instructions provided by the Grunting Boar Inn.
+    - ''
+    - '   Buy  - Buy something (drinkable) from the bartender.'
+    - '   List - The bartender will show you all the different drinks and'
+    - '          specialties, and tell the price of each.'
+    keywords: sign~
+  - desc:
+    - Although it is very hard to understand, you think it looks a lot like beer,
+    - poems about beer, and small beer-mugs.
+    keywords: writing carving carvings symbols symbol~
+  id: 3007
+  name: The Grunting Boar
+- desc:
+  - '   You are standing in a dusty, defunct reception.  The staircase leads'
+  - down to the entrance hall.
+  doors:
+  - desc:
+    - You see the entrance hall.
+    dir: down
+    keywords: []
+    to: 3006
+  extended_descriptions: []
+  id: 3008
+  name: The Defunct Reception
+- desc:
+  - '   You are standing inside the small bakery.  A sweet scent of Danish and'
+  - fine bread fills the room.  The bread and Danish are arranged in fine order
+  - on the shelves, and seem to be of the finest quality.
+  - A small sign is on the counter.
+  doors:
+  - desc:
+    - You see the main street.
+    dir: south
+    keywords: []
+    to: 3013
+  extended_descriptions:
+  - desc:
+    - You see that this is truly delicious pastry.  Must be made by a Dane from
+    - Denmark (which surely is not the capital of Sweden!).  Former ruler of
+    - Scandinavia, England, Northern Germany, Northern France, Russia, Greenland,
+    - Iceland, Estonia etc. etc.
+    - '   The sight of those large, wholesome chokoladeboller makes your mouth water'
+    - and your soul sing.
+    - ''
+    keywords: danish pastry~
+  - desc:
+    - 'Free instructions provided by the store:'
+    - ''
+    - '   Buy  - Will buy you some bread or pastry.'
+    - '   List - The baker will kindly tell you the price and sort of the bread in'
+    - '          his bakery.'
+    keywords: sign~
+  id: 3009
+  name: The Bakery
+- desc:
+  - '   You are inside the general store.  All sorts of items are stacked on shelves'
+  - behind the counter, safely out of your reach.
+  - A small note hangs on the wall.
+  doors:
+  - desc:
+    - You see the main street.
+    dir: south
+    keywords: []
+    to: 3015
+  extended_descriptions:
+  - desc:
+    - 'The note reads:'
+    - ''
+    - '  List  - Show which various items are in the store.'
+    - '  Buy   - Buy an item.'
+    - '  Value - The shopkeeper will (free of charge) tell how much he will'
+    - '          pay for your item.'
+    - '  Sell  - Sell an item.'
+    keywords: note~
+  id: 3010
+  name: The General Store
+- desc:
+  - '   You are inside the weapon shop.  There is a small note on the counter.'
+  doors:
+  - desc:
+    - You see the main street.
+    dir: south
+    keywords: []
+    to: 3016
+  extended_descriptions:
+  - desc:
+    - 'The note reads:'
+    - ''
+    - '  List  - Show which various items are in the store.'
+    - '  Buy   - Buy an item.'
+    - '  Value - The shopkeeper will (free of charge) tell how much he will'
+    - '          pay for your item.'
+    - '  Sell  - Sell an item.'
+    keywords: note~
+  id: 3011
+  name: The Weapon Shop
+- desc:
+  - '   You are at the end of the main street of Midgaard.  South of here is the'
+  - entrance to the Guild of Magic Users.  The street continues east towards the
+  - market square.  The magic shop is to the north and to the west is the city
+  - gate.
+  doors:
+  - desc:
+    - You see the magic shop.
+    dir: north
+    keywords: []
+    to: 3033
+  - desc:
+    - You see the main street.
+    dir: east
+    keywords: []
+    to: 3013
+  - desc:
+    - You see the entrance to the Guild of Magic Users.
+    dir: south
+    keywords: []
+    to: 3017
+  - desc:
+    - You see the city gate.
+    dir: west
+    keywords: []
+    to: 3040
+  extended_descriptions: []
+  id: 3012
+  name: Main Street
+- desc:
+  - '   You are on the main street passing through the City of Midgaard.  South of'
+  - here is the entrance to the Armoury, and the bakery is to the north.  East of
+  - here is the market square.
+  doors:
+  - desc:
+    - You see the bakery.
+    dir: north
+    keywords: []
+    to: 3009
+  - desc:
+    - You see the market square.
+    dir: east
+    keywords: []
+    to: 3014
+  - desc:
+    - You see the armoury.
+    dir: south
+    keywords: []
+    to: 3020
+  - desc:
+    - You see the main street.
+    dir: west
+    keywords: []
+    to: 3012
+  extended_descriptions: []
+  id: 3013
+  name: Main Street
+- desc:
+  - '   You are standing on the market square, the famous Square of Midgaard.'
+  - A large, peculiar looking statue is standing in the middle of the square.
+  - Roads lead in every direction, north to the temple square, south to the
+  - common square, east and westbound is the main street.
+  doors:
+  - desc:
+    - You see the temple square.
+    dir: north
+    keywords: []
+    to: 3005
+  - desc:
+    - You see the main street.
+    dir: east
+    keywords: []
+    to: 3015
+  - desc:
+    - You see the common square.
+    dir: south
+    keywords: []
+    to: 3025
+  - desc:
+    - You see the main street.
+    dir: west
+    keywords: []
+    to: 3013
+  extended_descriptions:
+  - desc:
+    - What you see is the Midgaard Worm, stretching around the Palace of Midgaard.
+    keywords: statue~
+  id: 3014
+  name: Market Square
+- desc:
+  - '   You are on Main Street crossing through town.  To the north is the general'
+  - store, and the main street continues east.  To the west you see and hear the
+  - market place and to the south is the Jeweller's Shop.
+  doors:
+  - desc:
+    - You see the general store.
+    dir: north
+    keywords: []
+    to: 3010
+  - desc:
+    - You see Main Street.
+    dir: east
+    keywords: []
+    to: 3016
+  - desc:
+    - You see the Jeweller's Shop.
+    dir: south
+    keywords: []
+    to: 3034
+  - desc:
+    - You see the market square.
+    dir: west
+    keywords: []
+    to: 3014
+  extended_descriptions: []
+  id: 3015
+  name: The Main Street
+- desc:
+  - '   The main street, to the north is the weapon shop and to the south is the'
+  - Guild of Swordsmen.  To the east you leave town and to the west the street
+  - leads to the market square.
+  doors:
+  - desc:
+    - You see the weapon shop.
+    dir: north
+    keywords: []
+    to: 3011
+  - desc:
+    - You see the city gate.
+    dir: east
+    keywords: []
+    to: 3041
+  - desc:
+    - You see the swordsmen's guild.
+    dir: south
+    keywords: []
+    to: 3021
+  - desc:
+    - You see the main street leading to the market square.
+    dir: west
+    keywords: []
+    to: 3015
+  extended_descriptions: []
+  id: 3016
+  name: The Main Street
+- desc:
+  - '   The entrance hall is a small, poor lighted room.'
+  doors:
+  - desc:
+    - You see the main street.
+    dir: north
+    keywords: []
+    to: 3012
+  - desc:
+    - You see your favorite place, the Mage's Bar.
+    dir: south
+    keywords: []
+    to: 3018
+  extended_descriptions: []
+  id: 3017
+  name: Entrance to Mage's Guild
+- desc:
+  - '   The bar is one of the wierdest in the land.  Mystical images float around'
+  - the air.  Illusions of fine furniture appear all around the room.
+  doors:
+  - desc:
+    - You see the lobby.
+    dir: north
+    keywords: []
+    to: 3017
+  - desc:
+    - You see the laboratory.
+    dir: east
+    keywords: []
+    to: 3019
+  extended_descriptions: []
+  id: 3018
+  name: Mage's Bar
+- desc:
+  - '   This is the Magical Experiments Laboratory.  Dark smoke-stained stones'
+  - arch over numerous huge oaken tables, most of these cluttered with strange-
+  - looking pipes and flasks.  The floor is covered with half-erased pentagrams
+  - and even weirder symbols, and a blackboard in a dark corner has only been
+  - partially cleaned, some painful-looking letters faintly visible.  A well in
+  - the middle of the floor leads down into darkness.  Vile smells waft from the
+  - depths.
+  doors:
+  - desc:
+    - You see the bar.
+    dir: west
+    keywords: []
+    to: 3018
+  - desc:
+    - You can't see what is down there, it is too dark.  Looks like it would be
+    - impossible to climb back up.
+    dir: down
+    keywords: []
+    to: 7017
+  extended_descriptions: []
+  id: 3019
+  name: Mage's Laboratory
+- desc:
+  - '   The armoury with all kinds of armours on the walls and in the window.  You'
+  - see helmets, shields and chain mails.  To the north is the main street.
+  - On the wall is a small note.
+  doors:
+  - desc:
+    - You see the main street.
+    dir: north
+    keywords: []
+    to: 3013
+  extended_descriptions:
+  - desc:
+    - '  You can use these commands for trading:'
+    - ''
+    - '  value <item>     To get the price of an item in your possession.'
+    - '  sell <item>      To sell something.'
+    - '  buy <item>       To buy something (provided that the shop has it in store).'
+    - '  list             Gives you a listing of the shop''s inventory.'
+    - ''
+    - '        WE DON''T GIVE CREDIT; WE DON''T EXPECT TO RECEIVE CREDIT!'
+    - '                             NO HAGGLING'
+    keywords: note~
+  id: 3020
+  name: The Armoury
+- desc:
+  - '   The entrance hall to the Guild of Swordsmen.  A place where one has to be'
+  - careful not to say something wrong (or right).  To the east is the bar and to
+  - the north is the main street.
+  doors:
+  - desc:
+    - You see the main street.
+    dir: north
+    keywords: []
+    to: 3016
+  - desc:
+    - You see the swordsmen's bar, many noises comes from there.
+    dir: east
+    keywords: []
+    to: 3022
+  extended_descriptions: []
+  id: 3021
+  name: Entrance Hall to the Guild of Swordsmen
+- desc:
+  - '   The bar of swordsmen, once upon a time beautifully furnished.  But now the'
+  - furniture is all around you in small pieces.  To the south is the yard, and
+  - to the west is the entrance hall.
+  doors:
+  - desc:
+    - You see the practice yard.
+    dir: south
+    keywords: []
+    to: 3023
+  - desc:
+    - You see the entrance hall to the thieves guild.
+    dir: west
+    keywords: []
+    to: 3021
+  extended_descriptions: []
+  id: 3022
+  name: The Bar of Swordsmen
+- desc:
+  - '   The practice yard of the fighters.  To the north is the bar.  A well leads'
+  - down into darkness.
+  doors:
+  - desc:
+    - You see the bar.
+    dir: north
+    keywords: []
+    to: 3022
+  - desc:
+    - You can't see what is down there, it is too dark.  Looks like it would be
+    - impossible to climb back up.
+    dir: down
+    keywords: []
+    to: 7048
+  extended_descriptions: []
+  id: 3023
+  name: The Tournament and Practice Yard
+- desc:
+  - '   You are at the poor alley.  South of here is the Grubby Inn and to the'
+  - east you see common square.  The alley continues further west.
+  doors:
+  - desc:
+    - You see the common square.
+    dir: east
+    keywords: []
+    to: 3025
+  - desc:
+    - You see the Inn.
+    dir: south
+    keywords: []
+    to: 3048
+  - desc:
+    - You see the poor alley.
+    dir: west
+    keywords: []
+    to: 3044
+  extended_descriptions: []
+  id: 3024
+  name: Eastern End of Poor Alley
+- desc:
+  - '   The common square, people pass you, talking to each other.  To the west is'
+  - the poor alley and to the east is the dark alley.  To the north, this square
+  - is connected to the market square.  From the south you notice a nasty smell.
+  doors:
+  - desc:
+    - You see the market square.
+    dir: north
+    keywords: []
+    to: 3014
+  - desc:
+    - You see the dark alley.
+    dir: east
+    keywords: []
+    to: 3026
+  - desc:
+    - You see the city dump.
+    dir: south
+    keywords: []
+    to: 3030
+  - desc:
+    - You see the poor alley.
+    dir: west
+    keywords: []
+    to: 3024
+  extended_descriptions: []
+  id: 3025
+  name: The Common Square
+- desc:
+  - '   The dark alley, to the west is the common square and to the south is the'
+  - Guild of Thieves.  The alley continues east.
+  doors:
+  - desc:
+    - The alley continues east.
+    dir: east
+    keywords: []
+    to: 3045
+  - desc:
+    - You see the entrance to the thieves guild.
+    dir: south
+    keywords: []
+    to: 3027
+  - desc:
+    - You see the common square.
+    dir: west
+    keywords: []
+    to: 3025
+  extended_descriptions:
+  - desc:
+    - It is the thieves guild, don't enter if you care about your health or money.
+    keywords: guild~
+  id: 3026
+  name: The Dark Alley
+- desc:
+  - '   The entrance hall to the thieves'' and assassins'' guild.  A place where you'
+  - can lose both your life and your money, if you are not careful.  To the north
+  - is the dark alley and to the east is the thieves' bar.
+  doors:
+  - desc:
+    - You see the alley.
+    dir: north
+    keywords: []
+    to: 3026
+  - desc:
+    - You see the thieves bar, where everything disappears.
+    dir: east
+    keywords: []
+    to: 3028
+  extended_descriptions: []
+  id: 3027
+  name: Entrance Hall to the Guild of Thieves
+- desc:
+  - '   The bar of the thieves.  Once upon a time this place was beautifully'
+  - furnished, but now it seems almost empty.  To the south is the yard, and to
+  - the west is the entrance hall.
+  - '   (Maybe the furniture has been stolen?!)'
+  doors:
+  - desc:
+    - You see the secret yard.
+    dir: south
+    keywords: []
+    to: 3029
+  - desc:
+    - You see the entrance hall to the thieves guild.
+    dir: west
+    keywords: []
+    to: 3027
+  extended_descriptions:
+  - desc:
+    - As you look at the furniture, the chair you sit on disappears.
+    keywords: furniture~
+  id: 3028
+  name: The Thieves Bar
+- desc:
+  - '   The secret practice yard of thieves and assassins.  To the north is the'
+  - bar.  A well leads down into darkness.
+  doors:
+  - desc:
+    - You see the bar.
+    dir: north
+    keywords: []
+    to: 3028
+  - desc:
+    - You can't see what is down there, it is too dark.  Looks like it would be
+    - impossible to climb back up.
+    dir: down
+    keywords: []
+    to: 7043
+  extended_descriptions: []
+  id: 3029
+  name: The Secret Yard
+- desc:
+  - '   The dump, where the people from the city drop their garbage.  Through the'
+  - garbage you can see a large junction of pipes, looks like the entrance to the
+  - sewer system.  South of here you see the river and to the north is the common
+  - square.
+  doors:
+  - desc:
+    - You see the common square.
+    dir: north
+    keywords: []
+    to: 3025
+  - desc:
+    - You see the river slowly flowing west, but notice that it would be nearly
+    - impossible to reach the river due to all the garbage and a steep river
+    - bank.
+    dir: south
+    keywords: []
+    to: 3504
+  - desc:
+    - You see the sewers.
+    dir: down
+    keywords: []
+    to: 7030
+  extended_descriptions: []
+  id: 3030
+  name: The Dump
+- desc:
+  - '   The Pet Shop is a small crowded store, full of cages and animals of'
+  - various sorts and sizes.  There is a sign on the wall.
+  doors:
+  - desc:
+    - You see the Alley.
+    dir: south
+    keywords: []
+    to: 3045
+  extended_descriptions:
+  - desc:
+    - 'The sign reads:'
+    - ''
+    - '  Use ''List'' to see the available pets.'
+    - '  Use ''Buy <pet> <name>'' to buy yourself a pet and name it.'
+    - ''
+    - '  You can use ''order <pet> <instructions>'' to order your pets around.'
+    - '  If you abuse your pet, it will no longer regard you as its master.'
+    - '  If you have several pets you may use ''order all <instructions>'''
+    - ''
+    - ' Regards,'
+    - ''
+    - '   The Shopkeeper'
+    keywords: sign~
+  id: 3031
+  name: The Pet Shop
+- desc:
+  - '   This is the small dark room in which the Pet Shop Boy keeps his pets.'
+  - It is vital that this room be immediately after the pet shop.
+  doors: []
+  extended_descriptions: []
+  id: 3032
+  name: Pet Shop Store
+- desc:
+  - '   You are in a small room that smells of rare chemicals and spices.'
+  - Dividing the room in two is a large desk, and on the wall behind it are
+  - numerous shelves crammed with jars, bottles, books and scrolls of all
+  - sorts and sizes.
+  doors:
+  - desc:
+    - You see the main street.
+    dir: south
+    keywords: []
+    to: 3012
+  extended_descriptions:
+  - desc:
+    - Some of them are transparent enabling you to see that some contain colored
+    - powders while others contain body parts of various animals.
+    keywords: jars bottles~
+  - desc:
+    - Most of them appear to be very old and dusty.
+    keywords: books~
+  - desc:
+    - Each scroll is stored in a leather tube that protects it from moist.
+    keywords: scrolls~
+  id: 3033
+  name: The Magic Shop
+- desc:
+  - '   You are in a small, beautifully furnished room.  The warm light emanating'
+  - from the small oil lamps on the walls is reflected in the hard, polished
+  - surface of the big mahogany desk that stands in the centre of the room.
+  - A small sign with golden letters stands on the desk.
+  doors:
+  - desc:
+    - You see Main Street.
+    dir: north
+    keywords: []
+    to: 3015
+  extended_descriptions:
+  - desc:
+    - They are made from polished gold and looks as if they are securely fastened
+    - to the smooth stone walls.
+    keywords: oil lamps~
+  - desc:
+    - Your face is reflected in its surface.
+    keywords: desk~
+  - desc:
+    - The golden letters say :-
+    - ''
+    - '    Use ''list'' to see what is in store,'
+    - '        ''buy <item>'' to buy an item,'
+    - '        ''sell <item>'' to sell an item and'
+    - '        ''value <item>'' to make the jeweller evaluate an item.'
+    keywords: sign~
+  id: 3034
+  name: The Jeweller's Shop
+- desc:
+  - '   An acrid smell fills this large room.  Along the walls are numerous'
+  - shelves containing all sorts of animal hide and in the crackling fireplace
+  - hangs a big iron pot with boiling water.  In the middle of the room is a
+  - large oak table.
+  - A wooden sign is hanging above the fireplace.
+  doors:
+  - desc:
+    - You see the alley.
+    dir: south
+    keywords: []
+    to: 3044
+  extended_descriptions:
+  - desc:
+    - It is a rather large fireplace made from heavy granite rocks.
+    keywords: fireplace~
+  - desc:
+    - It is made from solid oak but appears to be very used.  Its surface is
+    - covered in marks and scratches.  A large burning candle stands directly on
+    - the table surface, tallow flowing down its sides.
+    keywords: table~
+  - desc:
+    - Several large pieces of leather hide are boiling in the iron pot.
+    keywords: pot~
+  - desc:
+    - The wooden sign says :-
+    - ''
+    - '    Use ''list'' to see what is in store,'
+    - '        ''buy <item>'' to buy an item,'
+    - '        ''sell <item>'' to sell an item and'
+    - '        ''value <item>'' to make the leather worker evaluate an item.'
+    keywords: sign~
+  id: 3035
+  name: The Leather Shop
+- desc:
+  - '   You are by two small towers that have been built into the city wall and'
+  - connected with a footbridge across the heavy wooden gate.  Main Street leads
+  - east and Wall Road leads south from here.
+  doors:
+  - desc:
+    - You see a Dimly Lit Path.
+    dir: north
+    keywords: []
+    to: 101
+  - desc:
+    - You see Main Street.
+    dir: east
+    keywords: []
+    to: 3012
+  - desc:
+    - You see the road running along the inner side of the city wall.  You notice
+    - that it is called Wall Road.
+    dir: south
+    keywords: []
+    to: 3042
+  - desc:
+    - The city gate is to the west.
+    dir: west
+    keywords:
+    - gate
+    to: 3052
+  extended_descriptions:
+  - desc:
+    - It is too high up to reach but it looks as if one easily could walk across it
+    - from one tower to the other.
+    keywords: bridge footbridge~
+  - desc:
+    - It is a set of very big double doors made from hard wood.  They have been
+    - reinforced with large iron bands to make them even more sturdy.  One of the
+    - doors is equipped with a very big lock.
+    keywords: gate~
+  - desc:
+    - Both of the towers are built from large grey rocks that have been fastened to
+    - each other with some kind of mortar, just like the city wall.
+    keywords: tower towers~
+  - desc:
+    - It is built from large grey rocks that have been fastened to each other with
+    - some kind of mortar.  It is far too high to climb.
+    keywords: wall~
+  id: 3040
+  name: Inside the West Gate of Midgaard
+- desc:
+  - '   You are by two small towers that have been built into the city wall and'
+  - connected with a footbridge across the heavy wooden gate.  Main Street leads
+  - west from here.  South of here is the wall road, but it looks dirty and
+  - not too safe.
+  doors:
+  - desc:
+    - You see the city gate.
+    dir: east
+    keywords:
+    - gate
+    to: 3053
+  - desc:
+    - You see Main Street.
+    dir: west
+    keywords: []
+    to: 3016
+  - desc:
+    - You see the slums of Midgaard.
+    dir: south
+    keywords: []
+    to: 2171
+  extended_descriptions:
+  - desc:
+    - It is too high up to reach but it looks as if one easily could walk across it
+    - from one tower to the other.
+    keywords: bridge footbridge~
+  - desc:
+    - It is a set of very big double doors made from hard wood.  They have been
+    - reinforced with large iron bands to make them even more sturdy.  One of the
+    - doors is equipped with a very big lock.
+    keywords: gate~
+  - desc:
+    - Both of the towers are built from large grey rocks that have been fastened to
+    - each other with some kind of mortar, just like the city wall.
+    keywords: tower towers~
+  - desc:
+    - It is built from large grey rocks that have been fastened to each other with
+    - some kind of mortar.  It is far too high to climb.
+    keywords: wall~
+  id: 3041
+  name: Inside the East Gate of Midgaard
+- desc:
+  - '   You are walking next to the western city wall.  The road continues further'
+  - south and the city gate is just north of here.
+  doors:
+  - desc:
+    - You see the city gate.
+    dir: north
+    keywords: []
+    to: 3040
+  - desc:
+    - The road continues further south.
+    dir: south
+    keywords: []
+    to: 3043
+  extended_descriptions:
+  - desc:
+    - It is built from large grey rocks that have been fastened to each other with
+    - some kind of mortar.  It is far too high to climb.
+    keywords: wall~
+  id: 3042
+  name: Wall Road
+- desc:
+  - '   You are walking next to the western city wall.  Wall Road continues further'
+  - north and south.  A small, poor alley leads east.
+  - Some letters have been written on the wall here.
+  doors:
+  - desc:
+    - The road continues further north.
+    dir: north
+    keywords: []
+    to: 3042
+  - desc:
+    - The alley leads east.
+    dir: east
+    keywords: []
+    to: 3044
+  - desc:
+    - The road continues further south.
+    dir: south
+    keywords: []
+    to: 3047
+  extended_descriptions:
+  - desc:
+    - It says 'Who watches the watchmen?'
+    keywords: letters~
+  - desc:
+    - It is built from large grey rocks that have been fastened to each other with
+    - some kind of mortar.  It is far too high to climb.
+    keywords: wall~
+  id: 3043
+  name: Wall Road
+- desc:
+  - '   You are in narrow and dirty alley leading east and west.  The leather shop'
+  - is to the north.
+  doors:
+  - desc:
+    - The leather shop is to the north.
+    dir: north
+    keywords: []
+    to: 3035
+  - desc:
+    - The alley leads east.
+    dir: east
+    keywords: []
+    to: 3024
+  - desc:
+    - The alley leads west.
+    dir: west
+    keywords: []
+    to: 3043
+  extended_descriptions: []
+  id: 3044
+  name: Poor Alley
+- desc:
+  - '   You are standing in the alley which continues east and west.  South of'
+  - here you see the levee.  North is the Pet Shop.
+  doors:
+  - desc:
+    - You see, hear, and smell the pet shop.
+    dir: north
+    keywords: []
+    to: 3031
+  - desc:
+    - The alley leads east.
+    dir: east
+    keywords: []
+    to: 3046
+  - desc:
+    - You see the levee.
+    dir: south
+    keywords: []
+    to: 3049
+  - desc:
+    - The alley leads west.
+    dir: west
+    keywords: []
+    to: 3026
+  extended_descriptions: []
+  id: 3045
+  name: Alley at Levee
+- desc:
+  - '   You are standing at the eastern end of the alley.  An old three-story'
+  - warehouse is directly south of here, and the Mob Factory is east.
+  doors:
+  - desc:
+    - The entrance to the Mob Factory lies east.
+    dir: east
+    keywords: []
+    to: 9400
+  - desc:
+    - You see the warehouse.
+    dir: south
+    keywords: []
+    to: 3050
+  - desc:
+    - You see the alley.
+    dir: west
+    keywords: []
+    to: 3045
+  extended_descriptions: []
+  id: 3046
+  name: Eastern end of Alley
+- desc:
+  - '   You are standing on the road next to the western city wall which'
+  - continues north.  South of here is a bridge across the river.
+  doors:
+  - desc:
+    - You see the road.
+    dir: north
+    keywords: []
+    to: 3043
+  - desc:
+    - You see the bridge.
+    dir: south
+    keywords: []
+    to: 3051
+  extended_descriptions:
+  - desc:
+    - It is built from large grey rocks that have been fastened to each other with
+    - some kind of mortar.  It is far too high to climb.
+    keywords: wall~
+  id: 3047
+  name: Wall Road
+- desc:
+  - '   You are inside the old Grubby Inn.  This place has not been cleaned for'
+  - several decades, vile smells make you dizzy.
+  doors:
+  - desc:
+    - You see the alley.
+    dir: north
+    keywords: []
+    to: 3024
+  extended_descriptions: []
+  id: 3048
+  name: Grubby Inn
+- desc:
+  - '  You are at the levee.  South of here you see the river gently flowing west.'
+  - The river bank is very low making it possible to enter the river.
+  doors:
+  - desc:
+    - You see the Alley.
+    dir: north
+    keywords: []
+    to: 3045
+  - desc:
+    - You see the river flowing west.
+    dir: south
+    keywords: []
+    to: 3203
+  extended_descriptions: []
+  id: 3049
+  name: Levee
+- desc:
+  - '   You are inside the only room in the old warehouse.  The place is very dusty'
+  - and appears to have been unused for many years.  The skylight spills
+  - violet-tinged light.
+  doors:
+  - desc:
+    - You see the alley.
+    dir: north
+    keywords: []
+    to: 3046
+  - desc:
+    - You see machine dreams and taste violet phosphor.
+    dir: up
+    keywords: []
+    to: 8604
+  extended_descriptions: []
+  id: 3050
+  name: Abandoned Warehouse
+- desc:
+  - '   You are standing on the stone bridge crosses the river.  The bridge is'
+  - built out from the western city wall and the river flows west through an
+  - opening in the wall ten feet below the bridge.
+  doors:
+  - desc:
+    - You see the road.
+    dir: north
+    keywords: []
+    to: 3047
+  - desc:
+    - You see the Concourse.
+    dir: south
+    keywords: []
+    to: 3100
+  extended_descriptions:
+  - desc:
+    - It is built from large grey rocks that have been fastened to each other with
+    - some kind of mortar, just like the wall.
+    keywords: bridge~
+  - desc:
+    - You cannot really see it from here as it is somewhere beneath your feet.
+    keywords: opening~
+  - desc:
+    - It is built from large grey rocks that have been fastened to each other with
+    - some kind of mortar.  It is far too high to climb.
+    keywords: wall~
+  id: 3051
+  name: On the Bridge
+- desc:
+  - '   You are by two small towers that have been built into the city wall and'
+  - connected with a footbridge across the heavy wooden gate.  To the west you
+  - can see the edge of a big forest. A small dusty trail leads north along the
+  - wall.
+  doors:
+  - desc:
+    - The trail continues around the City of Midgaard.
+    dir: north
+    keywords: []
+    to: 3900
+  - desc:
+    - The city gate is to the east.
+    dir: east
+    keywords:
+    - gate
+    to: 3040
+  - desc:
+    - The forest edge is to the west.
+    dir: west
+    keywords: []
+    to: 6000
+  extended_descriptions:
+  - desc:
+    - It is too high up to reach but it looks as if one easily could walk across it
+    - from one tower to the other.
+    keywords: bridge footbridge~
+  - desc:
+    - It is a set of very big double doors made from hard wood.  They have been
+    - reinforced with large iron bands to make them even more sturdy.  One of the
+    - doors is equipped with a very big lock.
+    keywords: gate~
+  - desc:
+    - Both of the towers are built from large grey rocks that have been fastened to
+    - each other with some kind of mortar, just like the city wall.
+    keywords: tower towers~
+  - desc:
+    - It is built from large grey rocks that have been fastened to each other with
+    - some kind of mortar.  It is far too high to climb.
+    keywords: wall~
+  id: 3052
+  name: Outside the West Gate of Midgaard
+- desc:
+  - '   You are by two small towers that have been built into the city wall and'
+  - connected with a footbridge across the heavy wooden gate.  To the east the
+  - plains stretch out in the distance. To the north a small dusty trail follow
+  - the city wall.
+  doors:
+  - desc:
+    - The trail continues around the City of Midgaard.
+    dir: north
+    keywords: []
+    to: 3908
+  - desc:
+    - You see the plains.
+    dir: east
+    keywords: []
+    to: 3503
+  - desc:
+    - You see the city gate.
+    dir: west
+    keywords:
+    - gate
+    to: 3041
+  extended_descriptions:
+  - desc:
+    - It is too high up to reach but it looks as if one easily could walk across it
+    - from one tower to the other.
+    keywords: bridge footbridge~
+  - desc:
+    - It is a set of very big double doors made from hard wood.  They have been
+    - reinforced with large iron bands to make them even more sturdy.  One of the
+    - doors is equipped with a very big lock.
+    keywords: gate~
+  - desc:
+    - Both of the towers are built from large grey rocks that have been fastened to
+    - each other with some kind of mortar, just like the city wall.
+    keywords: tower towers~
+  - desc:
+    - It is built from large grey rocks that have been fastened to each other with
+    - some kind of mortar.  It is far too high to climb.
+    keywords: wall~
+  id: 3053
+  name: Outside the East Gate of Midgaard
+- desc:
+  - '   You are by the temple altar in the northern end of the Temple of Midgaard.'
+  - A huge altar made from white polished marble is standing in front of you and
+  - behind it is a ten foot tall sitting statue of Odin, the King of the Gods.
+  doors:
+  - desc:
+    - You see the southern end of the temple.
+    dir: south
+    keywords: []
+    to: 3001
+  extended_descriptions:
+  - desc:
+    - Even though the altar is more than ten feet long it appears to be made from a
+    - single block of white virgin marble.
+    keywords: altar~
+  - desc:
+    - The statue represents the one-eyed Odin sitting on a his throne.  He has
+    - long, grey hair and beard and a strict look on his face.  On top of the
+    - throne, just above his shoulders, his two ravens Hugin and Munin are sitting
+    - and at his feet are his wolves Gere and Freke.
+    keywords: statue odin king god~
+  id: 3054
+  name: By the Temple Altar
+- desc:
+  - WOW you can fly!  You are floating in the air above Temple Square of Midgaard.
+  doors:
+  - desc:
+    - More of the same.
+    dir: up
+    keywords: []
+    to: 1017
+  - desc:
+    - Back down on the earth where you should be!
+    dir: down
+    keywords: []
+    to: 3005
+  extended_descriptions: []
+  id: 3057
+  name: In the air...
+- desc:
+  - '   You are at the concourse, the city wall is just west.  A small promenade'
+  - goes east, and the bridge is just north of here.  The concourse continues
+  - south along the city wall.
+  doors:
+  - desc:
+    - You see the Bridge.
+    dir: north
+    keywords: []
+    to: 3051
+  - desc:
+    - You see the promenade.
+    dir: east
+    keywords: []
+    to: 3101
+  - desc:
+    - The promenade continues far south.
+    dir: south
+    keywords: []
+    to: 3127
+  extended_descriptions: []
+  id: 3100
+  name: Northwest end of Concourse
+- desc:
+  - '   The river gently flows west just north of here.  The promenade continues'
+  - further east and to the west you see the city wall.  Park Road leads south
+  - from here.
+  doors:
+  - desc:
+    - The promenade.
+    dir: east
+    keywords: []
+    to: 3102
+  - desc:
+    - Park Road leads south.
+    dir: south
+    keywords: []
+    to: 3131
+  - desc:
+    - You see the Concourse.
+    dir: west
+    keywords: []
+    to: 3100
+  extended_descriptions: []
+  id: 3101
+  name: Promenade
+- desc:
+  - '   The river gently flows west just north of here.  The promenade continues'
+  - both east and west.  South of here you see the entrance to the park, and a
+  - small building seems to be just west of the entrance.
+  doors:
+  - desc:
+    - You see the promenade.
+    dir: east
+    keywords: []
+    to: 3103
+  - desc:
+    - You see the park entrance.
+    dir: south
+    keywords: []
+    to: 3105
+  - desc:
+    - You see the promenade.
+    dir: west
+    keywords: []
+    to: 3101
+  extended_descriptions: []
+  id: 3102
+  name: Promenade
+- desc:
+  - '   The river gently flows west just north of here.  The promenade continues'
+  - both east and west.  A small path leads south.  Looking across the river you
+  - see the levee.
+  doors:
+  - desc:
+    - You see the Concourse.
+    dir: east
+    keywords: []
+    to: 3104
+  - desc:
+    - The small path leads south.
+    dir: south
+    keywords: []
+    to: 3132
+  - desc:
+    - You see the promenade.
+    dir: west
+    keywords: []
+    to: 3102
+  extended_descriptions: []
+  id: 3103
+  name: Promenade
+- desc:
+  - '   You are at the Concourse.  The city wall is just east and a small'
+  - promenade goes west.  Looking across the river you see a building that
+  - resembles a warehouse.  The Concourse continues south along the city wall.
+  doors:
+  - desc:
+    - The Concourse continues south.
+    dir: south
+    keywords: []
+    to: 3130
+  - desc:
+    - You see the promenade.
+    dir: west
+    keywords: []
+    to: 3103
+  extended_descriptions:
+  - desc:
+    - It is built from large grey rocks that have been fastened to each other with
+    - some kind of mortar.  It is far too high to climb.
+    keywords: wall~
+  id: 3104
+  name: Northeast end of Concourse
+- desc:
+  - '   You are standing just inside the small park of Midgaard.  To the north is'
+  - the promenade and a small path leads south into the park.  To your east is
+  - the famous Park Cafe.
+  doors:
+  - desc:
+    - You see the promenade.
+    dir: north
+    keywords: []
+    to: 3102
+  - desc:
+    - You see Park Cafe.
+    dir: east
+    keywords: []
+    to: 3106
+  - desc:
+    - You see the park.
+    dir: south
+    keywords: []
+    to: 3108
+  extended_descriptions: []
+  id: 3105
+  name: Park Entrance
+- desc:
+  - '   You are inside Park Cafe, a very well lighted, cosy place. The cafe'
+  - is built from large logs. Through the windows in the northern wall you
+  - see the river, and through the southern window you see many vigorous
+  - colorful plants.
+  doors:
+  - desc:
+    - You see the park entrance.
+    dir: west
+    keywords: []
+    to: 3105
+  extended_descriptions: []
+  id: 3106
+  name: Park Cafe
+- desc:
+  - '   You are walking along a small path through the park.  The path continues'
+  - south and east.
+  doors:
+  - desc: []
+    dir: east
+    keywords: []
+    to: 3108
+  - desc: []
+    dir: south
+    keywords: []
+    to: 3113
+  extended_descriptions: []
+  id: 3107
+  name: Small path through the park
+- desc:
+  - '   You are standing on a small path inside the park.  The park entrance is'
+  - just north of here, and Park Cafe is just east of the entrance.  The path
+  - leads further east and west.
+  doors:
+  - desc:
+    - You see the northern park entrance.
+    dir: north
+    keywords: []
+    to: 3105
+  - desc: []
+    dir: east
+    keywords: []
+    to: 3109
+  - desc: []
+    dir: west
+    keywords: []
+    to: 3107
+  extended_descriptions: []
+  id: 3108
+  name: Small path in the park
+- desc:
+  - '   You are on a small path running through the park.  It continues west and'
+  - south and just north of here you see the southern wall of Park Cafe.
+  doors:
+  - desc: []
+    dir: south
+    keywords: []
+    to: 3115
+  - desc: []
+    dir: west
+    keywords: []
+    to: 3108
+  extended_descriptions: []
+  id: 3109
+  name: Small path in the park
+- desc:
+  - '   You are inside a tidy office.  A big desk made from dark wood is standing'
+  - in the centre of the room.
+  doors:
+  - desc:
+    - You see Park Road.
+    dir: east
+    keywords:
+    - door
+    to: 3111
+  - desc:
+    - You see a sign saying 'KEEP OUT'.
+    dir: west
+    keywords:
+    - door
+    to: 3142
+  extended_descriptions: []
+  id: 3110
+  name: Cityguard Head Quarters
+- desc:
+  - '   The road continues north and south.  A building is just west of here, you'
+  - notice a sign on the door.  The park entrance is to the east.
+  doors:
+  - desc: []
+    dir: north
+    keywords: []
+    to: 3131
+  - desc:
+    - You see the park entrance.
+    dir: east
+    keywords: []
+    to: 3112
+  - desc: []
+    dir: south
+    keywords: []
+    to: 3118
+  - desc:
+    - You see the cityguard head quarters.
+    dir: west
+    keywords:
+    - door
+    to: 3110
+  extended_descriptions:
+  - desc:
+    - The sign on the door says:-
+    - ''
+    - '                 Cityguard Head Quarters'
+    keywords: building door sign~
+  id: 3111
+  name: Park Road
+- desc:
+  - '   You are standing at the western end of the park.  A small path leads east'
+  - into the park and going west through the entrance you will reach Park Road.
+  doors:
+  - desc: []
+    dir: east
+    keywords: []
+    to: 3113
+  - desc: []
+    dir: west
+    keywords: []
+    to: 3111
+  extended_descriptions: []
+  id: 3112
+  name: Western Park Entrance
+- desc:
+  - '   You are in the park.  The paths lead north and west.  Westwards is the'
+  - park entrance and to the east you see a small pond.
+  doors:
+  - desc: []
+    dir: north
+    keywords: []
+    to: 3107
+  - desc:
+    - You see the pond.
+    dir: east
+    keywords: []
+    to: 3114
+  - desc:
+    - You see the western park entrance.
+    dir: west
+    keywords: []
+    to: 3112
+  extended_descriptions: []
+  id: 3113
+  name: A path in the park
+- desc:
+  - '   You are swimming around in the pond, feeling rather stupid.  You can get'
+  - back on the path from the eastern and western end of the pond.
+  doors:
+  - desc: []
+    dir: east
+    keywords: []
+    to: 3115
+  - desc: []
+    dir: west
+    keywords: []
+    to: 3113
+  extended_descriptions: []
+  id: 3114
+  name: The Pond
+- desc:
+  - '   You are in the park.  The paths lead north and east.  Eastwards is the'
+  - park entrance and to the west you see a small pond.
+  doors:
+  - desc: []
+    dir: north
+    keywords: []
+    to: 3109
+  - desc: []
+    dir: east
+    keywords: []
+    to: 3116
+  - desc: []
+    dir: west
+    keywords: []
+    to: 3114
+  extended_descriptions: []
+  id: 3115
+  name: A path in the park
+- desc:
+  - '   You are standing at the eastern end of the park.  A small path leads west'
+  - into the park.  Going east through the entrance you will reach Emerald
+  - Avenue.
+  doors:
+  - desc: []
+    dir: east
+    keywords: []
+    to: 3117
+  - desc: []
+    dir: west
+    keywords: []
+    to: 3115
+  extended_descriptions: []
+  id: 3116
+  name: Eastern Park Entrance
+- desc:
+  - '   You are at Emerald Avenue which continues north and south.  To the west is'
+  - the park entrance and to the east is the not very big Town Hall of Midgaard.
+  doors:
+  - desc: []
+    dir: north
+    keywords: []
+    to: 3132
+  - desc: []
+    dir: east
+    keywords: []
+    to: 3137
+  - desc: []
+    dir: south
+    keywords: []
+    to: 3119
+  - desc: []
+    dir: west
+    keywords: []
+    to: 3116
+  extended_descriptions: []
+  id: 3117
+  name: Emerald Avenue
+- desc:
+  - You are on Park Road which leads north and south.
+  doors:
+  - desc: []
+    dir: north
+    keywords: []
+    to: 3111
+  - desc: []
+    dir: south
+    keywords: []
+    to: 3135
+  extended_descriptions: []
+  id: 3118
+  name: Park Road
+- desc:
+  - You are standing at a bend on Emerald Avenue.  The road leads north and west.
+  doors:
+  - desc: []
+    dir: north
+    keywords: []
+    to: 3117
+  - desc: []
+    dir: west
+    keywords: []
+    to: 3133
+  extended_descriptions: []
+  id: 3119
+  name: Emerald Avenue
+- desc:
+  - '   You are in the middle of the road cross.  Roads lead in all directions.'
+  - A huge black iron chain as thick as a tree trunk is fastened into the ground
+  - at the centre of the road cross.  Its other end leads directly upwards towards
+  - the sky.
+  - A road sign is here.
+  doors:
+  - desc: []
+    dir: north
+    keywords: []
+    to: 3133
+  - desc: []
+    dir: east
+    keywords: []
+    to: 3136
+  - desc: []
+    dir: south
+    keywords: []
+    to: 3134
+  - desc: []
+    dir: west
+    keywords: []
+    to: 3135
+  - desc:
+    - The chain disappears in the clouds.
+    dir: up
+    keywords: []
+    to: 7914
+  extended_descriptions:
+  - desc:
+    - 'The sign points in all directions:'
+    - ''
+    - '   North - Emerald Avenue.'
+    - '   East  - Park Road.'
+    - '   South - Emerald Avenue.'
+    - '   West  - Park Road.'
+    - ''
+    - 'Someone has added the following with red paint:'
+    - ''
+    - '   Up    - Redferne''s Flying Citadel.'
+    keywords: sign~
+  - desc:
+    - The the chain reaches the clouds high above you.  It must take some really
+    - powerful magic to hold such a chain in place.
+    keywords: chain~
+  id: 3120
+  name: Road Crossing
+- desc:
+  - '   You are standing at a bend on Emerald Avenue.  The road leads south and'
+  - east.
+  doors:
+  - desc: []
+    dir: east
+    keywords: []
+    to: 3134
+  - desc: []
+    dir: south
+    keywords: []
+    to: 3125
+  extended_descriptions: []
+  id: 3121
+  name: Emerald Avenue
+- desc:
+  - '   You are on Park Road which leads south and north.  Elm Street is east of'
+  - here.
+  doors:
+  - desc: []
+    dir: north
+    keywords: []
+    to: 3136
+  - desc: []
+    dir: east
+    keywords: []
+    to: 3123
+  - desc: []
+    dir: south
+    keywords: []
+    to: 3126
+  extended_descriptions: []
+  id: 3122
+  name: Park Road
+- desc:
+  - '   You are on Elm street.  Park Road is to the west and Elm Street continues'
+  - in eastward direction.
+  doors:
+  - desc: []
+    dir: east
+    keywords: []
+    to: 3124
+  - desc: []
+    dir: west
+    keywords: []
+    to: 3122
+  extended_descriptions: []
+  id: 3123
+  name: Elm Street
+- desc:
+  - '   You are at the end of Elm Street.  An old elm tree grows here.'
+  doors:
+  - desc: []
+    dir: west
+    keywords: []
+    to: 3123
+  extended_descriptions:
+  - desc:
+    - The fresh young leaves of the elm tree wave gently in the wind.
+    keywords: elm tree~
+  id: 3124
+  name: End of Elm Street
+- desc:
+  - You are on Emerald Avenue which continues north.
+  - The Concourse is south of here.
+  doors:
+  - desc: []
+    dir: north
+    keywords: []
+    to: 3121
+  - desc: []
+    dir: south
+    keywords: []
+    to: 3128
+  extended_descriptions: []
+  id: 3125
+  name: Emerald Avenue
+- desc:
+  - You are on Park Road which continues north.  The Concourse is south of here.
+  doors:
+  - desc: []
+    dir: north
+    keywords: []
+    to: 3122
+  - desc: []
+    dir: south
+    keywords: []
+    to: 3129
+  extended_descriptions: []
+  id: 3126
+  name: Park Road
+- desc:
+  - '   You are at the southwest corner of the city wall.  The Concourse leads'
+  - both north and east.
+  doors:
+  - desc: []
+    dir: north
+    keywords: []
+    to: 3100
+  - desc: []
+    dir: east
+    keywords: []
+    to: 3128
+  extended_descriptions: []
+  id: 3127
+  name: On the Concourse
+- desc:
+  - '   The Concourse continues both east and west.  Emerald Avenue is north of'
+  - here.
+  doors:
+  - desc: []
+    dir: north
+    keywords: []
+    to: 3125
+  - desc: []
+    dir: east
+    keywords: []
+    to: 3129
+  - desc: []
+    dir: west
+    keywords: []
+    to: 3127
+  extended_descriptions: []
+  id: 3128
+  name: On the Concourse
+- desc:
+  - '   The Concourse continues both east and west.  Park Road is north of here'
+  - and an iron grate leads south to the graveyard.
+  - A bronze sign has been set on the wall next to the grate.
+  doors:
+  - desc: []
+    dir: north
+    keywords: []
+    to: 3126
+  - desc: []
+    dir: east
+    keywords: []
+    to: 3130
+  - desc:
+    - Through the solid iron bars you see the graveyard.
+    dir: south
+    keywords:
+    - grate
+    to: 3600
+  - desc: []
+    dir: west
+    keywords: []
+    to: 3128
+  extended_descriptions:
+  - desc:
+    - Looks heavy.
+    keywords: grate~
+  - desc:
+    - The sign says :-
+    - ''
+    - '                          Graveyard of Midgaard'
+    - ''
+    - '    Many brave adventurers have found their final resting place here.'
+    - '          Please show respect and do not desecrate their tombs.'
+    keywords: sign~
+  id: 3129
+  name: On the Concourse
+- desc:
+  - '   You are at the southeast corner of the city wall.  The Concourse leads'
+  - both north and west.
+  doors:
+  - desc: []
+    dir: north
+    keywords: []
+    to: 3104
+  - desc: []
+    dir: west
+    keywords: []
+    to: 3129
+  extended_descriptions: []
+  id: 3130
+  name: On the Concourse
+- desc:
+  - '   You are at Park Road which continues north and south.'
+  doors:
+  - desc: []
+    dir: north
+    keywords: []
+    to: 3101
+  - desc: []
+    dir: south
+    keywords: []
+    to: 3111
+  extended_descriptions: []
+  id: 3131
+  name: Park Road
+- desc:
+  - '   You are standing on the north end of Emerald Avenue.  To the north is the'
+  - promenade and to the east is the small street Penny Lane.
+  doors:
+  - desc: []
+    dir: north
+    keywords: []
+    to: 3103
+  - desc: []
+    dir: east
+    keywords: []
+    to: 3139
+  - desc: []
+    dir: south
+    keywords: []
+    to: 3117
+  extended_descriptions: []
+  id: 3132
+  name: Emerald Avenue
+- desc:
+  - '   You are standing at a bend on Emerald Avenue.  To the east the road goes on'
+  - and to the south is the Road Crossing.
+  doors:
+  - desc: []
+    dir: east
+    keywords: []
+    to: 3119
+  - desc: []
+    dir: south
+    keywords: []
+    to: 3120
+  extended_descriptions: []
+  id: 3133
+  name: Emerald Avenue
+- desc:
+  - '   You are standing at a bend on Emerald Avenue.  To the west the road goes on'
+  - and to the north is the Road Crossing.
+  doors:
+  - desc: []
+    dir: north
+    keywords: []
+    to: 3120
+  - desc: []
+    dir: west
+    keywords: []
+    to: 3121
+  extended_descriptions: []
+  id: 3134
+  name: Emerald Avenue
+- desc:
+  - '   You are at a bend on Park Road.  To the north the road goes on and to the'
+  - east is the Road Crossing.  To the south, the ancient cliffs rise from deep
+  - under the ground, forming a wall.
+  doors:
+  - desc: []
+    dir: north
+    keywords: []
+    to: 3118
+  - desc: []
+    dir: east
+    keywords: []
+    to: 3120
+  extended_descriptions: []
+  id: 3135
+  name: Park Road
+- desc:
+  - '   You are at a bend on Park Road.  To the south the road goes on and to the'
+  - west is the Road Crossing.
+  doors:
+  - desc: []
+    dir: south
+    keywords: []
+    to: 3122
+  - desc: []
+    dir: west
+    keywords: []
+    to: 3120
+  extended_descriptions: []
+  id: 3136
+  name: Park Road
+- desc:
+  - '   You are standing in the waiting room at the town hall.  Wooden chairs stand'
+  - along the walls and a long desk is placed in the middle of the room.
+  doors:
+  - desc:
+    - It looks like some kind of office.
+    dir: east
+    keywords: []
+    to: 3138
+  - desc:
+    - The exit west leads to Emerald Avenue.
+    dir: west
+    keywords: []
+    to: 3117
+  extended_descriptions: []
+  id: 3137
+  name: The Waiting Room
+- desc:
+  - '   You are in the not very big office of the Mayor of Midgaard.  A large and'
+  - polished but completely empty desk is standing in front of an armchair that
+  - looks so comfortable that it most of all resembles a bed with the head end
+  - raised slightly.
+  doors:
+  - desc:
+    - The waiting room is to the west.
+    dir: west
+    keywords: []
+    to: 3137
+  extended_descriptions:
+  - desc:
+    - This chair is really a masterpiece.  A chair where one can sit as comfortably
+    - as in a bed.  All lecture halls should be equipped with these things.
+    keywords: chair armchair~
+  id: 3138
+  name: The Mayor's Office
+- desc:
+  - '   You are on Penny Lane.  Emerald Avenue is to the west and Penny Lane'
+  - continues in eastward direction.
+  doors:
+  - desc: []
+    dir: east
+    keywords: []
+    to: 3140
+  - desc: []
+    dir: west
+    keywords: []
+    to: 3132
+  extended_descriptions: []
+  id: 3139
+  name: Penny Lane
+- desc:
+  - '   You are on Penny Lane.  The narrow road continues north and west.'
+  doors:
+  - desc: []
+    dir: north
+    keywords: []
+    to: 3141
+  - desc: []
+    dir: west
+    keywords: []
+    to: 3139
+  extended_descriptions: []
+  id: 3140
+  name: Penny Lane
+- desc:
+  - '   You are at the end of Penny Lane.  The only exit appears to be south.'
+  doors:
+  - desc: []
+    dir: south
+    keywords: []
+    to: 3140
+  extended_descriptions: []
+  id: 3141
+  name: End of Penny Lane
+- desc:
+  - '   You are in the Office of the Captain of the Guard.  The Midgaard Coat of'
+  - Arms is hanging on the north wall and a heavy steel door is to the south.
+  doors:
+  - desc:
+    - You see the Cityguard Head Quarters.
+    dir: east
+    keywords:
+    - door
+    to: 3110
+  - desc:
+    - You see the heavy steel door.
+    dir: south
+    keywords:
+    - door
+    to: 3143
+  extended_descriptions:
+  - desc:
+    - Although a bit dusty the Coat of Arms is an excellent piece of work.
+    keywords: arms~
+  id: 3142
+  name: Captain's Office
+- desc:
+  - '   You are in a dark and humid jail.  The dark stone walls are hard and cold'
+  - to the touch.  A heavy steel door is to the north.
+  doors:
+  - desc:
+    - You see the heavy steel door.
+    dir: north
+    keywords:
+    - door
+    to: 3142
+  extended_descriptions:
+  - desc:
+    - The walls are marked with lots of scratches.  Some of them spell sentences
+    - like "JAIL IS BETTER THAN SQL" and "INGRES STRIKES AGAIN".
+    keywords: wall walls~
+  id: 3143
+  name: The Jail
+- desc:
+  - '   The arch under the bridge is covered by seaweed for one foot above the'
+  - surface of the river.  The water gently flows through an opening in the lower
+  - part of the city wall.
+  doors:
+  - desc: []
+    dir: east
+    keywords: []
+    to: 3201
+  - desc:
+    - You see the river flowing west into the Forest of Haon-Dor.
+    dir: west
+    keywords: []
+    to: -1
+  extended_descriptions:
+  - desc:
+    - It is built from large grey rocks that have been fastened to each other with
+    - some kind of mortar.  Looks pretty solid.
+    keywords: wall~
+  id: 3200
+  name: Under the Bridge
+- desc:
+  - '   North of here you see the miserable buildings of the poor alley.  The'
+  - river flows west towards the bridge.  The riverbanks are too steep to climb.
+  doors:
+  - desc: []
+    dir: east
+    keywords: []
+    to: 3202
+  - desc: []
+    dir: west
+    keywords: []
+    to: 3200
+  extended_descriptions: []
+  id: 3201
+  name: On the River
+- desc:
+  - '   North of here you see the dump.  The river flows from east to west.  The'
+  - riverbanks are too steep to climb.
+  doors:
+  - desc: []
+    dir: east
+    keywords: []
+    to: 3203
+  - desc: []
+    dir: west
+    keywords: []
+    to: 3201
+  extended_descriptions: []
+  id: 3202
+  name: On the River
+- desc:
+  - '   The levee is directly north of here.  The river flows in an east west'
+  - direction.
+  doors:
+  - desc: []
+    dir: north
+    keywords: []
+    to: 3049
+  - desc: []
+    dir: east
+    keywords: []
+    to: 3204
+  - desc: []
+    dir: west
+    keywords: []
+    to: 3202
+  extended_descriptions: []
+  id: 3203
+  name: On the River
+- desc:
+  - '   You see the warehouse on the northern riverbank.  East of here you see the'
+  - city wall.  The river flows west towards the levee.
+  doors:
+  - desc: []
+    dir: east
+    keywords: []
+    to: 3205
+  - desc: []
+    dir: west
+    keywords: []
+    to: 3203
+  extended_descriptions: []
+  id: 3204
+  name: On the River
+- desc:
+  - '   The river enters from a hole in the eastern city wall.  The hole has been'
+  - blocked by several vertically positioned iron bars set into the wall.
+  doors:
+  - desc:
+    - The iron bars are broken, allowing passage through the hole in the wall.
+    - Beyond the bars you see a dark tunnel.
+    dir: east
+    keywords: []
+    to: 5001
+  - desc: []
+    dir: west
+    keywords: []
+    to: 3204
+  extended_descriptions: []
+  id: 3205
+  name: On the River
+SHOPS: []
+

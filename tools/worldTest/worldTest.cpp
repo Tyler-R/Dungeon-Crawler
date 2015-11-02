@@ -257,6 +257,7 @@ int main() {
 		PlayerOne->getRoom()->removeNPC(npc->getID());
 	}
 
+    cout << endl << "--Check Object List--" << endl;
 	for (auto & obj : PlayerOne->lookObjList()) {
 	    cout << obj << endl;
 	}
@@ -264,12 +265,15 @@ int main() {
 	cout << endl << "--Now let's have Player One take a potion--" << endl;
 	cout << PlayerOne->takeItem("Potion") << endl;
 
+	cout << endl << "--Check Object List--" << endl;
 	for (auto & obj : PlayerOne->lookObjList()) {
 	    cout << obj << endl;
 	}
+
 	cout << endl << "--Try and take another potion (even though there are none left)--" << endl;
 	cout << PlayerOne->takeItem("Potion") << endl;
 
+	cout << endl << "--Check Object List--" << endl;
 	for (auto & obj : PlayerOne->lookObjList()) {
 	    cout << obj << endl;
 	}
