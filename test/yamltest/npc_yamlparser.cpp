@@ -14,7 +14,7 @@ int main()
 {
 	using namespace std;
 	cout << "Hello World!" << endl;
-	YAML::Node allNode = YAML::LoadFile("/home/jzzhang/textadventure/test/yamltest/me.yaml");
+	YAML::Node allNode = YAML::LoadFile("/home/jordan_nielsen/CMPT373_Game/textadventure/test/yamltest/me.yaml");
 	YAML::Node npcNodes = allNode["NPCS"];
 
 	string NPCDescription;
