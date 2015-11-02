@@ -62,6 +62,5 @@ int main()
 		cout << NPCShortDesc << endl<<endl;
 
 	}
-	cout << "Goodbye World!" << endl;
 	return 0;
 }
