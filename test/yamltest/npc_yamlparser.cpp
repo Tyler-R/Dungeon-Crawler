@@ -14,7 +14,7 @@ int main()
 {
 	using namespace std;
 	cout << "Hello World!" << endl;
-	YAML::Node allNode = YAML::LoadFile("/home/jordan_nielsen/CMPT373_Game/textadventure/test/yamltest/me.yaml");
+	YAML::Node allNode = YAML::LoadFile("yamlFiles/smurf.yaml");
 	YAML::Node npcNodes = allNode["NPCS"];
 
 	string NPCDescription;
@@ -62,6 +62,5 @@ int main()
 		cout << NPCShortDesc << endl<<endl;
 
 	}
-	cout << "Goodbye World!" << endl;
 	return 0;
 }
