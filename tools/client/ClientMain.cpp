@@ -9,12 +9,14 @@ std::shared_ptr<UserInterface> display = std::make_shared<UserInterface>();
 
 std::shared_ptr<Client> client;
 
-const int DELAY_BETWEEN_USER_INPUT_POLLS = 100000;
+const int DELAY_BETWEEN_USER_INPUT_POLLS = 50000;
 
 void draw() {
 	while(true) {
 		do {
 			display->userCommand();
+
+			display->displayCommandInInputBox(display->getUserCommand());
 
 			usleep(DELAY_BETWEEN_USER_INPUT_POLLS);
 		} while(display->getUserCommand().find("\n") ==  std::string::npos );

@@ -20,6 +20,8 @@ public:
 	~UserInterface();
 	void displayUserCommand();
 	void displayServerResponse(const char *serverResponse);
+
+	void displayCommandInInputBox(std::string command);
 	void userCommand();
 	std::string getUserCommand();
 

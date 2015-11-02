@@ -10,6 +10,8 @@ UserInterface::UserInterface(){
   	init_pair(2, COLOR_BLUE, COLOR_WHITE);
   	wbkgd(stdscr, COLOR_PAIR(2));
 
+  	noecho();
+
   	//getstr(str);
   	//clrtoeol();
 
@@ -28,9 +30,21 @@ void UserInterface::userCommand(){
 	mvprintw(row - 1 ,stringPosition ,"%s",mesg);        //print the message at the center of the screen 
 	char input = getch();
 
+	delch();
+	delch();
+
 	if(input != ERR) {
 	 	str[stringPosition] = input; //getstr(str);
   		stringPosition++;
+	}
+
+	if(input == 127) {
+		str[stringPosition - 1] = ' ';
+		str[stringPosition - 2] = ' ';
+		stringPosition--;
+		stringPosition--;
+
+		input = ' ';
 	}
 
   	// clrtoeol();
@@ -38,6 +52,14 @@ void UserInterface::userCommand(){
   	if (countRows == 8){
   		countRows = 0;
   	}
+
+  	// return input;
+}
+
+void UserInterface::displayCommandInInputBox(std::string command) {
+	refresh();		
+	attron(COLOR_PAIR(2));
+	mvprintw(row - 1, 0, "%s", command.c_str());
 }
 
 void UserInterface::displayUserCommand(){
@@ -45,6 +67,15 @@ void UserInterface::displayUserCommand(){
 		refresh();
 		attron(COLOR_PAIR(2));
   		mvprintw(row - row + countRows, 0, "You Entered: %s", str); //mvprintw(LINES - 2, 0, "You Entered: %s", str);
+  		clrtoeol();
+
+  		stringPosition = 0;
+
+  		for(int i = 0; i < 80; i++) {
+  			str[i] = ' ';
+  		}
+
+  		mvprintw(row - 1 , stringPosition ,"%s",mesg);
   		clrtoeol();
 
 }
