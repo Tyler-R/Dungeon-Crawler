@@ -19,8 +19,7 @@ User::User(){
   usedDefaultConstructor = true;
   userStats = new AbilityStats();
   playerLevel = START_LEVEL;
- 
-  //inventory = new Inventory();
+  inventory = new Inventory();
 }
 
 //TODO: USE THIS ONE WHEN MERGED AND SESSION.H IS AVAILABLE!!
@@ -35,8 +34,7 @@ User::User(){
   usedDefaultConstructor = false;
   userStats = new AbilityStats();
   playerLevel = START_LEVEL;
- 
-  //inventory = new Inventory();
+  inventory = new Inventory();
   }*/
 
 
@@ -50,8 +48,7 @@ User::User(bool isAdmin, string userName, string password, shared_ptr<Room> curr
   //usedDefaultConstructor = false;
   userStats = new AbilityStats();
   playerLevel = START_LEVEL;
- 
-  //inventory = new Inventory();
+  inventory = new Inventory();
   }
 
 //Copy Constructor: added by Sarah
@@ -71,7 +68,7 @@ User::User(User &user){
 /* Ensures deletion of the player's inventory and currentRoom if default constructor used*/
 User::~User() {
   delete(userStats);
-  // delete inventory;
+  delete inventory;
 }
 
 void User::setUserName(string s){
@@ -158,59 +155,55 @@ void User::notifySession(string notification){
 
 /* ABILITY STAT GETTERS */
 
-/*
 int User::getCharisma(){
-  return userStats.getCharisma();
+  return userStats->getCharisma();
 }
 
 int User::getDefense(){
-  return userStats.getDefense();
+  return userStats->getDefense();
 }
 
 int User::getDexterity(){
-  return userStats.getDexterity();
+  return userStats->getDexterity();
 }
 
 int User::getHealth(){
-  return userStats.getHealth();
+  return userStats->getHealth();
 }
 
 int User::getIntelligence(){
-  return userStats.getIntelligence();
+  return userStats->getIntelligence();
 }
 
 int User::getStrength(){
-  return userStats.getStrength();
+  return userStats->getStrength();
 }
-*/
 
 /* ABILTY STAT SETTERS */
 
-/*
-void User::setCharisma(int charmisma){
-  userStats.setCharisma(charisima);
+void User::setCharisma(int charisma){
+  userStats->setCharisma(charisma);
 }
 
 void User::setDefense(int defense){
-  userStats.setDefense(defense);
+  userStats->setDefense(defense);
 }
 
 void User::setDexterity(int dexterity){
-  userStats.setDexterity(dexterity);
+  userStats->setDexterity(dexterity);
 }
 
 void User::setHealth(int health){
-  userStats.setHealth(health);
+  userStats->setHealth(health);
 }
 
 void User::setIntelligence(int intelligence){
-  userStats.setIntelligence(intelligence);
+  userStats->setIntelligence(intelligence);
 }
 
 void User::setStrength(int strength){
-  userStats.setStrength(strength);
+  userStats->setStrength(strength);
 }
-*/
 
 ////ROOM INTERACTION METHODS Added by Sarah
 

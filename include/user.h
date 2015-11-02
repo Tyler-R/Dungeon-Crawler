@@ -4,6 +4,7 @@ Created By: Jordan Nielsen
 #pragma once
 #include "room.h"
 #include "abilityStats.h"
+#include "inventory.h"
 //#include "Session.h"
 #include <string>
 #include <vector>
@@ -64,14 +65,12 @@ class User {
     void setMessageDisplayer(std::function<void(string)> newMessageDisplayer);
     void notifySession(string notification);
 
-    /*
     int getCharisma();
     int getDefense();
     int getDexterity();
     int getHealth();
     int getIntelligence();
     int getStrength();
-    */
 		
  private:
     const int START_LEVEL = 1;
@@ -90,7 +89,7 @@ class User {
     AbilityStats* userStats;
 
 
-    // Inventory inventory;
+    Inventory* inventory;
 
 		
     bool usedDefaultConstructor;
@@ -103,13 +102,10 @@ class User {
 
     void setPassword(string s);
 
-    /*
     void setCharisma(int charisma);
     void setDefense(int defense);
     void setDexterity(int dexterity);
     void setHealth(int health);
     void setIntelligence(int intelligence);
     void setStrength(int strength);
-
-    */
 };

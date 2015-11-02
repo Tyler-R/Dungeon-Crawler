@@ -18,18 +18,20 @@ class AbilityStats {
     ~AbilityStats();
 
     int getHealth();
-    
     int getStrength();
-    
     int getDefense();
-    
     int getIntelligence();
-    
     int getDexterity();
-
     int getCharisma();
 
     void levelUp();
+
+    void setHealth(int health);
+    void setStrength(int strength);
+    void setDefense(int defense);
+    void setIntelligence(int intelligence);
+    void setDexterity(int dexterity);
+    void setCharisma(int charisma);
 
   private:
     int health;
@@ -46,11 +48,4 @@ class AbilityStats {
     static const int DEF_INTELLIGENCE = 5;
     static const int DEF_DEXTERITY = 5;
     static const int DEF_CHARISMA = 5;
-
-    void setHealth(int health);
-    void setStrength(int strength);
-    void setDefense(int defense);
-    void setIntelligence(int intelligence);
-    void setDexterity(int dexterity);
-    void setCharisma(int charisma);
 };
