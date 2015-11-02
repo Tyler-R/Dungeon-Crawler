@@ -25,9 +25,15 @@ void UserInterface::userCommand(){
 
 	nodelay(stdscr,1); 
 	attron(COLOR_PAIR(2));
-	mvprintw(row - 1 ,0,"%s",mesg);        //print the message at the center of the screen 
-  	getstr(str);
-  	clrtoeol();
+	mvprintw(row - 1 ,stringPosition ,"%s",mesg);        //print the message at the center of the screen 
+	char input = getch();
+
+	if(input != ERR) {
+	 	str[stringPosition] = input; //getstr(str);
+  		stringPosition++;
+	}
+
+  	// clrtoeol();
   	countRows = countRows + 2;
   	if (countRows == 8){
   		countRows = 0;

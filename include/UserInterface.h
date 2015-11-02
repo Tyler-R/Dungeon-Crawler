@@ -12,6 +12,8 @@ private:
 	int row,col; 
 	int countRows = 0;
 
+	int stringPosition = 0;
+
 
 public:
 	UserInterface();
