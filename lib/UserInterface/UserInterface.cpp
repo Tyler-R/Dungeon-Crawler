@@ -66,7 +66,7 @@ void UserInterface::displayUserCommand(){
 
 		refresh();
 		attron(COLOR_PAIR(2));
-  		mvprintw(row - row + countRows, 0, "You Entered: %s", str); //mvprintw(LINES - 2, 0, "You Entered: %s", str);
+  		mvprintw(row - row , 0, "You Entered: %s", str); //mvprintw(LINES - 2, 0, "You Entered: %s", str);
   		clrtoeol();
 
   		stringPosition = 0;
@@ -84,7 +84,7 @@ void UserInterface::displayServerResponse(const char *serverResponse){
 
 	refresh();
 	attron(COLOR_PAIR(1));
-	mvprintw(row - row  + 1 + countRows  , 5, "Server Response: %s", serverResponse); //mvprintw(LINES - 2, 0, "You Entered: %s", str);
+	mvprintw(row - row  + 1 , 5, "Server Response: %s", serverResponse); //mvprintw(LINES - 2, 0, "You Entered: %s", str);
 	clrtoeol();
 
 
