@@ -5,4 +5,4 @@ add_subdirectory(resets)
 add_subdirectory(server)
 add_subdirectory(world)
 add_subdirectory(yamlInterface)
-
+add_subdirectory(UserInterface)
