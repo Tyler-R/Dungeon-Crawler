@@ -1,9 +1,11 @@
+set( CURSES_INCLUDE_PATH "/usr/include")
+set( CURSES_LIBRARY "/usr/lib/x86_64-linux-gnu/libncurses.so")
+
 cmake_minimum_required(VERSION 2.8.12)
 project(client)
 project(server)
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
-
 
 set(BOOST_ROOT /opt/boost)
 set(Boost_USE_STATIC_LIBS ON)
@@ -11,7 +13,6 @@ find_package(Boost COMPONENTS system)
 #find_package(YamlCpp)
 
 include_directories(${Boost_INCLUDE_DIR})
-
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -std=c++11") # -Wall -Werror
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin")
