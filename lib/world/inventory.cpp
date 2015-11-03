@@ -28,7 +28,7 @@ vector<shared_ptr<Item>> Inventory::getInventoryItems(){
 vector<string> Inventory::getInventoryNames(){
   vector<string> inventoryOutput = vector<string>();
   for(shared_ptr<Item> item : inventory){
-    inventoryOutput.push_back(item->getName());
+    inventoryOutput.push_back(item->getShortDesc());
   }
   return inventoryOutput;
 }
@@ -37,7 +37,7 @@ string Inventory::getItemName(string itemID){
   string itemName;
   for(shared_ptr<Item> item : inventory){
     if(item->getID() == itemID){
-      return item->getName();
+      return item->getShortDesc();
     }
   }
   return "THIS STRING IS WRONG AND SHOULDN'T BE HERE! Inventory Class - getItemName method";

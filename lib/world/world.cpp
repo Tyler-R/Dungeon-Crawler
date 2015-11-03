@@ -39,17 +39,39 @@ World::World(){
 	bathroom->addDoor("1","south", "The south door leads to the lobby", lobby);
 
 	//Instantiate NPC in Rooms
-	lobby->createNPC();
-	lobby->createItem();  
 
-	shared_ptr<NPC> knight( new NPC("002"));
-	knight->setName("Sir Knight");
-	knight->addShortDesc("Sir Knight");
-	knight->addLongDesc("The knight is practicing his swordsmanship.");
-	knight->addKeyword("knight");
-	knight->addKeyword("swordsman");
+	shared_ptr<NPC> npc1( new NPC("103"));
+	npc1->addKeyword("brainy");
+	npc1->addKeyword("smurf");
+	npc1->addDescription("Brainy Smurf has on his usual glasses.  Brainy Smurf isn't liked much by the other smurfs.  They fear his knowledge.  Knowledge is power!");
+	npc1->addShortDesc("Brainy Smurf");
+	npc1->addLongDesc("Brainy Smurf is here, mumbling something to himself.");
 
-	lobby->addNPC(knight);
+	shared_ptr<NPC> npc2 (new NPC("104"));
+	npc2->addKeyword("handy");
+	npc2->addKeyword("smurf");
+	npc2->addDescription("Handy is always building something.  He never takes a break.  Why don't you give him a break, like all of his bones.");
+	npc2->addShortDesc("Handy Smurf");
+	npc2->addLongDesc("Handy Smurf is building something here.");
+
+	shared_ptr<Item> item1 (new Item("100"));
+	item1->addKeyword("bunch");
+	item1->addKeyword("berries");
+	item1->addKeyword("smurfberries");
+	item1->addShortDesc("A bunch of smurfberries");
+	item1->addLongDesc("A bunch of delicious looking smurfberries lie here.");
+
+	shared_ptr<Item> item2 (new Item("101"));
+	item2->addKeyword("glasses");
+	item2->addKeyword("smurfberries");
+	item2->addShortDesc("A pair of glasses");
+	item2->addLongDesc("An odd pair of glasses has been left here.");
+
+	lobby->addNPC(npc1);
+	lobby->addNPC(npc2);
+
+	lobby->addItem(item1);
+	lobby->addItem(item2);
 	
 	roomList.push_back(lobby);
 	roomList.push_back(bathroom);

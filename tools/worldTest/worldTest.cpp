@@ -26,21 +26,21 @@ int main() {
 	//User PlayerTwo(false, "Player One", "abc123", newWorld.getRoom(0), "This is Player Two.");
 
 	cout << endl << "--Look at Room without Users--" << endl;
-	cout << PlayerOne->lookObjList() << endl;
+	cout << PlayerOne->lookObjList();
 
 	cout << endl << "--Now testing interaction with Current Room--" << endl;	
 
 	cout << endl << "--Looking at Current Room--" << endl;
-	cout << PlayerOne->getRoom()->getDesc() << endl;
+	cout << PlayerOne->getRoom()->getDesc();
 
 	cout << endl << "--Getting a Good Look Around the Room--" << endl;
-	cout << PlayerOne->lookAround() << endl;
+	cout << PlayerOne->lookAround();
 
 	cout << endl << "--Looking at Exits--" << endl;
-	cout << PlayerOne->lookExits() << endl;
+	cout << PlayerOne->lookExits();
 
 	cout << endl << "--Getting List of Objects--" << endl;
-	cout << PlayerOne->lookObjList()<< endl;
+	cout << PlayerOne->lookObjList();
 
 
 	cout << endl << "--Printing Keywords of Current Room--" << endl;
@@ -57,18 +57,18 @@ int main() {
 	cout << endl << "--Now using Lobby's Keywords to look at the Lobby--" << endl;
 	
 	cout << endl << "--Looking at 'Lobby'--" << endl;
-	cout << PlayerOne->lookAt("Lobby") << endl;
+	cout << PlayerOne->lookAt("Lobby");
 
 	cout << endl << "--Looking at 'Foyer'--" << endl;
-	cout << PlayerOne->lookAt("Foyer") << endl;
+	cout << PlayerOne->lookAt("Foyer");
 
 	cout << endl << "--Looking at 'vestibule'--" << endl;
-	cout << PlayerOne->lookAt("vestibule") << endl;
+	cout << PlayerOne->lookAt("vestibule");
 
 	cout << endl << "--Now using an invalid Keyword to look at the Lobby--" << endl;
 
 	cout << endl << "--Looking at 'caboose'--" << endl;
-	cout << PlayerOne->lookAt("caboose") << endl;
+	cout << PlayerOne->lookAt("caboose");
 
 	cout << endl << "----" << endl;	
 	cout << endl << "----" << endl;	
@@ -77,19 +77,19 @@ int main() {
 
 	cout << endl << "--From the Lobby, we move 'north'--" << endl;
 
-	cout << PlayerOne->moveTo("north") << endl;	
+	cout << PlayerOne->moveTo("north");	
 
 	cout << endl << "--Looking at Current Room--" << endl;
-	cout << PlayerOne->getRoom()->getDesc() << endl;
+	cout << PlayerOne->getRoom()->getDesc();
 
 	cout << endl << "--Getting a Good Look at the Room--" << endl;
 
-	cout << PlayerOne->lookAround()  << endl;
+	cout << PlayerOne->lookAround();
 
 	cout << endl << "--Looking at Exits--" << endl;
-	cout << PlayerOne->lookExits() << endl;
+	cout << PlayerOne->lookExits();
 	cout << endl << "--Getting List of Objects in the Room--" << endl;
-	cout << PlayerOne->lookObjList() << endl;
+	cout << PlayerOne->lookObjList();
 
 
 	vector<string> bathroomKeywords;
@@ -105,57 +105,57 @@ int main() {
 
 	cout << endl << "--Moving to 'shower'--" << endl;
 
-	cout << PlayerOne->moveTo("shower") << endl;	
+	cout << PlayerOne->moveTo("shower");
 
 	cout << endl << "--Looking at Current Room--" << endl;
-	cout << PlayerOne->getRoom()->getDesc() << endl;
+	cout << PlayerOne->getRoom()->getDesc();
 
 	cout << endl << "--Getting a Good Look at the Room--" << endl;
-	cout << PlayerOne->lookAround()  << endl;
+	cout << PlayerOne->lookAround();
 
 	cout << endl << "--Looking at Exits--" << endl;
-	cout << PlayerOne->lookExits() << endl;
+	cout << PlayerOne->lookExits();
 	cout << endl << "--Getting List of Objects in the Room--" << endl;
-	cout << PlayerOne->lookObjList() << endl;
+	cout << PlayerOne->lookObjList();
 
 	cout << endl << "--Moving to 'Powder Room'--" << endl;
 
 	cout << PlayerOne->moveTo("powder room") << endl;	
 
 	cout << endl << "--Looking at Current Room--" << endl;
-	cout << PlayerOne->getRoom()->getDesc() << endl;
+	cout << PlayerOne->getRoom()->getDesc();
 
 	cout << endl << "--Looking at Exits--" << endl;
 
 	cout << endl << "--Looking at Exits--" << endl;
-	cout << PlayerOne->lookExits() << endl;
+	cout << PlayerOne->lookExits();
 	cout << endl << "--Getting List of Objects in the Room--" << endl;
-	cout << PlayerOne->lookObjList() << endl;
+	cout << PlayerOne->lookObjList();
 
 	cout << endl << "--Moving to 'east' (an invalid location)--" << endl;
 
-	cout << PlayerOne->moveTo("east") << endl;	
+	cout << PlayerOne->moveTo("east");
 
 	cout << endl << "--Moving to 'library' (an invalid location)--" << endl;
 
-	cout << PlayerOne->moveTo("library") << endl;	
+	cout << PlayerOne->moveTo("library");
 
 	cout << endl << "--Moving to 'foyer'--" << endl;
 
-	cout << PlayerOne->moveTo("foyer") << endl;	
+	cout << PlayerOne->moveTo("foyer");
 
 	cout << endl << "--Looking at Current Room--" << endl;
-	cout << PlayerOne->getRoom()->getDesc() << endl;
+	cout << PlayerOne->getRoom()->getDesc();
 
 	cout << endl << "--Getting a Good Look at the Room--" << endl;
-	cout << PlayerOne->lookAround()  << endl;
+	cout << PlayerOne->lookAround();
 
 	cout << endl << "--Looking at Exits--" << endl;
 
 	cout << endl << "--Looking at Exits--" << endl;
-	cout << PlayerOne->lookExits() << endl;
+	cout << PlayerOne->lookExits();
 	cout << endl << "--Getting List of Objects in the Room--" << endl;
-	cout << PlayerOne->lookObjList() << endl;
+	cout << PlayerOne->lookObjList();
 
 	cout << endl << "----" << endl;	
 	cout << endl << "----" << endl;	
@@ -165,35 +165,35 @@ int main() {
 	cout << endl << "--Getting List of Objects--" << endl;
 
 	cout << endl << "--Getting List of Objects in the Room--" << endl;
-	cout << PlayerOne->lookObjList() << endl;
+	cout << PlayerOne->lookObjList();
 
 	cout << endl << "--Looking at NPCs--" << endl;
 
-	cout << endl << "--Looking at 'butler'--" << endl;
-	cout << endl << PlayerOne->lookAt("butler") << endl;	
+	cout << endl << "--Looking at 'smurf'--" << endl;
+	cout << endl << PlayerOne->lookAt("smurf");
 
 	cout << endl << "--Looking at 'knight'--" << endl;
-	cout << endl << PlayerOne->lookAt("knight") << endl;	
+	cout << endl << PlayerOne->lookAt("knight");
 
 	cout << endl << "--Using Keywords to look at NPCs--" << endl;
 
-	cout << endl << "--Looking at 'servant'--" << endl;
-	cout << endl << PlayerOne->lookAt("servant") << endl;	
+	cout << endl << "--Looking at 'brainy'--" << endl;
+	cout << endl << PlayerOne->lookAt("brainy");
 
-	cout << endl << "--Looking at 'swordsman'--" << endl;
-	cout << endl << PlayerOne->lookAt("swordsman") << endl;	
+	cout << endl << "--Looking at 'handy'--" << endl;
+	cout << endl << PlayerOne->lookAt("handy");
 
 	cout << endl << "--Now looking at lists of Keywords for each Object.--" << endl;
 
-	cout << endl << "--Here are the swordsman's keywords--" << endl;
-	cout << endl << PlayerOne->lookObjKeywords("swordsman") << endl;
+	cout << endl << "--Here are the handy's keywords--" << endl;
+	cout << endl << PlayerOne->lookObjKeywords("handy");
 
 
 	cout << endl << "--Here are the lobby's keywords--" << endl;
-	cout << endl << PlayerOne->lookObjKeywords("lobby") << endl;
+	cout << endl << PlayerOne->lookObjKeywords("lobby");
 
 	cout << endl << "--Here are the north door's keywords--" << endl;
-	cout << endl << PlayerOne->lookObjKeywords("north") << endl;
+	cout << endl << PlayerOne->lookObjKeywords("north");
 	
 
 	cout << endl << "--Removing Keywords from lobby--" << endl;
@@ -206,15 +206,15 @@ int main() {
 	//PlayerOne->getRoom()->removeKeyword("lobby");  //causes segfault
 
 	cout << endl << "--Here are the lobby's keywords--" << endl;
-	cout << endl << PlayerOne->lookObjKeywords("lobby") << endl;
+	cout << endl << PlayerOne->lookObjKeywords("lobby");
 
 	cout << endl << "--Now Player Two Leaves the Lobby to go to the Bathroom.--" << endl;
 
-	cout << PlayerTwo->moveTo("north") << endl;
+	cout << PlayerTwo->moveTo("north");
 
 	cout << endl << "--Check to see that Player Two is gone.--" << endl;
 	cout << endl << "--Getting List of Objects in the Room--" << endl;
-	cout << PlayerOne->lookObjList() << endl;
+	cout << PlayerOne->lookObjList();
 
 
 	cout << endl << "--Now removing all NPCs from the Room--" << endl;
@@ -223,21 +223,21 @@ int main() {
 	}
 
  	cout << endl << "--Getting List of Objects in the Room--" << endl;
-	cout << PlayerOne->lookObjList() << endl;
+	cout << PlayerOne->lookObjList();
 
 
-	cout << endl << "--Now let's have Player One take a potion--" << endl;
-	cout << PlayerOne->takeItem("Potion") << endl;
-
-	cout << endl << "--Getting List of Objects in the Room--" << endl;
-	cout << PlayerOne->lookObjList() << endl;
-
-
-	cout << endl << "--Try and take another potion (even though there are none left)--" << endl;
-	cout << PlayerOne->takeItem("Potion") << endl;
+	cout << endl << "--Now let's have Player One take berries--" << endl;
+	cout << PlayerOne->takeItem("berries");
 
 	cout << endl << "--Getting List of Objects in the Room--" << endl;
-	cout << PlayerOne->lookObjList() << endl;
+	cout << PlayerOne->lookObjList();
+
+
+	cout << endl << "--Try and take another berries (even though there are none left)--" << endl;
+	cout << PlayerOne->takeItem("berries");
+
+	cout << endl << "--Getting List of Objects in the Room--" << endl;
+	cout << PlayerOne->lookObjList();
 
 	cout << endl << "--EndTest!--" << endl;
 }

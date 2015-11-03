@@ -133,24 +133,22 @@ void Room::printKeywords(){ //To be used by the Room's Test Module only!
 
 
 vector<string> Room::getObjKeywords(string objName){ //Gets a List of an Object's Keywords.
-	vector <string> objKeywords;
-
 	if ( findKeyword(objName) ){
 		return getKeywords();
 	}
-
-
 	for (auto & door : doorList) {
 		if ( door->findKeyword(objName)){
 			return door->getKeywords();
 		}
 	}
-
 	for (auto & npc : npcList) {
 		if ( npc->searchKeyword(objName)){
 			return npc->getKeyword();
 		}
 	}
+	vector<string> result;
+	result.push_back("Object not found!");
+	return result;
 }
 
 void Room::addDoor(string inputId,string inputDir, string inputDesc, shared_ptr<Room>inputRoom){
@@ -179,7 +177,7 @@ string Room::getObjList(){
 	}
 
 	for (auto & npc : npcList) {
-	    result = result + (npc->getName()) + "\n";
+	    result = result + (npc->getShortDesc()) + "\n";
 	}
 
 	for (auto & user : userList) {
@@ -187,7 +185,7 @@ string Room::getObjList(){
 	}
 
 	for (auto &item : itemList){
-	    result = result + (item->getName()) + "\n";
+	    result = result + (item->getShortDesc()) + "\n";
 	}
 
 	return result;
@@ -200,17 +198,23 @@ string Room::lookAround(){
 
 		objRoom += getExtDesc() + "\n"; 
 
-		
-		for(auto &npc: npcList){
-			objRoom += "You see " + npc->getName() + " in the Room.\n";
+		if (!userList.empty()){
+			for(auto &user: userList){
+				objRoom += "You see " + user->getUserName() + " in the Room.\n";
+			}
 		}
 
-		for(auto &item: itemList){
-			objRoom += "You see a " + item->getName() + " in the Room.\n";
+		if (!npcList.empty()){
+			for(auto &npc: npcList){
+				objRoom += "You see " + npc->getShortDesc() + " in the Room.\n";
+			}
 		}
 
-		for(auto &user: userList){
-			objRoom += "You see " + user->getUserName() + " in the Room.\n";
+		if (!itemList.empty()){
+			for(auto &item: itemList){
+
+				objRoom += "You see a " + item->getShortDesc() + " in the Room.\n";
+			}
 		}
 
 		return objRoom;
@@ -233,7 +237,7 @@ string Room::lookAt(string objName){
 
 	for (auto & npc : npcList) {
 		if ( npc->searchKeyword(objName)){
-			return npc->getLongDesc() + "\n";
+			return npc->getDescription() + "\n";
 		}
 	}
 
@@ -281,22 +285,6 @@ void Room::transferOutUser(string name, shared_ptr<Room> outRoom){
 	}
 }
 
-void Room::createNPC(){
-		//Will create new instances of an NPC to place into room.
-		//This is the function that should eventually Parse from YAML file and take input strings to create NPCs.
-		// 'Butler Jeeves' is just a hard-coded example for testing purposes.
-
-		shared_ptr<NPC> npc( new NPC("001"));
-		npc->setName("Butler Jeeves");
-		npc->addShortDesc("Butler Jeeves");
-		npc->addLongDesc("The butler is busy cleaning up the lobby.");
-		npc->addKeyword("butler");
-		npc->addKeyword("servant");
-
-		addNPC(npc);
-
-}
-
 void Room::addNPC(shared_ptr<NPC> npc) {
 	npcList.push_back(npc);
 }
@@ -307,21 +295,6 @@ void Room::removeNPC(string npcID){
 			npcList.erase(npcList.begin()+i);
 		}
 	}
-}
-
-void Room::createItem(){
-		//Will create new instances of an NPC to place into room.
-		//This is the function that should eventually Parse from YAML file and take input strings to create NPCs.
-		// 'Potion' is just a hard-coded example for testing purposes.
-
-		shared_ptr<Item> item( new Item("001"));
-		item->setName("Potion");
-		item->addKeyword("Potion");
-		item->addKeyword("Bottle");
-		item->addKeyword("Medicine");
-		item->addShortDesc("Potion");
-		item->addLongDesc("The potion is contained in a medicine bottle.");
-		addItem(item);
 }
 
 void Room::addItem(shared_ptr<Item> item){

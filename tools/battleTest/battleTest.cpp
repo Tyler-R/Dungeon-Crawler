@@ -23,29 +23,29 @@ int main() {
 	cout << endl << "--Player One: Looks Around--" << endl;
 	cout << PlayerOne->lookAround() << endl;
 
-	cout << endl << "--Player One: Looks At Potion--" << endl;
-	cout << PlayerOne->lookAt("Potion") << endl;
+	cout << endl << "--Player One: Looks At glasses--" << endl;
+	cout << PlayerOne->lookAt("glasses") << endl;
 
-	cout << endl << "--Player One: Takes Potion--" << endl;
-	cout << PlayerOne->takeItem("Potion") << endl;
+	cout << endl << "--Player One: Takes glasses--" << endl;
+	cout << PlayerOne->takeItem("glasses") << endl;
 
 	cout << endl << "--Player One: Looks at Inventory--" << endl;
 	cout << PlayerOne->viewInventory() << endl;
 
-	cout << endl << "--Player One: Uses Potion--" << endl;
-	cout << PlayerOne->useItem("Potion") << endl;
+	cout << endl << "--Player One: Uses Glasses--" << endl;
+	cout << PlayerOne->useItem("glasses") << endl;
 
 	cout << endl << "--Player One: Looks Around--" << endl;
 	cout << PlayerOne->lookAround() << endl;
 
-	cout << endl << "--Player One: Looks At Knight--" << endl;
-	cout << PlayerOne->lookAt("knight") << endl;
+	cout << endl << "--Player One: Looks At Handy--" << endl;
+	cout << PlayerOne->lookAt("handy") << endl;
 
-	cout << endl << "--Player One: Attacks Servant--" << endl;
-	cout << PlayerOne->attackNPC("servant") << endl;
+	cout << endl << "--Player One: Attacks Handy--" << endl;
+	cout << PlayerOne->attackNPC("handy") << endl;
 
-	cout << endl << "--Player One: Attacks Knight--" << endl;
-	cout << PlayerOne->attackNPC("knight") << endl;
+	cout << endl << "--Player One: Attacks Brainy--" << endl;
+	cout << PlayerOne->attackNPC("brainy") << endl;
 
 
 

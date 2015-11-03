@@ -210,14 +210,14 @@ void User::setStrength(int strength){
 string User::moveTo(string dir){
   for (auto & door : getRoom()->getDoorList() ) {
     if(door->findKeyword(dir) || door->getLeadsTo()->findKeyword(dir)){
-      getRoom()->announcement(getUserName() + " left the room.");
+      getRoom()->announcement(getUserName() + " left the room."+ "\n");
       getRoom()->transferOutUser(getUserName(), door->getLeadsTo());
       setRoom(door->getLeadsTo());
-      getRoom()->announcement(getUserName() + " has entered the room.");
-      return "You are now in the " + getRoom()->getName() + ".\n" + getRoom()->getDesc();
+      getRoom()->announcement(getUserName() + " has entered the room."+ "\n");
+      return "You are now in the " + getRoom()->getName() + ".\n" + getRoom()->getDesc()+ "\n";
     }
   }
-  return "Cannot go there"; 
+  return "Cannot go there!\n"; 
 }
 
 string User::lookAt(string objName){
@@ -250,11 +250,11 @@ string User::takeItem(string objName){
     if(item->searchKeyword(objName)){
       inventory->addItem(item);
       getRoom()->removeItem(item->getID());
-      getRoom()->announcement(getUserName() + " took a " + objName + ".");
-      return "You took a " + objName;
+      getRoom()->announcement(getUserName() + " took a " + item->getShortDesc() + "."+ "\n");
+      return "You took a " + item->getShortDesc() + "\n";
     }
   }
-  return "Cannot take that item.";
+  return "Cannot take that item.\n";
 }
 
 /*INVENTORY INTERACTION METHODS*/
@@ -276,7 +276,7 @@ string User::tossItem(string itemID){
   if(initialInventorySize != currentInventorySize){
     result + " and thrown on the floor";
     string itemName = inventory->getItemName(itemID);
-    getRoom()->announcement(getUserName() + " just tossed " + itemName + " on the floor");
+    getRoom()->announcement(getUserName() + " just tossed " + itemName + " on the floor"+ "\n");
   }
   
   return result;
@@ -290,22 +290,22 @@ string User::attackNPC(string npcName){
       int userAttack = userStats->getStrength();
       int NPCAttack = NPC->getHit(userAttack);
       string NPCShortDesc = NPC->getShortDesc();
-      getRoom()->announcement(getUserName() + " just attacked " + NPCShortDesc);
+      getRoom()->announcement(getUserName() + " just attacked " + NPCShortDesc+ "\n");
 
       result = getAttacked(NPCAttack, NPCShortDesc) + NPCShortDesc;
       return result;
     } 
     //THIS SHOULD NEVER OCCUR BUT WE'LL SEE
   }
-  return "Somehow the NPC could not be found";
+  return "Somehow the NPC could not be found\n";
     
   
 }
 
 string User::getAttacked(int NPCAttack, string NPCShortDesc){
   if(NPCAttack == 0){
-    getRoom()->announcement(getUserName() + " just killed " + NPCShortDesc);
-    return "You have just succeeded in killing ";
+    getRoom()->announcement(getUserName() + " just killed " + NPCShortDesc+ "\n");
+    return "You have just succeeded in killing\n";
   }
   else{
     string result;
@@ -316,9 +316,9 @@ string User::getAttacked(int NPCAttack, string NPCShortDesc){
                       " damage from ";
     }
     else{
-      getRoom()->announcement(getUserName() + " was just killed by " + NPCShortDesc);
+      getRoom()->announcement(getUserName() + " was just killed by " + NPCShortDesc+ "\n");
       setLivingStatus(false);
-      result = "You have just been killed. Awwwwwe";
+      result = "You have just been killed. Awwwwwe\n";
     }
     return result;
   }
