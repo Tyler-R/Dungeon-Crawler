@@ -19,9 +19,9 @@ int main()
 
 	string roomsDescription;
 	vector<string> doorsDesc; //need to rework
-	vector<string> doorsDir;
-	string keywords;
-	string to;
+	string doorsDir;
+	string doorsKeywords;
+	string doorsTo;
 	string extended_desc; //leave out for now
 	string roomId;
 	string roomName;
@@ -44,32 +44,40 @@ int main()
 		YAML::Node doorsNode = roomsNodes[i]["doors"];
 		for(int k = 0; k < doorsNode.size(); k++){
 			doorsDesc.clear();
-			doorsDir.clear();
+			doorsDir = " ";
+			doorsKeywords = "";
+			doorsTo = "";
 
-			//parsing doors description node
+			//parsing Doors. and it's description, direction, keywords and to
 			YAML::Node doorsdescNode = doorsNode[k]["desc"];
 			for(int l = 0; l < doorsdescNode.size(); l++){
 				doorsDesc.push_back(doorsdescNode[l].as<string>());
 				cout << doorsDesc[l] << endl << endl;
-				
-				// YAML::Node doorsdirNode = doorsdescNode[l]["dir"];
-				// for(int m = 0; m < doorsdirNode.size(); m++){
-					// doorsDesc =doorsdirNode[m].as<string>();
-					// cout << doorsDir[l] << endl << endl;	
 				}
+
+			YAML::Node doorsdirNode = doorsNode[k]["dir"];
+			doorsDir = doorsdirNode.as<string>();
+			cout << doorsDir << endl << endl;
+
+			YAML::Node doorskeywordNode = doorsNode[k]["keywords"];
+			for (int m = 0; m < doorskeywordNode.size(); m++){
+				doorsKeywords = doorskeywordNode[m].as<string>();
+				cout << doorsKeywords << endl << endl;
 			}
-		}					
+			YAML::Node doorstoNode = doorsNode[k]["to"];
+			doorsTo = doorstoNode.as<string>();
+			cout << doorsTo << endl << endl;
+		}	
 
-	cout <<"--New Room Created!--"<< endl;
-	cout << "Room name is " << roomName << endl << endl;
-	cout << "Room name id " << roomId << endl << endl;
-	cout << roomName << "'s description is " << roomsDescription << endl<< endl;
-
+		cout <<"--New Room Created!--"<< endl;
+		cout << "Room name is " << roomName << endl << endl;
+		cout << roomName << "'s' id is: " << roomId << endl << endl;
+		cout << roomName << "'s description is: " << roomsDescription << endl<< endl;
+	}
 
 	// cout << "Doors description is " << doorsDesc << endl << endl;
 	// cout << "Doors descriptions are " << endl;
 	// for (auto & description : doorsDesc) {
 	// 		cout << description << ", ";
-	// 	}
 	return 0;
 }
