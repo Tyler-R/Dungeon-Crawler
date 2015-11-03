@@ -362,10 +362,7 @@ int Room::getNumberOfNPCsWithID(string npcID) {
 	return npcCount;
 }	
 
-void Room::roomAnnouncement(string news){
+void Room::announcement(string news){
 	for(auto &user : userList) {
-	//For every User that's currently in the room
-		//Find each user's session
-		//Supply string news and call a method that outputs string news
 	}
 }
