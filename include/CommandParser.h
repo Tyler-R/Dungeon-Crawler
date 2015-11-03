@@ -26,7 +26,12 @@ public:
     void reformatTokens(std::vector<std::string>& tokens);
     std::string validateMoveArgv(std::vector<std::string>& cmd);
     std::string validateLookArgv(std::vector<std::string>& cmd);
+    std::string validaeAttackNPCArgv(std::vector<std::string>& cmd);
+    std::vector<std::string> getGlobalCmdAlias(std::string generic_cmd);
+    bool findMatch(std::vector<std::string> &alias, std::string &word);
     bool isMoveCmd(std::vector<std::string>& word);
     bool isLookCmd(std::vector<std::string>& word);
+    bool isAttackNPCsCmd(std::vector<std::string>& word);
+    bool isAliasCmdGlobal(std::vector<std::string>& word);
 
 };

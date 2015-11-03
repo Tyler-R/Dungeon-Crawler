@@ -1,5 +1,6 @@
 #include <fstream>
 #include "CommandParser.h"
+
 using namespace std;
 /*
 Command_Parser::Command_Parser(){
@@ -15,6 +16,10 @@ string CommandParser::validateMoveArgv(vector<string> &cmd){
     reformatTokens(cmd);
     return"go to" +cmd.at(1);
 }
+string CommandParser::validaeAttackNPCArgv(vector<string> &cmd){
+  reformatTokens(cmd);
+  return "attack NPC" + cmd.at(1);
+}
 
 void CommandParser::reformatTokens(vector<string>& words){
     if (words.size() == 2) return;
@@ -24,7 +29,7 @@ void CommandParser::reformatTokens(vector<string>& words){
             tmp = words.back() +" "+ tmp;
             words.pop_back();
         }
-        while(tmp.back() == ' '){
+        while(tmp.back() == ' ' || tmp.back()=='\t'){
             tmp.pop_back();
         }
 
@@ -53,10 +58,32 @@ void CommandParser::toLowerCase(string &str){
         str[i] = tolower(str[i]);
     }
 }
+
+vector<string> CommandParser::getGlobalCmdAlias(string generic_cmd){
+  fstream fs;
+  vector<string> cmd_alias;
+  string cmd;
+  // string prefix_dir = "textadventure/yaml/command/";
+  string prefix_dir = "./command/";
+  string filetype = ".txt";
+  string cmd_file_path = prefix_dir + generic_cmd + filetype;
+  cout<<cmd_file_path<<endl;
+  fs.open(cmd_file_path);
+  if(!fs.is_open()){
+    cout<<"fail to open the file " << generic_cmd << endl;
+  }
+  while (fs >> cmd){
+    cout<<cmd<<endl;
+    cmd_alias.push_back(cmd);
+  }
+  fs.close();
+  return cmd_alias;
+}
+
 bool CommandParser::findMatch(vector<string> &alias, string &word){
   bool matchFound = false;
-  for (auto &cmd: cmd_alias){
-      if(words.front().compare(cmd) ==0){
+  for (auto &cmd: alias){
+      if(word.compare(cmd) ==0){
         matchFound = true;
       }
     }
@@ -70,30 +97,19 @@ bool CommandParser::isMoveCmd(vector<string> &words){
 
 bool CommandParser::isLookCmd(vector<string> &words){
     vector<string> cmd_alias = getGlobalCmdAlias("look");
-    return return findMatch(cmd_alias, words.front());
+    return findMatch(cmd_alias, words.front());
 }
 
-vector<string> CommandParser::getGlobalCmdAlias(string generic_cmd){
-  fstream fs;
-  vector<string> cmd_alias;
-  string cmd;
-  string prefix_dir = "../../yaml/command/";
-  string filetype = ".txt";
-  string cmd_file_path = prefix_dir + generic_cmd + filetype;
-  fs.open(cmd_file_path);
-  while (fs >> cmd){
-    cmd_alias.push_back(cmd);
-  }
-  return cmd_alias;
-}
+
 
 bool CommandParser::isAttackNPCsCmd(vector<string> &words){
+  vector<string> cmd_alias = getGlobalCmdAlias("attackNPC");
+  return findMatch(cmd_alias, words.front());
+}
+bool CommandParser::isAliasCmdGlobal(vector<string>& words){
 
 }
 
-// string CommandParser::invokeCommand(vector<string> cmd){
-
-// }
 
 /*entry point for the cmd_module api*/
 string CommandParser::processCommand(string &in){
@@ -102,19 +118,13 @@ string CommandParser::processCommand(string &in){
     }
    toLowerCase(in);
    vector<string> words = tokenizeInput(in);
-   // YAML::Node config = YAML::Load("./Commands.yaml");
-
-   // cout<<"processing..."<<words.front()<<endl;
    if(isMoveCmd(words)){
-        // cout<<words.front();
         return validateMoveArgv(words);
    }
-   else if(words.front().compare("kill") == 0){
-
-        return  words.front();
+   else if(isAttackNPCsCmd(words)){
+        return  validaeAttackNPCArgv(words);
    }
    else if(isLookCmd(words)){
-
         return validateLookArgv(words);
    }
    else {

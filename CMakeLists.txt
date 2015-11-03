@@ -19,7 +19,9 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib")
 add_subdirectory(ext)
 add_subdirectory(lib)
 add_subdirectory(tools)
-
+file(COPY
+    ${CMAKE_CURRENT_SOURCE_DIR}/yaml/
+    DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/)
 
 add_executable(Authentication lib/authentication/Authentication.cpp
 				lib/authentication/FileIO.cpp
