@@ -1,27 +1,18 @@
+#include <fstream>
 #include "CommandParser.h"
+
 using namespace std;
-/*
-Command_Parser::Command_Parser(){
-
-}
-*/
-CommandParser::CommandParser(World& world){
-  newWorld = world;
-}
 string CommandParser::validateLookArgv(vector<string> &cmd){
-    /*call a function that returns a list of
-    objects that can be look at; then iterate through to
-    check whether input has a match */
-    /*same goes to same kind of commands that require a lookup
-    to the players current postion and objects*/
-
-    return newWorld.getCurrentRoom()->lookAt(cmd.at(1));
-
+    reformatTokens(cmd);
+    return "look at" + cmd.at(1);
 }
 string CommandParser::validateMoveArgv(vector<string> &cmd){
-  shared_ptr<Room> currentRoom(newWorld.getCurrentRoom());
-
-    return newWorld.moveTo(cmd.at(1));
+    reformatTokens(cmd);
+    return"go to" +cmd.at(1);
+}
+string CommandParser::validaeAttackNPCArgv(vector<string> &cmd){
+  reformatTokens(cmd);
+  return "attack NPC" + cmd.at(1);
 }
 
 void CommandParser::reformatTokens(vector<string>& words){
@@ -32,20 +23,25 @@ void CommandParser::reformatTokens(vector<string>& words){
             tmp = words.back() +" "+ tmp;
             words.pop_back();
         }
-    if(tmp.back() == ' '){
-        tmp.pop_back();
-    }
-    words.push_back(tmp);
+        while(tmp.back() == ' ' || tmp.back()=='\t'){
+            tmp.pop_back();
+        }
+
+        words.push_back(tmp);
     }
 }
 vector<string> CommandParser::tokenizeInput(string &in){
+    //suggested to change to deque
+    //use std::copy
+    //std::copy(tokens.begin(), tokens.end(), std::back_inserter(usr_input.begin()));
+    //even better
+    //std::deque<std::string> usr_input(tokens.begin(), tokens.end());
   vector<string> usr_input;
     typedef boost::tokenizer<boost::char_separator<char> > tokenizer;
     boost:: char_separator<char> delm(" ");
     tokenizer tokens(in, delm);
-    for(tokenizer::iterator token_itr = tokens.begin();
-     token_itr != tokens.end(); ++token_itr){
-        usr_input.push_back(*token_itr);
+    for (auto &tokenWord: tokens){
+        usr_input.push_back(tokenWord);
     }
     return usr_input;
 }
@@ -57,28 +53,72 @@ void CommandParser::toLowerCase(string &str){
     }
 }
 
+vector<string> CommandParser::getGlobalCmdAlias(string generic_cmd){
+  fstream fs;
+  vector<string> cmd_alias;
+  string cmd;
+  // string prefix_dir = "textadventure/yaml/command/";
+  string prefix_dir = "./command/";
+  string filetype = ".txt";
+  string cmd_file_path = prefix_dir + generic_cmd + filetype;
+  cout<<cmd_file_path<<endl;
+  fs.open(cmd_file_path);
+  if(!fs.is_open()){
+    cout<<"fail to open the file " << generic_cmd << endl;
+  }
+  while (fs >> cmd){
+    cout<<cmd<<endl;
+    cmd_alias.push_back(cmd);
+  }
+  fs.close();
+  return cmd_alias;
+}
 
-// string CommandParser::invokeCommand(vector<string> cmd){
+bool CommandParser::findMatch(vector<string> &alias, string &word){
+  bool matchFound = false;
+  for (auto &cmd: alias){
+      if(word.compare(cmd) ==0){
+        matchFound = true;
+      }
+    }
+  return matchFound;
+}
 
-// }
+bool CommandParser::isMoveCmd(vector<string> &words){
+   vector<string> cmd_alias = getGlobalCmdAlias("move");
+   return findMatch(cmd_alias, words.front());
+}
+
+bool CommandParser::isLookCmd(vector<string> &words){
+    vector<string> cmd_alias = getGlobalCmdAlias("look");
+    return findMatch(cmd_alias, words.front());
+}
+
+
+
+bool CommandParser::isAttackNPCsCmd(vector<string> &words){
+  vector<string> cmd_alias = getGlobalCmdAlias("attackNPC");
+  return findMatch(cmd_alias, words.front());
+}
+bool CommandParser::isAliasCmdGlobal(vector<string>& words){
+
+}
+
 
 /*entry point for the cmd_module api*/
 string CommandParser::processCommand(string &in){
+    if(in.empty()){
+        return "invalid command: [empty]";
+    }
    toLowerCase(in);
    vector<string> words = tokenizeInput(in);
-   reformatTokens(words);
-   // cout<<"processing..."<<words.front()<<endl;
-   if((words.front().compare("move") == 0)){
-        // cout<<words.front();
-        return validateMoveArgv(words) + "\n";
+   if(isMoveCmd(words)){
+        return validateMoveArgv(words);
    }
-   /*
-   else if(words.front().compare("kill") == 0){
-
-        return  words.front();
+   else if(isAttackNPCsCmd(words)){
+        return  validaeAttackNPCArgv(words);
    }
-   */
-   else if(words.front().compare("look") == 0){
+   else if(isLookCmd(words)){
         return validateLookArgv(words);
    }
    else {

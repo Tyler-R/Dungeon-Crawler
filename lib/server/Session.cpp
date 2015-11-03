@@ -1,7 +1,7 @@
 #include "Session.h"
 
 Session::Session(tcp::socket socket) : socket(std::move(socket)){
-    commandParser = new CommandParser(myWorld);
+    commandParser = new CommandParser();
 }
 
 Session::~Session() {

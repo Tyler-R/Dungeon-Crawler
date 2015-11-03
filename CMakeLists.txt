@@ -23,8 +23,9 @@ add_subdirectory(test)
 add_subdirectory(yamlFiles)
 
 
-
-
+file(COPY
+    ${CMAKE_CURRENT_SOURCE_DIR}/yaml/
+    DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/)
 
 add_executable(Authentication lib/authentication/Authentication.cpp
 				lib/authentication/FileIO.cpp
