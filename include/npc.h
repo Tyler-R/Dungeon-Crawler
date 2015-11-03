@@ -25,6 +25,7 @@ private:
     string longDesc;
     string shortDesc;
     vector<string> keywords;
+    const int DEAD_DAMAGE = 0;
 
     // save for later (status)
     string npcName;
@@ -49,7 +50,7 @@ public:
     NPC(string id);
     NPC(NPC *npc); // copy
     //destructor
-    // ~NPC();
+    ~NPC();
     
     // functions
 	void setID(string id);
@@ -61,7 +62,7 @@ public:
 	int getHP() const;
 	int getDamage()const;
 	bool getAlive()const;	// live or dead
-    string getDes()const;
+	string getDes()const;
 
 
 
@@ -84,10 +85,11 @@ public:
     void printVector() const;
 
 
-	// helper function (status)
-	void checkNPC() const;	// print out all attributes of npc
+    // helper function (status)
+    void checkNPC() const;	// print out all attributes of npc
 
-    // action
-    void getHit(); // reduce HP by 1
+    // BATTLE METHOD added by Jason, edited by Jordan
+    int getHit(int damage); // reduce HP by damage
+
 };
 #endif

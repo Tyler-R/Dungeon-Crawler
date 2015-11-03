@@ -41,6 +41,7 @@
 // constructor (id)
 NPC::NPC(string id){
     setID(id);
+    setAlive(true);
 }
 
 // for copy
@@ -54,6 +55,9 @@ NPC::NPC(NPC *npc){
         keywords.push_back(key);
     }
 }
+
+// Destructor
+NPC::~NPC(){}
 
 // destructor
 //NPC::~NPC() {
@@ -184,18 +188,6 @@ string NPC::getDes() const{
     return npcDes;
 }
 
-// action
-void NPC::getHit() {
-    if(npcHP > 1) { // reduce npc' HP by 1
-        npcHP = npcHP - 1;
-    }
-    if(npcHP == 0){ // npc died
-        isAlive = false;
-    }
-}
-
-
-
 // helper function
 void NPC::checkNPC() const{
     std::cout << "          NPC check function \n";
@@ -213,5 +205,21 @@ void NPC::checkNPC() const{
     std::cout << "\n";
     std::cout << "description: \n" << getDes();
     std::cout << "\n";
+}
+
+// BATTLE METHOD added by Jason, edited by Jordan
+/*Returns the NPC's automatic attack*/
+/*TODO: in else statement, have Room notified that NPC has died
+/*This should perhaps directly attack the user back instead of returning an int*/
+int NPC::getHit(int damage) {
+    if(npcHP > damage) { // reduce npc' HP by damage
+        npcHP = npcHP - damage;
+	return getDamage();
+    }
+    else{ // npc died
+        isAlive = false;
+	//NOTIFIY ROOM OF DEATH HERE
+	return DEAD_DAMAGE;
+    }
 }
 

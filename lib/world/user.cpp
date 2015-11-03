@@ -243,22 +243,77 @@ string User::takeItem(string objName){
   for (auto & item : getRoom()->getItems() ) {
     if(item->searchKeyword(objName)){
       getRoom()->removeItem(item->getID());
-      inventory->addItem(*item);
+      inventory->addItem(item);
       return "You took a " + objName;
     }
   }
   return "Cannot take that item.";
 }
 
-string User:: viewInventory(){
+/*INVENTORY INTERACTION METHODS*/
+string User::viewInventory(){
   return (inventory->lookAtInventory());
 }
 
-string User::useItem(string itemName){
-  string result = (inventory->useItem(itemName));
+string User::useItem(string itemID){
+  string result = (inventory->useItem(itemID));
   return result;
 }
 
+/*Removes item from inventory and places it back into the room*/
+string User::tossItem(string itemID){
+  int initialInventorySize = inventory->getSize();
+  string result = (inventory->removeItem(itemID));
+  int currentInventorySize = inventory->getSize();
 
+  if(initialInventorySize != currentInventorySize){
+    result + " and thrown on the floor";
+  }
+  
+  return result;
+}
+
+/*BATTLING METHODS  --  ONLY NPC SO FAR!*/
+string User::attackNPC(string NPCsID){
+  //Call NPC->getHit(getStrength());
+  //If return damage is 0, have room remove the NPC with its ID
+  string result;
+
+  vector<shared_ptr<NPC>> NPCs = getRoom()->getNPCs();
+  for(shared_ptr<NPC> NPC : NPCs){
+    if(NPC->getID() == NPCsID){
+      int userAttack = userStats->getStrength();
+      int NPCAttack = NPC->getHit(userAttack);
+
+      result = getAttacked(NPCAttack) + NPC->getName();
+      return result;
+    } 
+    //THIS SHOULD NEVER OCCUR BUT WE'LL SEE
+    else {
+      return "Somehow the NPC could not be found";
+    }
+  }
+  
+}
+
+string User::getAttacked(int NPCAttack){
+  if(NPCAttack == 0){
+    return "You have just succeeded in killing";
+  }
+  else{
+    string result;
+    int userHealth = userStats->getHealth();
+    if(userHealth > NPCAttack){
+      userStats->setHealth(userHealth - NPCAttack);
+      result = "You have just taken " + to_string(NPCAttack) + 
+                      " damage from ";
+    }
+    else{
+      setLivingStatus(false);
+      result = "You have just been killed. Awwwwwe";
+    }
+    return result;
+  }
+}
 
 // ADMIN ONLY METHODS

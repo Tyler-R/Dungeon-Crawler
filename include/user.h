@@ -68,13 +68,19 @@ class User {
     /*INVENTORY INTERACTION METHODS added by Jordan*/
     string viewInventory();
     string useItem(string itemName);
+    string tossItem(string itemName);
 
+    /*ABILITYSTAT INTERACTION METHODS added by Jordan*/
     int getCharisma();
     int getDefense();
     int getDexterity();
     int getHealth();
     int getIntelligence();
     int getStrength();
+
+    /*BATTLING METHODS  --  ONLY NPC SO FAR  added by Jordan*/
+    string attackNPC(string NPCsID);
+    string getAttacked(int NPCAttack);
 		
  private:
     const int START_LEVEL = 1;
