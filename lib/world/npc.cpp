@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include "npc.h"
+#include <strings.h>
 
 // constructor (type, id)
 // NPC::NPC(string type, string id){
@@ -101,7 +102,7 @@ void NPC::addKeywords(vector<string> s){
 }
 bool NPC::searchKeyword(string s)const{
     for(auto & tempKey : keywords){
-        if(s.compare(tempKey) == 0) {
+        if(0 == strcasecmp(s.c_str(), tempKey.c_str())){
             return true;
         }
     }

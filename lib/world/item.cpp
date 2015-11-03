@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include "item.h"
+#include <strings.h>
 
 const int boostDamage = 1;      // increase damage by 1 (weapon)
 const int recoverHP = 1;        // recover hp by 1 (potion)
@@ -87,7 +88,7 @@ void Item::addKeywords(vector<string> s){
 }
 bool Item::searchKeyword(string s)const{
     for(auto & tempKey : keywords){
-        if(s.compare(tempKey) == 0){
+        if(0 == strcasecmp(s.c_str(), tempKey.c_str())){
             return true;
         }
     }

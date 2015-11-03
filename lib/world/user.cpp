@@ -228,24 +228,28 @@ string User::lookAround(){
   return getRoom()->lookAround();
 }
 
-vector<string> User::lookExits(){
+string User::lookExits(){
   return getRoom()->getDoorDescList();
 }
 
-vector<string> User::lookObjList(){
+string User::lookObjList(){
   return getRoom()->getObjList();
 }
 
-vector<string> User::lookObjKeywords(string objName){
-  return getRoom()->getObjKeywords(objName);
+string User::lookObjKeywords(string objName){
+  string result = "";
+  for (auto & keyword : getRoom()->getObjKeywords(objName)){
+    result = result + keyword + "\n";
+  }
+  return result;
 }
 
 ////ITEM INTERACTION METHODS Added by Sarah and edited by Jordan
 string User::takeItem(string objName){
   for (auto & item : getRoom()->getItems() ) {
     if(item->searchKeyword(objName)){
-      getRoom()->removeItem(item->getID());
       inventory->addItem(item);
+      getRoom()->removeItem(item->getID());
       getRoom()->announcement(getUserName() + " took a " + objName + ".");
       return "You took a " + objName;
     }
@@ -255,7 +259,7 @@ string User::takeItem(string objName){
 
 /*INVENTORY INTERACTION METHODS*/
 string User::viewInventory(){
-  return (inventory->lookAtInventory());
+  return inventory->lookAtInventory();
 }
 
 string User::useItem(string itemID){
@@ -279,11 +283,10 @@ string User::tossItem(string itemID){
 }
 
 /*BATTLING METHODS  --  ONLY NPC SO FAR!*/
-string User::attackNPC(string NPCsID){
+string User::attackNPC(string npcName){
   string result;
-  vector<shared_ptr<NPC>> NPCs = getRoom()->getNPCs();
-  for(shared_ptr<NPC> NPC : NPCs){
-    if(NPC->getID() == NPCsID){
+  for (auto & NPC : getRoom()->getNPCs() ) {
+    if(NPC->searchKeyword(npcName)){
       int userAttack = userStats->getStrength();
       int NPCAttack = NPC->getHit(userAttack);
       string NPCShortDesc = NPC->getShortDesc();
@@ -293,17 +296,16 @@ string User::attackNPC(string NPCsID){
       return result;
     } 
     //THIS SHOULD NEVER OCCUR BUT WE'LL SEE
-    else {
-      return "Somehow the NPC could not be found";
-    }
   }
+  return "Somehow the NPC could not be found";
+    
   
 }
 
 string User::getAttacked(int NPCAttack, string NPCShortDesc){
   if(NPCAttack == 0){
     getRoom()->announcement(getUserName() + " just killed " + NPCShortDesc);
-    return "You have just succeeded in killing";
+    return "You have just succeeded in killing ";
   }
   else{
     string result;

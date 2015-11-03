@@ -162,39 +162,35 @@ vector<Door*> Room::getDoorList(){
 }
 
 //LookAround
-
-vector<string> Room::getDoorDescList(){
+string Room::getDoorDescList(){
 	//This method returns a description of all of the room's doors.
-	vector<string> doorDescriptions;
-
-	for (auto & door : doorList) {
-	    doorDescriptions.push_back(door->getDesc());
+	string result = "";
+	for (auto & door : doorList){
+		result = result + door->getDesc() + "\n";
 	}
-
-	return doorDescriptions;
-
+	return result;
 }
 
-vector<string> Room::getObjList(){
+string Room::getObjList(){
 	//This method returns a list of strings containing the names of every door, npc, item, and user in the room.
-	vector<string> objList;
+	string result = "";
 	for (auto & door : doorList) {
-	    objList.push_back(door->getLeadsTo()->getName());
+	    result = result + (door->getLeadsTo()->getName()) + "\n";
 	}
 
 	for (auto & npc : npcList) {
-	    objList.push_back(npc->getName());
+	    result = result + (npc->getName()) + "\n";
 	}
 
 	for (auto & user : userList) {
-	    objList.push_back(user->getUserName());
+	    result = result + (user->getUserName()) + "\n";
 	}
 
 	for (auto &item : itemList){
-	    objList.push_back(item->getName());
+	    result = result + (item->getName()) + "\n";
 	}
 
-	return objList;
+	return result;
 }
 
 string Room::lookAround(){
@@ -225,32 +221,32 @@ string Room::lookAt(string objName){
 	//This method is used if the user types the "look <noun>" command.  <noun> can be a valid keyword.
 
 	if ( findKeyword(objName) ){
-		return extDesc;
+		return extDesc + "\n";
 	}
 
 
 	for (auto & door : doorList) {
 		if ( door->getLeadsTo()->findKeyword(objName)){
-			return door->getLeadsTo()->getDesc();
+			return door->getLeadsTo()->getDesc() + "\n";
 		}
 	}
 
 	for (auto & npc : npcList) {
 		if ( npc->searchKeyword(objName)){
-			return npc->getLongDesc();
+			return npc->getLongDesc() + "\n";
 		}
 	}
 
 	for (auto & user : userList) {
 		if (0 == strcasecmp(objName.c_str(), user->getUserName().c_str())){
-			return user->getDescription();
+			return user->getDescription() + "\n";
 		}
 	}
 
 	
 	for (auto &item : itemList){
 		if(item->searchKeyword(objName)){
-			return item->getShortDesc();
+			return item->getShortDesc() + "\n";
 		}
 	}
 	
@@ -292,7 +288,7 @@ void Room::createNPC(){
 
 		shared_ptr<NPC> npc( new NPC("001"));
 		npc->setName("Butler Jeeves");
-		npc->addShortDesc("There is butler standing nearby.");
+		npc->addShortDesc("Butler Jeeves");
 		npc->addLongDesc("The butler is busy cleaning up the lobby.");
 		npc->addKeyword("butler");
 		npc->addKeyword("servant");
@@ -323,7 +319,7 @@ void Room::createItem(){
 		item->addKeyword("Potion");
 		item->addKeyword("Bottle");
 		item->addKeyword("Medicine");
-		item->addShortDesc("This is a potion.");
+		item->addShortDesc("Potion");
 		item->addLongDesc("The potion is contained in a medicine bottle.");
 		addItem(item);
 }

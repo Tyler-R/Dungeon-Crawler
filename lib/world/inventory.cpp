@@ -45,7 +45,7 @@ string Inventory::getItemName(string itemID){
 
 string Inventory::lookAtInventory(){
   string inventoryDescOutput = "";
-  inventoryDescOutput + "Your inventory contains: \n";
+  inventoryDescOutput = inventoryDescOutput + "Your inventory contains: \n";
 
   if(getSize() == 0){
     inventoryDescOutput + "NOTHING";
@@ -54,9 +54,9 @@ string Inventory::lookAtInventory(){
   
   else {
     for(shared_ptr<Item> item : inventory) {
-      inventoryDescOutput + " - ";
-      inventoryDescOutput + item->getShortDesc();
-      inventoryDescOutput + "\n";
+      inventoryDescOutput = inventoryDescOutput + " - ";
+      inventoryDescOutput = inventoryDescOutput + item->getShortDesc();
+      inventoryDescOutput = inventoryDescOutput + "\n";
     }
   }
 
@@ -74,9 +74,9 @@ string Inventory::removeItem(string id){
   vector<shared_ptr<Item>>::iterator it = inventory.begin();
   for(it; it < inventory.end(); advance(it, 1)){
     shared_ptr<Item> item = *it;
-    if(item->getID() == id){
+    if(item->searchKeyword(id)){
       inventory.erase(it);
-      result = "Item was removed from your inventory";
+      result = item->getShortDesc() + " was removed from your inventory";
       break;
     }
   }
@@ -95,6 +95,6 @@ int Inventory::getMaxSize(){
 string Inventory::useItem(string id){
   //FILL IN RETRIEVAL OF ITEM EFFECTS  
 
-  return (removeItem(id) + " and used. /n");
+  return (removeItem(id) + " and used. \n");
 }
 

@@ -44,7 +44,7 @@ World::World(){
 
 	shared_ptr<NPC> knight( new NPC("002"));
 	knight->setName("Sir Knight");
-	knight->addShortDesc("There is knight standing nearby.");
+	knight->addShortDesc("Sir Knight");
 	knight->addLongDesc("The knight is practicing his swordsmanship.");
 	knight->addKeyword("knight");
 	knight->addKeyword("swordsman");

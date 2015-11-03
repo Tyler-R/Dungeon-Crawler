@@ -76,8 +76,8 @@ class Room {
 
 		void addDoor(string inputId, string inputDir, string inputDesc, shared_ptr<Room> inputRoom);
 		vector<Door*> getDoorList();
-		vector<string> getDoorDescList();	
-		vector<string> getObjList();
+		string getDoorDescList();	
+		string getObjList();
 	
 		string lookAround();
 		string lookAt(string objName);

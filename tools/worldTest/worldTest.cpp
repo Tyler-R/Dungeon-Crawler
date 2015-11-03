@@ -26,9 +26,7 @@ int main() {
 	//User PlayerTwo(false, "Player One", "abc123", newWorld.getRoom(0), "This is Player Two.");
 
 	cout << endl << "--Look at Room without Users--" << endl;
-	for (auto & obj : PlayerOne->lookObjList()) {
-	    cout << obj << endl;
-	}
+	cout << PlayerOne->lookObjList() << endl;
 
 	cout << endl << "--Now testing interaction with Current Room--" << endl;	
 
@@ -39,16 +37,10 @@ int main() {
 	cout << PlayerOne->lookAround() << endl;
 
 	cout << endl << "--Looking at Exits--" << endl;
-
-	for (auto & door : PlayerOne->lookExits()) {
-	    cout << door << endl;
-	}
+	cout << PlayerOne->lookExits() << endl;
 
 	cout << endl << "--Getting List of Objects--" << endl;
-
-	for (auto & obj : PlayerOne->lookObjList()) {
-	    cout << obj << endl;
-	}
+	cout << PlayerOne->lookObjList()<< endl;
 
 
 	cout << endl << "--Printing Keywords of Current Room--" << endl;
@@ -91,17 +83,14 @@ int main() {
 	cout << PlayerOne->getRoom()->getDesc() << endl;
 
 	cout << endl << "--Getting a Good Look at the Room--" << endl;
+
 	cout << PlayerOne->lookAround()  << endl;
 
-	for (auto & door : PlayerOne->lookExits()) {
-	    cout << door << endl;
-	}
-
+	cout << endl << "--Looking at Exits--" << endl;
+	cout << PlayerOne->lookExits() << endl;
 	cout << endl << "--Getting List of Objects in the Room--" << endl;
+	cout << PlayerOne->lookObjList() << endl;
 
-	for (auto & door : PlayerOne->lookObjList()) {
-	    cout << door << endl;
-	}
 
 	vector<string> bathroomKeywords;
 
@@ -125,16 +114,9 @@ int main() {
 	cout << PlayerOne->lookAround()  << endl;
 
 	cout << endl << "--Looking at Exits--" << endl;
-
-	for (auto & door : PlayerOne->lookExits()) {
-	    cout << door << endl;
-	}
-
-	cout << endl << "--Getting List of Objects--" << endl;
-
-	for (auto & obj : PlayerOne->lookObjList()) {
-	    cout << obj << endl;
-	}
+	cout << PlayerOne->lookExits() << endl;
+	cout << endl << "--Getting List of Objects in the Room--" << endl;
+	cout << PlayerOne->lookObjList() << endl;
 
 	cout << endl << "--Moving to 'Powder Room'--" << endl;
 
@@ -145,15 +127,10 @@ int main() {
 
 	cout << endl << "--Looking at Exits--" << endl;
 
-	for (auto & door : PlayerOne->lookExits()) {
-	    cout << door << endl;
-	}
-
-	cout << endl << "--Getting List of Objects--" << endl;
-
-	for (auto & door : PlayerOne->lookObjList()) {
-	    cout << door << endl;
-	}
+	cout << endl << "--Looking at Exits--" << endl;
+	cout << PlayerOne->lookExits() << endl;
+	cout << endl << "--Getting List of Objects in the Room--" << endl;
+	cout << PlayerOne->lookObjList() << endl;
 
 	cout << endl << "--Moving to 'east' (an invalid location)--" << endl;
 
@@ -175,15 +152,10 @@ int main() {
 
 	cout << endl << "--Looking at Exits--" << endl;
 
-	for (auto & door : PlayerOne->lookExits()) {
-	    cout << door << endl;
-	}
-
-	cout << endl << "--Getting List of Objects--" << endl;
-
-	for (auto & door : PlayerOne->lookObjList()) {
-	    cout << door << endl;
-	}
+	cout << endl << "--Looking at Exits--" << endl;
+	cout << PlayerOne->lookExits() << endl;
+	cout << endl << "--Getting List of Objects in the Room--" << endl;
+	cout << PlayerOne->lookObjList() << endl;
 
 	cout << endl << "----" << endl;	
 	cout << endl << "----" << endl;	
@@ -192,9 +164,8 @@ int main() {
 
 	cout << endl << "--Getting List of Objects--" << endl;
 
-	for (auto & door : PlayerOne->lookObjList()) {
-	    cout << door << endl;
-	}
+	cout << endl << "--Getting List of Objects in the Room--" << endl;
+	cout << PlayerOne->lookObjList() << endl;
 
 	cout << endl << "--Looking at NPCs--" << endl;
 
@@ -215,19 +186,15 @@ int main() {
 	cout << endl << "--Now looking at lists of Keywords for each Object.--" << endl;
 
 	cout << endl << "--Here are the swordsman's keywords--" << endl;
-	for (auto & obj : PlayerOne->lookObjKeywords("swordsman")) {
-	    cout << obj << endl;
-	}
+	cout << endl << PlayerOne->lookObjKeywords("swordsman") << endl;
+
 
 	cout << endl << "--Here are the lobby's keywords--" << endl;
-	for (auto & obj : PlayerOne->lookObjKeywords("lobby")) {
-	    cout << obj << endl;
-	}
+	cout << endl << PlayerOne->lookObjKeywords("lobby") << endl;
 
 	cout << endl << "--Here are the north door's keywords--" << endl;
-	for (auto & obj : PlayerOne->lookObjKeywords("north")) {
-	    cout << obj << endl;
-	}
+	cout << endl << PlayerOne->lookObjKeywords("north") << endl;
+	
 
 	cout << endl << "--Removing Keywords from lobby--" << endl;
 	PlayerOne->getRoom()->removeKeyword("foyer");
@@ -239,43 +206,38 @@ int main() {
 	//PlayerOne->getRoom()->removeKeyword("lobby");  //causes segfault
 
 	cout << endl << "--Here are the lobby's keywords--" << endl;
-	for (auto & obj : PlayerOne->lookObjKeywords("lobby")) {
-	    cout << obj << endl;
-	}
+	cout << endl << PlayerOne->lookObjKeywords("lobby") << endl;
 
 	cout << endl << "--Now Player Two Leaves the Lobby to go to the Bathroom.--" << endl;
 
 	cout << PlayerTwo->moveTo("north") << endl;
 
 	cout << endl << "--Check to see that Player Two is gone.--" << endl;
-	for (auto & obj : PlayerOne->lookObjList()) {
-	    cout << obj << endl;
-	}
+	cout << endl << "--Getting List of Objects in the Room--" << endl;
+	cout << PlayerOne->lookObjList() << endl;
+
 
 	cout << endl << "--Now removing all NPCs from the Room--" << endl;
 	for (auto & npc : PlayerOne->getRoom()->getNPCs()) {
 		PlayerOne->getRoom()->removeNPC(npc->getID());
 	}
 
-    cout << endl << "--Check Object List--" << endl;
-	for (auto & obj : PlayerOne->lookObjList()) {
-	    cout << obj << endl;
-	}
+ 	cout << endl << "--Getting List of Objects in the Room--" << endl;
+	cout << PlayerOne->lookObjList() << endl;
+
 
 	cout << endl << "--Now let's have Player One take a potion--" << endl;
 	cout << PlayerOne->takeItem("Potion") << endl;
 
-	cout << endl << "--Check Object List--" << endl;
-	for (auto & obj : PlayerOne->lookObjList()) {
-	    cout << obj << endl;
-	}
+	cout << endl << "--Getting List of Objects in the Room--" << endl;
+	cout << PlayerOne->lookObjList() << endl;
+
 
 	cout << endl << "--Try and take another potion (even though there are none left)--" << endl;
 	cout << PlayerOne->takeItem("Potion") << endl;
 
-	cout << endl << "--Check Object List--" << endl;
-	for (auto & obj : PlayerOne->lookObjList()) {
-	    cout << obj << endl;
-	}
+	cout << endl << "--Getting List of Objects in the Room--" << endl;
+	cout << PlayerOne->lookObjList() << endl;
+
 	cout << endl << "--EndTest!--" << endl;
 }

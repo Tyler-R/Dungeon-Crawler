@@ -57,9 +57,9 @@ class User {
     string moveTo(string dir);
     string lookAt(string objName);
     string lookAround();
-    vector<string> lookExits();
-    vector<string> lookObjList();
-    vector<string> lookObjKeywords(string objName);
+    string lookExits();
+    string lookObjList();
+    string lookObjKeywords(string objName);
     string takeItem(string objName);
 
     void setMessageDisplayer(std::function<void(string)> newMessageDisplayer);
@@ -79,7 +79,7 @@ class User {
     int getStrength();
 
     /*BATTLING METHODS  --  ONLY NPC SO FAR  added by Jordan*/
-    string attackNPC(string NPCsID);
+    string attackNPC(string npcName);
     string getAttacked(int NPCAttack, string NPCShortDesc);
 		
  private:
