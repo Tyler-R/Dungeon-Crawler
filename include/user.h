@@ -67,8 +67,8 @@ class User {
 
     /*INVENTORY INTERACTION METHODS added by Jordan*/
     string viewInventory();
-    string useItem(string itemName);
-    string tossItem(string itemName);
+    string useItem(string itemID);
+    string tossItem(string itemID);
 
     /*ABILITYSTAT INTERACTION METHODS added by Jordan*/
     int getCharisma();
@@ -80,7 +80,7 @@ class User {
 
     /*BATTLING METHODS  --  ONLY NPC SO FAR  added by Jordan*/
     string attackNPC(string NPCsID);
-    string getAttacked(int NPCAttack);
+    string getAttacked(int NPCAttack, string NPCShortDesc);
 		
  private:
     const int START_LEVEL = 1;

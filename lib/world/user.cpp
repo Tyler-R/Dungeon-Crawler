@@ -278,17 +278,16 @@ string User::tossItem(string itemID){
 
 /*BATTLING METHODS  --  ONLY NPC SO FAR!*/
 string User::attackNPC(string NPCsID){
-  //Call NPC->getHit(getStrength());
-  //If return damage is 0, have room remove the NPC with its ID
   string result;
-
   vector<shared_ptr<NPC>> NPCs = getRoom()->getNPCs();
   for(shared_ptr<NPC> NPC : NPCs){
     if(NPC->getID() == NPCsID){
       int userAttack = userStats->getStrength();
       int NPCAttack = NPC->getHit(userAttack);
+      string NPCShortDesc = NPC->getShortDesc();
+      getRoom()->announcement(getUserName() + " just attacked " + NPCShortDesc);
 
-      result = getAttacked(NPCAttack) + NPC->getName();
+      result = getAttacked(NPCAttack, NPCShortDesc) + NPCShortDesc;
       return result;
     } 
     //THIS SHOULD NEVER OCCUR BUT WE'LL SEE
@@ -299,8 +298,9 @@ string User::attackNPC(string NPCsID){
   
 }
 
-string User::getAttacked(int NPCAttack){
+string User::getAttacked(int NPCAttack, string NPCShortDesc){
   if(NPCAttack == 0){
+    getRoom()->announcement(getUserName() + " just killed " + NPCShortDesc);
     return "You have just succeeded in killing";
   }
   else{
@@ -312,6 +312,7 @@ string User::getAttacked(int NPCAttack){
                       " damage from ";
     }
     else{
+      getRoom()->announcement(getUserName() + " was just killed by " + NPCShortDesc);
       setLivingStatus(false);
       result = "You have just been killed. Awwwwwe";
     }
