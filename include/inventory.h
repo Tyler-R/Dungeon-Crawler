@@ -24,6 +24,8 @@ class Inventory {
 
     vector<string> getInventoryNames();
 
+    string getItemName(string id);
+
     string lookAtInventory();
 
     void addItem(shared_ptr<Item> item);

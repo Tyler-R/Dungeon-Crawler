@@ -33,6 +33,16 @@ vector<string> Inventory::getInventoryNames(){
   return inventoryOutput;
 }
 
+string Inventory::getItemName(string itemID){
+  string itemName;
+  for(shared_ptr<Item> item : inventory){
+    if(item->getID() == itemID){
+      return item->getName();
+    }
+  }
+  return "THIS STRING IS WRONG AND SHOULDN'T BE HERE! Inventory Class - getItemName method";
+}
+
 string Inventory::lookAtInventory(){
   string inventoryDescOutput = "";
   inventoryDescOutput + "Your inventory contains: \n";

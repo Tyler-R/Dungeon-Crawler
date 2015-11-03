@@ -271,6 +271,8 @@ string User::tossItem(string itemID){
 
   if(initialInventorySize != currentInventorySize){
     result + " and thrown on the floor";
+    string itemName = inventory->getItemName(itemID);
+    getRoom()->announcement(getUserName() + " just tossed " + itemName + " on the floor");
   }
   
   return result;
