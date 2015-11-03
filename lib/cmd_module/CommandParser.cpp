@@ -54,6 +54,7 @@ void CommandParser::toLowerCase(string &str){
     }
 }
 
+
 bool CommandParser::isMoveCmd(vector<string> &words){
    fstream fs;
    bool matchFound = false;
@@ -64,20 +65,37 @@ bool CommandParser::isMoveCmd(vector<string> &words){
         matchFound = true;
     }
    }
+   fs.close();
    return matchFound;
 }
 
 bool CommandParser::isLookCmd(vector<string> &words){
-    fstream fs;
+    vector<string> cmd_alias = getGlobalCmdAlias("look");
     bool matchFound = false;
-    fs.open("../../yaml/command/look.txt");
-    string cmd;
-    while(fs >> cmd){
-    if(words.front().compare(cmd) ==0){
+    for (auto &cmd: cmd_alias){
+      if(words.front().compare(cmd) ==0){
         matchFound = true;
-        }
+      }
     }
     return matchFound;
+}
+
+vector<string> CommandParser::getGlobalCmdAlias(string generic_cmd){
+  fstream fs;
+  vector<string> cmd_alias;
+  string cmd;
+  string prefix_dir = "../../yaml/command/";
+  string filetype = ".txt";
+  string cmd_file_path = prefix_dir + generic_cmd + filetype;
+  fs.open(cmd_file_path);
+  while (fs >> cmd){
+    cmd_alias.push_back(cmd);
+  }
+  return cmd_alias;
+}
+
+bool CommandParser::isAttackNPCsCmd(vector<string> &words){
+
 }
 
 // string CommandParser::invokeCommand(vector<string> cmd){
