@@ -239,5 +239,17 @@ int main() {
 	cout << endl << "--Getting List of Objects in the Room--" << endl;
 	cout << PlayerOne->lookObjList();
 
+	cout << endl << "--Take glasses--" << endl;
+	cout << PlayerOne->takeItem("glasses");
+
+	cout << endl << "--Player One: Looks at Inventory--" << endl;
+	cout << PlayerOne->viewInventory() << endl;
+
+	cout << endl << "--Toss glasses--" << endl;
+	cout << PlayerOne->tossItem("glasses");
+
+	cout << endl << "--Player One: Looks at Inventory--" << endl;
+	cout << PlayerOne->viewInventory() << endl;
+
 	cout << endl << "--EndTest!--" << endl;
 }

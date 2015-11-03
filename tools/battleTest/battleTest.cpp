@@ -35,6 +35,9 @@ int main() {
 	cout << endl << "--Player One: Uses Glasses--" << endl;
 	cout << PlayerOne->useItem("glasses") << endl;
 
+	cout << endl << "--Player One: Looks at Inventory--" << endl;
+	cout << PlayerOne->viewInventory() << endl;
+	
 	cout << endl << "--Player One: Looks Around--" << endl;
 	cout << PlayerOne->lookAround() << endl;
 
