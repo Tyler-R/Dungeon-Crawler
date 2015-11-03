@@ -53,31 +53,24 @@ void CommandParser::toLowerCase(string &str){
         str[i] = tolower(str[i]);
     }
 }
-
-
-bool CommandParser::isMoveCmd(vector<string> &words){
-   fstream fs;
-   bool matchFound = false;
-   fs.open ("../../yaml/command/move.txt");
-   string cmd;
-   while(fs >> cmd){
-    if(words.front().compare(cmd) == 0){
-        matchFound = true;
-    }
-   }
-   fs.close();
-   return matchFound;
-}
-
-bool CommandParser::isLookCmd(vector<string> &words){
-    vector<string> cmd_alias = getGlobalCmdAlias("look");
-    bool matchFound = false;
-    for (auto &cmd: cmd_alias){
+bool CommandParser::findMatch(vector<string> &alias, string &word){
+  bool matchFound = false;
+  for (auto &cmd: cmd_alias){
       if(words.front().compare(cmd) ==0){
         matchFound = true;
       }
     }
-    return matchFound;
+  return matchFound;
+}
+
+bool CommandParser::isMoveCmd(vector<string> &words){
+   vector<string> cmd_alias = getGlobalCmdAlias("move");
+   return findMatch(cmd_alias, words.front());
+}
+
+bool CommandParser::isLookCmd(vector<string> &words){
+    vector<string> cmd_alias = getGlobalCmdAlias("look");
+    return return findMatch(cmd_alias, words.front());
 }
 
 vector<string> CommandParser::getGlobalCmdAlias(string generic_cmd){
