@@ -1,11 +1,12 @@
 #include "Session.h"
 
-Session::Session(tcp::socket socket) : socket(std::move(socket)){
-    commandParser = new CommandParser();
+
+Session::Session( tcp::socket socket, int maxCommands ) : socket( std::move( socket ) ), maxCommands( maxCommands ){
+    commandParser = std::make_shared< CommandParser >( );
 }
 
 Session::~Session() {
-    delete commandParser;
+
 }
 
 void Session::listenForCommands() {
@@ -34,7 +35,11 @@ void Session::listenForCommands() {
 }
 
 void Session::addCommandToQueue(Command command) {
-    commandBacklog.push(command);
+    if(commandBacklog.size() >= maxCommands) {
+        sendMessage("ERROR: too many command entered");
+    } else {
+        commandBacklog.push(command);
+    }
 }
 
 std::string Session::getNextCommand() {

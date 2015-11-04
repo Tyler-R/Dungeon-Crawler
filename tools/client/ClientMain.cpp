@@ -34,7 +34,11 @@ int main() {
 
 	std::thread displayLoop(draw);
 
-	auto port = 8080;
+	int port;
+
+	std::cout << "enter the port to connect to the server (likely 8080): ";
+	std::cin >> port;
+
 	auto serverAddress = "127.0.0.1";
 
 	client = std::make_shared<Client>(serverAddress, port);

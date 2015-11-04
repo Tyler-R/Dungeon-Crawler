@@ -14,18 +14,16 @@
 
 using boost::asio::ip::tcp;
 
-
 class Session : public std::enable_shared_from_this<Session> {
 public:
     static const int MAX_COMMAND_LENGTH = 1024;
-    static const int MAX_COMMANDS = 5;
 
     typedef struct {
         int length = 0;
         char buffer[MAX_COMMAND_LENGTH];
     } Command;
 
-    Session(tcp::socket socket);
+    Session(tcp::socket socket, int maxCommands);
     ~Session();
 
     void listenForCommands();
@@ -45,6 +43,7 @@ public:
     void kill();
 private:
     tcp::socket socket;
+    int maxCommands = 0;
 
     void addCommandToQueue(Command command);
 
@@ -67,6 +66,6 @@ private:
     bool alive = true;
 
     World myWorld;
-    CommandParser *commandParser;
+    std::shared_ptr< CommandParser > commandParser;
 
 };
