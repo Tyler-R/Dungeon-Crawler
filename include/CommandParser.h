@@ -24,6 +24,7 @@ public:
     std::string validateTakeArgv(std::vector<std::string>& cmd);
     std::string validateUsdeArgv(std::vector<std::string>& cmd);
     std::string validateCheckArgv(std::vector<std::string>& cmd);
+    std::string validateAliasArgv(std::vector<std::string>& cmd);
 
 
     bool isMoveCmd(std::vector<std::string>& word);
@@ -32,6 +33,7 @@ public:
     bool isTakeCmd(std::vector<std::string>& word);
     bool isUseCmd(std::vector<std::string>& word);
     bool isCheckCmd(std::vector<std::string>& word);
+    bool isAliasCmd(std::vector<std::string>& word);
 
 
 };
