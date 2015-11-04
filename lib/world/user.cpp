@@ -260,6 +260,10 @@ string User::tossItem(string itemID){
   return result;
 }
 
+string User::getInvItemLongDesc(string itemID){
+  return inventory->getItemDescription(itemID);
+}
+
 /*BATTLING METHODS  --  ONLY NPC SO FAR!*/
 string User::attackNPC(string npcName){
   string result;

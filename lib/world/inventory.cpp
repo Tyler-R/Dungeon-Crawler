@@ -35,12 +35,15 @@ vector<string> Inventory::getInventoryNames(){
 
 string Inventory::getItemName(string itemID){
   string itemName;
-  for(shared_ptr<Item> item : inventory){
-    if(item->getID() == itemID){
-      return item->getShortDesc();
-    }
+ 
+  shared_ptr<Item> item = findItemByID(itemID);
+
+  if(item != NULL){
+    return item->getShortDesc();
   }
-  return "THIS STRING IS WRONG AND SHOULDN'T BE HERE! Inventory Class - getItemName method";
+  else {
+    return "THIS STRING IS WRONG AND SHOULDN'T BE HERE! Inventory Class - getItemName method";
+  }
 }
 
 string Inventory::lookAtInventory(){
@@ -75,12 +78,31 @@ string Inventory::removeItem(string id){
   for(it; it < inventory.end(); advance(it, 1)){
     shared_ptr<Item> item = *it;
     if(item->searchKeyword(id)){
-      inventory.erase(it);
       result = item->getShortDesc() + " was removed from your inventory";
-      break;
+      inventory.erase(it);
+      return result;
     }
   }
   return result;
+}
+
+string Inventory::getItemDescription(string itemID){
+  shared_ptr<Item> item = findItemByID(itemID);
+
+  if(item != NULL){
+    return item->getLongDesc();
+  }
+  else {
+    string nullString = NULL;
+    return nullString;
+  }
+}
+
+// TODO
+string Inventory::useItem(string itemID){
+  //FILL IN RETRIEVAL OF ITEM EFFECTS  
+
+  return (removeItem(itemID) + " and used. \n");
 }
 
 int Inventory::getSize() {
@@ -91,10 +113,13 @@ int Inventory::getMaxSize(){
   return inventoryMaxSize;
 }
 
-// TODO
-string Inventory::useItem(string id){
-  //FILL IN RETRIEVAL OF ITEM EFFECTS  
-
-  return (removeItem(id) + " and used. \n");
+shared_ptr<Item> Inventory::findItemByID(string itemID){
+  for(shared_ptr<Item> item : inventory){
+    if(item->getID() == itemID){
+      return item;
+    }
+  }
+  shared_ptr<Item> nullPtr = NULL;
+  return nullPtr;
 }
 

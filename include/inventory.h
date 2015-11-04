@@ -32,11 +32,15 @@ class Inventory {
 
     string removeItem(string itemName);
 
+    string getItemDescription(string itemID);
+
+    string useItem(string itemName);
+
     int getSize();
 
     int getMaxSize();
 
-    string useItem(string itemName);
+    shared_ptr<Item> findItemByID(string id);
 
   private:
     static const int inventoryMaxSize = 20;

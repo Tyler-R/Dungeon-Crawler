@@ -66,6 +66,7 @@ class User {
     string viewInventory();
     string useItem(string itemID);
     string tossItem(string itemID);
+    string getInvItemLongDesc(string itemID);
 
     /*ABILITYSTAT INTERACTION METHODS added by Jordan*/
     int getCharisma();
