@@ -137,13 +137,19 @@ vector<string> Room::getObjKeywords(string objName){ //Gets a List of an Object'
 		return getKeywords();
 	}
 	for (auto & door : doorList) {
-		if ( door->findKeyword(objName)){
+		if ( door->findKeyword(objName) || door->getLeadsTo()->findKeyword(objName)){
 			return door->getKeywords();
 		}
 	}
 	for (auto & npc : npcList) {
 		if ( npc->searchKeyword(objName)){
 			return npc->getKeyword();
+		}
+	}
+
+	for (auto & item : itemList) {
+		if ( item->searchKeyword(objName)){
+			return item->getKeyword();
 		}
 	}
 	vector<string> result;
@@ -230,7 +236,7 @@ string Room::lookAt(string objName){
 
 
 	for (auto & door : doorList) {
-		if ( door->getLeadsTo()->findKeyword(objName)){
+		if ( door->getLeadsTo()->findKeyword(objName) || door->findKeyword(objName)){
 			return door->getLeadsTo()->getDesc() + "\n";
 		}
 	}
