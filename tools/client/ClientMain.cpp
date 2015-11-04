@@ -5,7 +5,7 @@
 #include "Client.h"
 #include "UserInterface.h"
 
-std::shared_ptr<UserInterface> display = std::make_shared<UserInterface>();
+std::shared_ptr<UserInterface> display;
 
 std::shared_ptr<Client> client;
 
@@ -36,6 +36,8 @@ int main() {
 
 	std::cout << "enter the port to connect to the server (likely 8080): ";
 	std::cin >> port;
+
+	display = std::make_shared<UserInterface>();
 
 	std::thread displayLoop(draw);
 
