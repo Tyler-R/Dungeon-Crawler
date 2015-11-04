@@ -27,7 +27,9 @@ string CommandParser::validateLookArgv(vector<string> &cmd){
        return  PlayerOne->viewInventory();
       }
       // return "look at " + cmd.at(1) + "\n";
-      return PlayerOne->lookAt(cmd.at(1));
+      string first = PlayerOne->lookAt(cmd.at(1));
+      string second = PlayerOne->lookObjKeywords(cmd.at(1));
+      return  first + second;
     }
     else {
       // return "look at the current room\n";
@@ -105,7 +107,7 @@ string CommandParser::validateCheckArgv(std::vector<std::string>& cmd){
   }
   else {
     reformatTokens(cmd);
-    return "check " + cmd.at(1)+"\n";
+    return PlayerOne->getInvItemLongDesc(cmd.at(1));
     // return
   }
 }
@@ -119,7 +121,9 @@ string CommandParser::validateTossArgv(std::vector<std::string>& cmd){
      return PlayerOne->tossItem(cmd.at(1));
   }
 }
-
+string CommandParser::validateHelpArgv(std::vector<std::string>& cmd){
+    return "USE: move, look, check, toss, take\n";
+}
 string CommandParser::validateAliasArgv(std::vector<std::string> &cmd){
   if(cmd.size() == 3){
     //user defined
@@ -240,6 +244,10 @@ bool CommandParser::isTossCmd(std::vector<std::string>& words){
   return findMatch(cmd_alias, words.front());
 }
 
+bool CommandParser::isHelpCmd(std::vector<std::string> &words){
+  return words.front().compare("help") ==0;
+}
+
 
 /*entry point for the cmd_module api*/
 string CommandParser::processCommand(string &in){
@@ -271,6 +279,9 @@ string CommandParser::processCommand(string &in){
    }
    else if(isTossCmd(words)){
       return validateTossArgv(words);
+   }
+   else if(isHelpCmd(words)){
+    return validateHelpArgv(words);
    }
    else {
     return "invalid command";
