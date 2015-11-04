@@ -16,27 +16,10 @@ User::User(){
   setUserType(true);
   setUserName("testUser");
   setPassword("password");
-  usedDefaultConstructor = true;
   userStats = new AbilityStats();
   playerLevel = START_LEVEL;
   inventory = new Inventory();
 }
-
-//TODO: USE THIS ONE WHEN MERGED AND SESSION.H IS AVAILABLE!!
-/* User constructor for setting up basic information */
-/*User::User(bool isAdmin, string userName, string password, Room currentRoom, Session session, string description) {
-  setUserType(isAdmin);
-  setUserName(userName);
-  setPassword(password);
-  setRoom(currentRoom);
-  setDescription(description);
-  this->session = session;
-  usedDefaultConstructor = false;
-  userStats = new AbilityStats();
-  playerLevel = START_LEVEL;
-  inventory = new Inventory();
-  }*/
-
 
 User::User(bool isAdmin, string userName, string password, shared_ptr<Room> currentRoom, string description) {
   setUserType(isAdmin);
@@ -44,8 +27,6 @@ User::User(bool isAdmin, string userName, string password, shared_ptr<Room> curr
   setPassword(password);
   setRoom(currentRoom);
   setDescription(description);
-  //this->session = session;
-  //usedDefaultConstructor = false;
   userStats = new AbilityStats();
   playerLevel = START_LEVEL;
   inventory = new Inventory();
@@ -58,11 +39,7 @@ User::User(User &user){
   password = user.getPassword();
   currentRoom = user.getRoom();
   description = user.getDescription();
-
-  usedDefaultConstructor = false;
-
   playerLevel = user.getLevel();
-
 }
 
 /* Ensures deletion of the player's inventory and currentRoom if default constructor used*/
@@ -115,6 +92,7 @@ string User::getDescription(){
 void User::levelUp(){
   playerLevel += 1;
   userStats->levelUp();
+  getRoom()->announcement(getUserName() + "just levelled up! Hooray!");
 }
 
 int User::getLevel(){
@@ -305,6 +283,7 @@ string User::attackNPC(string npcName){
 string User::getAttacked(int NPCAttack, string NPCShortDesc){
   if(NPCAttack == 0){
     getRoom()->announcement(getUserName() + " just killed " + NPCShortDesc+ "\n");
+    increaseXP(KILLED_NPC_EXPERIENCE);
     return "You have just succeeded in killing\n";
   }
   else{

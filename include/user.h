@@ -5,7 +5,6 @@ Created By: Jordan Nielsen
 #include "room.h"
 #include "abilityStats.h"
 #include "inventory.h"
-//#include "Session.h"
 #include <string>
 #include <vector>
 #include <memory>
@@ -20,9 +19,7 @@ class User {
   public:
     User();
 
-    //TODO: USE THIS ONE WHEN MERGED AND SESSION.H IS AVAILABLE!!
     /*User constructor for setting up basic information*/
-    // User(bool isAdmin, string userName, string password, Room currentRoom,Session session, string description);
 
     User(bool isAdmin, string userName, string password, shared_ptr<Room> currentRoom, string description);
      User(User &user); //Copy constructor added by Sarah
@@ -84,6 +81,7 @@ class User {
 		
  private:
     const int START_LEVEL = 1;
+    const int KILLED_NPC_EXPERIENCE = 100;
     
     string userName;
     string password;
@@ -92,17 +90,8 @@ class User {
 
     std::function<void(string)> messageDisplayer;
 
-
-    //Session session;
-
-
     AbilityStats* userStats;
-
-
     Inventory* inventory;
-
-		
-    bool usedDefaultConstructor;
 
     int playerLevel;
     int playerXP;
