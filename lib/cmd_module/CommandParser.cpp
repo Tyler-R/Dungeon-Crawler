@@ -153,10 +153,8 @@ vector<string> CommandParser::getGlobalCmdAlias(string generic_cmd){
     cout<<"fail to open the file " << generic_cmd << endl;
   }
   while (fs >> cmd){
-    cout<<cmd<<endl;
     cmd_alias.push_back(cmd);
   }
-  cout<<endl<<endl;
   fs.close();
   return cmd_alias;
 }

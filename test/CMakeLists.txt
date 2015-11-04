@@ -1,2 +1,3 @@
 add_subdirectory(resets)
 add_subdirectory(yamltest)
+add_subdirectory(cmd_usr_world)
