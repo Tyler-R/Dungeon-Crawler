@@ -44,7 +44,7 @@ string CommandParser::validateMoveArgv(vector<string> &cmd){
       }
       else if(cmd.front().compare("south") == 0){
         // return "move to south\n";
-        PlayerOne->moveTo("south");
+        return PlayerOne->moveTo("south");
       }
       else if(cmd.front().compare("east") == 0){
         // return "move to east\n";
