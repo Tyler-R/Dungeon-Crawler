@@ -16,9 +16,7 @@ public:
     void toLowerCase(std::string &str);
     void reformatTokens(std::vector<std::string>& tokens);
     bool findMatch(std::vector<std::string> &alias, std::string &word);
-
     std::vector<std::string> getGlobalCmdAlias(std::string generic_cmd);
-    bool isAliasCmdGlobal(std::vector<std::string>& word);
 
     std::string validateMoveArgv(std::vector<std::string>& cmd);
     std::string validateLookArgv(std::vector<std::string>& cmd);

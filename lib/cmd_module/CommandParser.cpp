@@ -3,8 +3,9 @@
 using namespace std;
 
 string CommandParser::validateLookArgv(vector<string> &cmd){
-    reformatTokens(cmd);
+
     if(cmd.size() > 1){
+      reformatTokens(cmd);
       if(cmd.at(1).compare("around") == 0){
         return"look around\n";
       }
@@ -14,7 +15,7 @@ string CommandParser::validateLookArgv(vector<string> &cmd){
       else if(cmd.at(1).compare("inventory") == 0){
         return "look at inventory\n";
       }
-      return "look at" + cmd.at(1) + "\n";
+      return "look at " + cmd.at(1) + "\n";
     }
     else {
       return "look at the current room\n";
@@ -22,18 +23,18 @@ string CommandParser::validateLookArgv(vector<string> &cmd){
 }
 
 string CommandParser::validateMoveArgv(vector<string> &cmd){
-    reformatTokens(cmd);
+
     if(cmd.size() == 1){
-      if(cmd.front().compare("north")){
+      if(cmd.front().compare("north") == 0){
         return "move to north\n";
       }
-      else if(cmd.front().compare("south")){
+      else if(cmd.front().compare("south") == 0){
         return "move to south\n";
       }
-      else if(cmd.front().compare("east")){
+      else if(cmd.front().compare("east") == 0){
         return "move to east\n";
       }
-      else if(cmd.front().compare("west")){
+      else if(cmd.front().compare("west") == 0 ){
         return "move to west\n";
       }
       else {
@@ -41,51 +42,51 @@ string CommandParser::validateMoveArgv(vector<string> &cmd){
       }
     }
     else{
-      return"go to" +cmd.at(1) + "\n";
+      reformatTokens(cmd);
+      return"go to " +cmd.at(1) + "\n";
     }
 }
 
 string CommandParser::validateAttackNPCArgv(vector<string> &cmd){
-  reformatTokens(cmd);
-  if(cmd.size()==2){
-     return "attack NPC" + cmd.at(1) + "\n";
+  if(cmd.size()==1){
+      return "Usage: <attack> <NPC's name>\n";
+
    }
   else{
-    return "Usage: <attack> <NPC's name>\n";
+    reformatTokens(cmd);
+    return "attack NPC" + cmd.at(1) + "\n";
   }
 }
 
 string CommandParser::validateTakeArgv(std::vector<std::string>& cmd){
-  reformatTokens(cmd);
-  if(cmd.size()==2){
-     return "take " + cmd.at(1) + "\n";
+  if(cmd.size()==1){
+    return "Usage: <take> <item's name>\n";
    }
   else{
-    return "Usage: <take> <item's name>\n";
+    reformatTokens(cmd);
+    return "take " + cmd.at(1) + "\n";
   }
 }
 
 string CommandParser::validateUsdeArgv(std::vector<std::string>& cmd){
-  reformatTokens(cmd);
-  if(cmd.size()==2){
-     return "use " + cmd.at(1) + "\n";
+  if(cmd.size()==1){
+    return "Usage: <use> <item's name>\n";
    }
   else{
-    return "Usage: <use> <item's name>\n";
+    reformatTokens(cmd);
+    return "use " + cmd.at(1) + "\n";
   }
 }
 
 string CommandParser::validateCheckArgv(std::vector<std::string>& cmd){
-  reformatTokens(cmd);
-  if(cmd.size() > 1){
-    return "check " + cmd.at(1)+"\n";
-  }
-  else {
+  if(cmd.size() == 1){
     return "check inventory\n";
   }
+  else {
+    reformatTokens(cmd);
+    return "check " + cmd.at(1)+"\n";
+  }
 }
-
-
 
 void CommandParser::reformatTokens(vector<string>& words){
     if (words.size() == 2) return;
@@ -95,7 +96,7 @@ void CommandParser::reformatTokens(vector<string>& words){
             tmp = words.back() +" "+ tmp;
             words.pop_back();
         }
-        while(tmp.back() == ' ' || tmp.back()=='\t'){
+        while((tmp.back() == ' ') || (tmp.back()=='\t')){
             tmp.pop_back();
         }
         words.push_back(tmp);
@@ -131,7 +132,7 @@ vector<string> CommandParser::getGlobalCmdAlias(string generic_cmd){
   vector<string> cmd_alias;
   string cmd;
   // string prefix_dir = "textadventure/yaml/command/";
-  string prefix_dir = "./command/";
+  string prefix_dir = "command/";
   string filetype = ".txt";
   string cmd_file_path = prefix_dir + generic_cmd + filetype;
   cout<<cmd_file_path<<endl;
@@ -143,6 +144,7 @@ vector<string> CommandParser::getGlobalCmdAlias(string generic_cmd){
     cout<<cmd<<endl;
     cmd_alias.push_back(cmd);
   }
+  cout<<endl<<endl;
   fs.close();
   return cmd_alias;
 }
@@ -169,11 +171,6 @@ bool CommandParser::isLookCmd(vector<string> &words){
 
 bool CommandParser::isAttackNPCsCmd(vector<string> &words){
   vector<string> cmd_alias = getGlobalCmdAlias("attackNPC");
-  return findMatch(cmd_alias, words.front());
-}
-
-bool CommandParser::isAliasCmdGlobal(vector<string>& words){
-  vector<string> cmd_alias = getGlobalCmdAlias("lookaround");
   return findMatch(cmd_alias, words.front());
 }
 
