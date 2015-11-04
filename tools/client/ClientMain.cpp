@@ -32,12 +32,13 @@ void draw() {
 
 int main() {
 
-	std::thread displayLoop(draw);
-
 	int port;
 
 	std::cout << "enter the port to connect to the server (likely 8080): ";
 	std::cin >> port;
+
+	std::thread displayLoop(draw);
+
 
 	auto serverAddress = "127.0.0.1";
 
