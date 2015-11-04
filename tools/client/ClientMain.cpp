@@ -8,7 +8,11 @@
 int main() {
 	std::cout << "Welcome to our game" << std::endl;
 
-	auto port = 8080;
+	int port;
+
+	std::cout << "enter the port to connect to the server (likely 8080): ";
+	std::cin >> port;
+
 	auto serverAddress = "127.0.0.1";
 
 	Client client(serverAddress, port);
