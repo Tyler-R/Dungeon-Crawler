@@ -28,6 +28,8 @@ file(COPY
     ${CMAKE_CURRENT_SOURCE_DIR}/yaml/
     DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/)
 
+file(COPY docs/records.txt DESTINATION ${PROJECT_BINARY_DIR})
+
 add_executable(Authentication lib/authentication/Authentication.cpp
 				lib/authentication/FileIO.cpp
 				lib/authentication/UniqueID.cpp

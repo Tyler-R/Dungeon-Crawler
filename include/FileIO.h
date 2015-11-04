@@ -19,7 +19,7 @@ private:
     std::string userPassword;
     std::ofstream outFile;
     std::ifstream inFile;
-    const std::string USER_RECORDS = "/home/textadventure/docs/records.txt";
+    const std::string USER_RECORDS = "records.txt";
     bool recordExist();
     
 public:
