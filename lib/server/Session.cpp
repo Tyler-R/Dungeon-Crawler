@@ -34,7 +34,11 @@ void Session::listenForCommands() {
 }
 
 void Session::addCommandToQueue(Command command) {
-    commandBacklog.push(command);
+    if(commandBacklog.size() >= maxCommands) {
+        sendMessage("ERROR: too many command entered");
+    } else {
+        commandBacklog.push(command);
+    }
 }
 
 std::string Session::getNextCommand() {
