@@ -88,6 +88,18 @@ string CommandParser::validateCheckArgv(std::vector<std::string>& cmd){
   }
 }
 
+string CommandParser::validateAliasArgv(std::vector<std::string> &cmd){
+  if(cmd.size() == 3){
+    //user defined
+
+  }
+  else if(cmd.size() == 4){
+    //global alias
+  }
+  else{
+    return "Usage: <alias> <generic_cmd> <custom alias command>\n";
+  }
+}
 void CommandParser::reformatTokens(vector<string>& words){
     if (words.size() == 2) return;
     else{
@@ -189,6 +201,9 @@ bool CommandParser::isUseCmd(std::vector<std::string>& words){
   return findMatch(cmd_alias, words.front());
 }
 
+bool CommandParser::isAliasCmd(std::vector<std::string>& words){
+  return words.front().compare("alias") == 0;
+}
 
 
 /*entry point for the cmd_module api*/
@@ -215,6 +230,9 @@ string CommandParser::processCommand(string &in){
    }
    else if(isCheckCmd(words)){
       return validateCheckArgv(words);
+   }
+   else if(isAliasCmd(words)){
+    return validateAliasArgv(words);
    }
    else {
     return "invalid command";

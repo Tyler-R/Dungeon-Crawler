@@ -4,6 +4,7 @@
 ---
 * **Discalimer!!!: don't run sudo on school computers, IT will be notified.**
 * **REQUIRE SUDO access**
+
 #### Install boost
 
 ```shell
@@ -19,7 +20,7 @@ $ sudo apt-get install libncurses5-dev
 
 ## Build
 ---
-```
+```bash
 $ git clone https://csil-git1.cs.surrey.sfu.ca/373-15-3-piragua/textadventure.git
 $ cd textadventure
 $ mkdir <tmpbuild>
