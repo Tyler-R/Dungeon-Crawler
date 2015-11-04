@@ -6,13 +6,14 @@
 * **REQUIRE SUDO access**
 #### Install boost
 
-```
+```shell
 $ bash sudoBoostInstall.sh
 ```
 
 #### Install curses
 ---
-```
+
+```shell
 $ sudo apt-get install libncurses5-dev
 ```
 

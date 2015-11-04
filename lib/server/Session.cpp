@@ -1,10 +1,9 @@
 #include "Session.h"
 
-
 Session::Session( tcp::socket socket, int maxCommands ) : socket( std::move( socket ) ), maxCommands( maxCommands ){
     commandParser = std::make_shared< CommandParser >( );
-}
 
+}
 Session::~Session() {
 
 }
