@@ -31,4 +31,4 @@ $ cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ /path/to/project/
 ---
 1. **Oct 14**
 2. **Nov 4**
-3. **Dec 7**
+3. **Dec 2**
