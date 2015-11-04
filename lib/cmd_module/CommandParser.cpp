@@ -1,19 +1,91 @@
 #include <fstream>
 #include "CommandParser.h"
-
 using namespace std;
+
 string CommandParser::validateLookArgv(vector<string> &cmd){
     reformatTokens(cmd);
-    return "look at" + cmd.at(1);
+    if(cmd.size() > 1){
+      if(cmd.at(1).compare("around") == 0){
+        return"look around\n";
+      }
+      else if(cmd.at(1).compare("exit") == 0){
+        return"look at exit\n";
+      }
+      else if(cmd.at(1).compare("inventory") == 0){
+        return "look at inventory\n";
+      }
+      return "look at" + cmd.at(1) + "\n";
+    }
+    else {
+      return "look at the current room\n";
+    }
 }
+
 string CommandParser::validateMoveArgv(vector<string> &cmd){
     reformatTokens(cmd);
-    return"go to" +cmd.at(1);
+    if(cmd.size() == 1){
+      if(cmd.front().compare("north")){
+        return "move to north\n";
+      }
+      else if(cmd.front().compare("south")){
+        return "move to south\n";
+      }
+      else if(cmd.front().compare("east")){
+        return "move to east\n";
+      }
+      else if(cmd.front().compare("west")){
+        return "move to west\n";
+      }
+      else {
+        return "Usage: <move> <destination>\n";
+      }
+    }
+    else{
+      return"go to" +cmd.at(1) + "\n";
+    }
 }
-string CommandParser::validaeAttackNPCArgv(vector<string> &cmd){
+
+string CommandParser::validateAttackNPCArgv(vector<string> &cmd){
   reformatTokens(cmd);
-  return "attack NPC" + cmd.at(1);
+  if(cmd.size()==2){
+     return "attack NPC" + cmd.at(1) + "\n";
+   }
+  else{
+    return "Usage: <attack> <NPC's name>\n";
+  }
 }
+
+string CommandParser::validateTakeArgv(std::vector<std::string>& cmd){
+  reformatTokens(cmd);
+  if(cmd.size()==2){
+     return "take " + cmd.at(1) + "\n";
+   }
+  else{
+    return "Usage: <take> <item's name>\n";
+  }
+}
+
+string CommandParser::validateUsdeArgv(std::vector<std::string>& cmd){
+  reformatTokens(cmd);
+  if(cmd.size()==2){
+     return "use " + cmd.at(1) + "\n";
+   }
+  else{
+    return "Usage: <use> <item's name>\n";
+  }
+}
+
+string CommandParser::validateCheckArgv(std::vector<std::string>& cmd){
+  reformatTokens(cmd);
+  if(cmd.size() > 1){
+    return "check " + cmd.at(1)+"\n";
+  }
+  else {
+    return "check inventory\n";
+  }
+}
+
+
 
 void CommandParser::reformatTokens(vector<string>& words){
     if (words.size() == 2) return;
@@ -26,10 +98,10 @@ void CommandParser::reformatTokens(vector<string>& words){
         while(tmp.back() == ' ' || tmp.back()=='\t'){
             tmp.pop_back();
         }
-
         words.push_back(tmp);
     }
 }
+
 vector<string> CommandParser::tokenizeInput(string &in){
     //suggested to change to deque
     //use std::copy
@@ -45,6 +117,7 @@ vector<string> CommandParser::tokenizeInput(string &in){
     }
     return usr_input;
 }
+
 void CommandParser::toLowerCase(string &str){
     const int length = str.length();
     for(int i=0; i < length; ++i)
@@ -94,15 +167,31 @@ bool CommandParser::isLookCmd(vector<string> &words){
     return findMatch(cmd_alias, words.front());
 }
 
-
-
 bool CommandParser::isAttackNPCsCmd(vector<string> &words){
   vector<string> cmd_alias = getGlobalCmdAlias("attackNPC");
   return findMatch(cmd_alias, words.front());
 }
-bool CommandParser::isAliasCmdGlobal(vector<string>& words){
 
+bool CommandParser::isAliasCmdGlobal(vector<string>& words){
+  vector<string> cmd_alias = getGlobalCmdAlias("lookaround");
+  return findMatch(cmd_alias, words.front());
 }
+
+bool CommandParser::isTakeCmd(std::vector<std::string>& words){
+  vector<string> cmd_alias = getGlobalCmdAlias("take");
+  return findMatch(cmd_alias, words.front());
+}
+
+bool CommandParser::isCheckCmd(std::vector<std::string>& words){
+  vector<string> cmd_alias = getGlobalCmdAlias("check");
+  return findMatch(cmd_alias, words.front());
+}
+
+bool CommandParser::isUseCmd(std::vector<std::string>& words){
+  vector<string> cmd_alias = getGlobalCmdAlias("use");
+  return findMatch(cmd_alias, words.front());
+}
+
 
 
 /*entry point for the cmd_module api*/
@@ -113,13 +202,22 @@ string CommandParser::processCommand(string &in){
    toLowerCase(in);
    vector<string> words = tokenizeInput(in);
    if(isMoveCmd(words)){
-        return validateMoveArgv(words);
+      return validateMoveArgv(words);
    }
    else if(isAttackNPCsCmd(words)){
-        return  validaeAttackNPCArgv(words);
+      return validateAttackNPCArgv(words);
    }
    else if(isLookCmd(words)){
-        return validateLookArgv(words);
+      return validateLookArgv(words);
+   }
+   else if(isUseCmd(words)){
+      return validateUsdeArgv(words);
+   }
+   else if(isTakeCmd(words)){
+      return validateTakeArgv(words);
+   }
+   else if(isCheckCmd(words)){
+      return validateCheckArgv(words);
    }
    else {
     return "invalid command";

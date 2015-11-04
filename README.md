@@ -2,15 +2,18 @@
 
 ## Library Dependencies
 ---
-#### Install boost
 * **Discalimer!!!: don't run sudo on school computers, IT will be notified.**
 * **REQUIRE SUDO access**
-
-* **add a yaml example in the folder yamlexample**
-* **it only read NPCS block**
+#### Install boost
 
 ```
 $ bash sudoBoostInstall.sh
+```
+
+#### Install curses
+---
+```
+$ sudo apt-get install libncurses5-dev
 ```
 
 ## Build

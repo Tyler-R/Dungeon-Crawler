@@ -1,3 +1,7 @@
 go
 move
 mv
+north
+south
+west
+east
