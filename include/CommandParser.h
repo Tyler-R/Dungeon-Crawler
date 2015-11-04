@@ -3,15 +3,18 @@
 #include <vector>
 #include <memory>
 #include <boost/tokenizer.hpp>
+#include "user.h"
 // #include "CommandSet.h"
 
 class CommandParser{
 public:
-
+    CommandParser();
+    CommandParser(shared_ptr<User> player);
     std::string processCommand(std::string &in);
 
 
  private:
+    shared_ptr<User> PlayerOne;
     std::vector<std::string> tokenizeInput(std::string &in);
     void toLowerCase(std::string &str);
     void reformatTokens(std::vector<std::string>& tokens);
@@ -25,6 +28,7 @@ public:
     std::string validateUsdeArgv(std::vector<std::string>& cmd);
     std::string validateCheckArgv(std::vector<std::string>& cmd);
     std::string validateAliasArgv(std::vector<std::string>& cmd);
+    std::string validateTossArgv(std::vector<std::string>& cmd);
 
 
     bool isMoveCmd(std::vector<std::string>& word);
@@ -34,6 +38,7 @@ public:
     bool isUseCmd(std::vector<std::string>& word);
     bool isCheckCmd(std::vector<std::string>& word);
     bool isAliasCmd(std::vector<std::string>& word);
+    bool isTossCmd(std::vector<std::string>& word);
 
 
 };

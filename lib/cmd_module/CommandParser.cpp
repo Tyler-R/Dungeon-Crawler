@@ -2,23 +2,36 @@
 #include "CommandParser.h"
 using namespace std;
 
+CommandParser::CommandParser(){
+
+}
+
+CommandParser::CommandParser(shared_ptr<User> user){
+  PlayerOne = user;
+}
+
 string CommandParser::validateLookArgv(vector<string> &cmd){
 
     if(cmd.size() > 1){
       reformatTokens(cmd);
       if(cmd.at(1).compare("around") == 0){
-        return"look around\n";
+        return PlayerOne->lookAround();
+        // return "look around\n";
       }
       else if(cmd.at(1).compare("exit") == 0){
-        return"look at exit\n";
+        // return"look at exit\n";
+        return PlayerOne->lookExits();
       }
       else if(cmd.at(1).compare("inventory") == 0){
-        return "look at inventory\n";
+        // return "look at inventory\n";
+       return  PlayerOne->viewInventory();
       }
-      return "look at " + cmd.at(1) + "\n";
+      // return "look at " + cmd.at(1) + "\n";
+      return PlayerOne->lookAt(cmd.at(1));
     }
     else {
-      return "look at the current room\n";
+      // return "look at the current room\n";
+      return PlayerOne->getRoom()->getDesc();
     }
 }
 
@@ -26,16 +39,20 @@ string CommandParser::validateMoveArgv(vector<string> &cmd){
 
     if(cmd.size() == 1){
       if(cmd.front().compare("north") == 0){
-        return "move to north\n";
+        // return "move to north\n";
+        return PlayerOne->moveTo("north");
       }
       else if(cmd.front().compare("south") == 0){
-        return "move to south\n";
+        // return "move to south\n";
+        PlayerOne->moveTo("south");
       }
       else if(cmd.front().compare("east") == 0){
-        return "move to east\n";
+        // return "move to east\n";
+        return PlayerOne->moveTo("east");
       }
       else if(cmd.front().compare("west") == 0 ){
-        return "move to west\n";
+        // return "move to west\n";
+        return PlayerOne->moveTo("west");
       }
       else {
         return "Usage: <move> <destination>\n";
@@ -43,18 +60,19 @@ string CommandParser::validateMoveArgv(vector<string> &cmd){
     }
     else{
       reformatTokens(cmd);
-      return"go to " +cmd.at(1) + "\n";
+      // return"go to " +cmd.at(1) + "\n";
+      return PlayerOne->moveTo(cmd.at(1));
     }
 }
 
 string CommandParser::validateAttackNPCArgv(vector<string> &cmd){
   if(cmd.size()==1){
       return "Usage: <attack> <NPC's name>\n";
-
    }
   else{
     reformatTokens(cmd);
-    return "attack NPC" + cmd.at(1) + "\n";
+    // return "attack NPC" + cmd.at(1) + "\n";
+    return PlayerOne->attackNPC(cmd.at(1));
   }
 }
 
@@ -64,7 +82,8 @@ string CommandParser::validateTakeArgv(std::vector<std::string>& cmd){
    }
   else{
     reformatTokens(cmd);
-    return "take " + cmd.at(1) + "\n";
+    // return "take " + cmd.at(1) + "\n";
+    return PlayerOne->takeItem(cmd.at(1));
   }
 }
 
@@ -74,17 +93,30 @@ string CommandParser::validateUsdeArgv(std::vector<std::string>& cmd){
    }
   else{
     reformatTokens(cmd);
-    return "use " + cmd.at(1) + "\n";
+    // return "use " + cmd.at(1) + "\n";
+    return PlayerOne->useItem(cmd.at(1));
   }
 }
 
 string CommandParser::validateCheckArgv(std::vector<std::string>& cmd){
   if(cmd.size() == 1){
-    return "check inventory\n";
+    // return "check inventory\n";
+    return PlayerOne->viewInventory();
   }
   else {
     reformatTokens(cmd);
     return "check " + cmd.at(1)+"\n";
+    // return
+  }
+}
+
+string CommandParser::validateTossArgv(std::vector<std::string>& cmd){
+  if(cmd.size() == 1){
+      return "Usage: <toss> <item name>\n";
+  }
+  else{
+     reformatTokens(cmd);
+     return PlayerOne->tossItem(cmd.at(1));
   }
 }
 
@@ -147,7 +179,7 @@ vector<string> CommandParser::getGlobalCmdAlias(string generic_cmd){
   string prefix_dir = "command/";
   string filetype = ".txt";
   string cmd_file_path = prefix_dir + generic_cmd + filetype;
-  cout<<cmd_file_path<<endl;
+
   fs.open(cmd_file_path);
   if(!fs.is_open()){
     cout<<"fail to open the file " << generic_cmd << endl;
@@ -203,6 +235,11 @@ bool CommandParser::isAliasCmd(std::vector<std::string>& words){
   return words.front().compare("alias") == 0;
 }
 
+bool CommandParser::isTossCmd(std::vector<std::string>& words){
+  vector<string> cmd_alias = getGlobalCmdAlias("use");
+  return findMatch(cmd_alias, words.front());
+}
+
 
 /*entry point for the cmd_module api*/
 string CommandParser::processCommand(string &in){
@@ -230,7 +267,10 @@ string CommandParser::processCommand(string &in){
       return validateCheckArgv(words);
    }
    else if(isAliasCmd(words)){
-    return validateAliasArgv(words);
+      return validateAliasArgv(words);
+   }
+   else if(isTossCmd(words)){
+      return validateTossArgv(words);
    }
    else {
     return "invalid command";

@@ -13,8 +13,6 @@ bool isMatch(std::string);
 int main()
 {
   std::string str;
-  // std::cout<<"this is sample input: "<<std::endl;
-  // std::cout<< str << std::endl;
   CommandParser cp;
   std::string response;
 
