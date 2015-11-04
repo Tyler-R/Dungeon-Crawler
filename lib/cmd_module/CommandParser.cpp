@@ -28,7 +28,7 @@ string CommandParser::validateLookArgv(vector<string> &cmd){
       }
       // return "look at " + cmd.at(1) + "\n";
       string first = PlayerOne->lookAt(cmd.at(1));
-      string second = PlayerOne->lookObjKeywords(cmd.at(1));
+      string second = "\nKeywords:\n" + PlayerOne->lookObjKeywords(cmd.at(1));
       return  first + second;
     }
     else {

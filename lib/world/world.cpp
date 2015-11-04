@@ -63,7 +63,7 @@ World::World(){
 
 	shared_ptr<Item> item2 (new Item("101"));
 	item2->addKeyword("glasses");
-	item2->addKeyword("smurfberries");
+	item2->addKeyword("specs");
 	item2->addShortDesc("A pair of glasses");
 	item2->addLongDesc("An odd pair of glasses has been left here.");
 

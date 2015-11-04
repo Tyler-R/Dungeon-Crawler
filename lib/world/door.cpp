@@ -21,7 +21,7 @@ Door::Door(string inputId, string inputDir, string inputDesc, shared_ptr<Room> &
 	dir = inputDir;
 	desc = inputDesc;  
 
-	keywordList.push_back(inputDir);
+	keywordList.push_back(dir);
 }
 
 Door::Door(Door &obj){
