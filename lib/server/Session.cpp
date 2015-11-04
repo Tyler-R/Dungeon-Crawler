@@ -4,6 +4,7 @@ Session::Session( tcp::socket socket, int maxCommands, shared_ptr<World> world) 
     // commandParser = std::make_shared< CommandParser >( );
     myWorld = world;
 }
+
 Session::~Session() {
 
 }
@@ -17,6 +18,13 @@ void Session::listenForCommands() {
             if(!errorCode) {
                 // handle command
                 command->length = length;
+                std::cout << "received: ";
+                for(auto &c : command->buffer) {
+                    std::cout << c;
+                }
+
+                std::cout << " - length " << command->length << std::endl;
+
                 addCommandToQueue(*command);
                 messageReceivedCallback();
 

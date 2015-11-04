@@ -48,7 +48,7 @@ void UserInterface::userCommand(){
 			str[stringPosition - 1] = ' ';
 			stringPosition--;
 		}
-		
+
 		input = ' ';
 	}
 
@@ -87,12 +87,39 @@ void UserInterface::displayUserCommand(){
 
 void UserInterface::displayServerResponse(const char *serverResponse){
 
+
+	std::stringstream ss(serverResponse);
+	std::string message;
+
+	if (serverResponse != NULL) {
+		while(std::getline(ss,message,'\n')) {
+			messageLog.push_back(message);
+		}
+	}
+
+
+
+}
+
+void UserInterface::draw() {
 	refresh();
 	attron(COLOR_PAIR(1));
-	mvprintw(row - row  + 1 , 5, "Server Response: %s", serverResponse); //mvprintw(LINES - 2, 0, "You Entered: %s", str);
-	clrtoeol();
 
+	int position = 1;
+	int index = 0;
+	for(auto &message : messageLog) {
+		if(messageLog.size() - index < row - 1 ) {
+			mvprintw(position, 0, "%s", message.c_str());
+			position++;
 
+		}
+		index++;
+		clrtoeol();
+	}
+}
+
+void UserInterface::addMessage(std::string message) {
+	messageLog.push_back(message);
 }
 
 

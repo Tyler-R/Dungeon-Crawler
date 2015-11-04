@@ -9,14 +9,17 @@ std::shared_ptr<UserInterface> display;
 
 std::shared_ptr<Client> client;
 
-const int DELAY_BETWEEN_USER_INPUT_POLLS = 50000;
+const int DELAY_BETWEEN_USER_INPUT_POLLS = 80000;
 
 void draw() {
 	while(true) {
 		do {
 			display->userCommand();
+			// client->sendUserInput(display->getUserCommand());
 
 			display->displayCommandInInputBox(display->getUserCommand());
+
+			display->draw();
 
 			usleep(DELAY_BETWEEN_USER_INPUT_POLLS);
 		} while(display->getUserCommand().find("\n") ==  std::string::npos );
@@ -39,9 +42,6 @@ int main() {
 
 	display = std::make_shared<UserInterface>();
 
-	std::thread displayLoop(draw);
-
-
 	auto serverAddress = "127.0.0.1";
 
 	client = std::make_shared<Client>(serverAddress, port);
@@ -58,6 +58,8 @@ int main() {
 	client->setHandleServerCallback(exampleCallback);
 
 	client->handleServerResponse();
+
+	std::thread displayLoop(draw);
 
 	client->start();
 

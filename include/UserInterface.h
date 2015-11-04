@@ -1,6 +1,8 @@
 #include <ncurses.h>      
 #include <string.h> 
 #include <iostream>
+#include <vector>
+#include <sstream>
 
 
 class UserInterface
@@ -14,6 +16,8 @@ private:
 
 	int stringPosition = 0;
 
+	std::vector<std::string> messageLog;
+
 
 public:
 	UserInterface();
@@ -24,6 +28,10 @@ public:
 	void displayCommandInInputBox(std::string command);
 	void userCommand();
 	std::string getUserCommand();
+
+	void draw();
+
+	void addMessage(std::string message);
 
 
 	
