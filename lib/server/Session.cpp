@@ -1,8 +1,8 @@
 #include "Session.h"
 
-Session::Session( tcp::socket socket, int maxCommands ) : socket( std::move( socket ) ), maxCommands( maxCommands ){
-    commandParser = std::make_shared< CommandParser >( );
-
+Session::Session( tcp::socket socket, int maxCommands, shared_ptr<World> world) : socket( std::move( socket ) ), maxCommands( maxCommands ){
+    // commandParser = std::make_shared< CommandParser >( );
+    myWorld = world;
 }
 Session::~Session() {
 
@@ -111,6 +111,12 @@ void Session::attemptLogin() {
 
         loggedIn = true;
         sendMessage("You are logged in as " + username + "\n");
+        shared_ptr<User> PlayerOne( new User(false, username, password, myWorld->getRoom(0), "This is PlayerOne."));
+        usr = PlayerOne;
+        myWorld->getRoom(0)->addUser(usr);
+        // st::make_shared<CommandParser> (usr);
+        commandParser = std::make_shared<CommandParser>(usr);
+
     } else {
         sendMessage("Incorrect username or password. Try again.\n");
         login();

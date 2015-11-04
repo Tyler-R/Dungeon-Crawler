@@ -1,8 +1,8 @@
 #include "Server.h"
 
 
-Server::Server( int port, std::shared_ptr<Configuration> config) 
-              : port( port ), acceptor( ioService, tcp::endpoint( tcp::v4(), port ) ), 
+Server::Server( int port, std::shared_ptr<Configuration> config)
+              : port( port ), acceptor( ioService, tcp::endpoint( tcp::v4(), port ) ),
                 socket( ioService ), configuration( config ) {
 
     serverRefreshRate = atoi( configuration->getValue( "serverRefresh" ).c_str( ) );
@@ -32,7 +32,7 @@ void Server::listenForConnections( ) {
             if( !errorCode ) {
                 int maxCommands = atoi( configuration->getValue( "maxCommands" ).c_str( ) );
 
-                sessions.emplace_back( std::make_shared<Session>( std::move( socket ), maxCommands ) );
+                sessions.emplace_back( std::make_shared<Session>( std::move( socket ), maxCommands, world ) );
                 sessions.back( )->listenForCommands( );
                 sessions.back( )->offerOptionToRegisterOrLogin( );
             }

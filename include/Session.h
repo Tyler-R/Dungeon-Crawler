@@ -23,7 +23,7 @@ public:
         char buffer[MAX_COMMAND_LENGTH];
     } Command;
 
-    Session(tcp::socket socket, int maxCommands);
+    Session(tcp::socket socket, int maxCommands, shared_ptr<World> world);
     ~Session();
 
     void listenForCommands();
@@ -65,7 +65,8 @@ private:
     bool loggedIn = false;
     bool alive = true;
 
-    World myWorld;
-    std::shared_ptr< CommandParser > commandParser;
+    shared_ptr<World> myWorld;
+    std::shared_ptr<CommandParser> commandParser;
+    shared_ptr<User> usr;
 
 };
