@@ -92,8 +92,9 @@ void UserInterface::displayServerResponse(const char *serverResponse){
 
 
 std::string UserInterface::getUserCommand(){
+	std::string command(str, 0, stringPosition);
 
-	return str;
+	return command;
 }
 
 

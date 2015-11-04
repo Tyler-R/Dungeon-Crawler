@@ -21,7 +21,11 @@ void draw() {
 			usleep(DELAY_BETWEEN_USER_INPUT_POLLS);
 		} while(display->getUserCommand().find("\n") ==  std::string::npos );
 
-		client->sendUserInput(display->getUserCommand());
+		std::string command = display->getUserCommand();
+
+		command.erase(std::remove(command.begin(), command.end(), '\n'), command.end());
+
+		client->sendUserInput(command);
 		display->displayUserCommand();
 	}
 }
