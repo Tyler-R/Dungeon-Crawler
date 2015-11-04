@@ -39,11 +39,16 @@ void UserInterface::userCommand(){
 	}
 
 	if(input == 127) {
-		str[stringPosition - 1] = ' ';
-		str[stringPosition - 2] = ' ';
-		stringPosition--;
-		stringPosition--;
+		if(stringPosition > 0) {
+			str[stringPosition - 1] = ' ';
+			stringPosition--;
+		}
 
+		if(stringPosition > 0) {
+			str[stringPosition - 1] = ' ';
+			stringPosition--;
+		}
+		
 		input = ' ';
 	}
 
