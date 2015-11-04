@@ -198,8 +198,8 @@ string User::moveTo(string dir){
   return "Cannot go there!\n"; 
 }
 
-string User::lookAt(string objName){
-  return getRoom()->lookAt(objName);
+string User::lookAt(string itemKeyword){
+  return getRoom()->lookAt(itemKeyword);
 }
 
 string User::lookAround(){
@@ -214,18 +214,18 @@ string User::lookObjList(){
   return getRoom()->getObjList();
 }
 
-string User::lookObjKeywords(string objName){
+string User::lookObjKeywords(string itemKeyword){
   string result = "";
-  for (auto & keyword : getRoom()->getObjKeywords(objName)){
+  for (auto & keyword : getRoom()->getObjKeywords(itemKeyword)){
     result = result + keyword + "\n";
   }
   return result;
 }
 
 ////ITEM INTERACTION METHODS Added by Sarah and edited by Jordan
-string User::takeItem(string objName){
+string User::takeItem(string itemKeyword){
   for (auto & item : getRoom()->getItems() ) {
-    if(item->searchKeyword(objName)){
+    if(item->searchKeyword(itemKeyword)){
       inventory->addItem(item);
       getRoom()->removeItem(item->getID());
       getRoom()->announcement(getUserName() + " took a " + item->getShortDesc() + "."+ "\n");
@@ -240,28 +240,28 @@ string User::viewInventory(){
   return inventory->lookAtInventory();
 }
 
-string User::useItem(string itemID){
-  string result = (inventory->useItem(itemID));
+string User::useItem(string itemKeyword){
+  string result = (inventory->useItem(itemKeyword));
   return result;
 }
 
 /*Removes item from inventory and places it back into the room*/
-string User::tossItem(string itemID){
+string User::tossItem(string itemKeyword){
   int initialInventorySize = inventory->getSize();
-  string result = (inventory->removeItem(itemID));
+  string result = (inventory->removeItem(itemKeyword));
   int currentInventorySize = inventory->getSize();
 
   if(initialInventorySize != currentInventorySize){
     result = result + " and thrown on the floor" + "\n";
-    string itemName = inventory->getItemName(itemID);
+    string itemName = inventory->getItemName(itemKeyword);
     getRoom()->announcement(getUserName() + " just tossed " + itemName + " on the floor."+ "\n");
   }
   
   return result;
 }
 
-string User::getInvItemLongDesc(string itemID){
-  return inventory->getItemDescription(itemID);
+string User::getInvItemLongDesc(string itemKeyword){
+  return inventory->getItemDescription(itemKeyword);
 }
 
 /*BATTLING METHODS  --  ONLY NPC SO FAR!*/

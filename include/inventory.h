@@ -24,23 +24,23 @@ class Inventory {
 
     vector<string> getInventoryNames();
 
-    string getItemName(string id);
+    string getItemName(string itemKeyword);
 
     string lookAtInventory();
 
     void addItem(shared_ptr<Item> item);
 
-    string removeItem(string itemName);
+    string removeItem(string itemKeyword);
 
-    string getItemDescription(string itemID);
+    string getItemDescription(string itemKeyword);
 
-    string useItem(string itemName);
+    string useItem(string itemKeyword);
 
     int getSize();
 
     int getMaxSize();
 
-    shared_ptr<Item> findItemByID(string id);
+    shared_ptr<Item> findItemByKeyword(string itemKeyword);
 
   private:
     static const int inventoryMaxSize = 20;

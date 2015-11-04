@@ -33,10 +33,10 @@ vector<string> Inventory::getInventoryNames(){
   return inventoryOutput;
 }
 
-string Inventory::getItemName(string itemID){
+string Inventory::getItemName(string itemKeyword){
   string itemName;
  
-  shared_ptr<Item> item = findItemByID(itemID);
+  shared_ptr<Item> item = findItemByKeyword(itemKeyword);
 
   if(item != NULL){
     return item->getShortDesc();
@@ -71,13 +71,13 @@ void Inventory::addItem(shared_ptr<Item> item){
 }
 
 // TODO
-string Inventory::removeItem(string id){
+string Inventory::removeItem(string itemKeyword){
   string result = "Item was not in your inventory";
 
   vector<shared_ptr<Item>>::iterator it = inventory.begin();
   for(it; it < inventory.end(); advance(it, 1)){
     shared_ptr<Item> item = *it;
-    if(item->searchKeyword(id)){
+    if(item->searchKeyword(itemKeyword)){
       result = item->getShortDesc() + " was removed from your inventory";
       inventory.erase(it);
       return result;
@@ -86,8 +86,8 @@ string Inventory::removeItem(string id){
   return result;
 }
 
-string Inventory::getItemDescription(string itemID){
-  shared_ptr<Item> item = findItemByID(itemID);
+string Inventory::getItemDescription(string itemKeyword){
+  shared_ptr<Item> item = findItemByKeyword(itemKeyword);
 
   if(item != NULL){
     return item->getLongDesc();
@@ -99,10 +99,10 @@ string Inventory::getItemDescription(string itemID){
 }
 
 // TODO
-string Inventory::useItem(string itemID){
+string Inventory::useItem(string itemKeyword){
   //FILL IN RETRIEVAL OF ITEM EFFECTS  
 
-  return (removeItem(itemID) + " and used. \n");
+  return (removeItem(itemKeyword) + " and used. \n");
 }
 
 int Inventory::getSize() {
@@ -113,9 +113,9 @@ int Inventory::getMaxSize(){
   return inventoryMaxSize;
 }
 
-shared_ptr<Item> Inventory::findItemByID(string itemID){
+shared_ptr<Item> Inventory::findItemByKeyword(string itemKeyword){
   for(shared_ptr<Item> item : inventory){
-    if(item->getID() == itemID){
+    if(item->searchKeyword(itemKeyword)){
       return item;
     }
   }

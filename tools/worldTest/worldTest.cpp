@@ -251,5 +251,8 @@ int main() {
 	cout << endl << "--Player One: Looks at Inventory--" << endl;
 	cout << PlayerOne->viewInventory() << endl;
 
+	cout << endl << "--Player One requests description of berries from their inventory--" << endl;
+	cout << PlayerOne->getInvItemLongDesc("berries") << endl;
+
 	cout << endl << "--EndTest!--" << endl;
 }

@@ -52,21 +52,21 @@ class User {
 
     //ROOM INTERACTION METHODS added by Sarah
     string moveTo(string dir);
-    string lookAt(string objName);
+    string lookAt(string itemKeyword);
     string lookAround();
     string lookExits();
     string lookObjList();
-    string lookObjKeywords(string objName);
-    string takeItem(string objName);
+    string lookObjKeywords(string itemKeyword);
+    string takeItem(string itemKeyword);
 
     void setMessageDisplayer(std::function<void(string)> newMessageDisplayer);
     void notifySession(string notification);
 
     /*INVENTORY INTERACTION METHODS added by Jordan*/
     string viewInventory();
-    string useItem(string itemID);
-    string tossItem(string itemID);
-    string getInvItemLongDesc(string itemID);
+    string useItem(string itemKeyword);
+    string tossItem(string itemKeyword);
+    string getInvItemLongDesc(string itemKeyword);
 
     /*ABILITYSTAT INTERACTION METHODS added by Jordan*/
     int getCharisma();
