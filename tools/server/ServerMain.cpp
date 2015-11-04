@@ -11,8 +11,6 @@ int main() {
 
 	auto port = atoi( configuration->getValue( "port" ).c_str( ) ) ;
 
-	std::cout << "port =- " << port << std::endl;
-
 	Server server(port, configuration);
 	server.start();
 }

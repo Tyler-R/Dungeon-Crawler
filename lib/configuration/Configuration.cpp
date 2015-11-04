@@ -36,7 +36,7 @@ std::string Configuration::getValue( std::string key ) {
 
 
 void Configuration::setValue( std::string key, std::string value ) {
-	saveToDisk(value, key);
+	saveToDisk(key, value);
 }
 
 void Configuration::saveToDisk( std::string key, std::string value ) {
@@ -45,7 +45,11 @@ void Configuration::saveToDisk( std::string key, std::string value ) {
 
 	if(file.is_open( ) ) {
 		for(auto &configurationPair : configurationValues) {
-			file << configurationPair.first << " " << configurationPair.second << "\n";
+			if( configurationPair.first.compare( key ) != 0 ) {
+				file << configurationPair.first << " " << configurationPair.second << "\n";
+			} else {
+				file << key << " " << value << "\n";
+			}
 		}
 	} else {
 		cout << "could not save to file" << endl;

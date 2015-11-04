@@ -1,4 +1,3 @@
+maxCommands 5
 port 8080
 serverRefresh 60
-maxCommands 5
-
