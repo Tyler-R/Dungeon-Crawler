@@ -1,6 +1,4 @@
 #pragma once
-#include "Session.h"
-#include "world.h"
 
 #include <iostream>
 #include <string>
@@ -12,11 +10,15 @@
 #include <boost/bind.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
 
+#include "Session.h"
+#include "world.h"
+#include "configuration/configuration.h"
+
 using boost::asio::ip::tcp;
 
 class Server {
 public:
-    Server( int port );
+    Server( int port, std::shared_ptr<Configuration> config );
     ~Server( );
 
     void start( );
@@ -31,6 +33,10 @@ private:
     std::vector<std::shared_ptr<Session>> sessions;
 
     std::shared_ptr<World> world;
+
+    std::shared_ptr<Configuration> configuration;
+
+    int serverRefreshRate = 0;
 
     void listenForConnections( );
 

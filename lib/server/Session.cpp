@@ -1,11 +1,11 @@
 #include "Session.h"
 
-Session::Session(tcp::socket socket) : socket(std::move(socket)){
-    commandParser = new CommandParser(myWorld);
+Session::Session( tcp::socket socket, int maxCommands ) : socket( std::move( socket ) ), maxCommands( maxCommands ){
+    commandParser = std::make_shared< CommandParser >( myWorld );
 }
 
 Session::~Session() {
-    delete commandParser;
+
 }
 
 void Session::listenForCommands() {

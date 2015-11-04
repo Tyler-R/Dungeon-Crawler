@@ -1,8 +1,11 @@
 #include "Server.h"
 
 
-Server::Server( int port ) : port( port ), acceptor( ioService, tcp::endpoint( tcp::v4(), port ) ), socket( ioService ) {
+Server::Server( int port, std::shared_ptr<Configuration> config) 
+              : port( port ), acceptor( ioService, tcp::endpoint( tcp::v4(), port ) ), 
+                socket( ioService ), configuration( config ) {
 
+    serverRefreshRate = atoi( configuration->getValue( "serverRefresh" ).c_str( ) );
 }
 
 Server::~Server( ) {
@@ -27,7 +30,9 @@ void Server::listenForConnections( ) {
     acceptor.async_accept( socket,
         [this]( boost::system::error_code errorCode ) {
             if( !errorCode ) {
-                sessions.emplace_back( std::make_shared<Session>( std::move( socket ) ) );
+                int maxCommands = atoi( configuration->getValue( "maxCommands" ).c_str( ) );
+
+                sessions.emplace_back( std::make_shared<Session>( std::move( socket ), maxCommands ) );
                 sessions.back( )->listenForCommands( );
                 sessions.back( )->offerOptionToRegisterOrLogin( );
             }
@@ -39,6 +44,8 @@ void Server::listenForConnections( ) {
 
 void Server::handleCommands( ) {
     world->performResets( );
+
+    assert(serverRefreshRate > 0 && "server refresh rate not properly set");
 
     for( auto &session : sessions ) {
         // handle commands that will manipulate the world
@@ -57,7 +64,7 @@ void Server::handleCommands( ) {
     }
 
     try{
-        boost::asio::deadline_timer timer( ioService, boost::posix_time::millisec( 16 ) );
+        boost::asio::deadline_timer timer( ioService, boost::posix_time::millisec( 1000 / serverRefreshRate ) );
         timer.async_wait( boost::bind( &Server::handleCommands, this ) );
     } catch( std::exception &e ) {
         std::cerr << e.what( ) << std::endl;
