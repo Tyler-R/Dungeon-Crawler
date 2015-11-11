@@ -6,6 +6,7 @@ FileIO::FileIO(std::string userName, std::string userPassword, int userID){
     this->userName = userName;
     this->userPassword = userPassword;
     this->userID = userID;
+    isUserActive = false;
     
 }
 
@@ -25,28 +26,20 @@ void FileIO::openFileConnectionToWrite(){
 bool FileIO::writeToFile(){
     
     bool userFound = recordExist();
-    
+    openFileConnectionToWrite();
     if(userFound == true){
+        closeWriteFileConnection();
         return false;
-    }
-    else{
+    }else{
         outFile << userID << " " ;
         outFile << userName << " ";
         outFile << userPassword << " ";
+        outFile << isUserActive << " ";
         outFile << std::endl;
+        closeWriteFileConnection();
         return true;
     }
     
-}
-
-void FileIO::closeWriteFileConnection(){
-    
-    outFile.close();
-}
-
-bool FileIO::isUserLoggedIn(){
-    
-    return false;
 }
 
 bool FileIO::recordExist(){
@@ -55,16 +48,18 @@ bool FileIO::recordExist(){
     std::string record;
     std::vector<std::string> vec;
     
+    // Store each record in the vector
     while(getline(inFile, record)) {
         
         vec.push_back(record);
         
     }
+    // Tokenize each record
     for (int i = 0; i < vec.size();i++){
         std::istringstream buf(vec[i]);
         std::istream_iterator<std::string> beg(buf), end;
         std::vector<std::string> tokens(beg, end);
-        if (tokens[1] == userName && tokens[2] == userPassword){
+        if (tokens[USER_NAME_FIELD] == userName && tokens[USER_PASS_FIELD] == userPassword){
             closeReadFileConnection();
             return true;
         }
@@ -75,27 +70,13 @@ bool FileIO::recordExist(){
     return false;
 }
 
-bool FileIO::readFromFile(){
+
+
+void FileIO::closeWriteFileConnection(){
     
-    std::string record;
-    std::vector<std::string> vec;
-    
-    while(getline(inFile, record)) {
-        
-        vec.push_back(record);
-        
-    }
-    for (int i = 0; i < vec.size();i++){
-        std::istringstream buf(vec[i]);
-        std::istream_iterator<std::string> beg(buf), end;
-        std::vector<std::string> tokens(beg, end);
-        if (tokens[1] == userName && tokens[2] == userPassword){
-            return true;
-        }
-        
-    }
-    return false;
+    outFile.close();
 }
+
 
 void FileIO::openFileConnectionToRead(){
     
@@ -106,7 +87,3 @@ void FileIO::closeReadFileConnection(){
     
     inFile.close();
 }
-
-
-
-

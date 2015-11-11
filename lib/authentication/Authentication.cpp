@@ -9,25 +9,19 @@ Authentication::Authentication(std::string userName, std::string userPassword){
 bool Authentication::login(){
     
     UserLogin fileLogin(userName, userPassword);
-    if (fileLogin.isUserLoggedIn()){
-        return true;
-    }
-    return false;
+    return fileLogin.isUserLoggedIn();
 }
 
-bool Authentication::logout(){
-   
-    return false;
-}
+// bool Authentication::logout(){
+    
+//     UserLogout fileLogOut(userName,userPassword);
+//     return fileLogOut.isUserLoggedOut();
+// }
 
 
 bool Authentication::signUp(){
     
     UserSignUp fileSignUp(userName,userPassword);
-    
-    if (fileSignUp.IsUserSignedUp()){
-        return true;
-    }
-    return false;
+    return fileSignUp.IsUserSignedUp();
     
 }
