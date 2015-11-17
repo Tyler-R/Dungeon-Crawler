@@ -130,13 +130,9 @@ void World::addReset(shared_ptr<Reset> reset) {
 }
 
 void World::performResets() {
-	using namespace std::chrono;
-
 
 	for(auto &reset : resets) {
-		auto currentTime = system_clock::now();
-		auto currentTimeSinceEpoch = duration_cast< milliseconds >( currentTime.time_since_epoch( ) );
-		reset->performReset(currentTimeSinceEpoch);
+		reset->performReset();
 	}
 }
 

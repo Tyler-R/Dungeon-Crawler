@@ -9,12 +9,8 @@ DoorReset::~DoorReset() {
 
 }
 
-void DoorReset::performReset( std::chrono::milliseconds currentTimeSinceEpoch ) {
-	using namespace std::chrono;
+void DoorReset::performReset( ) {
 
-    if( shouldPerformReset( currentTimeSinceEpoch ) ) {
-    	timeLastResetWasPerformed = currentTimeSinceEpoch;
-
-  	    room->setDoorState( doorNumber, newDoorState );
-    }
+  	room->setDoorState( doorNumber, newDoorState );
+    
 }
