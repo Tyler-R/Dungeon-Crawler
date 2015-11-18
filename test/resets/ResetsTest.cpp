@@ -7,8 +7,6 @@
 
 #include <memory>
 
-using namespace std::chrono;
-
 
 void testNPCResetWithMultipleResets() {
 
