@@ -1,3 +1,6 @@
 add_subdirectory(resets)
 add_subdirectory(yamltest)
 add_subdirectory(cmd_usr_world)
+add_subdirectory(command_test)
+add_subdirectory(worldTest)
+add_subdirectory(battleTest)
