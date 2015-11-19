@@ -92,7 +92,7 @@ string User::getDescription(){
 void User::levelUp(){
   playerLevel += 1;
   userStats->levelUp();
-  getRoom()->announcement(getUserName() + "just levelled up! Hooray!");
+  getRoom()->broadcastMessage(this, getUserName() + " just levelled up! Hooray!");
 }
 
 int User::getLevel(){
@@ -188,10 +188,10 @@ void User::setStrength(int strength){
 string User::moveTo(string dir){
   for (auto & door : getRoom()->getDoorList() ) {
     if(door->findKeyword(dir) || door->getLeadsTo()->findKeyword(dir)){
-      getRoom()->announcement(getUserName() + " left the room."+ "\n");
+      getRoom()->broadcastMessage(this, getUserName() + " left the room."+ "\n");
       getRoom()->transferOutUser(getUserName(), door->getLeadsTo());
       setRoom(door->getLeadsTo());
-      getRoom()->announcement(getUserName() + " has entered the room."+ "\n");
+      getRoom()->broadcastMessage(this, getUserName() + " has entered the room."+ "\n");
       return "You are now in the " + getRoom()->getName() + ".\n" + getRoom()->getDesc()+ "\n";
     }
   }
@@ -228,7 +228,7 @@ string User::takeItem(string itemKeyword){
     if(item->searchKeyword(itemKeyword)){
       inventory->addItem(item);
       getRoom()->removeItem(item->getID());
-      getRoom()->announcement(getUserName() + " took a " + item->getShortDesc() + "."+ "\n");
+      getRoom()->broadcastMessage(this, getUserName() + " took a " + item->getShortDesc() + "."+ "\n");
       return "You took a " + item->getShortDesc() + "\n";
     }
   }
@@ -254,7 +254,7 @@ string User::tossItem(string itemKeyword){
   if(initialInventorySize != currentInventorySize){
     result = result + " and thrown on the floor" + "\n";
     string itemName = inventory->getItemName(itemKeyword);
-    getRoom()->announcement(getUserName() + " just tossed " + itemName + " on the floor."+ "\n");
+    getRoom()->broadcastMessage(this, getUserName() + " just tossed " + itemName + " on the floor."+ "\n");
   }
   
   return result;
@@ -272,7 +272,7 @@ string User::attackNPC(string npcName){
       int userAttack = userStats->getStrength();
       int NPCAttack = NPC->getHit(userAttack);
       string NPCShortDesc = NPC->getShortDesc();
-      getRoom()->announcement(getUserName() + " just attacked " + NPCShortDesc+ "\n");
+      getRoom()->broadcastMessage(this, getUserName() + " just attacked " + NPCShortDesc+ "\n");
 
       result = getAttacked(NPCAttack, NPCShortDesc) + NPCShortDesc;
       return result;
@@ -286,7 +286,7 @@ string User::attackNPC(string npcName){
 
 string User::getAttacked(int NPCAttack, string NPCShortDesc){
   if(NPCAttack == 0){
-    getRoom()->announcement(getUserName() + " just killed " + NPCShortDesc+ "\n");
+    getRoom()->broadcastMessage(this, getUserName() + " just killed " + NPCShortDesc+ "\n");
     increaseXP(KILLED_NPC_EXPERIENCE);
     return "You have just succeeded in killing\n";
   }
@@ -299,7 +299,7 @@ string User::getAttacked(int NPCAttack, string NPCShortDesc){
                       " damage from ";
     }
     else{
-      getRoom()->announcement(getUserName() + " was just killed by " + NPCShortDesc+ "\n");
+      getRoom()->broadcastMessage(this, getUserName() + " was just killed by " + NPCShortDesc+ "\n");
       setLivingStatus(false);
       result = "You have just been killed. Awwwwwe\n";
     }
