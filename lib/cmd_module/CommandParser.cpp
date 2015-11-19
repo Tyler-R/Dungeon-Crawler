@@ -127,6 +127,7 @@ string CommandParser::validateHelpArgv(std::vector<std::string>& cmd){
 }
 
 string CommandParser::validateSayArgv(std::vector<std::string>& cmd){
+  string name = PlayerOne->getUserName();
   string message = "";
 
   // probably want to use another method for this like a string builder.
@@ -134,8 +135,13 @@ string CommandParser::validateSayArgv(std::vector<std::string>& cmd){
   for(int i = 1; i < cmd.size(); i++) {
     message += cmd.at(i) + " ";
   }
-  // playerOne->getRoom();
-  return message;
+
+  message += "\n";
+
+  // send message to everyone in the room
+  PlayerOne->getRoom()->broadcastMessage(PlayerOne.get(), name + " says: " + message);
+  // return the message so the calling player can use it. (I think that is how the class works)
+  return "You said: " + message;
 }
 
 
