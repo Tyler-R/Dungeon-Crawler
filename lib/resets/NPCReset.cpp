@@ -8,20 +8,15 @@ NPCReset::~NPCReset() {
 
 }
 
-void NPCReset::performReset( std::chrono::milliseconds currentTimeSinceEpoch ) {
-	using namespace std::chrono;
+void NPCReset::performReset( ) {
 
 
+    int numberOfNPCsInRoom = room->getNumberOfNPCsWithID(npc->getID());
 
-    if( shouldPerformReset( currentTimeSinceEpoch ) ) {
-    	timeLastResetWasPerformed = currentTimeSinceEpoch;
+    if(numberOfNPCsInRoom < npcLimit) {
+    	shared_ptr<NPC> newNPC( new NPC( npc.get() ) );
 
-	    int numberOfNPCsInRoom = room->getNumberOfNPCsWithID(npc->getID());
-
-	    if(numberOfNPCsInRoom < npcLimit) {
-	    	shared_ptr<NPC> newNPC( new NPC( npc.get() ) );
-
-	    	room->addNPC( newNPC );
-	    }
-	}
+    	room->addNPC( newNPC );
+    }
+	
 }
