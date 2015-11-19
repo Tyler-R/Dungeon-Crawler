@@ -337,7 +337,12 @@ int Room::getNumberOfNPCsWithID(string npcID) {
 	return npcCount;
 }	
 
-void Room::announcement(string news){
+void Room::broadcastMessage(User *playerSendingBroadcast, string message){
+	cout << "broadcasting message" << endl;
+
 	for(auto &user : userList) {
+		if(user.get() != playerSendingBroadcast) {
+			user->notifySession(message);
+		}
 	}
 }

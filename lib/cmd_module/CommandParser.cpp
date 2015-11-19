@@ -121,9 +121,30 @@ string CommandParser::validateTossArgv(std::vector<std::string>& cmd){
      return PlayerOne->tossItem(cmd.at(1));
   }
 }
+
 string CommandParser::validateHelpArgv(std::vector<std::string>& cmd){
     return "USE: move, look, check, toss, take\n";
 }
+
+string CommandParser::validateSayArgv(std::vector<std::string>& cmd){
+  string name = PlayerOne->getUserName();
+  string message = "";
+
+  // probably want to use another method for this like a string builder.
+  // start at index 1 to skip the actual command (say) portion in the command
+  for(int i = 1; i < cmd.size(); i++) {
+    message += cmd.at(i) + " ";
+  }
+
+  message += "\n";
+
+  // send message to everyone in the room
+  PlayerOne->getRoom()->broadcastMessage(PlayerOne.get(), name + " says: " + message);
+  // return the message so the calling player can use it. (I think that is how the class works)
+  return "You said: " + message;
+}
+
+
 string CommandParser::validateAliasArgv(std::vector<std::string> &cmd){
   if(cmd.size() == 3){
     //user defined
@@ -245,9 +266,13 @@ bool CommandParser::isTossCmd(std::vector<std::string>& words){
 }
 
 bool CommandParser::isHelpCmd(std::vector<std::string> &words){
-  return words.front().compare("help") ==0;
+  return words.front().compare("help") == 0;
 }
 
+bool CommandParser::isSayCmd(std::vector<std::string> &words){
+  vector<string> cmd_alias = getGlobalCmdAlias("say");
+  return findMatch(cmd_alias, words.front());
+}
 
 /*entry point for the cmd_module api*/
 string CommandParser::processCommand(string &in){
@@ -282,6 +307,9 @@ string CommandParser::processCommand(string &in){
    }
    else if(isHelpCmd(words)){
     return validateHelpArgv(words);
+   } 
+   else if(isSayCmd(words)){
+    return validateSayArgv(words);
    }
    else {
     return "invalid command";

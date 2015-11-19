@@ -99,7 +99,7 @@ class Room {
 		bool doesItemExist(string itemID);
 		
 
-		void announcement(string news);
+		void broadcastMessage(User *playerSendingBroadcast, string message);
 
 };
 
