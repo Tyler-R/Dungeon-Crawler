@@ -1,4 +1,5 @@
 #include "Client.h"
+
 #include <iostream>
 
 Client::Client(std::string serverAddress, int port) : serverAddress(serverAddress), port(port), input(io_service, ::dup(STDIN_FILENO)) {
@@ -28,7 +29,7 @@ void Client::connect() {
             throw boost::system::system_error(error);
         }
     } catch (std::exception& e) {
-        std::cerr << e.what() << std::endl;
+        // std::cerr << e.what() << std::endl;
     }
 }
 
@@ -40,7 +41,7 @@ void Client::sendUserInput(std::string message) {
                 // do nothing
             } else {
                 //handle client disconnecting
-                std::cout << "server disconnected" << std::endl;
+                // std::cout << "server disconnected" << std::endl;
                 return;
             }
         }
@@ -57,7 +58,7 @@ void Client::handleServerResponse() {
                 // handle command
                 serverResponseCallback(receiveBuffer, length);
             } else {
-                std::cout << "server disconnected" << std::endl;
+                // std::cout << "server disconnected" << std::endl;
                 return;
             }
 
@@ -83,7 +84,7 @@ void Client::readInput() {
 
 void Client::handleReadInput(const boost::system::error_code& error, const size_t bytes_transferred) {
     if(error) {
-        std::cout << boost::system::system_error(error).what() << std::endl;
+        // std::cout << boost::system::system_error(error).what() << std::endl;
         return;
     }
     std::istream stringCreator(&buffer);

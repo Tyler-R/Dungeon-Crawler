@@ -1,0 +1,71 @@
+ROOMS:
+- desc:
+  - This path is made of crushed granite with curious blue streaks in it.
+  - The path continues north to a village, or south to the west gate.
+  doors:
+  - desc:
+    - The path continues toward the village.
+    dir: north
+    keywords: []
+    to: 102
+  - desc:
+    - The path back toward the forest.
+    dir: south
+    keywords: []
+    to: 3040
+  extended_descriptions: []
+  id: 101
+  name: Dimly Lit Path
+- desc:
+  - This section of the road is badly worn and frequently traversed.  There is
+  - faint singing to the north.  The road back to the forest lies to the south.
+  doors:
+  - desc:
+    - The path continues toward the village.
+    dir: north
+    keywords: []
+    to: 103
+  - desc:
+    - The dimly lit path.
+    dir: south
+    keywords: []
+    to: 101
+  extended_descriptions: []
+  id: 102
+  name: Dimly Lit Path
+- desc:
+  - This section of the road is badly worn and frequently traversed.  Singing is
+  - getting stronger to the north.  The road back to the forest lies to the south.
+  doors:
+  - desc:
+    - The entrance to smurf village.
+    dir: north
+    keywords: []
+    to: 104
+  - desc:
+    - The dimly lit path.
+    dir: south
+    keywords: []
+    to: 102
+  extended_descriptions: []
+  id: 103
+  name: Dimly Lit Path
+- desc:
+  - You stand at the entrance to a tiny village.  You can see across the whole
+  - village easily.  Little blue creatures with white hats and boots and little
+  - fluffy tails scamper about.  They sing continuously.  The singing is getting
+  - on your nerves and you have the urge to squash them.
+  doors:
+  - desc:
+    - Smurfy Road
+    dir: north
+    keywords: []
+    to: 105
+  - desc:
+    - Dimly Lit Path
+    dir: south
+    keywords: []
+    to: 103
+  extended_descriptions: []
+  id: 104
+  name: Entrance to Smurf Village

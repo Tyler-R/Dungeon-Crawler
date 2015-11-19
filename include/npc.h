@@ -12,46 +12,84 @@
 #include "monster.h"
 #include "creature.h"
 
+#include <vector>
+
 using namespace std;
 
 class NPC {
     
 private:
-    // attributes
+    // attributes (yaml)
     string npcID;
+    string npcDescription;
+    string longDesc;
+    string shortDesc;
+    vector<string> keywords;
+    const int DEAD_DAMAGE = 0;
+
+    // save for later (status)
     string npcName;
     string npcType;
     int npcHP;
     bool isAlive;
     int npcDamage;
     string npcDes;
-    
-    // functions
+
+public:
+
+    // functions (status)
     void setName(string s);
     void setType(string s);
     void setHP(int i);
     void setAlive(bool b);
     void setDamage(int i);
     void setDes(string des);
-
-public:
+    
     //constructor
 	NPC(string type, string ID); // type(monster or creature), the ID of this NPC
+    NPC(string id);
+    NPC(NPC *npc); // copy
     //destructor
-    // ~NPC();
+    ~NPC();
     
     // functions
 	void setID(string id);
 	string getID() const;
+
+    // save for later (status)
 	string getType() const;
 	string getName() const;
 	int getHP() const;
 	int getDamage()const;
 	bool getAlive()const;	// live or dead
-    string getDes()const;
+	string getDes()const;
 
-	// helper function
-	void checkNPC() const;	// print out all attributes of npc
+
+
+    // descriptions
+    void addDescription(string s);
+    void addLongDesc(string s);
+    void addShortDesc(string s);
+    string getDescription()const;
+    string getLongDesc()const;
+    string getShortDesc()const;
+    
+    // keyword
+    void addKeyword(string s);
+    void addKeywords(vector<string> s);
+    bool searchKeyword(string s) const;
+    void removeKeyword(string s);
+    void removeAllKeyword();
+    vector<string> getKeyword()const;
+    // helper function ( check keywords )
+    void printVector() const;
+
+
+    // helper function (status)
+    void checkNPC() const;	// print out all attributes of npc
+
+    // BATTLE METHOD added by Jason, edited by Jordan
+    int getHit(int damage); // reduce HP by damage
 
 };
 #endif

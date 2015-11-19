@@ -2,127 +2,147 @@
 Created By: Sarah Kim Dao
 */
 
+#pragma once
+
 #include <iostream>
 #include <vector>
 #include <string>
+#include <algorithm>
+#include <memory>
+#include <assert.h>
+
 #include "npc.h"
-#include "monster.h"
 #include "creature.h"
+#include "monster.h"
+#include "item.h"
+#include "user.h"
+
 
 using namespace std;
 
+class Door;
+
+class User; //Forward Declaration since Room class and User class refer to eachother
+
 class Room {
 	private:
-		//string id;
+		string id;
 		string name;
 		string desc;  	  	   	
 		string extDesc;
 
-		vector<NPC*> npcList;
+		vector<string> keywordList;
 
-
-		//vector<Keyword> keywords;
-
-		//vector<User> userPop;
+		vector<Door*> doorList;
+		vector<shared_ptr<NPC>> npcList;
+		vector<shared_ptr<Item>> itemList;
+		vector<shared_ptr<User>> userList;
+		
 	
 			
-
-		struct Door {
-			//keywords<string> Keywords;
-			Room *leadsTo;
-			string desc;
-		};
-
-		Door *north;			
-		Door *south;
-		Door *east;
-		Door *west;	
-		Door *up;			
-		Door *down;	
-
-
 	public: 
 
 		Room();
+		Room(Room &room);
 
-		Room(Room &obj);
-
-		Room(string input_name, string input_desc, string input_extDesc); 
-
-		/* Construct New Room from Info Contained in Text Files */
-		//Room(char id); 
+		Room(string inputId, string inputName, string inputDesc, string inputExtDesc); 
 
 		~Room();
  
-		//string getId();
-
+		string getId();
 		string getName();
 		string getDesc();  
 		string getExtDesc();
-		vector<NPC*> getNPCs();
 
-		//vector<Keyword> getKeywords();
-		//vector<User> getUsers();	
-		//vector<NPC> NPCs();
+		vector<string> getKeywords();
+		vector<shared_ptr<NPC>> getNPCs();
+		vector<shared_ptr<Item>> getItems();
+		vector<shared_ptr<User>> getUsers();	
+
+		int getNumberOfNPCsWithID(string npcID);
 
 		
-		//void getId(string s);
+		void setId(string s);
 		void setName(string s);
 		void setDesc(string s);
 		void setExtDesc(string s);
 
-		//void setKeywords(vector<Keyword> keywords);
-		//void setUser(vector<User> p);	
-		//void setNPC(vector<NPC> m);	
+		void addKeyword(string s);
+		void addKeywords(vector<string> inputKeywords);
+		void removeKeyword(string s);
+		bool findKeyword(string s);
+		void printKeywords(); //To be used by the Room's Test Module only!	
+		vector<string> getObjKeywords(string objName);
 
-		void setNorth(Room *input_id, string input_desc);
-		void setSouth(Room *input_id, string input_desc);
-		void setEast(Room *input_id, string input_desc);
-		void setWest(Room *input_id, string input_desc);
-		void setUp(Room *input_id, string input_desc);
-		void setDown(Room *input_id, string input_desc);
-
-		Door getNorth();
-		Door getSouth();
-		Door getEast();
-		Door getWest();
-		Door getUp();
-		Door getDown();
-		
-		string lookNorth();
-		string lookSouth();
-		string lookEast();
-		string lookWest();
-		string lookUp();
-		string lookDown();
-
-		Room * getNorthLeadsTo();
-		Room * getSouthLeadsTo();
-		Room * getEastLeadsTo();
-		Room * getWestLeadsTo();
-		Room * getUpLeadsTo();
-		Room * getDownLeadsTo();
-
-		/*
-
-		WARNING: The 'movement' methods currently leak.
-
-		*/
-
-		string goNorth(Room *current);
-		string goSouth(Room *current);
-		string goEast(Room *current);
-		string goWest(Room *current);
-		string goUp(Room *current);
-		string goDown(Room *current);
-
-		//
-
-		vector<string> getDoorList();	
-		vector<string> getObjList();
+		void addDoor(string inputId, string inputDir, string inputDesc, shared_ptr<Room> inputRoom);
+		vector<Door*> getDoorList();
+		string getDoorDescList();	
+		string getObjList();
 	
 		string lookAround();
-		string getObjDesc(string objName);
+		string lookAt(string objName);
+
+		void setDoorState(int doorNumber, string newState);
+
+		void addUser(shared_ptr<User> user);
+		void removeUser(string name);
+		void transferOutUser(string name, shared_ptr<Room> outRoom);
 
 		void createNPC();
+		void addNPC(shared_ptr<NPC> npc);
+		void removeNPC(string npcID);
+
+		void createItem();
+		void addItem(shared_ptr<Item> item);
+		void removeItem(string itemID);
+
+		bool doesItemExist(string itemID);
+		
+
+		void announcement(string news);
+
+};
+
+
+
+
+class Door {
+	private:
+		string id;
+		string dir;
+		string desc;  	  	   	
+		weak_ptr<Room> leadsTo;
+
+		vector<string> keywordList;
+		string state = "unlocked";
+			
+	public: 
+	
+		Door();
+
+		Door(string inputId, string inputDir, string inputDesc, shared_ptr<Room> &inputLeadsTo);
+
+		Door(Door &obj);
+
+		~Door();
+
+		void setId(string s);
+		void setDir(string s);
+		void setDesc(string s);
+		void setLeadsTo(shared_ptr<Room> r);
+
+
+		string getId();
+		string getDir();
+		string getDesc();
+		shared_ptr<Room> getLeadsTo();
+
+		vector<string> getKeywords();
+		void addKeyword(string s);
+		void removeKeyword(string s);
+		bool findKeyword(string s);
+		void printKeywords(); //To be used by the Door's Test Module only!
+
+		void setState(string newState);
+		
 };

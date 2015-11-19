@@ -1,68 +1,111 @@
 /*Header file for user.cpp
 Created By: Jordan Nielsen
 */
-
-#include <iostream>
+#pragma once
 #include "room.h"
+#include "abilityStats.h"
+#include "inventory.h"
 #include <string>
 #include <vector>
+#include <memory>
+#include <iostream>
+#include <functional>
 
 using namespace std;
 
+class Room; //Forward declaration is needed since User class and Room class refer to each other
+
 class User {
-	public:
-		User();
+  public:
+    User();
 
-		/*User constructor for setting up basic information*/
-		User(bool isAdmin, string userName, string password, Room currentRoom);
+    /*User constructor for setting up basic information*/
 
-		~User();
+    User(bool isAdmin, string userName, string password, shared_ptr<Room> currentRoom, string description);
+     User(User &user); //Copy constructor added by Sarah
+    ~User();
 
-		/*
-		void createUserName();
+    void setUserName(string s);
+    string getUserName();
 
-		void createPassword();
-		*/
+    string getPassword();
 
-		void setUserName(string userName);
-		string getUserName();
-
-		void setPassword(string password);
-		string getPassword();
-
-		void setUserType(bool isAdmin);
-		bool getUserType();
-
-		/*void setInventory(Inventory inventory);
-		vector<Item> getInventory;
-`		*/
+    void setUserType(bool b);
+    bool getUserType();
 		
-		void setRoom(Room currentRoom);
-		Room getRoom();
+    void setRoom(shared_ptr<Room> newRoom);
+    shared_ptr<Room> getRoom();
 
-		void setPlayerHealth(int health);
-		int getPlayerHealth();
+    void setDescription(string s);
+    string getDescription();
 
-		void setPlayerAttack(int attack);
-		int getPlayerAttack();
+    void levelUp();
+    int getLevel();
 
-		void setPlayerDefense(int defense);
-		int getPlayerDefense();
+    void increaseXP(int additionalXP);
+    int getXP();
 
-		void setLivingStatus(bool isAlive);
-		bool getLivingStatus();
+    void setLivingStatus(bool b);
+    bool getLivingStatus();
+
+    //void notifySession(string notification);
+
+    //ROOM INTERACTION METHODS added by Sarah
+    string moveTo(string dir);
+    string lookAt(string itemKeyword);
+    string lookAround();
+    string lookExits();
+    string lookObjList();
+    string lookObjKeywords(string itemKeyword);
+    string takeItem(string itemKeyword);
+
+    void setMessageDisplayer(std::function<void(string)> newMessageDisplayer);
+    void notifySession(string notification);
+
+    /*INVENTORY INTERACTION METHODS added by Jordan*/
+    string viewInventory();
+    string useItem(string itemKeyword);
+    string tossItem(string itemKeyword);
+    string getInvItemLongDesc(string itemKeyword);
+
+    /*ABILITYSTAT INTERACTION METHODS added by Jordan*/
+    int getCharisma();
+    int getDefense();
+    int getDexterity();
+    int getHealth();
+    int getIntelligence();
+    int getStrength();
+
+    /*BATTLING METHODS  --  ONLY NPC SO FAR  added by Jordan*/
+    string attackNPC(string npcName);
+    string getAttacked(int NPCAttack, string NPCShortDesc);
 		
-	private:
-		string userName;
-		string password;
-		Room currentRoom;
-		/* vector<Item> inventory; */
-		bool isAdmin;
-		bool isAlive;
-		bool usedDefaultConstructor;
+ private:
+    const int START_LEVEL = 1;
+    const int KILLED_NPC_EXPERIENCE = 100;
+    
+    string userName;
+    string password;
+    string description;
+    weak_ptr<Room> currentRoom;
 
-		const int playerMaxHealth = 10;
-		int playerHealth;
-		int playerAttack = 0;
-		int playerDefense = 0;
+    std::function<void(string)> messageDisplayer;
+
+    AbilityStats* userStats;
+    Inventory* inventory;
+
+    int playerLevel;
+    int playerXP;
+
+    bool isAdmin;
+    bool isAlive;
+
+    void setPassword(string s);
+
+    void setCharisma(int charisma);
+    void setDefense(int defense);
+    void setDexterity(int dexterity);
+    void setHealth(int health);
+    void setIntelligence(int intelligence);
+    void setStrength(int strength);
 };

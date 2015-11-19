@@ -1,0 +1,4 @@
+add_executable(cmd_usr_world_Test cmd_usr_world_Test.cpp)
+
+target_link_libraries(cmd_usr_world_Test CommandParser)
+target_link_libraries(cmd_usr_world_Test world)

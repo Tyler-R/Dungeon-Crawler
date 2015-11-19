@@ -5,110 +5,52 @@ This is a game class that contains attributes and methods for each room containe
 Created By: Sarah Kim Dao
 */
 
+#include <strings.h>
 #include "room.h"
 
 
+
 Room::Room(){
+	id = "no_id";
 	name = "no_name";
 	desc = "no_desc";
 	extDesc = "no_extDesc";
-
-	north = new Door;
-	setNorth(NULL, "You see nothing to the north.\n");
-
-	south = new Door;
-	setSouth(NULL, "You see nothing to the south.\n");
-
-	east = new Door;
-	setEast(NULL, "You see nothing to the east.\n");
-
-	west = new Door;
-	setWest(NULL, "You see nothing to the west.\n");
-
-	up = new Door;
-	setUp(NULL, "You see nothing in the upward direction.\n");
-
-	down = new Door;
-	setDown(NULL, "You see nothing in the downward direction.\n");
-
 }
 
-Room::Room(string input_name, string input_desc, string input_extDesc){
-	name = input_name;
-	desc = input_desc;
-	extDesc = input_extDesc;
+Room::Room(string inputId, string inputName, string inputDesc, string inputExtDesc){
+	id = inputId;
+	name = inputName;
+	desc = inputDesc;
+	extDesc = inputExtDesc;
 
-	north = new Door;
-	setNorth(NULL, "You see nothing to the north.\n");
-
-	south = new Door;
-	setSouth(NULL, "You see nothing to the south.\n");
-
-	east = new Door;
-	setEast(NULL, "You see nothing to the east.\n");
-
-	west = new Door;
-	setWest(NULL, "You see nothing to the west.\n");
-
-	up = new Door;
-	setUp(NULL, "You see nothing in the upward direction.\n");
-
-	down = new Door;
-	setDown(NULL, "You see nothing in the downward direction.\n");
+	keywordList.push_back(inputName);
 }
 
-Room::Room(Room &obj){
-	name = obj.getName();
-	desc = obj.getDesc();
-	extDesc = obj.getExtDesc();
+Room::Room(Room &room){
+	id = room.getId();
+	name = room.getName();
+	desc = room.getDesc();
+	extDesc = room.getExtDesc();
 
-	north = new Door;
-	setNorth(obj.getNorth().leadsTo, obj.getNorth().desc);
+	for (auto & keyword : room.getKeywords()) {
+	    keywordList.push_back(keyword);
+	}
 
-	south = new Door;
-	setSouth(obj.getSouth().leadsTo, obj.getSouth().desc);
+	for (auto & door : room.getDoorList()) {
+	    doorList.push_back(door);
+	}
 
-	east = new Door;
-	setEast(obj.getEast().leadsTo, obj.getEast().desc);
-
-	west = new Door;
-	setWest(obj.getWest().leadsTo, obj.getWest().desc);
-
-	up = new Door;
-	setUp(obj.getUp().leadsTo, obj.getUp().desc);
-
-	down = new Door;
-	setDown(obj.getDown().leadsTo, obj.getDown().desc);
 }
-
-/*Room::Room(char id){
-
-}*/
 
 Room::~Room(){
-	//setNorth(NULL, "You see nothing to the north.\n");
-	delete north;
-
-	//setSouth(NULL, "You see nothing to the south.\n");
-	delete south;
-
-	//setEast(NULL, "You see nothing to the east.");
-	delete east;
-
-	//setWest(NULL, "You see nothing to the west.");
-	delete west;
-
-	//setUp(NULL, "You see nothing in the upward direction.");
-	delete up;
-
-	//setDown(NULL, "You see nothing in the downward direction.");
-	delete down;
-
+	for (auto & door : doorList) {
+	    delete door;
+	}
 }
 
-//string Room::getId(){
-//	return id;
-//}
+string Room::getId(){
+	return id;
+}
 
 string Room::getName(){
 	return name;
@@ -122,29 +64,27 @@ string Room::getExtDesc(){
 	return extDesc;
 }
 
-vector<NPC*> Room::getNPCs(){
+
+vector<string> Room::getKeywords(){
+	return keywordList;
+}
+
+vector<shared_ptr<NPC>> Room::getNPCs(){
 	return npcList;
 }
 
-/*
-
-vector<keyword> Room::getKeywords(){
-
+vector<shared_ptr<Item>> Room::getItems(){
+	return itemList;
 }
 
-vector<player> Room::getPlayers(){
-
+vector<shared_ptr<User>> Room::getUsers(){
+	return userList;
 }
 
-vector<monster> Room::getMonsters(){
 
+void Room::setId(string s){
+	id = s;
 }
-*/
-
-
-//void Room::getId(string s){
-//	id = s;
-//}
 
 void Room::setName(string s){
 	name = s;
@@ -158,321 +98,246 @@ void Room::setExtDesc(string s){
 }
 
 
-/*
-void Room::setPlayers(vector<Player> p){
-	playerPop = p;
+void Room::addKeyword(string s){
+	keywordList.push_back(s);
 }
 
-void Room::setMonsters(vector<monster> m){
-	monsterPop = m;
-}
-
-void Room::setKeywords(vector<monster> m){
-	monsterPop = m;
-}
-*/
-
-
-void Room::setNorth(Room *input_id, string input_desc){
-	north->leadsTo = input_id;
-	north->desc = input_desc;
-}
-
-void Room::setSouth(Room *input_id, string input_desc){
-	south->leadsTo = input_id;
-	south->desc = input_desc;
-}
-
-void Room::setEast(Room *input_id, string input_desc){
-	east->leadsTo = input_id;
-	east->desc = input_desc;
-}
-
-void Room::setWest(Room *input_id, string input_desc){
-	west->leadsTo = input_id;
-	west->desc = input_desc;
-}
-
-void Room::setUp(Room *input_id, string input_desc){
-	up->leadsTo = input_id;
-	up->desc = input_desc;
-}
-
-void Room::setDown(Room *input_id, string input_desc){
-	down->leadsTo = input_id;
-	down->desc = input_desc;
-}
-
-
-Room::Door Room::getNorth(){
-	return *north;
-}
-
-Room::Door Room::getSouth(){
-	return *south;
-}
-
-Room::Door Room::getEast(){
-	return *east;
-}
-
-Room::Door Room::getWest(){
-	return *west;
-}
-
-Room::Door Room::getUp(){
-	return *up;
-}
-
-Room::Door Room::getDown(){
-	return *down;
-}
-
-
-string Room::lookNorth(){
-	return north->desc;
-}
-
-string Room::lookSouth(){
-	return south->desc;
-}
-
-string Room::lookEast(){
-	return east->desc;
-}
-
-string Room::lookWest(){
-	return west->desc;
-}
-
-string Room::lookUp(){
-	return up->desc;
-}
-
-string Room::lookDown(){
-	return down->desc;
-}
-
-
-Room * Room::getNorthLeadsTo(){
-	return (getNorth().leadsTo);
-}
-
-Room * Room::getSouthLeadsTo(){
-	return (getSouth().leadsTo);
-}
-
-Room * Room::getEastLeadsTo(){
-	return (getEast().leadsTo);
-}
-
-Room * Room::getWestLeadsTo(){
-	return (getWest().leadsTo);
-}
-
-Room * Room::getUpLeadsTo(){
-	return (getUp().leadsTo);
-}
-
-Room * Room::getDownLeadsTo(){
-	return (getDown().leadsTo);
-}
-
-/*
-
-WARNING: The below methods currently leak.  Currently working on a solution but as a work around, use this instead:
-
-current = *(current.getNorth().leadsTo);
-
-*/
-
-
-string Room::goNorth(Room *current){
-	if (!(getNorth().leadsTo)){
-		return "Cannot move there.\n";
+void Room::addKeywords(vector<string> inputKeywords){
+	for (auto & keyword : inputKeywords) {
+	    addKeyword(keyword);
 	}
-	*current = *(getNorth().leadsTo);
-	return (*current).getDesc();
-
 }
 
-string Room::goSouth(Room *current){
-	if (!(getSouth().leadsTo)){
-		return "Cannot move there.\n";
+void Room::removeKeyword(string s){
+	for (int i = 0; i<keywordList.size(); i++) {
+		if (0 == strcasecmp(s.c_str(), keywordList.at(i).c_str())){
+			keywordList.erase (keywordList.begin()+i);
+		}
 	}
-	*current = *(getSouth().leadsTo);
-	return (*current).getDesc();
 }
 
-string Room::goEast(Room *current){
-	if (!(getEast().leadsTo)){
-		return "Cannot move there.\n";
+bool Room::findKeyword(string s){
+	for (auto & keyword : keywordList) {
+		if(0 == strcasecmp(s.c_str(), keyword.c_str())){
+			return true;
+	   	}
 	}
-	*current = *(getEast().leadsTo);
-	return (*current).getDesc();
+		return false;
 }
 
-string Room::goWest(Room *current){
-	if (!(getWest().leadsTo)){
-		return "Cannot move there.\n";
+void Room::printKeywords(){ //To be used by the Room's Test Module only!
+	for (auto & keyword : keywordList) {
+	    cout << keyword << endl;
 	}
-	*current = *(getWest().leadsTo);
-	return (*current).getDesc();
 }
 
-string Room::goUp(Room *current){
-	if (!(getUp().leadsTo)){
-		return "Cannot move there.\n";
+
+vector<string> Room::getObjKeywords(string objName){ //Gets a List of an Object's Keywords.
+	if ( findKeyword(objName) ){
+		return getKeywords();
 	}
-	*current = *(getUp().leadsTo);
-	return (*current).getDesc();
-}
-
-string Room::goDown(Room *current){
-	if (!(getDown().leadsTo)){
-		return "Cannot move there.\n";
+	for (auto & door : doorList) {
+		if ( door->findKeyword(objName) || door->getLeadsTo()->findKeyword(objName)){
+			return door->getKeywords();
+		}
 	}
-	*current = *(getDown().leadsTo);
-	return (*current).getDesc();
+	for (auto & npc : npcList) {
+		if ( npc->searchKeyword(objName)){
+			return npc->getKeyword();
+		}
+	}
 
+	for (auto & item : itemList) {
+		if ( item->searchKeyword(objName)){
+			return item->getKeyword();
+		}
+	}
+	vector<string> result;
+	result.push_back("Object not found!");
+	return result;
 }
 
+void Room::addDoor(string inputId,string inputDir, string inputDesc, shared_ptr<Room>inputRoom){
+	doorList.push_back(new Door(inputId,inputDir,inputDesc, inputRoom));
+}
 
-//LookAround
-
-vector<string> Room::getDoorList(){
-	vector<string> doorList;
-
-	doorList.push_back(lookNorth());
-	doorList.push_back(lookSouth());
-	doorList.push_back(lookEast());
-	doorList.push_back(lookWest());
-	doorList.push_back(lookUp());
-	doorList.push_back(lookDown());
-
+vector<Door*> Room::getDoorList(){
 	return doorList;
 }
 
+//LookAround
+string Room::getDoorDescList(){
+	//This method returns a description of all of the room's doors.
+	string result = "";
+	for (auto & door : doorList){
+		result = result + door->getDesc() + "\n";
+	}
+	return result;
+}
 
-vector<string> Room::getObjList(){
-
-	vector<string> objList;
-
-	if (getNorthLeadsTo() != NULL){
-		objList.push_back(((getNorth().leadsTo)->name));
+string Room::getObjList(){
+	//This method returns a list of strings containing the names of every door, npc, item, and user in the room.
+	string result = "";
+	for (auto & door : doorList) {
+	    result = result + (door->getLeadsTo()->getName()) + "\n";
 	}
 
-	if (getSouthLeadsTo() != NULL){
-		objList.push_back(((getSouth().leadsTo)->name));
+	for (auto & npc : npcList) {
+	    result = result + (npc->getShortDesc()) + "\n";
 	}
 
-	if (getEastLeadsTo() != NULL){
-		objList.push_back(((getEast().leadsTo)->name));
+	for (auto & user : userList) {
+	    result = result + (user->getUserName()) + "\n";
 	}
 
-	if (getWestLeadsTo() != NULL){
-		objList.push_back(((getWest().leadsTo)->name));
+	for (auto &item : itemList){
+	    result = result + (item->getShortDesc()) + "\n";
 	}
 
-	if (getUpLeadsTo() != NULL){
-		objList.push_back(((getUp().leadsTo)->name));
-	}
-
-	if (getDownLeadsTo() != NULL){
-		objList.push_back(((getDown().leadsTo)->name));
-	}
-
-	//cout << getNPCs().at(0).getName() << endl;
-
-	/*for(auto &str:getNPCs()){
-		cout << "string" << endl;
-	}
-	*/
-	/*
-	for (int i = 0; i<(getNPCs().size()); i++){
-		lookAroundVector.push_back((getNPCs().at(i)).getName());
-		cout << (getNPCs().at(i)).getName() << endl;
-	}
-	*/
-
-	return objList;
+	return result;
 }
 
 string Room::lookAround(){
+		//This method is used if the user types the "look <noun>" command and <noun> is their current room.
+
 		string objRoom = "";
-		for(auto &str: npcList){
-			objRoom += str->getName() + " ";
+
+		objRoom += getExtDesc() + "\n"; 
+
+		if (!userList.empty()){
+			for(auto &user: userList){
+				objRoom += "You see " + user->getUserName() + " in the Room.\n";
+			}
 		}
-		objRoom = "there are " + objRoom + "in the room"+ '\n';
 
-		return getExtDesc()+ '\n' + objRoom;
-	}
-
-string Room::getObjDesc(string objName){
-
-	vector<Room*> doorList;
-
-	if (getNorthLeadsTo() != NULL){
-		doorList.push_back(getNorthLeadsTo());
-	}
-
-	if (getSouthLeadsTo() != NULL){
-		doorList.push_back(getSouthLeadsTo());
-	}
-
-	if (getEastLeadsTo() != NULL){
-		doorList.push_back(getEastLeadsTo());
-	}
-
-	if (getWestLeadsTo() != NULL){
-		doorList.push_back(getWestLeadsTo());
-	}
-
-	if (getUpLeadsTo() != NULL){
-		doorList.push_back(getUpLeadsTo());
-	}
-
-	if (getDownLeadsTo() != NULL){
-		doorList.push_back(getDownLeadsTo());
-	}
-
-
-	for (int i=0; i<doorList.size(); i++){
-
-		//cout << "Matching " << objList[i]->getName() << " with " << objName << endl;
-		if ( doorList[i]->getName() == objName ){
-			//cout << "Match Found!" << endl;
-			return doorList[i]->getDesc();
+		if (!npcList.empty()){
+			for(auto &npc: npcList){
+				objRoom += "You see " + npc->getShortDesc() + " in the Room.\n";
+			}
 		}
+
+		if (!itemList.empty()){
+			for(auto &item: itemList){
+
+				objRoom += "You see a " + item->getShortDesc() + " in the Room.\n";
+			}
+		}
+
+		return objRoom;
+
 	}
-	for (auto &npc : npcList){
-		if(objName.compare(npc->getName())==0){
-			return npc->getDes();
+
+string Room::lookAt(string objName){
+	//This method is used if the user types the "look <noun>" command.  <noun> can be a valid keyword.
+
+	if ( findKeyword(objName) ){
+		return extDesc + "\n";
+	}
+
+
+	for (auto & door : doorList) {
+		if ( door->getLeadsTo()->findKeyword(objName) || door->findKeyword(objName)){
+			return door->getLeadsTo()->getDesc() + "\n";
 		}
 	}
 
-	//vector<NPC> npcList = getNPCs();
+	for (auto & npc : npcList) {
+		if ( npc->searchKeyword(objName)){
+			return npc->getDescription() + "\n";
+		}
+	}
 
-	//cout << "getting NPC Name " << (getNPCs()[0]).getName() << " with " << objName << endl;
+	for (auto & user : userList) {
+		if (0 == strcasecmp(objName.c_str(), user->getUserName().c_str())){
+			return user->getDescription() + "\n";
+		}
+	}
 
-	//for (int i=0; i<npcList.size(); i++){
-
-		//cout << "Matching " << npcList[i]->getName() << " with " << objName << endl;
-		//if ( npcList[i].getName() == objName ){
-			//cout << "Match Found!" << endl;
-			//return npcList[i]->getDes();
-		//}
-	//}
+	
+	for (auto &item : itemList){
+		if(item->searchKeyword(objName)){
+			return item->getShortDesc() + "\n";
+		}
+	}
+	
 
 	return "\""+objName+"\""+" not found!\n";
 
 }
 
-void Room::createNPC(){
+void Room::setDoorState(int doorNumber, string newState) {
+	assert(doorNumber < doorList.size());
+	doorList[doorNumber]->setState(newState); // probably needs tweaking
+}
 
-		NPC* monster = new NPC("monster","id:111");
-		NPC* creature = new NPC("creature","id:222");
+void Room::addUser(shared_ptr<User> user){
+	userList.push_back(user);
+}
 
-		npcList.push_back(monster);
-		npcList.push_back(creature);
+void Room::removeUser(string name){
+	for (int i = 0; i<userList.size(); i++) {
+		if (0 == strcasecmp(name.c_str(), userList.at(i)->getUserName().c_str())){
+			userList.erase(userList.begin()+i);
+		}
+	}
+}
+
+void Room::transferOutUser(string name, shared_ptr<Room> outRoom){
+	for (int i = 0; i<userList.size(); i++) {
+		if (0 == strcasecmp(name.c_str(), userList.at(i)->getUserName().c_str())){
+			outRoom->addUser(userList.at(i));
+			userList.erase(userList.begin()+i);
+		}
+	}
+}
+
+void Room::addNPC(shared_ptr<NPC> npc) {
+	npcList.push_back(npc);
+}
+
+void Room::removeNPC(string npcID){
+	for (int i = 0; i<npcList.size(); i++)  {
+		if(npcList.at(i)->getID().compare(npcID) == 0) {
+			npcList.erase(npcList.begin()+i);
+		}
+	}
+}
+
+void Room::addItem(shared_ptr<Item> item){
+	itemList.push_back(item);
+}
+
+void Room::removeItem(string itemID){
+	for (int i = 0; i<itemList.size(); i++)  {
+		if(itemList.at(i)->getID().compare(itemID) == 0) {
+			itemList.erase(itemList.begin()+i);
+		}
+	}
+}
+
+bool Room::doesItemExist(string itemID) {
+	for(auto &item : itemList) {
+		if(itemID.compare(item->getID()) == 0) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+int Room::getNumberOfNPCsWithID(string npcID) {
+	int npcCount = 0;
+
+	for(auto &npc : npcList) {
+		if(npc->getID().compare(npcID) == 0) {
+			npcCount++;
+		}
+	}
+
+	return npcCount;
+}	
+
+void Room::announcement(string news){
+	for(auto &user : userList) {
+	}
 }

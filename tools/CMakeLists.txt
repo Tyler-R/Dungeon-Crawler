@@ -2,3 +2,6 @@ add_subdirectory(client)
 add_subdirectory(server)
 add_subdirectory(command_test)
 add_subdirectory(worldTest)
+add_subdirectory(battleTest)
+
+

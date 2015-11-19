@@ -1,11 +1,12 @@
 #include "Session.h"
 
-Session::Session(tcp::socket socket) : socket(std::move(socket)){
-    commandParser = new CommandParser(myWorld);
+Session::Session( tcp::socket socket, int maxCommands, shared_ptr<World> world) : socket( std::move( socket ) ), maxCommands( maxCommands ){
+    // commandParser = std::make_shared< CommandParser >( );
+    myWorld = world;
 }
 
 Session::~Session() {
-    delete commandParser;
+
 }
 
 void Session::listenForCommands() {
@@ -17,6 +18,13 @@ void Session::listenForCommands() {
             if(!errorCode) {
                 // handle command
                 command->length = length;
+                std::cout << "received: ";
+                for(auto &c : command->buffer) {
+                    std::cout << c;
+                }
+
+                std::cout << " - length " << command->length << std::endl;
+
                 addCommandToQueue(*command);
                 messageReceivedCallback();
 
@@ -34,7 +42,11 @@ void Session::listenForCommands() {
 }
 
 void Session::addCommandToQueue(Command command) {
-    commandBacklog.push(command);
+    if(commandBacklog.size() >= maxCommands) {
+        sendMessage("ERROR: too many command entered");
+    } else {
+        commandBacklog.push(command);
+    }
 }
 
 std::string Session::getNextCommand() {
@@ -107,6 +119,12 @@ void Session::attemptLogin() {
 
         loggedIn = true;
         sendMessage("You are logged in as " + username + "\n");
+        shared_ptr<User> PlayerOne( new User(false, username, password, myWorld->getRoom(0), "This is PlayerOne."));
+        usr = PlayerOne;
+        myWorld->getRoom(0)->addUser(usr);
+        // st::make_shared<CommandParser> (usr);
+        commandParser = std::make_shared<CommandParser>(usr);
+
     } else {
         sendMessage("Incorrect username or password. Try again.\n");
         login();
