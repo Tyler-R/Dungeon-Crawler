@@ -121,6 +121,11 @@ void Session::attemptLogin() {
         sendMessage("You are logged in as " + username + "\n");
         shared_ptr<User> PlayerOne( new User(false, username, password, myWorld->getRoom(0), "This is PlayerOne."));
         usr = PlayerOne;
+
+        std::function< void( std::string ) > sendMessageCallback = std::bind(&Session::sendMessage, this, std::placeholders::_1);
+
+
+        usr->setMessageDisplayer( sendMessageCallback );
         myWorld->getRoom(0)->addUser(usr);
         // st::make_shared<CommandParser> (usr);
         commandParser = std::make_shared<CommandParser>(usr);
