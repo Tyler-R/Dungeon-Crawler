@@ -11,6 +11,7 @@ Created By: Sarah Kim Dao
 #include "room.h"
 #include "user.h"
 #include "reset/Reset.h"
+#include "npcLibrary.h"
 
 using namespace std;
 
@@ -20,6 +21,8 @@ class World {
 
 		vector<shared_ptr<Room>> roomList;
 		vector<shared_ptr<Reset>> resets;
+
+		shared_ptr<npcLibrary> NPCLib;
 	public:
 		World();
 		World(World &obj);
@@ -40,5 +43,8 @@ class World {
 		void performResets();
 
 		string moveTo(string dir);
+
+		shared_ptr<npcLibrary> getNPCLib();
+		void setNPCLib(shared_ptr<npcLibrary> nL);
 
 };
