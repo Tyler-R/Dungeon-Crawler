@@ -8,10 +8,6 @@
 
 #ifndef NPC_H_
 #define NPC_H_
-
-#include "monster.h"
-#include "creature.h"
-
 #include <vector>
 
 using namespace std;
@@ -28,8 +24,6 @@ private:
     const int DEAD_DAMAGE = 0;
 
     // save for later (status)
-    string npcName;
-    string npcType;
     int npcHP;
     bool isAlive;
     int npcDamage;
@@ -38,12 +32,13 @@ private:
 public:
 
     // functions (status)
-    void setName(string s);
-    void setType(string s);
-    void setHP(int i);
-    void setAlive(bool b);
-    void setDamage(int i);
-    void setDes(string des);
+    void setHP();
+    void setAlive();
+    void setDamage();
+
+    int getHP() const;
+    int getDamage()const;
+    bool getAlive()const;   // live or dead
     
     //constructor
 	NPC(string type, string ID); // type(monster or creature), the ID of this NPC
@@ -55,16 +50,6 @@ public:
     // functions
 	void setID(string id);
 	string getID() const;
-
-    // save for later (status)
-	string getType() const;
-	string getName() const;
-	int getHP() const;
-	int getDamage()const;
-	bool getAlive()const;	// live or dead
-	string getDes()const;
-
-
 
     // descriptions
     void addDescription(string s);

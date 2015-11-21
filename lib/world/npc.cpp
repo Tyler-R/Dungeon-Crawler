@@ -10,39 +10,12 @@
 #include "npc.h"
 #include <strings.h>
 
-// constructor (type, id)
-// NPC::NPC(string type, string id){
-// 	if (type == "monster") {
-// 		Monster tempMonster;
-        
-//         setID(id);
-// 		setName(tempMonster.getName());
-//         setType(type);
-//         setHP(tempMonster.getHP());
-//         setAlive(tempMonster.getAlive());
-//         setDamage(tempMonster.getDamage());
-//         setDes(tempMonster.getDes());
-        
-//     }else if(type == "creature") {
-//         Creature tempCreature;
-        
-//         setID(id);
-//         setName(tempCreature.getName());
-//         setType(type);
-//         setHP(tempCreature.getHP());
-//         setAlive(tempCreature.getAlive());
-//         setDamage(int(0));
-//         setDes(tempCreature.getDes());
-        
-//     }else {
-// 		cout << "!!!!!! no such NPC !!!!!! \n";
-// 	}
-// }
-
 // constructor (id)
 NPC::NPC(string id){
     setID(id);
+    setHP();
     setAlive(true);
+    setDamage();
 }
 
 // for copy
@@ -140,37 +113,17 @@ string NPC::getID() const{
 
 
 
-// save for later (status)
-void NPC::setName(string s) {
-    npcName = s;
+// status－－setter and getter
+void NPC::setHP() {
+    npcHP = 5;
 }
 
-void NPC::setType(string s) {
-    npcType = s;
+void NPC::setAlive() {
+    isAlive = true;
 }
 
-void NPC::setHP(int i) {
-    npcHP = i;
-}
-
-void NPC::setAlive(bool b) {
-    isAlive = b;
-}
-
-void NPC::setDamage(int i) {
-    npcDamage = i;
-}
-
-void NPC::setDes(string des) {
-    npcDes = des;
-}
-
-string NPC::getName() const{
-    return npcName;
-}
-
-string NPC::getType() const{
-    return npcType;
+void NPC::setDamage() {
+    npcDamage = 1;
 }
 
 int NPC::getHP() const{
@@ -185,18 +138,10 @@ int NPC::getDamage() const{
     return npcDamage;
 }
 
-string NPC::getDes() const{
-    return npcDes;
-}
-
 // helper function
 void NPC::checkNPC() const{
     std::cout << "          NPC check function \n";
     std::cout << "the id is                     " << getID();
-    std::cout << "\n";
-    std::cout << "the name is                   " << getName();
-    std::cout << "\n";
-    std::cout << "the type is                   " << getType();
     std::cout << "\n";
     std::cout << "the HP is                     " << getHP();
     std::cout << "\n";
