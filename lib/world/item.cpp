@@ -109,10 +109,6 @@ void Item::checkItem() const {
     std::cout << "Item check function \n";
     std::cout << "the ID of the item            " << getID();
     std::cout << "\n";
-    std::cout << "the type is                   " << getType();
-    std::cout << "\n";
-    std::cout << "the name is                   " << getName();
-    std::cout << "\n";
     std::cout << "depend on the item's type     " << getBoost();
     std::cout << "\n";
     std::cout << "\n";

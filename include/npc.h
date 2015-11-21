@@ -8,11 +8,15 @@
 
 #ifndef NPC_H_
 #define NPC_H_
+#include <string>
 #include <vector>
+#include <iostream>
+#include <cstdlib>
+#include "entity.h"
 
 using namespace std;
 
-class NPC {
+class NPC : public Entity {
     
 private:
     // attributes (yaml)

@@ -5,6 +5,7 @@ Created By: Jordan Nielsen
 #include "room.h"
 #include "abilityStats.h"
 #include "inventory.h"
+#include "entity.h"
 #include <string>
 #include <vector>
 #include <memory>
@@ -15,7 +16,7 @@ using namespace std;
 
 class Room; //Forward declaration is needed since User class and Room class refer to each other
 
-class User {
+class User : public Entity {
   public:
     User();
 

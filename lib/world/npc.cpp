@@ -14,7 +14,7 @@
 NPC::NPC(string id){
     setID(id);
     setHP();
-    setAlive(true);
+    setAlive();
     setDamage();
 }
 
@@ -148,8 +148,6 @@ void NPC::checkNPC() const{
     std::cout << "the damage is                 " << getDamage();
     std::cout << "\n";
     std::cout << "is live(1) or dead(0)?        " << getAlive();
-    std::cout << "\n";
-    std::cout << "description: \n" << getDes();
     std::cout << "\n";
 }
 

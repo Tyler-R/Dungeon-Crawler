@@ -12,8 +12,6 @@ Created By: Sarah Kim Dao
 #include <assert.h>
 
 #include "npc.h"
-#include "creature.h"
-#include "monster.h"
 #include "item.h"
 #include "user.h"
 
