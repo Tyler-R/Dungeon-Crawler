@@ -13,7 +13,7 @@
 int main()
 {
 	using namespace std;
-	YAML::Node allNode = YAML::LoadFile("midgaard.yml");
+	YAML::Node allNode = YAML::LoadFile("gameYaml/midgaard.yml");
 	YAML::Node roomsNodes = allNode["ROOMS"];
 
 	string roomsDescription;

@@ -11,7 +11,7 @@
 int main()
 {
 	using namespace std;
-	YAML::Node allNode = YAML::LoadFile("smurf.yaml");
+	YAML::Node allNode = YAML::LoadFile("gameYaml/smurf.yaml");
 	YAML::Node resetNodes = allNode["RESETS"];
 
 	string action;
