@@ -5,6 +5,8 @@
 #include <string>
 
 class UserLogin {
+    
+private:
     std::string userName;
     std::string userPassword;
     
@@ -12,7 +14,6 @@ public:
     UserLogin(std::string userName, std::string userPassword);
     bool isUserLoggedIn();
 };
-
 
 
 #endif

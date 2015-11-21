@@ -34,15 +34,7 @@ int UserSignUp::getUserID(){
 bool UserSignUp::IsUserSignedUp(){
     
     FileIO fileSignUp(userName, userPassword, userID);
-    fileSignUp.openFileConnectionToWrite();
-    if (fileSignUp.writeToFile()){
-        
-        fileSignUp.closeWriteFileConnection();
-        return true;
-    }
-    fileSignUp.closeWriteFileConnection();
-    return false;
+    return fileSignUp.writeToFile();
+    
 }
-
-
 

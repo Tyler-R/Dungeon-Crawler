@@ -1,6 +1,3 @@
-
-
-
 #ifndef __Authentication__Authentication__
 #define __Authentication__Authentication__
 
@@ -8,6 +5,7 @@
 #include <string>
 #include "UserLogin.h"
 #include "UserSignUp.h"
+//#include "UserLogout.h"
 
 class Authentication {
     std::string userName;

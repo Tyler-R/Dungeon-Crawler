@@ -88,6 +88,7 @@ void Session::offerOptionToRegisterOrLogin() {
             registerNewPlayer();
         } else {
             sendMessage("that is not an option. try again.\n");
+            exit(1);
             offerOptionToRegisterOrLogin();
         }
     };
@@ -172,9 +173,12 @@ void Session::registerNewPlayer() {
 
 void Session::sendMessage(std::string message) {
 
+
+
     boost::system::error_code error;
     size_t bitesWritten = boost::asio::write(socket, boost::asio::buffer(message), boost::asio::transfer_all(), error);
 
+    std::cout << "sending message: " << message << " - with length = " << bitesWritten << " - " << " with size = " << message.size() << std::endl;
     if(error) {
         kill();
         throw boost::system::system_error(error);
