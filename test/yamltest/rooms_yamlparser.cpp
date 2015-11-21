@@ -56,7 +56,6 @@ int main()
 			//parsing Doors. and it's description, direction, keywords and to
 			YAML::Node doorsdescNode = doorsNode[k]["desc"];
 			for(int l = 0; l < doorsdescNode.size(); l++){
-				// doorsDesc.push_back(doorsdescNode[l].as<string>());
 				doorsDesc = doorsdescNode[l].as<string>();
 				}
 
