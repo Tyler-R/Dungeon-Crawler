@@ -8,7 +8,8 @@ add_library(world world.cpp
 	          abilityStats.cpp
                   user.cpp	
                   item.cpp
-		  npcLibrary.cpp		
+		  npcLibrary.cpp
+		  roomLibrary.cpp		
 )
 
 target_link_libraries(world

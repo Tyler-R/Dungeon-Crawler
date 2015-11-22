@@ -9,34 +9,34 @@ Created By: Sarah Kim Dao
 
 
 World::World(){
-	//The Constructor initializes the room.
+	// //The Constructor initializes the room.
 
-	//Instantiate Rooms
-	shared_ptr<Room> lobby( new Room("001","Lobby","This is a lobby","The lobby is cool and clean"));
-	shared_ptr<Room> bathroom( new Room("002","Bathroom","This is a bathroom","The bathroom has heated floors."));
-	shared_ptr<Room> kitchen( new Room("003","Kitchen","This is a kitchen","The kitchen is sparkling."));
-	shared_ptr<Room> porch( new Room("004","Porch","This is a porch","The porch is a little worn."));
-	shared_ptr<Room> study( new Room("005","Study","This is a study","The study is tidy and full of books."));
-	shared_ptr<Room> bedroom( new Room("006","Bedroom","This is a bedroom","The bedroom is brightly lit."));
-	shared_ptr<Room> basement( new Room("007","Basement","This is a basement","The basement is dark and damp."));
-	shared_ptr<Room> shower( new Room("008","Shower","This is a shower","The shower is dry."));
+	// //Instantiate Rooms
+	 shared_ptr<Room> lobby( new Room("001","Lobby","This is a lobby","The lobby is cool and clean"));
+	// shared_ptr<Room> bathroom( new Room("002","Bathroom","This is a bathroom","The bathroom has heated floors."));
+	// shared_ptr<Room> kitchen( new Room("003","Kitchen","This is a kitchen","The kitchen is sparkling."));
+	// shared_ptr<Room> porch( new Room("004","Porch","This is a porch","The porch is a little worn."));
+	// shared_ptr<Room> study( new Room("005","Study","This is a study","The study is tidy and full of books."));
+	// shared_ptr<Room> bedroom( new Room("006","Bedroom","This is a bedroom","The bedroom is brightly lit."));
+	// shared_ptr<Room> basement( new Room("007","Basement","This is a basement","The basement is dark and damp."));
+	// shared_ptr<Room> shower( new Room("008","Shower","This is a shower","The shower is dry."));
 
-	//Instantiate Doors in Rooms
-	lobby->addDoor("1","north", "The north door leads to the bathroom", bathroom);
-	lobby->addDoor("2","south", "The south door leads to the kitchen", kitchen);
-	lobby->addDoor("3","east", "The east door leads to the porch", porch);
-	lobby->addDoor("4","west", "The west door leads to the study", study);
-	lobby->addDoor("5","up", "The upstairs leads to the bedroom", bedroom);
-	lobby->addDoor("6","down", "The downstairs leads to the basement", basement);
+	// //Instantiate Doors in Rooms
+	// lobby->addDoor("1","north", "The north door leads to the bathroom", bathroom);
+	// lobby->addDoor("2","south", "The south door leads to the kitchen", kitchen);
+	// lobby->addDoor("3","east", "The east door leads to the porch", porch);
+	// lobby->addDoor("4","west", "The west door leads to the study", study);
+	// lobby->addDoor("5","up", "The upstairs leads to the bedroom", bedroom);
+	// lobby->addDoor("6","down", "The downstairs leads to the basement", basement);
 
-	kitchen->addDoor("2","north", "The north door leads to the lobby", lobby);
-	porch->addDoor("3","west", "The west door leads to the lobby", lobby);
-	study->addDoor("4","east", "The east door leads to the lobby", lobby);
-	bedroom->addDoor("5","down", "The downstairs leads to the lobby", lobby);
-	basement->addDoor("6","up", "The upstairs leads to the lobby", lobby);
-	shower->addDoor("6","south", "The south leads to the bathroom", bathroom);
-	bathroom->addDoor("6","north", "The north leads to the shower", shower);
-	bathroom->addDoor("1","south", "The south door leads to the lobby", lobby);
+	// kitchen->addDoor("2","north", "The north door leads to the lobby", lobby);
+	// porch->addDoor("3","west", "The west door leads to the lobby", lobby);
+	// study->addDoor("4","east", "The east door leads to the lobby", lobby);
+	// bedroom->addDoor("5","down", "The downstairs leads to the lobby", lobby);
+	// basement->addDoor("6","up", "The upstairs leads to the lobby", lobby);
+	// shower->addDoor("6","south", "The south leads to the bathroom", bathroom);
+	// bathroom->addDoor("6","north", "The north leads to the shower", shower);
+	// bathroom->addDoor("1","south", "The south door leads to the lobby", lobby);
 
 	//Instantiate NPC in Rooms
 
@@ -72,23 +72,29 @@ World::World(){
 	//lobby->addItem(item1);
 	//lobby->addItem(item2);
 	
-	roomList.push_back(lobby);
-	roomList.push_back(bathroom);
-	roomList.push_back(kitchen);
-	roomList.push_back(porch);
-	roomList.push_back(study);
-	roomList.push_back(bedroom);
-	roomList.push_back(basement);
-	roomList.push_back(shower);
+	//roomList.push_back(lobby);
+	// roomList.push_back(bathroom);
+	// roomList.push_back(kitchen);
+	// roomList.push_back(porch);
+	// roomList.push_back(study);
+	// roomList.push_back(bedroom);
+	// roomList.push_back(basement);
+	// roomList.push_back(shower);
 
-	shared_ptr<npcLibrary> npcLib( new npcLibrary());
-	NPCLib = npcLib;
-	NPCLib->parseYaml();
+	shared_ptr<npcLibrary> nL( new npcLibrary());
+	NPCLib = nL;
+	shared_ptr<roomLibrary> rL( new roomLibrary());
+	roomLib = rL;
 
-	lobby->addNPC(NPCLib->get("103"));
-	lobby->addNPC(NPCLib->get("104"));
+	for (auto & room :roomLib->getRoomList()){
+		roomList.push_back(room);
+		cout << endl << "addedRoom" << endl;
+	}
 
-	currentRoom = lobby; 
+	currentRoom = roomList.at(0); 
+
+	currentRoom->addNPC(NPCLib->get("103"));
+	currentRoom->addNPC(NPCLib->get("104"));
 }
 
 World::~World(){
@@ -154,7 +160,4 @@ string World::moveTo(string dir){
 
 shared_ptr<npcLibrary> World::getNPCLib(){
 	return NPCLib;
-}
-void World::setNPCLib(shared_ptr<npcLibrary> nL){
-	NPCLib = nL;
 }

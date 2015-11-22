@@ -22,6 +22,15 @@ int main() {
 
 	newWorld.getRoom(0)->addUser(PlayerOne);
 
+	cout << endl << "--Looking at Current Room--" << endl;
+	cout << PlayerOne->getRoom()->getDesc();
+
+	cout << endl << "--Getting a Good Look Around the Room--" << endl;
+	cout << PlayerOne->lookAround();
+
+	cout << endl << "--Looking at Exits--" << endl;
+	cout << PlayerOne->lookExits();
+
 	cout << endl << "--Getting List of Objects in the Room--" << endl;
 	cout << PlayerOne->lookObjList();
 

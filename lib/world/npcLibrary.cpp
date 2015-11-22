@@ -8,10 +8,9 @@
 #include <fstream>
 #include <string>
 #include <vector>
-
-// npcLibrary::npcLibrary(){
-
-// }
+npcLibrary::npcLibrary(){
+	parseYaml();
+}
 
 // npcLibrary::~npcLibrary(){
 
