@@ -74,7 +74,46 @@ string CommandParser::validateAttackNPCArgv(vector<string> &cmd){
   else{
     reformatTokens(cmd);
     // return "attack NPC" + cmd.at(1) + "\n";
-    return PlayerOne->attackNPC(cmd.at(1));
+
+    auto room = PlayerOne->getRoom( );
+    auto npcToAttack = room->getNPC( cmd.at( 1 ) );
+
+
+    auto userDamage = PlayerOne->getStrength();
+    npcToAttack->damage( userDamage );
+
+    auto npcDamage = npcToAttack->getDamage();
+    PlayerOne->damage( npcDamage );
+
+
+    string npcShortDesc = npcToAttack->getShortDesc();
+    room->broadcastMessage(PlayerOne.get(), PlayerOne->getUserName() + " just attacked " + npcShortDesc+ "\n");
+
+
+    string result = "";
+
+    // inform user how much damage they did to the NPC
+    string message = " dealt " + to_string(userDamage) + " to " + npcShortDesc + ". \n";
+    message += npcShortDesc + " has " + to_string( npcToAttack->getHealth( ) ) + " health remainin\n";
+
+    room->broadcastMessage(PlayerOne.get(), PlayerOne->getUserName() + message );
+
+    result += "you " + message;
+
+    // player is dead
+    if( !PlayerOne->isAlive() ) {
+      room->broadcastMessage(PlayerOne.get(), PlayerOne->getUserName() + " died\n");
+      result += "you died\n";
+    }
+
+    if( !npcToAttack->isAlive() ) {
+      room->broadcastMessage(PlayerOne.get(), PlayerOne->getUserName() + " killed " + npcShortDesc);
+      result += "you killed " + npcShortDesc + "\n";
+
+      PlayerOne->increaseXP( 100 );
+    }
+
+    return result;
   }
 }
 

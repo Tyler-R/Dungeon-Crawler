@@ -16,7 +16,7 @@ using namespace std;
 
 class Room; //Forward declaration is needed since User class and Room class refer to each other
 
-class User {
+class User : public Entity {
   public:
     User();
 
@@ -46,9 +46,6 @@ class User {
     void increaseXP(int additionalXP);
     int getXP();
 
-    void setLivingStatus(bool b);
-    bool getLivingStatus();
-
     //void notifySession(string notification);
 
     //ROOM INTERACTION METHODS added by Sarah
@@ -73,7 +70,6 @@ class User {
     int getCharisma();
     int getDefense();
     int getDexterity();
-    int getHealth();
     int getIntelligence();
     int getStrength();
 
@@ -99,7 +95,6 @@ class User {
     int playerXP;
 
     bool isAdmin;
-    bool isAlive;
 
     void setPassword(string s);
 

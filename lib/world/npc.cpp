@@ -120,7 +120,11 @@ void NPC::setDamage() {
 }
 
 int NPC::getDamage() const{
-    return npcDamage;
+    if(isAlive()) {
+        return npcDamage;
+    } else {
+        return 0;
+    }
 }
 
 // helper function
