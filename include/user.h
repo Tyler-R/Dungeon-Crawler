@@ -16,7 +16,7 @@ using namespace std;
 
 class Room; //Forward declaration is needed since User class and Room class refer to each other
 
-class User : public Entity {
+class User {
   public:
     User();
 

@@ -25,24 +25,21 @@ private:
     string longDesc;
     string shortDesc;
     vector<string> keywords;
-    const int DEAD_DAMAGE = 0;
 
     // save for later (status)
-    int npcHP;
-    bool isAlive;
     int npcDamage;
     string npcDes;
 
 public:
 
+    const int DEAD_DAMAGE = 0;
+
+
     // functions (status)
-    void setHP();
     void setAlive();
     void setDamage();
 
-    int getHP() const;
     int getDamage()const;
-    bool getAlive()const;   // live or dead
     
     //constructor
 	NPC(string type, string ID); // type(monster or creature), the ID of this NPC
@@ -76,9 +73,5 @@ public:
 
     // helper function (status)
     void checkNPC() const;	// print out all attributes of npc
-
-    // BATTLE METHOD added by Jason, edited by Jordan
-    int getHit(int damage); // reduce HP by damage
-
 };
 #endif

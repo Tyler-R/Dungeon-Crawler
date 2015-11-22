@@ -10,16 +10,15 @@
 #include "npc.h"
 #include <strings.h>
 
+// 10 is the starting max health
 // constructor (id)
-NPC::NPC(string id){
+NPC::NPC(string id) : Entity( 10 ) {
     setID(id);
-    setHP();
-    setAlive();
     setDamage();
 }
 
 // for copy
-NPC::NPC(NPC *npc){
+NPC::NPC(NPC *npc) : Entity( 10 ) {
     npcID = npc->getID();
     npcDescription = npc->getDescription();
     longDesc = npc->getLongDesc();
@@ -31,7 +30,9 @@ NPC::NPC(NPC *npc){
 }
 
 // Destructor
-NPC::~NPC(){}
+NPC::~NPC() {
+
+}
 
 // destructor
 //NPC::~NPC() {
@@ -114,24 +115,8 @@ string NPC::getID() const{
 
 
 // status－－setter and getter
-void NPC::setHP() {
-    npcHP = 5;
-}
-
-void NPC::setAlive() {
-    isAlive = true;
-}
-
 void NPC::setDamage() {
     npcDamage = 1;
-}
-
-int NPC::getHP() const{
-    return npcHP;
-}
-
-bool NPC::getAlive() const{
-    return isAlive;
 }
 
 int NPC::getDamage() const{
@@ -143,27 +128,11 @@ void NPC::checkNPC() const{
     std::cout << "          NPC check function \n";
     std::cout << "the id is                     " << getID();
     std::cout << "\n";
-    std::cout << "the HP is                     " << getHP();
+    std::cout << "the HP is                     " << Entity::getHealth();
     std::cout << "\n";
     std::cout << "the damage is                 " << getDamage();
     std::cout << "\n";
-    std::cout << "is live(1) or dead(0)?        " << getAlive();
+    std::cout << "is live(1) or dead(0)?        " << isAlive();
     std::cout << "\n";
-}
-
-// BATTLE METHOD added by Jason, edited by Jordan
-/*Returns the NPC's automatic attack*/
-/*TODO: in else statement, have Room notified that NPC has died
-/*This should perhaps directly attack the user back instead of returning an int*/
-int NPC::getHit(int damage) {
-    if(npcHP > damage) { // reduce npc' HP by damage
-        npcHP = npcHP - damage;
-	return getDamage();
-    }
-    else{ // npc died
-        isAlive = false;
-	//NOTIFIY ROOM OF DEATH HERE
-	return DEAD_DAMAGE;
-    }
 }
 

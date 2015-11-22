@@ -270,7 +270,16 @@ string User::attackNPC(string npcName){
   for (auto & NPC : getRoom()->getNPCs() ) {
     if(NPC->searchKeyword(npcName)){
       int userAttack = userStats->getStrength();
-      int NPCAttack = NPC->getHit(userAttack);
+
+      NPC->damage( userAttack );
+
+      int NPCAttack = 0;
+      if(NPC->isAlive()) {
+        NPCAttack = NPC->getDamage();
+      } else {
+        NPCAttack = NPC->DEAD_DAMAGE;
+      }
+      
       string NPCShortDesc = NPC->getShortDesc();
       getRoom()->broadcastMessage(this, getUserName() + " just attacked " + NPCShortDesc+ "\n");
 
