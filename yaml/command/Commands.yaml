@@ -1,0 +1,7 @@
+---
+  attack:
+        alias: [attack, atk]
+  look:
+        alias: [look, lk]
+  move:
+        alias: [move, mv, go]
