@@ -1,0 +1,142 @@
+SHOP COST!!!
+
+There is no specification for the spell shop
+
+cure critical
+cure light
+cure serious
+heal
+hezekiahs cure
+
+cause critical
+cause light
+cause serious
+lightning breath
+flamestrike
+
+In addition, we should target two other spells:
+switch bodies
+This spell causes the player to temporarily swap bodies with another character
+in the world.
+
+stupify
+This spell temporarily causes everything that the player says (to the room or
+to another player) to be scrambled.
+
+d = dice roll
+3d8 means: 0-24
+3 8 sided die
+l = level of caster
+
+duration is worthless
+swap and stupify has duration
+
+you cant obtain spell if you are not of min level.
+if admin grants spell to low level player they can still get it.
+
+$N = target
+
+wearoff = not part of our stuff.
+one effect is night vision and curelight will decrease night vision.
+
+
+
+cure critical:
+- Duration: 12
+  Effect: ''''' 13 ''3d8+(l-6)'' -1'
+  Hitchar: You cure $N's critical wounds.
+  Hitvict: Your critical wounds close and your pain ebbs away.
+  Mana: 20
+  Minlevel: 9
+  Name: cure critical
+
+cure light:
+- Duration: 12
+  Effect: ''''' 13 ''1d8+(l/3)'' -1'
+  Hitchar: You cure $N's light wounds.
+  Hitvict: Your light wounds mend and your pain ebbs slightly.
+  Mana: 10
+  Minlevel: 1
+  Name: cure light
+  Wearoff: Your ability to see in the dark fades away.
+
+cure serious:
+- Duration: 12
+  Effect: ''''' 13 ''2d8+(l/2)'' -1'
+  Hitchar: You cure $N's serious wounds.
+  Hitvict: Your serious wounds mend and your pain ebbs away.
+  Mana: 15
+  Minlevel: 5
+  Name: cure serious
+
+heal:
+- Duration: 12
+  Effect: ''''' 13 ''100'' -1'
+  Hitchar: You lay a hand of healing upon $N.
+  Hitvict: A warm feeling fills your body.
+  Mana: 50
+  Minlevel: 14
+  Name: heal
+
+hezekiahs cure
+- Duration: 12
+  Effect: ''''' 13 ''5*(l/3)'' -1'
+  Hitchar: You infuse $N with a healing vitality.
+  Hitvict: Your wounds are soothed by a healing vitality.
+  Mana: 40
+  Minlevel: 13
+  Name: hezekiahs cure
+
+dammsg = damage message, is very generic, does not do too much.
+name = unique field
+duration = useless
+
+damage: 
+
+rand = random number
+rand(min , max);
+
+random number between min and max
+
+hp = casters current HP
+
+ATTACK SPELLS:
+Cause critical:
+- Dammsg: spell
+  Duration: 12
+  Mana: 20
+  Minlevel: 9
+  Name: cause critical
+  Damage: 3d8 + level - 6
+
+cause light:
+- Dammsg: spell
+  Duration: 12
+  Mana: 15
+  Minlevel: 1
+  Name: cause light
+  Damage: 1d8 + level/3  
+
+cause serious
+- Dammsg: spell
+  Duration: 12
+  Mana: 17
+  Minlevel: 5
+  Name: cause serious
+  Damage: 2d8 + level/2
+
+lightning breath
+- Dammsg: blast of lightning
+  Duration: 4
+  Mana: 15
+  Minlevel: 42
+  Name: lightning breath
+  Damage: rand(hp/16+1,hp/8)
+
+flamestrike
+- Dammsg: flamestrike
+  Duration: 12
+  Mana: 20
+  Minlevel: 13
+  Name: flamestrike
+  Damage: 6d8
