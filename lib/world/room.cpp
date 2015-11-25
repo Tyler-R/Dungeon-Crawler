@@ -158,7 +158,7 @@ vector<string> Room::getObjKeywords(string objName){ //Gets a List of an Object'
 }
 
 void Room::addDoor(string inputId,string inputDir, string inputDesc, shared_ptr<Room>inputRoom){
-	doorList.push_back(new Door(inputId,inputDir,inputDesc, inputRoom));
+ 	doorList.push_back(new Door(inputId,inputDir,inputDesc, inputRoom));
 }
 
 vector<Door*> Room::getDoorList(){

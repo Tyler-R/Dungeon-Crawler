@@ -88,7 +88,6 @@ World::World(){
 
 	for (auto & room :roomLib->getRoomList()){
 		roomList.push_back(room);
-		cout << endl << "addedRoom" << endl;
 	}
 
 	currentRoom = roomList.at(0); 

@@ -15,9 +15,8 @@ roomLibrary::roomLibrary(){
 	parseYaml();
 }
 
-shared_ptr<Room> roomLibrary::create(string name,string id, string description){
+shared_ptr<Room> roomLibrary::createRoom(string name,string id, string description){
 	shared_ptr<Room> room (new Room());
-	cout << endl << "creating room" << endl;
 	room->setName(name);
 	room->setId(id);
 	room->setDesc(description);
@@ -39,9 +38,21 @@ shared_ptr<Room> roomLibrary::getRoom(string id){
 	}
 	return NULL;
 }
-
+	
 vector<shared_ptr<Room>> roomLibrary::getRoomList(){
 	return roomList;
+}
+
+void roomLibrary::addDoor(shared_ptr<Door> door){
+	doorList.push_back(door);
+}
+
+shared_ptr<Door> roomLibrary::createDoor(string name,string id,string description,vector<string> keywords){
+	shared_ptr<Door> door (new Door());
+	door->setId(name);
+	door->setDir(id);
+	door->setDesc(description);
+	return door;
 }
 
 void roomLibrary::parseYaml(){
@@ -52,7 +63,7 @@ void roomLibrary::parseYaml(){
 	string roomsDescription;
 	string doorsDesc; 
 	string doorsDir;
-	string doorsKeywords;
+	vector<string> doorsKeywords;
 	string doorsTo;
 	string extended_desc; //leave out for now
 	string roomId;
@@ -67,13 +78,14 @@ void roomLibrary::parseYaml(){
 		YAML::Node descriptionNode = roomsNodes[i]["desc"];
 		for(int j = 0; j < descriptionNode.size(); j++){
 			roomsDescription += descriptionNode[j].as<string>();
+			roomsDescription += "\n";
 		}
 
 		//parsing room name and room id
 		roomName = roomsNodes[i]["name"].as<string>();
 		roomId = roomsNodes[i]["id"].as<string>();	
 
-		addRoom(create(roomName,roomId,roomsDescription));
+		addRoom(createRoom(roomName,roomId,roomsDescription));
 
 		// cout <<"-----New Room Created!------"<< endl;
 		// cout << "Room name is " << roomName << endl << endl;
@@ -84,7 +96,7 @@ void roomLibrary::parseYaml(){
 		for(int k = 0; k < doorsNode.size(); k++){
 			doorsDesc = " ";
 			doorsDir = " ";
-			doorsKeywords = "";
+			doorsKeywords.clear();
 			doorsTo = "";
 
 			//parsing Doors. and it's description, direction, keywords and to
@@ -98,19 +110,19 @@ void roomLibrary::parseYaml(){
 
 			YAML::Node doorskeywordNode = doorsNode[k]["keywords"];
 			for (int m = 0; m < doorskeywordNode.size(); m++){
-				doorsKeywords = doorskeywordNode[m].as<string>();
+				doorsKeywords.push_back(doorskeywordNode[m].as<string>());
 				//cout << doorsKeywords << endl << endl;
 			}
 			YAML::Node doorstoNode = doorsNode[k]["to"];
 			doorsTo = doorstoNode.as<string>();
 
-			
+			roomList.back()->addDoor(doorsTo, doorsDir, doorsDesc, roomList.back());
+			//need some way to add in the LeadsTo
 
 			// cout << "----Doors in the room " << roomName << " -----" << endl;
 			// cout << "description: " << doorsDesc << endl << endl;
 			// cout << "direction: " << doorsDir << endl << endl;
 			// cout << "to: " << doorsTo << endl << endl;
-		}		
-
+		}
 	}
 }

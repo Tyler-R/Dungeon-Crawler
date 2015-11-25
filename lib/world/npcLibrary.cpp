@@ -62,6 +62,7 @@ void npcLibrary::parseYaml(){
 		YAML::Node descriptionNode = npcNodes[i]["description"];
 		for(int j = 0; j < descriptionNode.size(); j++){
 			NPCDescription += descriptionNode[j].as<string>();
+			NPCDescription += "\n";
 		}
 
 		NPCId = npcNodes[i]["id"].as<string>();

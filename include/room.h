@@ -75,6 +75,7 @@ class Room {
 		vector<string> getObjKeywords(string objName);
 
 		void addDoor(string inputId, string inputDir, string inputDesc, shared_ptr<Room> inputRoom);
+	 	void createDoor(shared_ptr<Door*> door);
 		vector<Door*> getDoorList();
 		string getDoorDescList();	
 		string getObjList();
@@ -139,6 +140,7 @@ class Door {
 
 		vector<string> getKeywords();
 		void addKeyword(string s);
+		void addKeywords(vector<string> inputKeywords);
 		void removeKeyword(string s);
 		bool findKeyword(string s);
 		void printKeywords(); //To be used by the Door's Test Module only!
