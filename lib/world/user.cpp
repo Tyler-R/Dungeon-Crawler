@@ -161,10 +161,6 @@ void User::setDexterity(int dexterity){
   userStats->setDexterity(dexterity);
 }
 
-void User::setHealth(int health){
-  userStats->setHealth(health);
-}
-
 void User::setIntelligence(int intelligence){
   userStats->setIntelligence(intelligence);
 }

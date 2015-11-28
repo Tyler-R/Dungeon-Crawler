@@ -9,7 +9,7 @@
 
 using namespace std;
 
-shared_ptr<ITEM> itemLibrary::create(string objectId, vector<string> objectKeywords, vector<string> objectLongDesc, string objectShortDesc, string extra){
+shared_ptr<ITEM> itemLibrary::create(string objectId, vector<string> objectKeywords, vector<string> objectLongDesc, string objectShortDesc, vector<string> extra){
 	shared_ptr<ITEM> item (new ITEM(objectId));
 	item->addKeywords(objectKeywords);
 	item->addLongDesc(objectLongDesc);
