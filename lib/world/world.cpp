@@ -92,8 +92,8 @@ World::World(){
 
 	currentRoom = roomList.at(0); 
 
-	currentRoom->addNPC(NPCLib->get("103"));
-	currentRoom->addNPC(NPCLib->get("104"));
+	currentRoom->addNPC(NPCLib->spawn("103"));
+	currentRoom->addNPC(NPCLib->spawn("104"));
 }
 
 World::~World(){

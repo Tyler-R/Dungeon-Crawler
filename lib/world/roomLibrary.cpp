@@ -43,17 +43,10 @@ vector<shared_ptr<Room>> roomLibrary::getRoomList(){
 	return roomList;
 }
 
-void roomLibrary::addDoor(shared_ptr<Door> door){
-	doorList.push_back(door);
-}
+shared_ptr<Door*> roomLibrary::createDoor(string id,string direction, string description, vector<string> keywords){
+	// Implement
+} 
 
-shared_ptr<Door> roomLibrary::createDoor(string name,string id,string description,vector<string> keywords){
-	shared_ptr<Door> door (new Door());
-	door->setId(name);
-	door->setDir(id);
-	door->setDesc(description);
-	return door;
-}
 
 void roomLibrary::parseYaml(){
 	using namespace std;
@@ -117,6 +110,7 @@ void roomLibrary::parseYaml(){
 			doorsTo = doorstoNode.as<string>();
 
 			roomList.back()->addDoor(doorsTo, doorsDir, doorsDesc, roomList.back());
+
 			//need some way to add in the LeadsTo
 
 			// cout << "----Doors in the room " << roomName << " -----" << endl;
@@ -125,4 +119,17 @@ void roomLibrary::parseYaml(){
 			// cout << "to: " << doorsTo << endl << endl;
 		}
 	}
+
+	//Iterates through every room, checks their doors, and sets their leadsTo to a valid room.  
+	//Need to do something about the nested loops.
+	for (auto & room :roomList){
+		for (auto & door: room->getDoorList()){
+		 	for (auto & leadsTo:roomList){
+		 		if (leadsTo->getId() == door->getId()){
+		 			door->setLeadsTo(leadsTo);
+		 		}
+		 	}
+		}
+	}
+
 }

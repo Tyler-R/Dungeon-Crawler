@@ -20,6 +20,7 @@ class npcLibrary{
 		//~npcLibrary();
 
 		shared_ptr<NPC> get(string id);
+		shared_ptr<NPC> spawn(string id);
 		
 
 };

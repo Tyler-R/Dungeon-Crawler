@@ -40,6 +40,17 @@ shared_ptr<NPC> npcLibrary::get(string id){
 	return NULL;
 }
 
+shared_ptr<NPC> npcLibrary::spawn(string id){
+	for (auto & npc :npcList){
+		if (npc->getID() == id){
+			return create(npc->getID(),npc->getDescription(),npc->getLongDesc(),npc->getShortDesc(),npc->getKeyword());
+		}
+	}
+	return NULL;
+}
+
+
+
 void npcLibrary::parseYaml(){
 	YAML::Node allNode = YAML::LoadFile("gameYaml/smurf.yaml");
 	YAML::Node npcNodes = allNode["NPCS"];

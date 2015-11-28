@@ -15,9 +15,10 @@ class roomLibrary{
 		void addRoom(shared_ptr<Room> room); 		
 		void parseYaml();
 
-		vector<shared_ptr<Door>> doorList;
-		void addDoor(shared_ptr<Door> door);
-		shared_ptr<Door> createDoor(string id,string dir,string description, vector<string> keywords);
+		vector<shared_ptr<Door*>> doorList; 
+		shared_ptr<Door*> createDoor(string id,string direction, string description, vector<string> keywords); // Implement
+
+
 	public:
 		roomLibrary();
 		shared_ptr<Room> getRoom(string id);
