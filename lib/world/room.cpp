@@ -231,7 +231,7 @@ string Room::lookAt(string objName){
 	//This method is used if the user types the "look <noun>" command.  <noun> can be a valid keyword.
 
 	if ( findKeyword(objName) ){
-		return extDesc + "\n";
+		return desc + "\n";
 	}
 
 

@@ -11,7 +11,7 @@ using namespace std;
 class roomLibrary{
 	private:
 		vector<shared_ptr<Room>> roomList;
-		shared_ptr<Room> createRoom(string name,string id, string description); //NEEDS KEYWORDS
+		shared_ptr<Room> createRoom(string name,string id, string description, string extDescription, vector<string> keywords); //NEEDS KEYWORDS
 		void addRoom(shared_ptr<Room> room); 		
 		void parseYaml();
 

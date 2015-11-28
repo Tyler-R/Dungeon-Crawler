@@ -12,13 +12,13 @@ roomLibrary::roomLibrary(){
 	parseYaml();
 }
 
-shared_ptr<Room> roomLibrary::createRoom(string name,string id,string description, string extDescription){
+shared_ptr<Room> roomLibrary::createRoom(string name,string id, string description, string extDescription, vector<string> keywords){
 	shared_ptr<Room> room (new Room());
 	room->setName(name);
 	room->setId(id);
 	room->setDesc(description);
-	//room->addKeywords
-	room->setExtDesc("no extended desc");
+	room->addKeywords(keywords);
+	room->setExtDesc(extDescription);
 
 	return room;
 }
@@ -57,9 +57,10 @@ void roomLibrary::parseYaml(){
 	string doorsDir;
 	vector<string> doorsKeywords;
 	string doorsTo;
-	string extended_desc; //leave out for now
 	string roomId;
 	string roomName;
+	string roomExtDesc; //leave out for now
+	vector<string>roomKeywords;
 
 	for(int i = 0; (unsigned)i < roomsNodes.size(); i++) {
 		roomsDescription = " ";
@@ -79,31 +80,30 @@ void roomLibrary::parseYaml(){
 
 		YAML::Node extdescNode = roomsNodes[i]["extended_descriptions"];
 		for(int a = 0; a < extdescNode.size(); a++){
-			room_extdesc = " "; 
-			room_extkey = " ";
+			roomExtDesc = " "; 
+			roomKeywords.clear();
 
 
 			YAML::Node ext_descNode = extdescNode[a]["desc"];
 			for(int j = 0; j < ext_descNode.size(); j++){
-				room_extdesc += ext_descNode[j].as<string>();
+				roomExtDesc += ext_descNode[j].as<string>();
 			}
 
 			YAML::Node ext_keyNode = extdescNode[a]["keywords"];
 			for(int k = 0; k < ext_keyNode.size(); k++){
-				room_extkey += ext_keyNode[k].as<string>();
+				roomKeywords.push_back(ext_keyNode[k].as<string>());
 			}
 
-			cout << room_extdesc << endl;
-			cout << room_extkey << endl;
 		}
 
 
-		addRoom(createRoom(roomName,roomId,roomsDescription));
+		addRoom(createRoom(roomName,roomId,roomsDescription, roomExtDesc,roomKeywords));
 
-		// cout <<"-----New Room Created!------"<< endl;
-		// cout << "Room name is " << roomName << endl << endl;
-		// cout << roomName << "'s' id is: " << roomId << endl << endl;
-		// cout << roomName << "'s description is: " << roomsDescription << endl<< endl;
+		 cout <<"-----New Room Created!------"<< endl;
+		 cout << "Room name is " << roomName << endl << endl;
+		 cout << roomName << "'s' id is: " << roomId << endl << endl;
+		 cout << roomName << "'s description is: " << roomsDescription << endl<< endl;
+		 cout << roomName << "'s extDescription is: " << roomExtDesc << endl<< endl;
 
 		YAML::Node doorsNode = roomsNodes[i]["doors"];
 		for(int k = 0; k < doorsNode.size(); k++){
