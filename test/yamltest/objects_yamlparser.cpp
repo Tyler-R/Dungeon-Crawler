@@ -15,8 +15,7 @@
 int main()
 {
 	using namespace std;
-
-	YAML::Node allNode = YAML::LoadFile("midgaard.yml");
+	YAML::Node allNode = YAML::LoadFile("gameYaml/midgaard.yaml");
 	YAML::Node objectNodes = allNode["OBJECTS"];
 	
 	string objectId;

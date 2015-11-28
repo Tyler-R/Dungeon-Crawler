@@ -64,6 +64,16 @@ string Room::getExtDesc(){
 	return extDesc;
 }
 
+shared_ptr<NPC> Room::getNPC(string npcName) {
+	for( auto &npc : npcList ) {
+		if( npc->searchKeyword( npcName ) ) {
+			return npc;
+		}
+	}
+
+	return NULL;
+}
+
 
 vector<string> Room::getKeywords(){
 	return keywordList;

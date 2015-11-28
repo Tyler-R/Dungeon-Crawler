@@ -12,8 +12,6 @@ Created By: Sarah Kim Dao
 #include <assert.h>
 
 #include "npc.h"
-#include "creature.h"
-#include "monster.h"
 #include "item.h"
 #include "user.h"
 
@@ -53,6 +51,7 @@ class Room {
 		string getName();
 		string getDesc();  
 		string getExtDesc();
+		shared_ptr<NPC> getNPC(string npcName);
 
 		vector<string> getKeywords();
 		vector<shared_ptr<NPC>> getNPCs();
