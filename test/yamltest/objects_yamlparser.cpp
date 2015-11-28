@@ -19,7 +19,7 @@ int main()
 	YAML::Node allNode = YAML::LoadFile("gameYaml/midgaard.yaml");
 	YAML::Node objectNodes = allNode["OBJECTS"];
 	
-	// string extra;
+	string extra;
 	string objectId;
 	vector<string> objectKeywords; 
 	vector<string> objectLongDesc;
@@ -34,12 +34,12 @@ int main()
 
 		cout <<"--New object Created!--"<< endl;
 
-		// YAML::Node extraNode = objectNodes[i]["extra"];
-		// for (int m = 0; m < extraNode.size(); m++){
-
-		// 	extra = extraNode[m].as<string>();
-		// 	cout << "extra:" << extra << endl << endl;
-		// }
+		if (objectsNodes[i]["extra"]){
+			extra = objectsNodes[i]["extra"].as<string>();
+		}		
+		else {
+			extra = "No Extra Descripton";
+		}			
 
 		objectId = objectNodes[i]["id"].as<string>();
 
