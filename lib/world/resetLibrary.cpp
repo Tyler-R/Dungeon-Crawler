@@ -1,15 +1,35 @@
 
-//Test run with g++ -I. -g npc_yamlparser.cpp -lyaml-cpp -std=c++11 -L. -o yamltest
-// ./yamltest
-
+#include "resetLibrary.h"
 #include "yaml-cpp/yaml.h"
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
 
-int main()
-{
+
+using namespace std;
+
+
+shared_ptr<RESET> itemLibrary::create(string action,string comment,string resetId,string limt, string room, string slot){
+	shared_ptr<RESET> reset (new RESET(resetId));
+	reset->addId(resetId);
+	return reset;
+}
+
+void resetLibrary::addReset(shared_ptr<RESET> reset){
+	itemList.push_back(reset);
+}
+
+shared_ptr<RESET> resetLibrary::get(string id){
+	for (auto & reset :resetList){
+		if (reset->getID() == resetId){
+			return reset;
+		}
+	}
+	return NULL;
+}
+
+void resetLibrary::parseYaml(){
 	using namespace std;
 	YAML::Node allNode = YAML::LoadFile("gameYaml/smurf.yaml");
 	YAML::Node resetNodes = allNode["RESETS"];
@@ -75,7 +95,7 @@ int main()
 		cout << "slot is " << slot << endl << endl;
 		
 
-	}
+    	addReset(create(action, comment, resetID, limit, room, slot));
 
-	return 0;
+	}
 }

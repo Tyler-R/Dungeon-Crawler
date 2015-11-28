@@ -1,0 +1,30 @@
+magic system:
+- battle magic
+- non-battle magic (healing)
+- all magic shows relevant text
+- spells follow a general template
+- some spells could be used to summon something like an NPC
+    - this NPC could possibly then fight on your behalf
+- spell to swap bodies with someone for a limited set amount of time including an NPC
+- these last few specialty spells cannot be templated and have their own functions
+- how to acquire spells:
+  - from a magic shop?
+- players learn spells once and can use it infinitely from thereon
+- spell use only limited to the amount of MP (magic points) a player has
+- spells consume set amount of MP per use
+- if you die while in an NPC body, you should immediately respawn in a new NPC body
+  - spawn at a set spawn point. No random spawn points
+
+Money:
+- players have gold either in inventory or as a separate value.
+- used for purchasing goods
+
+Shops:
+- sell only spells for now
+- have a set inventory with specific quantity of each item (make quantity infinite for now, may limit later)
+- 
+
+Communication:
+- when in a shop, interactions with the store clerk are not broadcasted to all in room
+
+

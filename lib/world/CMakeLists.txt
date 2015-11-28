@@ -7,5 +7,11 @@ add_library(world world.cpp
 		  inventory.cpp
 	          abilityStats.cpp
                   user.cpp	
-                  item.cpp		
+                  item.cpp
+		  npcLibrary.cpp
+		  roomLibrary.cpp		
 )
+
+target_link_libraries(world
+		      ${CMAKE_SOURCE_DIR}/ext/yaml-cpp/libyaml-cpp.a
+		       )

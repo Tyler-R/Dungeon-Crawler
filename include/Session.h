@@ -67,6 +67,6 @@ private:
 
     shared_ptr<World> myWorld;
     std::shared_ptr<CommandParser> commandParser;
-    shared_ptr<User> usr;
+    shared_ptr<User> user;
 
 };

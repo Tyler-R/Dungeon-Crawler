@@ -13,7 +13,6 @@
 int main()
 {
 	using namespace std;
-	cout << "Hello World!" << endl;
 	YAML::Node allNode = YAML::LoadFile("gameYaml/smurf.yaml");
 	YAML::Node npcNodes = allNode["NPCS"];
 

@@ -1,0 +1,43 @@
+Magic system.
+have combat and non combat spells
+damaging spells in combat and healing spells outside of combat
+templates for types of spells and specialty spells
+maybe summon an npc.
+might not be permanant but a single new instance.
+****switch bodies with other players or NPCs
+they get all your items and they gets your for a time limit
+
+some specialty spells are special purpose functions, other are templates.
+templates = damage and healing, maybe another
+
+add a chat system so other people in room can hear your
+
+how do you learn spells.
+buy them from magic shop
+from npc where you can buy stuff from
+have currency in inventory.
+
+shop has inventory and only has a set of spells
+shop has infinite
+spells are infinite use.
+have MP for use for spells
+MP regenerates over time
+configurable MP name
+
+has restrictions on when you can cast things like cant
+cast fireball without casting it on other player
+
+documentation needed for this iteration.
+we do this in sphinx
+build and install application
+all end user documentation
+known bugs and issues
+
+npc's can have spells.
+npcs can use spells.
+
+do learned spells stay with body or mind. They stay with mind.
+
+swap back after logout
+respawn in NPC body if npc you swapped into dies.
+swap back if player dies???
