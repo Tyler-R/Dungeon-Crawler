@@ -25,6 +25,7 @@ private:
     string itemID;          // the Id of the item
     string longDesc;
     string shortDesc;
+    string extraDesc;
     vector<string> keywords;
 
 
@@ -51,8 +52,10 @@ public:
     // descriptions 
     void addLongDesc(string s);
     void addShortDesc(string s);
+    void addExtraDesc(string s);
     string getLongDesc()const;
     string getShortDesc()const;
+    string getExtraDesc() const;
     // keyword
     void addKeyword(string s);
     void addKeywords(vector<string> s);
