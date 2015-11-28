@@ -1,7 +1,3 @@
-
-//Test run with g++ -I. -g npc_yamlparser.cpp -lyaml-cpp -std=c++11 -L. -o yamltest
-// ./yamltest
-
 #include "npcLibrary.h"
 #include "yaml-cpp/yaml.h"
 #include <iostream>

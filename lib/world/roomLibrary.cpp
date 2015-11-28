@@ -1,13 +1,10 @@
-
-//Test run with g++ -I. -g npc_yamlparser.cpp -lyaml-cpp -std=c++11 -L. -o yamltest
-// ./yamltest
-
 #include "roomLibrary.h"
 #include "yaml-cpp/yaml.h"
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
+#include <limits.h>
 
 
 using namespace std;
@@ -15,7 +12,7 @@ roomLibrary::roomLibrary(){
 	parseYaml();
 }
 
-shared_ptr<Room> roomLibrary::createRoom(string name,string id, string description){
+shared_ptr<Room> roomLibrary::createRoom(string name,string id,string description, string extDescription){
 	shared_ptr<Room> room (new Room());
 	room->setName(name);
 	room->setId(id);
@@ -49,8 +46,10 @@ shared_ptr<Door*> roomLibrary::createDoor(string id,string direction, string des
 
 
 void roomLibrary::parseYaml(){
-	using namespace std;
-	YAML::Node allNode = YAML::LoadFile("gameYaml/midgaard.yaml");
+	char filePath[PATH_MAX + 1]; /* not sure about the "+ 1" */
+    char *res = realpath("gameYaml/midgaard.yaml", filePath);
+
+	YAML::Node allNode = YAML::LoadFile(filePath);
 	YAML::Node roomsNodes = allNode["ROOMS"];
 
 	string roomsDescription;
@@ -77,6 +76,27 @@ void roomLibrary::parseYaml(){
 		//parsing room name and room id
 		roomName = roomsNodes[i]["name"].as<string>();
 		roomId = roomsNodes[i]["id"].as<string>();	
+
+		YAML::Node extdescNode = roomsNodes[i]["extended_descriptions"];
+		for(int a = 0; a < extdescNode.size(); a++){
+			room_extdesc = " "; 
+			room_extkey = " ";
+
+
+			YAML::Node ext_descNode = extdescNode[a]["desc"];
+			for(int j = 0; j < ext_descNode.size(); j++){
+				room_extdesc += ext_descNode[j].as<string>();
+			}
+
+			YAML::Node ext_keyNode = extdescNode[a]["keywords"];
+			for(int k = 0; k < ext_keyNode.size(); k++){
+				room_extkey += ext_keyNode[k].as<string>();
+			}
+
+			cout << room_extdesc << endl;
+			cout << room_extkey << endl;
+		}
+
 
 		addRoom(createRoom(roomName,roomId,roomsDescription));
 
