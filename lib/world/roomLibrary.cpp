@@ -1,3 +1,4 @@
+//Created by Sarah Kim Dao and Jason Zhang
 #include "roomLibrary.h"
 #include "yaml-cpp/yaml.h"
 #include <iostream>

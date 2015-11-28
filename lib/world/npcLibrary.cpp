@@ -1,3 +1,5 @@
+//Created by Sarah Kim Dao and Jason Zhang
+
 #include "npcLibrary.h"
 #include "yaml-cpp/yaml.h"
 #include <iostream>

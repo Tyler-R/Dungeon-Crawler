@@ -1,4 +1,6 @@
 add_library(world 
+
+
 	world.cpp
 	npc.cpp
 	room.cpp	
@@ -8,6 +10,10 @@ add_library(world
 	user.cpp	
 	item.cpp		
 	entity.cpp
+	npcLibrary.cpp
+	roomLibrary.cpp
+	#itemLibrary.cpp
+	#resetLibrary.cpp
 )
 
 target_link_libraries(world
