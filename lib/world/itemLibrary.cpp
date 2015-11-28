@@ -9,8 +9,8 @@
 
 using namespace std;
 
-shared_ptr<ITEM> itemLibrary::create(string objectId, vector<string> objectKeywords, vector<string> objectLongDesc, string objectShortDesc, string extra){
-	shared_ptr<ITEM> item (new ITEM(objectId));
+shared_ptr<Item> itemLibrary::create(string objectId, vector<string> objectKeywords, vector<string> objectLongDesc, string objectShortDesc, vector<string> extra){
+	shared_ptr<Item> item (new item(string objectId));
 	item->addKeywords(objectKeywords);
 	item->addLongDesc(objectLongDesc);
 	item->addShortDesc(objectShortDesc);
@@ -18,13 +18,13 @@ shared_ptr<ITEM> itemLibrary::create(string objectId, vector<string> objectKeywo
 	return item;
 }
 
-void npcLibrary::addItem(shared_ptr<ITEM> npc){
+void itemLibrary::addItem(shared_ptr<Item> item){
 	itemList.push_back(item);
 }
 
-shared_ptr<ITEM> itemLibrary::get(string id){
+shared_ptr<Item> itemLibrary::get(string id){
 	for (auto & item :itemList){
-		if (npc->getID() == id){
+		if (item->getID() == id){
 			return item;
 		}
 	}
