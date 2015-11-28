@@ -37,11 +37,17 @@ void Item::addLongDesc(string s){
 void Item::addShortDesc(string s){
     shortDesc = s;
 }
+void Item::addExtraDesc(string s) {
+    extraDesc = s;
+}
 string Item::getLongDesc()const{
     return longDesc;
 }
 string Item::getShortDesc()const{
     return shortDesc;
+}
+string Item::getExtraDesc() const{
+    return extraDesc;
 }
 
 // Keyword functions
