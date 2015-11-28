@@ -1,1 +1,1 @@
-add_library(fromulaLibrary Dice.cpp)
+add_library(fromulaLibrary Formula.cpp Dice.cpp)
