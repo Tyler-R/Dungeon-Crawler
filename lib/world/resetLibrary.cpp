@@ -10,7 +10,7 @@
 using namespace std;
 
 
-shared_ptr<RESET> itemLibrary::create(string action,string comment,string resetId,string limt, string room, string slot){
+shared_ptr<RESET> itemLibrary::create(string action,string comment,string resetId,string limit, string room, string slot){
 	shared_ptr<RESET> reset (new RESET(resetId));
 	reset->addId(resetId);
 	return reset;

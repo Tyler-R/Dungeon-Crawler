@@ -9,12 +9,12 @@
 
 using namespace std;
 
-shared_ptr<ITEM> itemLibrary::create(string objectId, vector<string>  objectKeywords, vector<string> objectLongDesc, string objectShortDesc, string exra){
-	shared_ptr<ITEM> item (new ITEM(id));
-	// item->addKeywords(keywords);
-	// item->addDescription(description);
-	// item->addShortDesc(shortDesc);
-	// item->addLongDesc(longDesc);
+shared_ptr<ITEM> itemLibrary::create(string objectId, vector<string> objectKeywords, vector<string> objectLongDesc, string objectShortDesc, string extra){
+	shared_ptr<ITEM> item (new ITEM(objectId));
+	item->addKeywords(objectKeywords);
+	item->addLongDesc(objectLongDesc);
+	item->addShortDesc(objectShortDesc);
+	item->addExtra(extra);
 	return item;
 }
 
@@ -32,30 +32,35 @@ shared_ptr<ITEM> itemLibrary::get(string id){
 }
 
 void itemLibrary::parseYaml(){
-	for(int i = 0; (unsigned)i < npcNodes.size(); i++) {
-	YAML::Node allNode = YAML::LoadFile("gameYaml/midgaard.yaml");
+	YAML::Node allNode = YAML::LoadFile("midgaard.yml");
 	YAML::Node objectNodes = allNode["OBJECTS"];
 	
-	string extra;
 	string objectId;
 	vector<string> objectKeywords; 
 	vector<string> objectLongDesc;
 	string objectShortDesc;
+	vector <string> extra;
 
 	for(int i = 0; (unsigned)i < objectNodes.size(); i++) {
-		extra =" ";
+		extra.clear();
 		objectId= " ";
 		objectKeywords.clear();
 		objectLongDesc.clear();
 		objectShortDesc=" ";
 
+		cout <<"--New object Created!--"<< endl;
 
-		if (objectsNodes[i]["extra"]){
-			extra = objectsNodes[i]["extra"].as<string>();
-		}		
-		else {
-			extra = "No Extra Descripton";
-		}			
+		YAML::Node extraNode = objectNodes[i]["extra"];
+		for (int m = 0; m < extraNode.size(); m++){
+			if (extraNode[m]["desc"]){
+				YAML::Node extraDescNode = extraNode[m]["desc"];
+				for(int k = 0; k < extraDescNode.size(); k++){
+					extra.push_back(extraDescNode[k].as<string>());
+				}	
+			} else {
+			extra.clear();
+			}			
+		}
 
 		objectId = objectNodes[i]["id"].as<string>();
 
@@ -86,7 +91,10 @@ void itemLibrary::parseYaml(){
 			cout << longdesc << endl;
 		}
 		cout << endl;
-
+		for (auto & extraDesc : extra) {
+			cout << extraDesc << endl;
+		}
+		cout << endl;
 		cout << "shortdesc: " << objectShortDesc << endl<<endl;
 
     	addItem(create(NPCId,NPCDescription,NPCLongDesc,NPCShortDesc,npcKeywords));

@@ -16,17 +16,17 @@ int main()
 {
 	using namespace std;
 
-	YAML::Node allNode = YAML::LoadFile("gameYaml/midgaard.yaml");
+	YAML::Node allNode = YAML::LoadFile("midgaard.yml");
 	YAML::Node objectNodes = allNode["OBJECTS"];
 	
-	string extra;
 	string objectId;
 	vector<string> objectKeywords; 
 	vector<string> objectLongDesc;
 	string objectShortDesc;
+	vector <string> extra;
 
 	for(int i = 0; (unsigned)i < objectNodes.size(); i++) {
-		// extra =" ";
+		extra.clear();
 		objectId= " ";
 		objectKeywords.clear();
 		objectLongDesc.clear();
@@ -34,12 +34,17 @@ int main()
 
 		cout <<"--New object Created!--"<< endl;
 
-		if (objectsNodes[i]["extra"]){
-			extra = objectsNodes[i]["extra"].as<string>();
-		}		
-		else {
-			extra = "No Extra Descripton";
-		}			
+		YAML::Node extraNode = objectNodes[i]["extra"];
+		for (int m = 0; m < extraNode.size(); m++){
+			if (extraNode[m]["desc"]){
+				YAML::Node extraDescNode = extraNode[m]["desc"];
+				for(int k = 0; k < extraDescNode.size(); k++){
+					extra.push_back(extraDescNode[k].as<string>());
+				}	
+			} else {
+			extra.clear();
+			}			
+		}
 
 		objectId = objectNodes[i]["id"].as<string>();
 
@@ -72,7 +77,10 @@ int main()
 			cout << longdesc << endl;
 		}
 		cout << endl;
-
+		for (auto & extraDesc : extra) {
+			cout << extraDesc << endl;
+		}
+		cout << endl;
 		cout << "shortdesc: " << objectShortDesc << endl<<endl;
 
 	}
