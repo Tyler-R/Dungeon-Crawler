@@ -14,7 +14,7 @@ shared_ptr<ITEM> itemLibrary::create(string objectId, vector<string> objectKeywo
 	item->addKeywords(objectKeywords);
 	item->addLongDesc(objectLongDesc);
 	item->addShortDesc(objectShortDesc);
-	item->addExtra(extra);
+	item->addExtraDesc(extra);
 	return item;
 }
 
@@ -48,8 +48,6 @@ void itemLibrary::parseYaml(){
 		objectLongDesc.clear();
 		objectShortDesc=" ";
 
-		cout <<"--New object Created!--"<< endl;
-
 		YAML::Node extraNode = objectNodes[i]["extra"];
 		for (int m = 0; m < extraNode.size(); m++){
 			if (extraNode[m]["desc"]){
@@ -77,27 +75,8 @@ void itemLibrary::parseYaml(){
 
 		objectShortDesc = objectNodes[i]["shortdesc"].as<string>(); 
 
-		
-		cout << "Object Id is " << objectId << endl << endl;
 
-		cout << "Object Keywords: " << endl;
-		for (auto & keyword : objectKeywords) {
-			cout << "-" << keyword << endl;
-		}
-		cout << endl;
-
-		cout << "longdescs: " << endl;
-		for (auto & longdesc : objectLongDesc) {
-			cout << longdesc << endl;
-		}
-		cout << endl;
-		for (auto & extraDesc : extra) {
-			cout << extraDesc << endl;
-		}
-		cout << endl;
-		cout << "shortdesc: " << objectShortDesc << endl<<endl;
-
-    	addItem(create(NPCId,NPCDescription,NPCLongDesc,NPCShortDesc,npcKeywords));
+    	addItem(create(objectId,objectKeywords,objectLongDesc, objectShortDesc, extra));
 
 	}
 }
