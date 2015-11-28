@@ -1,6 +1,4 @@
 add_library(world 
-
-
 	world.cpp
 	npc.cpp
 	room.cpp	
