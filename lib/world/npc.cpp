@@ -12,7 +12,7 @@
 
 // 10 is the starting max health
 // constructor (id)
-NPC::NPC(string id) : Entity( DEFUALT_HEALTH ) {
+NPC::NPC(string id) : Entity( DEFAULT_HEALTH ) {
     setID(id);
     setDamage();
 }
@@ -24,6 +24,7 @@ NPC::NPC(NPC *npc) : Entity( DEFAULT_HEALTH ) {
     longDesc = npc->getLongDesc();
     shortDesc = npc->getShortDesc();
     npcDamage = npc->getDamage();
+    
 
     for(auto & key : npc->getKeyword()){
         keywords.push_back(key);

@@ -9,12 +9,12 @@
 
 using namespace std;
 
-shared_ptr<Item> itemLibrary::create(string objectId, vector<string> objectKeywords, vector<string> objectLongDesc, string objectShortDesc, vector<string> extra){
+shared_ptr<Item> itemLibrary::create(string objectId, vector<string> objectKeywords, string objectLongDesc, string objectShortDesc, string extra){
 	shared_ptr<Item> item (new item(string objectId));
 	item->addKeywords(objectKeywords);
-	item->addLongDesc(objectLongDesc);
+	item->addLongDescs(objectLongDesc);
 	item->addShortDesc(objectShortDesc);
-	item->addExtraDesc(extra);
+	item->addExtraDescs(extra);
 	return item;
 }
 
@@ -37,9 +37,11 @@ void itemLibrary::parseYaml(){
 	
 	string objectId;
 	vector<string> objectKeywords; 
-	vector<string> objectLongDesc;
+	//vector<string> objectLongDesc;
+	string objectLongDesc;
 	string objectShortDesc;
-	vector <string> extra;
+	//vector <string> extra;
+	string extra;
 
 	for(int i = 0; (unsigned)i < objectNodes.size(); i++) {
 		extra.clear();
@@ -52,9 +54,13 @@ void itemLibrary::parseYaml(){
 		for (int m = 0; m < extraNode.size(); m++){
 			if (extraNode[m]["desc"]){
 				YAML::Node extraDescNode = extraNode[m]["desc"];
-				for(int k = 0; k < extraDescNode.size(); k++){
-					extra.push_back(extraDescNode[k].as<string>());
-				}	
+				// for(int k = 0; k < extraDescNode.size(); k++){
+				// 	extra.push_back(extraDescNode[k].as<string>());
+				// }
+				for(int k = 0; k < extraDescNode.size(); k++) {
+					extra += extra[k].as<string>();
+					extra += "\n";
+		}	
 			} else {
 			extra.clear();
 			}			
@@ -69,8 +75,12 @@ void itemLibrary::parseYaml(){
 		}
 
 		YAML::Node longdescNode = objectNodes[i]["longdesc"];
-		for(int k = 0; k < longdescNode.size(); k++){
-			objectLongDesc.push_back(longdescNode[k].as<string>());
+		// for(int k = 0; k < longdescNode.size(); k++){
+		// 	objectLongDesc.push_back(longdescNode[k].as<string>());
+		// }
+		for(int k = 0; k < longdescNode.size(); k++) {
+			objectLongDesc += objectLongDesc[k].as<string>();
+			objectLongDesc += "\n";
 		}
 
 		objectShortDesc = objectNodes[i]["shortdesc"].as<string>(); 
