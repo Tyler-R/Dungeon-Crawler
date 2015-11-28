@@ -11,5 +11,5 @@ Formula::~Formula() {
 }
 
 int Formula::calculateValue( unsigned int level ) {
-	return dice.getDiceRollValue() + (level * levelMultiplier) + constant;
+	return (dice.getDiceRollValue() + (level * levelMultiplier) + constant);
 }
