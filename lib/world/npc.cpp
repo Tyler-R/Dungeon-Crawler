@@ -12,13 +12,13 @@
 
 // 10 is the starting max health
 // constructor (id)
-NPC::NPC(string id) : Entity( 10 ) {
+NPC::NPC(string id) : Entity( DEFUALT_HEALTH ) {
     setID(id);
     setDamage();
 }
 
 // for copy
-NPC::NPC(NPC *npc) : Entity( 10 ) {
+NPC::NPC(NPC *npc) : Entity( DEFAULT_HEALTH ) {
     npcID = npc->getID();
     npcDescription = npc->getDescription();
     longDesc = npc->getLongDesc();
