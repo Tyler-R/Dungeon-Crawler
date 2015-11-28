@@ -1,6 +1,6 @@
 #include "magic/damageSpell.h"
 
-DamageSpell::DamageSpell( int cost, int damage ) : Spell( cost ), damage( damage ) {
+DamageSpell::DamageSpell( int manaCost, std::shared_ptr<Formula> formula) : Spell( manaCost, formula ) {
 
 }
 

@@ -4,7 +4,7 @@
 
 class HealingSpell : public Spell {
 public:
-    HealingSpell( int cost, int healing );
+    HealingSpell( int manaCost, std::shared_ptr<Formula> healingFormula );
     ~HealingSpell( );
 
 
@@ -13,5 +13,4 @@ public:
 
 private:
 	// health that the spell heals
-	int healing;
 };
