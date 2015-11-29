@@ -14,6 +14,7 @@ add_library(world
 	roomLibrary.cpp
 	#itemLibrary.cpp
 	#resetLibrary.cpp
+	admin.cpp
 )
 
 target_link_libraries(world

@@ -14,18 +14,19 @@ Created By: Sarah Kim Dao
 #include "npc.h"
 #include "item.h"
 #include "room.h"
-#include "reset.h"
+#include "reset/Reset.h"
 #include "world.h"
 
 using namespace std;
 
-class AdminCommands {
+class Admin {
 	private:
-		shared_ptr<World> world();
+		shared_ptr<World> world;
 
 	public:
-		void setWorld(shared_ptr<World>);
+		void setWorld(shared_ptr<World> inputWorld);
 		shared_ptr<World> getWorld(); 
+
 		shared_ptr<Room> createRoom();
 		shared_ptr<Item> createItem();
 		shared_ptr<NPC> createNPC();
@@ -38,4 +39,4 @@ class AdminCommands {
 		void modifyDoor(string dir);
 		void modifyReset(string id);
 
-}
+};
