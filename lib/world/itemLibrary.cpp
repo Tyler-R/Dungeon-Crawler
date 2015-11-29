@@ -5,12 +5,14 @@
 #include <fstream>
 #include <string>
 #include <vector>
-
+#include <limits.h>
 
 using namespace std;
 
 itemLibrary::itemLibrary(){
+	cout << "--Creating Item Library ...";
 	parseYaml();
+	cout << "Done!" << endl;
 }
 
 shared_ptr<Item> itemLibrary::create(string objectId, vector<string> objectKeywords, string objectLongDesc, string objectShortDesc, string extra){
@@ -49,7 +51,10 @@ vector<shared_ptr<Item>> itemLibrary::getItemList(){
 }
 
 void itemLibrary::parseYaml(){
-	YAML::Node allNode = YAML::LoadFile("gameYaml/midgaard.yaml");
+	char filePath[PATH_MAX + 1]; 
+    char *res = realpath("gameYaml/midgaard.yaml", filePath);
+
+	YAML::Node allNode = YAML::LoadFile(filePath);
 	YAML::Node objectNodes = allNode["OBJECTS"];
 	
 	string objectId;

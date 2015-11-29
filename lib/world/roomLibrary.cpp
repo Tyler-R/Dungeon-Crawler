@@ -10,7 +10,9 @@
 
 using namespace std;
 roomLibrary::roomLibrary(){
+	cout << "--Creating Room Library ... ";
 	parseYaml();
+	cout << "Done!" << endl;
 }
 
 shared_ptr<Room> roomLibrary::createRoom(string name,string id, string description, string extDescription, vector<string> keywords){
@@ -47,7 +49,7 @@ shared_ptr<Door*> roomLibrary::createDoor(string id,string direction, string des
 
 
 void roomLibrary::parseYaml(){
-	char filePath[PATH_MAX + 1]; /* not sure about the "+ 1" */
+	char filePath[PATH_MAX + 1]; 
     char *res = realpath("gameYaml/midgaard.yaml", filePath);
 
 	YAML::Node allNode = YAML::LoadFile(filePath);
@@ -88,6 +90,7 @@ void roomLibrary::parseYaml(){
 			YAML::Node ext_descNode = extdescNode[a]["desc"];
 			for(int j = 0; j < ext_descNode.size(); j++){
 				roomExtDesc += ext_descNode[j].as<string>();
+				roomExtDesc += "\n";
 			}
 
 			YAML::Node ext_keyNode = extdescNode[a]["keywords"];

@@ -6,8 +6,11 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <limits.h>
 npcLibrary::npcLibrary(){
+	cout << "--Creating NPC Library ...";
 	parseYaml();
+	cout << "Done!" << endl;
 }
 
 // npcLibrary::~npcLibrary(){
@@ -54,7 +57,10 @@ vector<shared_ptr<NPC>> npcLibrary::getNPCList(){
 
 
 void npcLibrary::parseYaml(){
-	YAML::Node allNode = YAML::LoadFile("gameYaml/midgaard.yaml");
+	char filePath[PATH_MAX + 1]; 
+    char *res = realpath("gameYaml/midgaard.yaml", filePath);
+
+	YAML::Node allNode = YAML::LoadFile(filePath);
 	YAML::Node npcNodes = allNode["NPCS"];
 
 	string NPCDescription;

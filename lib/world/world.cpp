@@ -10,15 +10,7 @@ Created By: Sarah Kim Dao
 
 World::World(){
 
-	//Parsing NPCs
-	shared_ptr<npcLibrary> nL( new npcLibrary());
-	NPCLib = nL;
-
-
-	// for (auto & npc :NPCLib->getNPCList()){
-	// 	cout << npc->getID() << endl;
-		
-	// }
+	cout << endl << "--Now Instantiating World--" << endl;
 
 	//Parsing Rooms
 	shared_ptr<roomLibrary> rL( new roomLibrary());
@@ -27,23 +19,28 @@ World::World(){
 	for (auto & room :roomLib->getRoomList()){
 		roomList.push_back(room);
 	}
+
+	//Parsing NPCs
+	shared_ptr<npcLibrary> nL( new npcLibrary());
+	NPCLib = nL;
+
 	//Parsing Items
 	shared_ptr<itemLibrary> iL( new itemLibrary());
 	itemLib = iL;
 
-	//Set Current Room
-	currentRoom = roomList.at(0); 
-
+	//Parsing Resets
 	shared_ptr<resetLibrary> reL( new resetLibrary(NPCLib->getNPCList(), roomList, itemLib->getItemList() ) );
 	resetLib = reL;
 
+	performResets();
+
+	//Set Current Room
+	cout << endl <<"--World Instantiation Complete! Now setting up Current Room--" << endl;
+	currentRoom = roomList.front(); 
 
 	//currentRoom->addNPC(NPCLib->spawn("103"));
 	//currentRoom->addNPC(NPCLib->spawn("104"));
 
-	cout << "Now Performing Resets" << endl;
-	performResets();
-	cout << "Resets Complete" << endl;
 	// currentRoom->addItem(itemLib->spawn("3000"));
 	// currentRoom->addItem(itemLib->spawn("3001"));
 }
@@ -96,9 +93,14 @@ void World::addReset(shared_ptr<Reset> reset) {
 }
 
 void World::performResets() {
+
+	cout << "---Now Performing Resets ..." ;
+
 	for(auto &reset : resetLib->getResetList()) {
 		reset->performReset();
 	}
+
+	cout << "Resets Complete!" << endl;
 
 }
 

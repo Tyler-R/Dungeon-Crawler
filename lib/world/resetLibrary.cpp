@@ -5,12 +5,16 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <limits.h>
 
 
 using namespace std;
 
 resetLibrary::resetLibrary(vector<shared_ptr<NPC>> npcList, vector<shared_ptr<Room>> roomList, vector<shared_ptr<Item>> itemList){
+	cout << "--Creating Reset Library ...";
 	parseYaml(npcList, roomList, itemList);
+	cout << "Done!" << endl;
+
 }
 
 // shared_ptr<Reset> resetLibrary::create(string action,string comment,string resetId,string limit, string room, string slot, string lock){
@@ -90,7 +94,10 @@ shared_ptr<Item> resetLibrary::searchItem(string itemID, vector<shared_ptr<Item>
 
 
 void resetLibrary::parseYaml(vector<shared_ptr<NPC>> npcList, vector<shared_ptr<Room>> roomList, vector<shared_ptr<Item>> itemList){
-	YAML::Node allNode = YAML::LoadFile("gameYaml/midgaard.yaml");
+	char filePath[PATH_MAX + 1]; 
+    char *res = realpath("gameYaml/midgaard.yaml", filePath);
+
+	YAML::Node allNode = YAML::LoadFile(filePath);
 	YAML::Node resetNodes = allNode["RESETS"];
 
 	string action;
@@ -191,5 +198,4 @@ void resetLibrary::parseYaml(vector<shared_ptr<NPC>> npcList, vector<shared_ptr<
     	// resetSpliter(resetList);
 
 	}
-	cout << "Resets parsing complete" << endl;
 }
