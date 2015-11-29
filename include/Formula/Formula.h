@@ -7,13 +7,13 @@
 
 class Formula {
 public:
-	Formula( int numberOfDice, int maxValueOfDice, int levelMultiplier, int constant );
+	Formula( int numberOfDice, int maxValueOfDice, float levelMultiplier, int constant );
 	~Formula();
 
 	int calculateValue( User *caster );
 
 private:
 	Dice dice;
-	int levelMultiplier;
+	float levelMultiplier;
 	int constant;
 };
