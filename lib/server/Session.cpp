@@ -93,8 +93,6 @@ void Session::offerOptionToRegisterOrLogin() {
     };
 
     sendMessage("Enter 1 to login or 2 to register\n");
-
-
 }
 
 void Session::askForUsername(std::string message, std::function<void(void)> onSuccess) {
@@ -124,6 +122,8 @@ void Session::attemptLogin() {
         std::function< void( std::string ) > sendMessageCallback = std::bind(&Session::sendMessage, this, std::placeholders::_1);
         user->setMessageDisplayer( sendMessageCallback );
 
+        std::function< void ( std::function< void( void ) > ) > listenForBeginCombat = std::bind( &Session::listenForBeginCombat, this, std::placeholders::_1 );
+        user->setBeginCombatListener(listenForBeginCombat);
 
         myWorld->getRoom( 0 )->addUser( user );
 
@@ -133,6 +133,22 @@ void Session::attemptLogin() {
         sendMessage("Incorrect username or password. Try again.\n");
         login();
     }
+}
+
+void Session::listenForBeginCombat(std::function<void(void)> messsageReceived) {
+    messageReceivedCallback = [this, messsageReceived]() {
+        std::string message = getNextCommand();
+
+        if(message.length() > 0 && message.at(0) == 'y') {
+            user->setInCombat(true);
+        } 
+
+        messsageReceived();
+
+        messageReceivedCallback = []() {
+            
+        };
+    };
 }
 
 void Session::login() {

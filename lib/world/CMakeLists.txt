@@ -1,6 +1,4 @@
 add_library(world world.cpp
-                  creature.cpp
-                  monster.cpp
 		  npc.cpp
 		  room.cpp	
 	          door.cpp
@@ -10,6 +8,7 @@ add_library(world world.cpp
                   item.cpp
 		  npcLibrary.cpp
 		  roomLibrary.cpp		
+		  entity.cpp
 )
 
 target_link_libraries(world

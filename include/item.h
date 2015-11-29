@@ -63,11 +63,8 @@ public:
     void printVector() const;
 
 
-    // functions (status) save for later
-    string getType() const;         // return item type
-    string getName() const;         // return the name of an item
-    void setName(string s);         //added by Sarah
-    //int getDamage() const;          // return the damage (Weapon only)
+    // functions (status)
+    void setBoost();
     int getBoost() const;
     // helper function
     void checkItem() const;         // Check Item attributes

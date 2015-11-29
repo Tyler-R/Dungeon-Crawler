@@ -18,6 +18,7 @@ int main()
 
 	// YAML::Node allNode = YAML::LoadFile("gameYaml/midgaard.yaml");
 	// YAML::Node objectNodes = allNode["OBJECTS"];
+
 	
 	// string extra;
 	// string objectId;
