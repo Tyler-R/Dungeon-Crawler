@@ -58,9 +58,7 @@ void npcLibrary::parseYaml(){
 	vector<string> npcKeywords; 
 	string NPCLongDesc;
 	string NPCShortDesc;
-
-	//shared_ptr<
-
+	
 	for(int i = 0; (unsigned)i < npcNodes.size(); i++) {
 		NPCDescription ="";
 		NPCId= "";
@@ -88,18 +86,6 @@ void npcLibrary::parseYaml(){
 		}
 
 		NPCShortDesc = npcNodes[i]["shortdesc"].as<string>(); 
-
-		//cout <<"--New NPC Created!--"<< endl;
-		//cout << NPCDescription << endl<<endl;
-		//cout << NPCId << endl<<endl;
-
-		//cout << "Keywords: " << endl;
-		//for (auto & keyword : npcKeywords) {
-		//	cout << keyword << ", ";
-		//}
-		//cout << endl << endl <<NPCLongDesc << endl<<endl;
-		//cout << NPCShortDesc << endl<<endl;
-
     	addNPC(create(NPCId,NPCDescription,NPCLongDesc,NPCShortDesc,npcKeywords));
 
 	}

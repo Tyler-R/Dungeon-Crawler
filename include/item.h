@@ -51,11 +51,14 @@ public:
     string getID() const;
     // descriptions 
     void addLongDesc(string s);
+    //void addLongDescs(vector<string> s);
     void addShortDesc(string s);
     void addExtraDesc(string s);
+    //void addExtraDescs(vector<string> s);
     string getLongDesc()const;
     string getShortDesc()const;
     string getExtraDesc() const;
+    
     // keyword
     void addKeyword(string s);
     void addKeywords(vector<string> s);

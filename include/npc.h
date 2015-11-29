@@ -30,9 +30,12 @@ private:
     int npcDamage;
     string npcDes;
 
+    //const int DEFAULT_HEALTH = 10;
+
 public:
 
     const int DEAD_DAMAGE = 0;
+    const int DEFAULT_HEALTH = 10;
 
 
     // functions (status)
