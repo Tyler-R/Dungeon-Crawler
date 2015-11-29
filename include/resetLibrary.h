@@ -1,3 +1,4 @@
+#pragma once
 #include "yaml-cpp/yaml.h"
 #include <iostream>
 #include <fstream>
@@ -13,19 +14,20 @@ using namespace std;
 
 class resetLibrary{
 	public:
-		resetLibrary();
+		resetLibrary(vector<shared_ptr<NPC>> npcList, vector<shared_ptr<Room>> roomList);
 		vector<shared_ptr<Reset>> resetList;
-		vector<shared_ptr<Reset>> resetItemList;
-		vector<shared_ptr<Reset>> resetNPCList;
-		vector<shared_ptr<Reset>> resetDoorsList;
 
 		// void resetSpliter(shared_ptr<Reset>);
 		shared_ptr<Reset> create(string action,string comment,string resetId,string limit, string room, string slot, string lock);
 
+		vector<shared_ptr<Reset>> getResetList();
 		void addItemReset(shared_ptr<Reset>);
 		void addNPCReset(shared_ptr<Reset>);
 		void addDoorsReset(shared_ptr<Reset>);
 		// shared_ptr<Reset> get(string resetId);
-		void parseYaml();
+		shared_ptr<NPC> searchNPC(string npcID, vector<shared_ptr<NPC>> npcList);
+		shared_ptr<Room> searchRoom(string roomID, vector<shared_ptr<Room>> roomList);
+		void parseYaml(vector<shared_ptr<NPC>> npcList, vector<shared_ptr<Room>> roomList);
+
 
 };

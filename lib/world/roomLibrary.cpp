@@ -34,7 +34,7 @@ shared_ptr<Room> roomLibrary::getRoom(string id){
 			return room;
 		}
 	}
-	return NULL;
+	return nullptr;
 }
 	
 vector<shared_ptr<Room>> roomLibrary::getRoomList(){

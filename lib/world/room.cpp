@@ -338,11 +338,11 @@ bool Room::doesItemExist(string itemID) {
 int Room::getNumberOfNPCsWithID(string npcID) {
 	int npcCount = 0;
 
-	for(auto &npc : npcList) {
-		if(npc->getID().compare(npcID) == 0) {
-			npcCount++;
-		}
-	}
+	// for(auto &npc : npcList) {
+	// 	if(npc->getID().compare(npcID) == 0) {
+	// 		npcCount++;
+	// 	}
+	// }
 
 	return npcCount;
 }	

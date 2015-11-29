@@ -32,7 +32,7 @@ shared_ptr<Item> itemLibrary::get(string id){
 			return item;
 		}
 	}
-	return NULL;
+	return nullptr;
 }
 
 shared_ptr<Item> itemLibrary::spawn(string id){
@@ -41,7 +41,7 @@ shared_ptr<Item> itemLibrary::spawn(string id){
 			return create(item->getID(),item->getKeyword(),item->getLongDesc(),item->getShortDesc(),item->getExtraDesc());
 		}
 	}
-	return NULL;
+	return nullptr;
 }
 
 void itemLibrary::parseYaml(){

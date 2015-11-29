@@ -9,8 +9,8 @@
 
 using namespace std;
 
-resetLibrary::resetLibrary(){
-	parseYaml();
+resetLibrary::resetLibrary(vector<shared_ptr<NPC>> npcList, vector<shared_ptr<Room>> roomList){
+	parseYaml(npcList, roomList);
 }
 
 // shared_ptr<Reset> resetLibrary::create(string action,string comment,string resetId,string limit, string room, string slot, string lock){
@@ -46,19 +46,28 @@ resetLibrary::resetLibrary(){
 // 	resetList.push_back(reset);
 // }
 
-
-void resetLibrary::addItemReset(shared_ptr<Reset> reset){
-	resetItemList.push_back(reset);
+vector<shared_ptr<Reset>> resetLibrary::getResetList(){
+	return resetList;
 }
 
-void resetLibrary::addNPCReset(shared_ptr<Reset> reset){
-	resetNPCList.push_back(reset);
+
+shared_ptr<NPC> resetLibrary::searchNPC(string npcID, vector<shared_ptr<NPC>> npcList){
+	for(auto & npc : npcList){
+		if (npcID == npc->getID()){
+			return npc;
+		}
+	}
+	return NULL;
 }
 
-void resetLibrary::addDoorsReset(shared_ptr<Reset> reset){
-	resetDoorsList.push_back(reset);
+shared_ptr<Room> resetLibrary::searchRoom(string roomID, vector<shared_ptr<Room>> roomList){
+	for(auto & room:roomList){
+		if (roomID == room->getId()){
+			return room;
+		}
+	}
+	return NULL;
 }
-
 
 // shared_ptr<Reset> resetLibrary::get(string id){
 // 	for (auto & reset :resetList){
@@ -69,8 +78,9 @@ void resetLibrary::addDoorsReset(shared_ptr<Reset> reset){
 // 	return NULL;
 // }
 
-void resetLibrary::parseYaml(){
-	YAML::Node allNode = YAML::LoadFile("gameYaml/smurf.yaml");
+
+void resetLibrary::parseYaml(vector<shared_ptr<NPC>> npcList, vector<shared_ptr<Room>> roomList){
+	YAML::Node allNode = YAML::LoadFile("gameYaml/midgaard.yaml");
 	YAML::Node resetNodes = allNode["RESETS"];
 
 	string action;
@@ -80,6 +90,10 @@ void resetLibrary::parseYaml(){
 	string room;
 	string slot;
 	string lock;
+
+	shared_ptr<Room> resetRoom;
+	shared_ptr<Room> resetNPC;
+
 
 	for(int i = 0; (unsigned)i < resetNodes.size(); i++) {
 		action = " ";
@@ -134,10 +148,36 @@ void resetLibrary::parseYaml(){
 		else {
 			lock = "NULL";
 		}
-	
+		cout << "creating reset" << endl;
+		//Sarah's Notes: Use if statements to check what the reset type is, then create the appropriate reset subclass
+		if (action == "npc"){
 
-    	create(action, comment, resetId,limit, room, slot, lock);
+
+		}
+
+		if (action == "equip"){
+			//Create Equip Reset
+		}
+
+		if (action == "give"){
+			//Create Give Reset
+		}
+
+		if (action == "object"){
+			//Create Object Reset
+		}
+
+		if (action == "put"){
+			//Create Put Reset
+		}
+
+		if (action == "door"){
+			//Create Door Reset
+		}
+
+    	//create(action, comment, resetId,limit, room, slot, lock);
     	// resetSpliter(resetList);
 
 	}
+
 }

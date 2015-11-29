@@ -14,6 +14,12 @@ World::World(){
 	shared_ptr<npcLibrary> nL( new npcLibrary());
 	NPCLib = nL;
 
+
+	// for (auto & npc :NPCLib->getNPCList()){
+	// 	cout << npc->getID() << endl;
+		
+	// }
+
 	//Parsing Rooms
 	shared_ptr<roomLibrary> rL( new roomLibrary());
 	roomLib = rL;
@@ -28,8 +34,14 @@ World::World(){
 	//Set Current Room
 	currentRoom = roomList.at(0); 
 
-	currentRoom->addNPC(NPCLib->spawn("103"));
-	currentRoom->addNPC(NPCLib->spawn("104"));
+	shared_ptr<resetLibrary> reL( new resetLibrary(NPCLib->getNPCList(), roomList ) );
+	resetLib = reL;
+
+
+	//currentRoom->addNPC(NPCLib->spawn("103"));
+	//currentRoom->addNPC(NPCLib->spawn("104"));
+
+	performResets();
 
 	currentRoom->addItem(itemLib->spawn("3000"));
 	currentRoom->addItem(itemLib->spawn("3001"));
@@ -70,6 +82,10 @@ shared_ptr<Room> World::getRoom(string roomID) {
 	return nullptr;
 }
 
+shared_ptr<NPC> World::getNPC(string npcID) {
+	return NPCLib->get("npcID");
+}
+
 void World::setCurrentRoom(shared_ptr<Room> newRoom){
 	currentRoom = newRoom;
 }
@@ -79,10 +95,10 @@ void World::addReset(shared_ptr<Reset> reset) {
 }
 
 void World::performResets() {
-
-	for(auto &reset : resets) {
+	for(auto &reset : resetLib->getResetList()) {
 		reset->performReset();
 	}
+
 }
 
 

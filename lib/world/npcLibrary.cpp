@@ -35,7 +35,7 @@ shared_ptr<NPC> npcLibrary::get(string id){
 			return npc;
 		}
 	}
-	return NULL;
+	return nullptr;
 }
 
 shared_ptr<NPC> npcLibrary::spawn(string id){
@@ -44,13 +44,17 @@ shared_ptr<NPC> npcLibrary::spawn(string id){
 			return create(npc->getID(),npc->getDescription(),npc->getLongDesc(),npc->getShortDesc(),npc->getKeyword());
 		}
 	}
-	return NULL;
+	return nullptr;
+}
+
+vector<shared_ptr<NPC>> npcLibrary::getNPCList(){
+	return npcList;
 }
 
 
 
 void npcLibrary::parseYaml(){
-	YAML::Node allNode = YAML::LoadFile("gameYaml/smurf.yaml");
+	YAML::Node allNode = YAML::LoadFile("gameYaml/midgaard.yaml");
 	YAML::Node npcNodes = allNode["NPCS"];
 
 	string NPCDescription;
@@ -89,4 +93,6 @@ void npcLibrary::parseYaml(){
     	addNPC(create(NPCId,NPCDescription,NPCLongDesc,NPCShortDesc,npcKeywords));
 
 	}
+
+
 }
