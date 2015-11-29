@@ -1,5 +1,6 @@
 #pragma once
 #include <stdlib.h>
+#include <time.h>  
 
 class Dice {
 public:

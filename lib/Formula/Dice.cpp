@@ -10,9 +10,11 @@ Dice::~Dice() {
 
 int Dice::getDiceRollValue() {
 	int result = 0;
+	
+	srand (time(NULL));
 
 	for( int i = 0; i < numberOfDie; i++ ) {
-		result += ( random() % dieMaxValue );
+		result += ( rand() % dieMaxValue );
 	}
 
 	return numberOfDie * dieMaxValue;
