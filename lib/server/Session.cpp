@@ -144,6 +144,10 @@ void Session::listenForBeginCombat(std::function<void(void)> messsageReceived) {
         } 
 
         messsageReceived();
+
+        messageReceivedCallback = []() {
+            
+        };
     };
 }
 
