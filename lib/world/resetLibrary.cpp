@@ -160,7 +160,9 @@ void resetLibrary::parseYaml(vector<shared_ptr<NPC>> npcList, vector<shared_ptr<
 
 		//Sarah's Notes: Use if statements to check what the reset type is, then create the appropriate reset subclass
 		if (action == "npc"){
-			resetList.push_back(make_shared<NPCReset>(searchRoom(room, roomList),searchNPC(resetId,npcList),stoi(limit)));
+			if (searchRoom(room, roomList) && searchNPC(resetId,npcList)){
+				resetList.push_back(make_shared<NPCReset>(searchRoom(room, roomList),searchNPC(resetId,npcList),stoi(limit)));
+			}
 		}
 
 		if (action == "equip"){
@@ -172,8 +174,9 @@ void resetLibrary::parseYaml(vector<shared_ptr<NPC>> npcList, vector<shared_ptr<
 		}
 
 		if (action == "object"){
-			//currently dumps all items in the first room, will test later
-			resetList.push_back(make_shared<ItemReset>(roomList.front(),searchItem(resetId,itemList)));
+			if (searchRoom(room, roomList) && searchItem(resetId,itemList)){
+				resetList.push_back(make_shared<ItemReset>(searchRoom(room, roomList),searchItem(resetId,itemList)));
+			}
 		}
 
 		if (action == "put"){

@@ -9,6 +9,7 @@ ItemReset::~ItemReset( ) {
 }
 
 void ItemReset::performReset( ) {
+	cout << "Resetting Item" << endl;
     bool itemDoesNotExistInRoom = !( room->doesItemExist( item->getID() ) );
     if( itemDoesNotExistInRoom ) {
     	shared_ptr< Item > newItem( new Item( item.get() ) );

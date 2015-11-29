@@ -9,8 +9,6 @@ NPCReset::~NPCReset() {
 }
 
 void NPCReset::performReset( ) {
-
-
     int numberOfNPCsInRoom = room->getNumberOfNPCsWithID(npc->getID());
 
     if(numberOfNPCsInRoom < npcLimit) {
