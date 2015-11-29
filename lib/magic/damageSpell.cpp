@@ -9,7 +9,7 @@ DamageSpell::~DamageSpell() {
 }
 
 void DamageSpell::castSpell( User *caster, Entity *target ) {
-	int damage = getFormula()->calculateValue( caster->getLevel() );
+	int damage = getFormula()->calculateValue( caster );
 	caster->notifySession( "you cast " + getName() + " dealing " + to_string( damage ) + " damage" );
 
 	target->damage( damage );

@@ -10,6 +10,6 @@ Formula::~Formula() {
 
 }
 
-int Formula::calculateValue( unsigned int level ) {
-	return (dice.getDiceRollValue() + (level * levelMultiplier) + constant);
+int Formula::calculateValue( User *caster ) {
+	return (dice.getDiceRollValue() + (caster->getLevel() * levelMultiplier) + constant);
 }
