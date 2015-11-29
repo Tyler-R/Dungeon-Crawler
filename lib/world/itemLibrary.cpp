@@ -10,11 +10,11 @@
 using namespace std;
 
 shared_ptr<Item> itemLibrary::create(string objectId, vector<string> objectKeywords, string objectLongDesc, string objectShortDesc, string extra){
-	shared_ptr<Item> item (new item(string objectId));
+	shared_ptr<Item> item (new Item(objectId));
 	item->addKeywords(objectKeywords);
-	item->addLongDescs(objectLongDesc);
+	item->addLongDesc(objectLongDesc);
 	item->addShortDesc(objectShortDesc);
-	item->addExtraDescs(extra);
+	item->addExtraDesc(extra);
 	return item;
 }
 
@@ -26,6 +26,15 @@ shared_ptr<Item> itemLibrary::get(string id){
 	for (auto & item :itemList){
 		if (item->getID() == id){
 			return item;
+		}
+	}
+	return NULL;
+}
+
+shared_ptr<Item> itemLibrary::spawn(string id){
+	for (auto & item :itemList){
+		if (item->getID() == id){
+			return create(item->getID(),item->getKeyword(),item->getLongDesc(),item->getShortDesc(),item->getExtraDesc());
 		}
 	}
 	return NULL;
@@ -47,7 +56,7 @@ void itemLibrary::parseYaml(){
 		extra.clear();
 		objectId= " ";
 		objectKeywords.clear();
-		objectLongDesc.clear();
+		objectLongDesc= " ";
 		objectShortDesc=" ";
 
 		YAML::Node extraNode = objectNodes[i]["extra"];
@@ -58,9 +67,9 @@ void itemLibrary::parseYaml(){
 				// 	extra.push_back(extraDescNode[k].as<string>());
 				// }
 				for(int k = 0; k < extraDescNode.size(); k++) {
-					extra += extra[k].as<string>();
+					extra += extraDescNode[k].as<string>();
 					extra += "\n";
-		}	
+				}	
 			} else {
 			extra.clear();
 			}			
@@ -79,7 +88,7 @@ void itemLibrary::parseYaml(){
 		// 	objectLongDesc.push_back(longdescNode[k].as<string>());
 		// }
 		for(int k = 0; k < longdescNode.size(); k++) {
-			objectLongDesc += objectLongDesc[k].as<string>();
+			objectLongDesc += longdescNode[k].as<string>();
 			objectLongDesc += "\n";
 		}
 

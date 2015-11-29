@@ -10,7 +10,7 @@ add_library(world
 	entity.cpp
 	npcLibrary.cpp
 	roomLibrary.cpp
-	#itemLibrary.cpp
+	itemLibrary.cpp
 	#resetLibrary.cpp
 )
 

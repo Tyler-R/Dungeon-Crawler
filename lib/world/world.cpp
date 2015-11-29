@@ -22,11 +22,17 @@ World::World(){
 		roomList.push_back(room);
 	}
 
+	shared_ptr<itemLibrary> iL( new itemLibrary());
+	itemLib = iL;
+
 	//Set Current Room
 	currentRoom = roomList.at(0); 
 
 	currentRoom->addNPC(NPCLib->spawn("103"));
 	currentRoom->addNPC(NPCLib->spawn("104"));
+
+	currentRoom->addItem(itemLib->spawn("103"));
+	currentRoom->addItem(itemLib->spawn("104"));
 }
 
 World::~World(){

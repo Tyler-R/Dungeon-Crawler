@@ -13,6 +13,7 @@ Created By: Sarah Kim Dao
 #include "reset/Reset.h"
 #include "npcLibrary.h"
 #include "roomLibrary.h"
+#include "itemLibrary.h"
 
 using namespace std;
 
@@ -25,6 +26,7 @@ class World {
 
 		shared_ptr<npcLibrary> NPCLib;
 		shared_ptr<roomLibrary> roomLib;
+		shared_ptr<itemLibrary> itemLib;
 
 	public:
 		World();
