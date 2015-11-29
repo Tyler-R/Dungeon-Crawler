@@ -21,7 +21,7 @@ World::World(){
 	for (auto & room :roomLib->getRoomList()){
 		roomList.push_back(room);
 	}
-
+	//Parsing Items
 	shared_ptr<itemLibrary> iL( new itemLibrary());
 	itemLib = iL;
 
@@ -31,8 +31,8 @@ World::World(){
 	currentRoom->addNPC(NPCLib->spawn("103"));
 	currentRoom->addNPC(NPCLib->spawn("104"));
 
-	currentRoom->addItem(itemLib->spawn("103"));
-	currentRoom->addItem(itemLib->spawn("104"));
+	currentRoom->addItem(itemLib->spawn("3000"));
+	currentRoom->addItem(itemLib->spawn("3001"));
 }
 
 World::~World(){

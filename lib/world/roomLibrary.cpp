@@ -100,12 +100,6 @@ void roomLibrary::parseYaml(){
 
 		addRoom(createRoom(roomName,roomId,roomsDescription, roomExtDesc,roomKeywords));
 
-		 cout <<"-----New Room Created!------"<< endl;
-		 cout << "Room name is " << roomName << endl << endl;
-		 cout << roomName << "'s' id is: " << roomId << endl << endl;
-		 cout << roomName << "'s description is: " << roomsDescription << endl<< endl;
-		 cout << roomName << "'s extDescription is: " << roomExtDesc << endl<< endl;
-
 		YAML::Node doorsNode = roomsNodes[i]["doors"];
 		for(int k = 0; k < doorsNode.size(); k++){
 			doorsDesc = " ";

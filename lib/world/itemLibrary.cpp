@@ -9,6 +9,10 @@
 
 using namespace std;
 
+itemLibrary::itemLibrary(){
+	parseYaml();
+}
+
 shared_ptr<Item> itemLibrary::create(string objectId, vector<string> objectKeywords, string objectLongDesc, string objectShortDesc, string extra){
 	shared_ptr<Item> item (new Item(objectId));
 	item->addKeywords(objectKeywords);
@@ -41,7 +45,7 @@ shared_ptr<Item> itemLibrary::spawn(string id){
 }
 
 void itemLibrary::parseYaml(){
-	YAML::Node allNode = YAML::LoadFile("midgaard.yml");
+	YAML::Node allNode = YAML::LoadFile("gameYaml/midgaard.yaml");
 	YAML::Node objectNodes = allNode["OBJECTS"];
 	
 	string objectId;
@@ -51,7 +55,6 @@ void itemLibrary::parseYaml(){
 	string objectShortDesc;
 	//vector <string> extra;
 	string extra;
-
 	for(int i = 0; (unsigned)i < objectNodes.size(); i++) {
 		extra.clear();
 		objectId= " ";

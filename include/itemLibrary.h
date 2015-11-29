@@ -10,6 +10,7 @@ using namespace std;
 
 class itemLibrary{
 	public:
+		itemLibrary();
 		vector<shared_ptr<Item>> itemList;
 		shared_ptr<Item> create(string objectId, vector<string> objectKeywords, string objectLongDesc, string objectShortDesc, string extra);
 		void addItem(shared_ptr<Item>);
