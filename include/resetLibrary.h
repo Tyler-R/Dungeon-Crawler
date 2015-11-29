@@ -3,6 +3,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include "reset/Reset.h"
 #include "reset/NPCReset.h"
 #include "reset/DoorReset.h"
 #include "reset/ItemReset.h"
@@ -12,10 +13,19 @@ using namespace std;
 
 class resetLibrary{
 	public:
-		vector<shared_ptr<RESET>> resetList;
-		shared_ptr<RESET> create(string action, string comment, string resetId, string limit, string room, string slot);
-		void addReset(shared_ptr<RESET>);
-		shared_ptr<RESET> get(string resetId);
+		resetLibrary();
+		vector<shared_ptr<Reset>> resetList;
+		vector<shared_ptr<Reset>> resetItemList;
+		vector<shared_ptr<Reset>> resetNPCList;
+		vector<shared_ptr<Reset>> resetDoorsList;
+
+		// void resetSpliter(shared_ptr<Reset>);
+		shared_ptr<Reset> create(string action,string comment,string resetId,string limit, string room, string slot, string lock);
+
+		void addItemReset(shared_ptr<Reset>);
+		void addNPCReset(shared_ptr<Reset>);
+		void addDoorsReset(shared_ptr<Reset>);
+		// shared_ptr<Reset> get(string resetId);
 		void parseYaml();
 
 };

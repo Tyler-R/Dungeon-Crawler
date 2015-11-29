@@ -11,7 +11,7 @@ add_library(world
 	npcLibrary.cpp
 	roomLibrary.cpp
 	itemLibrary.cpp
-	#resetLibrary.cpp
+	resetLibrary.cpp
 	admin.cpp
 )
 
