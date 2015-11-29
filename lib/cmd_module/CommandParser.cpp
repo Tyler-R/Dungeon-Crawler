@@ -113,6 +113,28 @@ string CommandParser::validateAttackNPCArgv(vector<string> &cmd){
       PlayerOne->increaseXP( 100 );
     }
 
+
+    // EXAMPLE COMBAT CODE
+    // if(!playerToAttack->isInCombat()) {
+    //   playerToAttack->notifySession(PlayerOne->getName() + " wants to fight you\n");
+
+    //   playerToAttack->listenForBeginCombat([](){  // this is a callback
+    //     // called when the player accepts or declines combat
+    //     if(playerToAttack->isInCombat()) {
+    //       // perform combat
+    //     } else {
+    //       PlayerOne->notifySession(playerToAttack->getName() + " declined your request to fight\n");
+    //     }
+
+    //   }); // this is the end of the callback
+    // } else {
+    //   // perform combat like normal(no need to ask someone who is already in combat mobe)
+    // }
+
+
+    // be careful because in this case we will return from the function before the code inside the callback is called
+    // this could result in weird errors.
+    // might wana return something like "waiting for other play to enter combat"
     return result;
   }
 }
