@@ -34,17 +34,18 @@ World::World(){
 	//Set Current Room
 	currentRoom = roomList.at(0); 
 
-	shared_ptr<resetLibrary> reL( new resetLibrary(NPCLib->getNPCList(), roomList ) );
+	shared_ptr<resetLibrary> reL( new resetLibrary(NPCLib->getNPCList(), roomList, itemLib->getItemList() ) );
 	resetLib = reL;
 
 
 	//currentRoom->addNPC(NPCLib->spawn("103"));
 	//currentRoom->addNPC(NPCLib->spawn("104"));
 
+	cout << "Now Performing Resets" << endl;
 	performResets();
-
-	currentRoom->addItem(itemLib->spawn("3000"));
-	currentRoom->addItem(itemLib->spawn("3001"));
+	cout << "Resets Complete" << endl;
+	// currentRoom->addItem(itemLib->spawn("3000"));
+	// currentRoom->addItem(itemLib->spawn("3001"));
 }
 
 World::~World(){

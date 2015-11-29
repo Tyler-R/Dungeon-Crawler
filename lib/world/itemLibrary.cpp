@@ -44,6 +44,10 @@ shared_ptr<Item> itemLibrary::spawn(string id){
 	return nullptr;
 }
 
+vector<shared_ptr<Item>> itemLibrary::getItemList(){
+	return itemList;
+}
+
 void itemLibrary::parseYaml(){
 	YAML::Node allNode = YAML::LoadFile("gameYaml/midgaard.yaml");
 	YAML::Node objectNodes = allNode["OBJECTS"];

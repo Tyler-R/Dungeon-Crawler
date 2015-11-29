@@ -16,7 +16,7 @@ class itemLibrary{
 		void addItem(shared_ptr<Item>);
 		shared_ptr<Item> get(string objectId);
 		void parseYaml();
-
+		vector<shared_ptr<Item>> getItemList();
 		shared_ptr<Item> spawn(string id);
 
 };

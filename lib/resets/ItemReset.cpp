@@ -10,7 +10,6 @@ ItemReset::~ItemReset( ) {
 
 void ItemReset::performReset( ) {
     bool itemDoesNotExistInRoom = !( room->doesItemExist( item->getID() ) );
-    
     if( itemDoesNotExistInRoom ) {
     	shared_ptr< Item > newItem( new Item( item.get() ) );
         room->addItem( newItem );

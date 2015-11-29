@@ -9,8 +9,8 @@
 
 using namespace std;
 
-resetLibrary::resetLibrary(vector<shared_ptr<NPC>> npcList, vector<shared_ptr<Room>> roomList){
-	parseYaml(npcList, roomList);
+resetLibrary::resetLibrary(vector<shared_ptr<NPC>> npcList, vector<shared_ptr<Room>> roomList, vector<shared_ptr<Item>> itemList){
+	parseYaml(npcList, roomList, itemList);
 }
 
 // shared_ptr<Reset> resetLibrary::create(string action,string comment,string resetId,string limit, string room, string slot, string lock){
@@ -69,6 +69,16 @@ shared_ptr<Room> resetLibrary::searchRoom(string roomID, vector<shared_ptr<Room>
 	return NULL;
 }
 
+
+shared_ptr<Item> resetLibrary::searchItem(string itemID, vector<shared_ptr<Item>> itemList){
+	for(auto & item:itemList){
+		if (itemID == item->getID()){
+			return item;
+		}
+	}
+	return NULL;
+}
+
 // shared_ptr<Reset> resetLibrary::get(string id){
 // 	for (auto & reset :resetList){
 // 		if (reset->getID() == resetId){
@@ -79,7 +89,7 @@ shared_ptr<Room> resetLibrary::searchRoom(string roomID, vector<shared_ptr<Room>
 // }
 
 
-void resetLibrary::parseYaml(vector<shared_ptr<NPC>> npcList, vector<shared_ptr<Room>> roomList){
+void resetLibrary::parseYaml(vector<shared_ptr<NPC>> npcList, vector<shared_ptr<Room>> roomList, vector<shared_ptr<Item>> itemList){
 	YAML::Node allNode = YAML::LoadFile("gameYaml/midgaard.yaml");
 	YAML::Node resetNodes = allNode["RESETS"];
 
@@ -150,8 +160,7 @@ void resetLibrary::parseYaml(vector<shared_ptr<NPC>> npcList, vector<shared_ptr<
 
 		//Sarah's Notes: Use if statements to check what the reset type is, then create the appropriate reset subclass
 		if (action == "npc"){
-			resetList.push_back(make_shared<NPCReset>(searchRoom(room, roomList),searchNPC(resetId,npcList), 3));
-			make_shared<NPCReset>(searchRoom(room, roomList),searchNPC(resetId,npcList), stoi(limit));
+			resetList.push_back(make_shared<NPCReset>(searchRoom(room, roomList),searchNPC(resetId,npcList),stoi(limit)));
 		}
 
 		if (action == "equip"){
@@ -163,11 +172,12 @@ void resetLibrary::parseYaml(vector<shared_ptr<NPC>> npcList, vector<shared_ptr<
 		}
 
 		if (action == "object"){
-			//Create Object Reset
+			//currently dumps all items in the first room, will test later
+			resetList.push_back(make_shared<ItemReset>(roomList.front(),searchItem(resetId,itemList)));
 		}
 
 		if (action == "put"){
-			//Create Put Reset
+
 		}
 
 		if (action == "door"){
@@ -178,5 +188,5 @@ void resetLibrary::parseYaml(vector<shared_ptr<NPC>> npcList, vector<shared_ptr<
     	// resetSpliter(resetList);
 
 	}
-
+	cout << "Resets parsing complete" << endl;
 }

@@ -14,7 +14,7 @@ using namespace std;
 
 class resetLibrary{
 	public:
-		resetLibrary(vector<shared_ptr<NPC>> npcList, vector<shared_ptr<Room>> roomList);
+		resetLibrary(vector<shared_ptr<NPC>> npcList, vector<shared_ptr<Room>> roomList, vector<shared_ptr<Item>> itemList);
 		vector<shared_ptr<Reset>> resetList;
 
 		// void resetSpliter(shared_ptr<Reset>);
@@ -27,7 +27,8 @@ class resetLibrary{
 		// shared_ptr<Reset> get(string resetId);
 		shared_ptr<NPC> searchNPC(string npcID, vector<shared_ptr<NPC>> npcList);
 		shared_ptr<Room> searchRoom(string roomID, vector<shared_ptr<Room>> roomList);
-		void parseYaml(vector<shared_ptr<NPC>> npcList, vector<shared_ptr<Room>> roomList);
+		shared_ptr<Item> searchItem(string itemID, vector<shared_ptr<Item>> itemList);
+		void parseYaml(vector<shared_ptr<NPC>> npcList, vector<shared_ptr<Room>> roomList, vector<shared_ptr<Item>> itemList);
 
 
 };
