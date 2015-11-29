@@ -33,10 +33,22 @@ class Admin {
 		shared_ptr<Door*>createDoor();
 		shared_ptr<Reset> createReset();
 
-		void modifyRoom(string id);
-		void modifyItem(string id);
-		void modifyNPC(string id);
-		void modifyDoor(string dir);
-		void modifyReset(string id);
+		void modifyRoomID(string id, string newID);
+		void modifyRoomName(string newName);
+		void modifyRoomDesc(string newDesc);
+		void modifyRoomExtDesc(string newExtDesc);
+
+		void modifyItemID(string id, string newID);
+		void modifyItemLongDesc(string newLongDesc);
+		void modifyItemShortDesc(string newShortDesc);
+		void modifyItemExtraDesc(string newExtraDesc);
+
+		void modifyNPCID(string id, string newID);
+		void modifyNPCDesc(string newDesc);
+		void modifyLongDescNPC(string newLongDesc);
+		void modifyShortDesc(string newShortDesc);
+
+		void spawnNPC(string id);
+		void spawn(string id);
 
 };

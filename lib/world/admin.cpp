@@ -43,7 +43,7 @@ shared_ptr<NPC> Admin::createNPC(){
 	npc->setID("no_id");
 	npc->addDescription("no_description");
 	npc->addLongDesc("no_longdesc");
-	npc->addLongDesc("no_shortdesc");
+	npc->addShortDesc("no_shortdesc");
 	return npc;	
 }
 
@@ -52,25 +52,5 @@ shared_ptr<Door*> Admin::createDoor(){
 }
 
 shared_ptr<Reset> Admin::createReset(){
-
-}
-
-void Admin::modifyRoom(string id){
-
-}
-
-void Admin::modifyItem(string id){
-
-}
-
-void Admin::modifyNPC(string id){
-
-}
-
-void Admin::modifyDoor(string dir){
-
-}
-
-void Admin::modifyReset(string id){
 
 }
