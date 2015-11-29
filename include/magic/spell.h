@@ -19,7 +19,7 @@ public:
 
 
     // TODO: implement a entity class that player and enemy subclass from
-    virtual void castSpell( User *caster/*Entity target*/ ) = 0; 
+    virtual void castSpell( User *caster, Entity *target ) = 0; 
 
 private:
 	int manaCost;
