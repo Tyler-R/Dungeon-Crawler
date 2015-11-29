@@ -120,9 +120,26 @@ void User::setMessageDisplayer(function<void(string)> newMessageDisplayer) {
   messageDisplayer = newMessageDisplayer;
 }
 
-
 void User::notifySession(string notification){
   messageDisplayer(notification);
+}
+
+void User::setBeginCombatListener(function<void( std::function<void(void)> )> newBeginCombatListener) {
+  beginCombatListener = newBeginCombatListener;
+}
+
+
+void User::listenForBeginCombat(std::function<void(void)> messageReceivedCallback) {
+  beginCombatListener(messageReceivedCallback);
+  messageDisplayer("enter y to enter combat or n to decline\n");
+}
+
+void User::setInCombat(bool inCombat) {
+  this->inCombat = inCombat;
+}
+
+bool User::isInCombat() {
+  return inCombat;
 }
 
 /* ABILITY STAT GETTERS */
@@ -159,10 +176,6 @@ void User::setDefense(int defense){
 
 void User::setDexterity(int dexterity){
   userStats->setDexterity(dexterity);
-}
-
-void User::setHealth(int health){
-  userStats->setHealth(health);
 }
 
 void User::setIntelligence(int intelligence){
