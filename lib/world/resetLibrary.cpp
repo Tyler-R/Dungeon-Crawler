@@ -91,8 +91,7 @@ void resetLibrary::parseYaml(vector<shared_ptr<NPC>> npcList, vector<shared_ptr<
 	string slot;
 	string lock;
 
-	shared_ptr<Room> resetRoom;
-	shared_ptr<Room> resetNPC;
+
 
 
 	for(int i = 0; (unsigned)i < resetNodes.size(); i++) {
@@ -148,11 +147,11 @@ void resetLibrary::parseYaml(vector<shared_ptr<NPC>> npcList, vector<shared_ptr<
 		else {
 			lock = "NULL";
 		}
-		cout << "creating reset" << endl;
+
 		//Sarah's Notes: Use if statements to check what the reset type is, then create the appropriate reset subclass
 		if (action == "npc"){
-
-
+			resetList.push_back(make_shared<NPCReset>(searchRoom(room, roomList),searchNPC(resetId,npcList), 3));
+			make_shared<NPCReset>(searchRoom(room, roomList),searchNPC(resetId,npcList), stoi(limit));
 		}
 
 		if (action == "equip"){
