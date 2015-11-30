@@ -80,6 +80,12 @@ void Door::addKeyword(string s){
 	keywordList.push_back(s);
 }
 
+void Door::addKeywords(vector<string> inputKeywords){
+	for (auto & keyword : inputKeywords) {
+	    addKeyword(keyword);
+	}
+}
+
 void Door::removeKeyword(string s){
 	//Removes Keyword from KeywordList
 }

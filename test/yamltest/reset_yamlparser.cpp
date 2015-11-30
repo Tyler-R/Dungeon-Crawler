@@ -1,7 +1,3 @@
-
-//Test run with g++ -I. -g npc_yamlparser.cpp -lyaml-cpp -std=c++11 -L. -o yamltest
-// ./yamltest
-
 #include "yaml-cpp/yaml.h"
 #include <iostream>
 #include <fstream>
@@ -11,7 +7,7 @@
 int main()
 {
 	using namespace std;
-	YAML::Node allNode = YAML::LoadFile("gameYaml/smurf.yaml");
+	YAML::Node allNode = YAML::LoadFile("smurf.yaml");
 	YAML::Node resetNodes = allNode["RESETS"];
 
 	string action;
@@ -20,6 +16,7 @@ int main()
 	string limit;
 	string room;
 	string slot;
+	string lock;
 
 	for(int i = 0; (unsigned)i < resetNodes.size(); i++) {
 		action = " ";
@@ -28,6 +25,7 @@ int main()
 		limit = " ";
 		room = " ";
 		slot = " ";
+		lock = " ";
 
 		action = resetNodes[i]["action"].as<string>();
 		resetId = resetNodes[i]["id"].as<string>();
@@ -66,6 +64,15 @@ int main()
 			slot = "NULL";
 		}
 
+
+		YAML::Node lockNode = resetNodes[i]["lock"];
+		if(lockNode != NULL){
+			lock = lockNode.as<string>();
+		}
+		else {
+			lock = "NULL";
+		}
+
 		cout <<"-----Parsing action------"<< endl;
 		cout << "Actions name is " << action << endl << endl;
 		cout << "Comment is " << comment << endl << endl;
@@ -73,8 +80,6 @@ int main()
 		cout << "limit is " << limit << endl << endl;
 		cout << "room is " << room << endl << endl;
 		cout << "slot is " << slot << endl << endl;
-		
-
 	}
 
 	return 0;

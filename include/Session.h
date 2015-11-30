@@ -58,6 +58,8 @@ private:
 
     void attemptToRegisterPlayer();
 
+    void listenForBeginCombat(std::function<void(void)> messsageReceived);
+
     std::queue<Command> commandBacklog;
 
     std::function<void(void)> messageReceivedCallback;

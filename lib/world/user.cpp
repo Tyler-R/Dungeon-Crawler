@@ -12,7 +12,7 @@
 using namespace std;
 
 /* Default constructor setting up basic values */
-User::User(){
+User::User() : Entity( 10 ) {
   setUserType(true);
   setUserName("testUser");
   setPassword("password");
@@ -21,7 +21,9 @@ User::User(){
   inventory = new Inventory();
 }
 
-User::User(bool isAdmin, string userName, string password, shared_ptr<Room> currentRoom, string description) {
+User::User(bool isAdmin, string userName, string password, shared_ptr<Room> currentRoom, string description) 
+    : Entity( 10 )
+{
   setUserType(isAdmin);
   setUserName(userName);
   setPassword(password);
@@ -30,10 +32,10 @@ User::User(bool isAdmin, string userName, string password, shared_ptr<Room> curr
   userStats = new AbilityStats();
   playerLevel = START_LEVEL;
   inventory = new Inventory();
-  }
+}
 
 //Copy Constructor: added by Sarah
-User::User(User &user){
+User::User(User &user) : Entity( 10 ) {
   isAdmin = user.getUserType();
   userName = user.getUserName();
   password = user.getPassword();
@@ -114,21 +116,30 @@ int User::getXP(){
   return playerXP;
 }
 
-void User::setLivingStatus(bool b){
-  isAlive = b;
-}
-
-bool User::getLivingStatus(){
-  return isAlive;
-}
-
 void User::setMessageDisplayer(function<void(string)> newMessageDisplayer) {
   messageDisplayer = newMessageDisplayer;
 }
 
-
 void User::notifySession(string notification){
   messageDisplayer(notification);
+}
+
+void User::setBeginCombatListener(function<void( std::function<void(void)> )> newBeginCombatListener) {
+  beginCombatListener = newBeginCombatListener;
+}
+
+
+void User::listenForBeginCombat(std::function<void(void)> messageReceivedCallback) {
+  beginCombatListener(messageReceivedCallback);
+  messageDisplayer("enter y to enter combat or n to decline\n");
+}
+
+void User::setInCombat(bool inCombat) {
+  this->inCombat = inCombat;
+}
+
+bool User::isInCombat() {
+  return inCombat;
 }
 
 /* ABILITY STAT GETTERS */
@@ -143,10 +154,6 @@ int User::getDefense(){
 
 int User::getDexterity(){
   return userStats->getDexterity();
-}
-
-int User::getHealth(){
-  return userStats->getHealth();
 }
 
 int User::getIntelligence(){
@@ -169,10 +176,6 @@ void User::setDefense(int defense){
 
 void User::setDexterity(int dexterity){
   userStats->setDexterity(dexterity);
-}
-
-void User::setHealth(int health){
-  userStats->setHealth(health);
 }
 
 void User::setIntelligence(int intelligence){
@@ -264,13 +267,24 @@ string User::getInvItemLongDesc(string itemKeyword){
   return inventory->getItemDescription(itemKeyword);
 }
 
+
+// THESE ARE NOW IMPLEMENTED IN THE COMMANDPARSER validateAttackNPCArgv() method
 /*BATTLING METHODS  --  ONLY NPC SO FAR!*/
-string User::attackNPC(string npcName){
+string User::attackNPC(string npcName){ // DEPRECATED
   string result;
   for (auto & NPC : getRoom()->getNPCs() ) {
     if(NPC->searchKeyword(npcName)){
       int userAttack = userStats->getStrength();
-      int NPCAttack = NPC->getHit(userAttack);
+
+      NPC->damage( userAttack );
+
+      int NPCAttack = 0;
+      if(NPC->isAlive()) {
+        NPCAttack = NPC->getDamage();
+      } else {
+        NPCAttack = NPC->DEAD_DAMAGE;
+      }
+      
       string NPCShortDesc = NPC->getShortDesc();
       getRoom()->broadcastMessage(this, getUserName() + " just attacked " + NPCShortDesc+ "\n");
 
@@ -284,7 +298,7 @@ string User::attackNPC(string npcName){
   
 }
 
-string User::getAttacked(int NPCAttack, string NPCShortDesc){
+string User::getAttacked(int NPCAttack, string NPCShortDesc){ // DEPRECATED
   if(NPCAttack == 0){
     getRoom()->broadcastMessage(this, getUserName() + " just killed " + NPCShortDesc+ "\n");
     increaseXP(KILLED_NPC_EXPERIENCE);
@@ -292,15 +306,14 @@ string User::getAttacked(int NPCAttack, string NPCShortDesc){
   }
   else{
     string result;
-    int userHealth = userStats->getHealth();
+    int userHealth = getHealth();
     if(userHealth > NPCAttack){
-      userStats->setHealth(userHealth - NPCAttack);
+      damage(NPCAttack);
       result = "You have just taken " + to_string(NPCAttack) + 
                       " damage from ";
     }
     else{
       getRoom()->broadcastMessage(this, getUserName() + " was just killed by " + NPCShortDesc+ "\n");
-      setLivingStatus(false);
       result = "You have just been killed. Awwwwwe\n";
     }
     return result;

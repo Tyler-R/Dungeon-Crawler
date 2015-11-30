@@ -43,7 +43,8 @@ void Server::listenForConnections( ) {
 }
 
 void Server::handleCommands( ) {
-    world->performResets( );
+
+    //world->performResets( );  //commented out by Sarah for testing purposes
 
     assert(serverRefreshRate > 0 && "server refresh rate not properly set");
 

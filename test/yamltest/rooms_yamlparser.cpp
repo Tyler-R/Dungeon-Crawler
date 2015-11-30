@@ -21,7 +21,8 @@ int main()
 	string doorsDir;
 	string doorsKeywords;
 	string doorsTo;
-	string extended_desc; //leave out for now
+	string room_extdesc; 
+	string room_extkey;
 	string roomId;
 	string roomName;
 
@@ -38,7 +39,28 @@ int main()
 
 		//parsing room name and room id
 		roomName = roomsNodes[i]["name"].as<string>();
-		roomId = roomsNodes[i]["id"].as<string>();	
+		roomId = roomsNodes[i]["id"].as<string>();
+		
+		YAML::Node extdescNode = roomsNodes[i]["extended_descriptions"];
+		for(int a = 0; a < extdescNode.size(); a++){
+			room_extdesc = " "; 
+			room_extkey = " ";
+
+
+			YAML::Node ext_descNode = extdescNode[a]["desc"];
+			for(int j = 0; j < ext_descNode.size(); j++){
+				room_extdesc += ext_descNode[j].as<string>();
+			}
+
+			YAML::Node ext_keyNode = extdescNode[a]["keywords"];
+			for(int k = 0; k < ext_keyNode.size(); k++){
+				room_extkey += ext_keyNode[k].as<string>();
+			}
+
+			cout << room_extdesc << endl;
+			cout << room_extkey << endl;
+		}
+
 
 
 		cout <<"-----New Room Created!------"<< endl;
@@ -65,7 +87,7 @@ int main()
 			YAML::Node doorskeywordNode = doorsNode[k]["keywords"];
 			for (int m = 0; m < doorskeywordNode.size(); m++){
 				doorsKeywords = doorskeywordNode[m].as<string>();
-				cout << doorsKeywords << endl << endl;
+				// cout << doorsKeywords << endl << endl;
 			}
 			YAML::Node doorstoNode = doorsNode[k]["to"];
 			doorsTo = doorstoNode.as<string>();

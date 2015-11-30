@@ -5,8 +5,6 @@
 #include <iostream>
 #include <memory>
 
-#include <chrono>
-
 class Reset {
 public:
     Reset( std::shared_ptr< Room > room );

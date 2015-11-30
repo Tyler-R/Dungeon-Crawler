@@ -25,6 +25,7 @@ private:
     string itemID;          // the Id of the item
     string longDesc;
     string shortDesc;
+    string extraDesc;
     vector<string> keywords;
 
 
@@ -50,9 +51,14 @@ public:
     string getID() const;
     // descriptions 
     void addLongDesc(string s);
+    //void addLongDescs(vector<string> s);
     void addShortDesc(string s);
+    void addExtraDesc(string s);
+    //void addExtraDescs(vector<string> s);
     string getLongDesc()const;
     string getShortDesc()const;
+    string getExtraDesc() const;
+    
     // keyword
     void addKeyword(string s);
     void addKeywords(vector<string> s);
@@ -63,11 +69,8 @@ public:
     void printVector() const;
 
 
-    // functions (status) save for later
-    string getType() const;         // return item type
-    string getName() const;         // return the name of an item
-    void setName(string s);         //added by Sarah
-    //int getDamage() const;          // return the damage (Weapon only)
+    // functions (status)
+    void setBoost();
     int getBoost() const;
     // helper function
     void checkItem() const;         // Check Item attributes

@@ -12,8 +12,6 @@ Created By: Sarah Kim Dao
 #include <assert.h>
 
 #include "npc.h"
-#include "creature.h"
-#include "monster.h"
 #include "item.h"
 #include "user.h"
 
@@ -53,6 +51,7 @@ class Room {
 		string getName();
 		string getDesc();  
 		string getExtDesc();
+		shared_ptr<NPC> getNPC(string npcName);
 
 		vector<string> getKeywords();
 		vector<shared_ptr<NPC>> getNPCs();
@@ -75,6 +74,7 @@ class Room {
 		vector<string> getObjKeywords(string objName);
 
 		void addDoor(string inputId, string inputDir, string inputDesc, shared_ptr<Room> inputRoom);
+	 	void createDoor(shared_ptr<Door*> door);
 		vector<Door*> getDoorList();
 		string getDoorDescList();	
 		string getObjList();
@@ -139,6 +139,7 @@ class Door {
 
 		vector<string> getKeywords();
 		void addKeyword(string s);
+		void addKeywords(vector<string> inputKeywords);
 		void removeKeyword(string s);
 		bool findKeyword(string s);
 		void printKeywords(); //To be used by the Door's Test Module only!

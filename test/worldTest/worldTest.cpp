@@ -74,9 +74,7 @@ int main() {
 	cout << endl << "----" << endl;	
 
 	cout << endl << "--Now testing moving to different rooms--" << endl;
-
 	cout << endl << "--From the Lobby, we move 'north'--" << endl;
-
 	cout << PlayerOne->moveTo("north");	
 
 	cout << endl << "--Looking at Current Room--" << endl;
