@@ -24,7 +24,7 @@ Item::Item(Item *item){
     itemID = item->getID();
     longDesc = item->getLongDesc();
     shortDesc = item->getShortDesc();
-
+    
     for(auto & key : item->getKeyword()){
         keywords.push_back(key);
     }   
@@ -34,14 +34,30 @@ Item::Item(Item *item){
 void Item::addLongDesc(string s){
     longDesc = s;
 }
+// void Item::addLongDescs(vector<string> s) {
+//     for(auto & tempLongDesc : s){
+//         addLongDesc(tempLongDesc);
+//     }
+// }
 void Item::addShortDesc(string s){
     shortDesc = s;
 }
+void Item::addExtraDesc(string s) {
+    extraDesc = s;
+}
+// void Item::addExtraDescs(vector<string> s) {
+//     for(auto & tempExtraDesc : s){
+//         addExtraDesc(tempExtraDesc);
+//     }
+// }
 string Item::getLongDesc()const{
     return longDesc;
 }
 string Item::getShortDesc()const{
     return shortDesc;
+}
+string Item::getExtraDesc() const{
+    return extraDesc;
 }
 
 // Keyword functions

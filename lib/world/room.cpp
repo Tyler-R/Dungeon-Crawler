@@ -180,7 +180,7 @@ string Room::getDoorDescList(){
 	//This method returns a description of all of the room's doors.
 	string result = "";
 	for (auto & door : doorList){
-		result = result + door->getDesc() + "\n";
+		result = result + "Looking " + door->getDir() + ": " + door->getDesc() + "\n";
 	}
 	return result;
 }
@@ -276,8 +276,12 @@ string Room::lookAt(string objName){
 }
 
 void Room::setDoorState(int doorNumber, string newState) {
-	assert(doorNumber < doorList.size());
-	doorList[doorNumber]->setState(newState); // probably needs tweaking
+	//assert(doorNumber < doorList.size());
+	for (auto &door : doorList){
+		if(doorNumber == stoi(getId())){
+			door->setState(newState);
+		}
+	}
 }
 
 void Room::addUser(shared_ptr<User> user){
@@ -338,11 +342,11 @@ bool Room::doesItemExist(string itemID) {
 int Room::getNumberOfNPCsWithID(string npcID) {
 	int npcCount = 0;
 
-	for(auto &npc : npcList) {
-		if(npc->getID().compare(npcID) == 0) {
-			npcCount++;
-		}
-	}
+	// for(auto &npc : npcList) {
+	// 	if(npc->getID().compare(npcID) == 0) {
+	// 		npcCount++;
+	// 	}
+	// }
 
 	return npcCount;
 }	

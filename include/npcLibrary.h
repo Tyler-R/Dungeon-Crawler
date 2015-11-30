@@ -1,3 +1,4 @@
+//Created by Sarah Kim Dao and Jason Zhang
 #include "yaml-cpp/yaml.h"
 #include <iostream>
 #include <fstream>
@@ -21,6 +22,7 @@ class npcLibrary{
 
 		shared_ptr<NPC> get(string id);
 		shared_ptr<NPC> spawn(string id);
+		vector<shared_ptr<NPC>> getNPCList();
 		
 
 };

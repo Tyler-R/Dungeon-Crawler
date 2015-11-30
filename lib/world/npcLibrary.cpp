@@ -1,11 +1,16 @@
+//Created by Sarah Kim Dao and Jason Zhang
+
 #include "npcLibrary.h"
 #include "yaml-cpp/yaml.h"
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
+#include <limits.h>
 npcLibrary::npcLibrary(){
+	cout << "--Creating NPC Library ...";
 	parseYaml();
+	cout << "Done!" << endl;
 }
 
 // npcLibrary::~npcLibrary(){
@@ -33,7 +38,7 @@ shared_ptr<NPC> npcLibrary::get(string id){
 			return npc;
 		}
 	}
-	return NULL;
+	return nullptr;
 }
 
 shared_ptr<NPC> npcLibrary::spawn(string id){
@@ -42,13 +47,20 @@ shared_ptr<NPC> npcLibrary::spawn(string id){
 			return create(npc->getID(),npc->getDescription(),npc->getLongDesc(),npc->getShortDesc(),npc->getKeyword());
 		}
 	}
-	return NULL;
+	return nullptr;
+}
+
+vector<shared_ptr<NPC>> npcLibrary::getNPCList(){
+	return npcList;
 }
 
 
 
 void npcLibrary::parseYaml(){
-	YAML::Node allNode = YAML::LoadFile("gameYaml/smurf.yaml");
+	char filePath[PATH_MAX + 1]; 
+    char *res = realpath("gameYaml/midgaard.yaml", filePath);
+
+	YAML::Node allNode = YAML::LoadFile(filePath);
 	YAML::Node npcNodes = allNode["NPCS"];
 
 	string NPCDescription;
@@ -56,9 +68,7 @@ void npcLibrary::parseYaml(){
 	vector<string> npcKeywords; 
 	string NPCLongDesc;
 	string NPCShortDesc;
-
-	//shared_ptr<
-
+	
 	for(int i = 0; (unsigned)i < npcNodes.size(); i++) {
 		NPCDescription ="";
 		NPCId= "";
@@ -86,19 +96,9 @@ void npcLibrary::parseYaml(){
 		}
 
 		NPCShortDesc = npcNodes[i]["shortdesc"].as<string>(); 
-
-		//cout <<"--New NPC Created!--"<< endl;
-		//cout << NPCDescription << endl<<endl;
-		//cout << NPCId << endl<<endl;
-
-		//cout << "Keywords: " << endl;
-		//for (auto & keyword : npcKeywords) {
-		//	cout << keyword << ", ";
-		//}
-		//cout << endl << endl <<NPCLongDesc << endl<<endl;
-		//cout << NPCShortDesc << endl<<endl;
-
     	addNPC(create(NPCId,NPCDescription,NPCLongDesc,NPCShortDesc,npcKeywords));
 
 	}
+
+
 }

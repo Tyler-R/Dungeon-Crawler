@@ -9,10 +9,8 @@ NPCReset::~NPCReset() {
 }
 
 void NPCReset::performReset( ) {
-
-
     int numberOfNPCsInRoom = room->getNumberOfNPCsWithID(npc->getID());
-
+    //cout << "resetting NPC" << npc->getID() << endl;
     if(numberOfNPCsInRoom < npcLimit) {
     	shared_ptr<NPC> newNPC( new NPC( npc.get() ) );
 

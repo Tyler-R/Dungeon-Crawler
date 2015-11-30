@@ -10,10 +10,13 @@ using namespace std;
 
 class itemLibrary{
 	public:
-		vector<shared_ptr<ITEM>> itemList;
-		shared_ptr<ITEM> create(string extra, string objectId, vector<string> objectKeywords, vector<string> objectLongDesc, string objectShortDesc);
-		void addItem(shared_ptr<ITEM>);
-		shared_ptr<ITEM> get(string objectId);
+		itemLibrary();
+		vector<shared_ptr<Item>> itemList;
+		shared_ptr<Item> create(string objectId, vector<string> objectKeywords, string objectLongDesc, string objectShortDesc, string extra);
+		void addItem(shared_ptr<Item>);
+		shared_ptr<Item> get(string objectId);
 		void parseYaml();
+		vector<shared_ptr<Item>> getItemList();
+		shared_ptr<Item> spawn(string id);
 
 };

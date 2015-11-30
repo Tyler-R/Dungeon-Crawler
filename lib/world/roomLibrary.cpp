@@ -1,3 +1,4 @@
+//Created by Sarah Kim Dao and Jason Zhang
 #include "roomLibrary.h"
 #include "yaml-cpp/yaml.h"
 #include <iostream>
@@ -9,7 +10,9 @@
 
 using namespace std;
 roomLibrary::roomLibrary(){
+	cout << "--Creating Room Library ... ";
 	parseYaml();
+	cout << "Done!" << endl;
 }
 
 shared_ptr<Room> roomLibrary::createRoom(string name,string id, string description, string extDescription, vector<string> keywords){
@@ -33,7 +36,7 @@ shared_ptr<Room> roomLibrary::getRoom(string id){
 			return room;
 		}
 	}
-	return NULL;
+	return nullptr;
 }
 	
 vector<shared_ptr<Room>> roomLibrary::getRoomList(){
@@ -46,7 +49,7 @@ shared_ptr<Door*> roomLibrary::createDoor(string id,string direction, string des
 
 
 void roomLibrary::parseYaml(){
-	char filePath[PATH_MAX + 1]; /* not sure about the "+ 1" */
+	char filePath[PATH_MAX + 1]; 
     char *res = realpath("gameYaml/midgaard.yaml", filePath);
 
 	YAML::Node allNode = YAML::LoadFile(filePath);
@@ -87,6 +90,7 @@ void roomLibrary::parseYaml(){
 			YAML::Node ext_descNode = extdescNode[a]["desc"];
 			for(int j = 0; j < ext_descNode.size(); j++){
 				roomExtDesc += ext_descNode[j].as<string>();
+				roomExtDesc += "\n";
 			}
 
 			YAML::Node ext_keyNode = extdescNode[a]["keywords"];
@@ -98,12 +102,6 @@ void roomLibrary::parseYaml(){
 
 
 		addRoom(createRoom(roomName,roomId,roomsDescription, roomExtDesc,roomKeywords));
-
-		 cout <<"-----New Room Created!------"<< endl;
-		 cout << "Room name is " << roomName << endl << endl;
-		 cout << roomName << "'s' id is: " << roomId << endl << endl;
-		 cout << roomName << "'s description is: " << roomsDescription << endl<< endl;
-		 cout << roomName << "'s extDescription is: " << roomExtDesc << endl<< endl;
 
 		YAML::Node doorsNode = roomsNodes[i]["doors"];
 		for(int k = 0; k < doorsNode.size(); k++){

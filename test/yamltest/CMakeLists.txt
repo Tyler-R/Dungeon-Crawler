@@ -12,3 +12,4 @@ target_link_libraries(rooms_yamltest ${CMAKE_SOURCE_DIR}/ext/yaml-cpp/libyaml-cp
 target_link_libraries(reset_yamltest ${CMAKE_SOURCE_DIR}/ext/yaml-cpp/libyaml-cpp.a)
 target_link_libraries(cmd_yamltest ${CMAKE_SOURCE_DIR}/ext/yaml-cpp/libyaml-cpp.a)
 target_link_libraries(spells_yamltest ${CMAKE_SOURCE_DIR}/ext/yaml-cpp/libyaml-cpp.a)
+
