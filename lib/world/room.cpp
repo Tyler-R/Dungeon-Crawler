@@ -180,7 +180,7 @@ string Room::getDoorDescList(){
 	//This method returns a description of all of the room's doors.
 	string result = "";
 	for (auto & door : doorList){
-		result = result + door->getDesc() + "\n";
+		result = result + "Looking " + door->getDir() + ": " + door->getDesc() + "\n";
 	}
 	return result;
 }
