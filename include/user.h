@@ -5,6 +5,7 @@ Created By: Jordan Nielsen
 #include "room.h"
 #include "abilityStats.h"
 #include "inventory.h"
+#include "entity.h"
 #include <string>
 #include <vector>
 #include <memory>
@@ -15,7 +16,7 @@ using namespace std;
 
 class Room; //Forward declaration is needed since User class and Room class refer to each other
 
-class User {
+class User : public Entity {
   public:
     User();
 
@@ -24,6 +25,9 @@ class User {
     User(bool isAdmin, string userName, string password, shared_ptr<Room> currentRoom, string description);
      User(User &user); //Copy constructor added by Sarah
     ~User();
+
+    void setInCombat(bool inCombat);
+    bool isInCombat();
 
     void setUserName(string s);
     string getUserName();
@@ -44,9 +48,6 @@ class User {
 
     void increaseXP(int additionalXP);
     int getXP();
-
-    void setLivingStatus(bool b);
-    bool getLivingStatus();
 
     //void notifySession(string notification);
 
@@ -72,14 +73,17 @@ class User {
     int getCharisma();
     int getDefense();
     int getDexterity();
-    int getHealth();
     int getIntelligence();
     int getStrength();
 
     /*BATTLING METHODS  --  ONLY NPC SO FAR  added by Jordan*/
     string attackNPC(string npcName);
     string getAttacked(int NPCAttack, string NPCShortDesc);
-		
+
+    void setBeginCombatListener(function<void( std::function<void(void)> )> newBeginCombatListener);
+
+    void listenForBeginCombat(std::function<void(void)> messageReceivedCallback);	
+ 
  private:
     const int START_LEVEL = 1;
     const int KILLED_NPC_EXPERIENCE = 100;
@@ -90,6 +94,7 @@ class User {
     weak_ptr<Room> currentRoom;
 
     std::function<void(string)> messageDisplayer;
+    std::function<void( std::function<void(void)> )> beginCombatListener;
 
     AbilityStats* userStats;
     Inventory* inventory;
@@ -98,7 +103,8 @@ class User {
     int playerXP;
 
     bool isAdmin;
-    bool isAlive;
+
+    bool inCombat = false;
 
     void setPassword(string s);
 

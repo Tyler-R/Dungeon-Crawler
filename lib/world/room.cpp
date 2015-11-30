@@ -64,6 +64,16 @@ string Room::getExtDesc(){
 	return extDesc;
 }
 
+shared_ptr<NPC> Room::getNPC(string npcName) {
+	for( auto &npc : npcList ) {
+		if( npc->searchKeyword( npcName ) ) {
+			return npc;
+		}
+	}
+
+	return NULL;
+}
+
 
 vector<string> Room::getKeywords(){
 	return keywordList;
@@ -158,7 +168,7 @@ vector<string> Room::getObjKeywords(string objName){ //Gets a List of an Object'
 }
 
 void Room::addDoor(string inputId,string inputDir, string inputDesc, shared_ptr<Room>inputRoom){
-	doorList.push_back(new Door(inputId,inputDir,inputDesc, inputRoom));
+ 	doorList.push_back(new Door(inputId,inputDir,inputDesc, inputRoom));
 }
 
 vector<Door*> Room::getDoorList(){
@@ -170,7 +180,7 @@ string Room::getDoorDescList(){
 	//This method returns a description of all of the room's doors.
 	string result = "";
 	for (auto & door : doorList){
-		result = result + door->getDesc() + "\n";
+		result = result + "Looking " + door->getDir() + ": " + door->getDesc() + "\n";
 	}
 	return result;
 }
@@ -231,7 +241,7 @@ string Room::lookAt(string objName){
 	//This method is used if the user types the "look <noun>" command.  <noun> can be a valid keyword.
 
 	if ( findKeyword(objName) ){
-		return extDesc + "\n";
+		return desc + "\n";
 	}
 
 
@@ -266,8 +276,12 @@ string Room::lookAt(string objName){
 }
 
 void Room::setDoorState(int doorNumber, string newState) {
-	assert(doorNumber < doorList.size());
-	doorList[doorNumber]->setState(newState); // probably needs tweaking
+	//assert(doorNumber < doorList.size());
+	for (auto &door : doorList){
+		if(doorNumber == stoi(getId())){
+			door->setState(newState);
+		}
+	}
 }
 
 void Room::addUser(shared_ptr<User> user){
@@ -328,16 +342,21 @@ bool Room::doesItemExist(string itemID) {
 int Room::getNumberOfNPCsWithID(string npcID) {
 	int npcCount = 0;
 
-	for(auto &npc : npcList) {
-		if(npc->getID().compare(npcID) == 0) {
-			npcCount++;
-		}
-	}
+	// for(auto &npc : npcList) {
+	// 	if(npc->getID().compare(npcID) == 0) {
+	// 		npcCount++;
+	// 	}
+	// }
 
 	return npcCount;
 }	
 
-void Room::announcement(string news){
+void Room::broadcastMessage(User *playerSendingBroadcast, string message){
+	cout << "broadcasting message" << endl;
+
 	for(auto &user : userList) {
+		if(user.get() != playerSendingBroadcast) {
+			user->notifySession(message);
+		}
 	}
 }

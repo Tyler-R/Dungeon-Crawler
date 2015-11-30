@@ -1,6 +1,8 @@
 #include <iostream>
 #include <memory>
 #include <thread>
+#include <fstream>
+
 
 #include "Client.h"
 #include "UserInterface.h"
@@ -53,6 +55,12 @@ int main() {
 		message = message.substr(0, length);
 
 		display->displayServerResponse(message.c_str());
+
+		std::ofstream outfile;
+		outfile.open("log.txt", std::ios_base::app);
+		outfile << std::string(buffer) << "\n\n" << length << "\n\n"; 
+
+		delete buffer;
 	};
 
 	client->setHandleServerCallback(exampleCallback);

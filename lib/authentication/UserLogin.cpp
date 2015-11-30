@@ -12,13 +12,6 @@ UserLogin::UserLogin(std::string userName, std::string userPassword){
 bool UserLogin::isUserLoggedIn(){
     
     FileIO fileLogin(userName,userPassword);
-    fileLogin.openFileConnectionToRead();
-    if (fileLogin.readFromFile()){
-        
-        fileLogin.closeReadFileConnection();
-        return true;
-    }
-    fileLogin.closeReadFileConnection();
-    return false;
+    return fileLogin.recordExist();
     
 }

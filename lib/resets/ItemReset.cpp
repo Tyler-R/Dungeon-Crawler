@@ -8,18 +8,12 @@ ItemReset::~ItemReset( ) {
 
 }
 
-void ItemReset::performReset( std::chrono::milliseconds currentTimeSinceEpoch ) {
-	using namespace std::chrono;
-
-	// don't perform reset because the recharge time of the reset has not been reached.
-	if( shouldPerformReset( currentTimeSinceEpoch ) ) {
-		timeLastResetWasPerformed = currentTimeSinceEpoch;
-
-	    bool itemDoesNotExistInRoom = !( room->doesItemExist( item->getID() ) );
-	    
-	    if( itemDoesNotExistInRoom ) {
-	    	shared_ptr< Item > newItem( new Item( item.get() ) );
-	        room->addItem( newItem );
-	    }
-	}
+void ItemReset::performReset( ) {
+    bool itemDoesNotExistInRoom = !( room->doesItemExist( item->getID() ) );
+    //cout << "resetting item" << item->getID() << endl;
+    if( itemDoesNotExistInRoom ) {
+    	shared_ptr< Item > newItem( new Item( item.get() ) );
+        room->addItem( newItem );
+    }
+	
 }

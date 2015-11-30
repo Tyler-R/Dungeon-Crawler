@@ -10,47 +10,21 @@
 #include "npc.h"
 #include <strings.h>
 
-// constructor (type, id)
-// NPC::NPC(string type, string id){
-// 	if (type == "monster") {
-// 		Monster tempMonster;
-        
-//         setID(id);
-// 		setName(tempMonster.getName());
-//         setType(type);
-//         setHP(tempMonster.getHP());
-//         setAlive(tempMonster.getAlive());
-//         setDamage(tempMonster.getDamage());
-//         setDes(tempMonster.getDes());
-        
-//     }else if(type == "creature") {
-//         Creature tempCreature;
-        
-//         setID(id);
-//         setName(tempCreature.getName());
-//         setType(type);
-//         setHP(tempCreature.getHP());
-//         setAlive(tempCreature.getAlive());
-//         setDamage(int(0));
-//         setDes(tempCreature.getDes());
-        
-//     }else {
-// 		cout << "!!!!!! no such NPC !!!!!! \n";
-// 	}
-// }
-
+// 10 is the starting max health
 // constructor (id)
-NPC::NPC(string id){
+NPC::NPC(string id) : Entity( DEFAULT_HEALTH ) {
     setID(id);
-    setAlive(true);
+    setDamage();
 }
 
 // for copy
-NPC::NPC(NPC *npc){
+NPC::NPC(NPC *npc) : Entity( DEFAULT_HEALTH ) {
     npcID = npc->getID();
     npcDescription = npc->getDescription();
     longDesc = npc->getLongDesc();
     shortDesc = npc->getShortDesc();
+    npcDamage = npc->getDamage();
+    
 
     for(auto & key : npc->getKeyword()){
         keywords.push_back(key);
@@ -58,7 +32,9 @@ NPC::NPC(NPC *npc){
 }
 
 // Destructor
-NPC::~NPC(){}
+NPC::~NPC() {
+
+}
 
 // destructor
 //NPC::~NPC() {
@@ -140,53 +116,17 @@ string NPC::getID() const{
 
 
 
-// save for later (status)
-void NPC::setName(string s) {
-    npcName = s;
-}
-
-void NPC::setType(string s) {
-    npcType = s;
-}
-
-void NPC::setHP(int i) {
-    npcHP = i;
-}
-
-void NPC::setAlive(bool b) {
-    isAlive = b;
-}
-
-void NPC::setDamage(int i) {
-    npcDamage = i;
-}
-
-void NPC::setDes(string des) {
-    npcDes = des;
-}
-
-string NPC::getName() const{
-    return npcName;
-}
-
-string NPC::getType() const{
-    return npcType;
-}
-
-int NPC::getHP() const{
-    return npcHP;
-}
-
-bool NPC::getAlive() const{
-    return isAlive;
+// status－－setter and getter
+void NPC::setDamage() {
+    npcDamage = 1;
 }
 
 int NPC::getDamage() const{
-    return npcDamage;
-}
-
-string NPC::getDes() const{
-    return npcDes;
+    if(isAlive()) {
+        return npcDamage;
+    } else {
+        return 0;
+    }
 }
 
 // helper function
@@ -194,33 +134,11 @@ void NPC::checkNPC() const{
     std::cout << "          NPC check function \n";
     std::cout << "the id is                     " << getID();
     std::cout << "\n";
-    std::cout << "the name is                   " << getName();
-    std::cout << "\n";
-    std::cout << "the type is                   " << getType();
-    std::cout << "\n";
-    std::cout << "the HP is                     " << getHP();
+    std::cout << "the HP is                     " << Entity::getHealth();
     std::cout << "\n";
     std::cout << "the damage is                 " << getDamage();
     std::cout << "\n";
-    std::cout << "is live(1) or dead(0)?        " << getAlive();
+    std::cout << "is live(1) or dead(0)?        " << isAlive();
     std::cout << "\n";
-    std::cout << "description: \n" << getDes();
-    std::cout << "\n";
-}
-
-// BATTLE METHOD added by Jason, edited by Jordan
-/*Returns the NPC's automatic attack*/
-/*TODO: in else statement, have Room notified that NPC has died
-/*This should perhaps directly attack the user back instead of returning an int*/
-int NPC::getHit(int damage) {
-    if(npcHP > damage) { // reduce npc' HP by damage
-        npcHP = npcHP - damage;
-	return getDamage();
-    }
-    else{ // npc died
-        isAlive = false;
-	//NOTIFIY ROOM OF DEATH HERE
-	return DEAD_DAMAGE;
-    }
 }
 

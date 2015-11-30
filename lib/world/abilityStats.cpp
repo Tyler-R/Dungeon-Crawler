@@ -1,7 +1,6 @@
 #include "abilityStats.h"
 
 AbilityStats::AbilityStats(){
-  setHealth(DEF_HEALTH);
   setStrength(DEF_STRENGTH);
   setDefense(DEF_DEFENSE);
   setIntelligence(DEF_INTELLIGENCE);
@@ -11,7 +10,6 @@ AbilityStats::AbilityStats(){
 
 //Copy Constructor
 AbilityStats::AbilityStats(AbilityStats *stats){
-  health = stats->getHealth();
   strength = stats->getStrength();
   defense = stats->getDefense();
   intelligence = stats->getIntelligence();
@@ -23,10 +21,6 @@ AbilityStats::~AbilityStats(){
 }
 
 //GETTERS
-
-int AbilityStats::getHealth(){
-  return health;
-}
 
 int AbilityStats::getStrength(){
   return strength;
@@ -49,7 +43,6 @@ int AbilityStats::getCharisma(){
 }
 
 void AbilityStats::levelUp(){
-  health++;
   strength++;
   defense++;
   intelligence++;
@@ -58,10 +51,6 @@ void AbilityStats::levelUp(){
 }
   
 //SETTERS
-
-void AbilityStats::setHealth(int health){
-  this->health = health;
-}
 
 void AbilityStats::setStrength(int strength){
   this->strength = strength;

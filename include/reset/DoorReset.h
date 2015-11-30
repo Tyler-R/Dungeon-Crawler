@@ -7,7 +7,7 @@ public:
     DoorReset( std::shared_ptr< Room > room, int doorNumber, std::string newDoorState );
     ~DoorReset( );
 
-    virtual void performReset( std::chrono::milliseconds currentTimeSinceEpoch );
+    virtual void performReset( );
 
 private:
     int doorNumber;

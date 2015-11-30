@@ -58,6 +58,8 @@ private:
 
     void attemptToRegisterPlayer();
 
+    void listenForBeginCombat(std::function<void(void)> messsageReceived);
+
     std::queue<Command> commandBacklog;
 
     std::function<void(void)> messageReceivedCallback;
@@ -67,6 +69,6 @@ private:
 
     shared_ptr<World> myWorld;
     std::shared_ptr<CommandParser> commandParser;
-    shared_ptr<User> usr;
+    shared_ptr<User> user;
 
 };

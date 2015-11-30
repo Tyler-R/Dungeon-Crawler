@@ -8,15 +8,15 @@
 
 #ifndef NPC_H_
 #define NPC_H_
-
-#include "monster.h"
-#include "creature.h"
-
+#include <string>
 #include <vector>
+#include <iostream>
+#include <cstdlib>
+#include "entity.h"
 
 using namespace std;
 
-class NPC {
+class NPC : public Entity {
     
 private:
     // attributes (yaml)
@@ -25,25 +25,24 @@ private:
     string longDesc;
     string shortDesc;
     vector<string> keywords;
-    const int DEAD_DAMAGE = 0;
 
     // save for later (status)
-    string npcName;
-    string npcType;
-    int npcHP;
-    bool isAlive;
     int npcDamage;
     string npcDes;
 
+    //const int DEFAULT_HEALTH = 10;
+
 public:
 
+    const int DEAD_DAMAGE = 0;
+    const int DEFAULT_HEALTH = 10;
+
+
     // functions (status)
-    void setName(string s);
-    void setType(string s);
-    void setHP(int i);
-    void setAlive(bool b);
-    void setDamage(int i);
-    void setDes(string des);
+    void setAlive();
+    void setDamage();
+
+    int getDamage()const;
     
     //constructor
 	NPC(string type, string ID); // type(monster or creature), the ID of this NPC
@@ -55,16 +54,6 @@ public:
     // functions
 	void setID(string id);
 	string getID() const;
-
-    // save for later (status)
-	string getType() const;
-	string getName() const;
-	int getHP() const;
-	int getDamage()const;
-	bool getAlive()const;	// live or dead
-	string getDes()const;
-
-
 
     // descriptions
     void addDescription(string s);
@@ -87,9 +76,5 @@ public:
 
     // helper function (status)
     void checkNPC() const;	// print out all attributes of npc
-
-    // BATTLE METHOD added by Jason, edited by Jordan
-    int getHit(int damage); // reduce HP by damage
-
 };
 #endif

@@ -74,7 +74,68 @@ string CommandParser::validateAttackNPCArgv(vector<string> &cmd){
   else{
     reformatTokens(cmd);
     // return "attack NPC" + cmd.at(1) + "\n";
-    return PlayerOne->attackNPC(cmd.at(1));
+
+    auto room = PlayerOne->getRoom( );
+    auto npcToAttack = room->getNPC( cmd.at( 1 ) );
+
+
+    auto userDamage = PlayerOne->getStrength();
+    npcToAttack->damage( userDamage );
+
+    auto npcDamage = npcToAttack->getDamage();
+    PlayerOne->damage( npcDamage );
+
+
+    string npcShortDesc = npcToAttack->getShortDesc();
+    room->broadcastMessage(PlayerOne.get(), PlayerOne->getUserName() + " just attacked " + npcShortDesc+ "\n");
+
+
+    string result = "";
+
+    // inform user how much damage they did to the NPC
+    string message = " dealt " + to_string(userDamage) + " to " + npcShortDesc + ". \n";
+    message += npcShortDesc + " has " + to_string( npcToAttack->getHealth( ) ) + " health remainin\n";
+
+    room->broadcastMessage(PlayerOne.get(), PlayerOne->getUserName() + message );
+
+    result += "you " + message;
+
+    // player is dead
+    if( !PlayerOne->isAlive() ) {
+      room->broadcastMessage(PlayerOne.get(), PlayerOne->getUserName() + " died\n");
+      result += "you died\n";
+    }
+
+    if( !npcToAttack->isAlive() ) {
+      room->broadcastMessage(PlayerOne.get(), PlayerOne->getUserName() + " killed " + npcShortDesc);
+      result += "you killed " + npcShortDesc + "\n";
+
+      PlayerOne->increaseXP( 100 );
+    }
+
+
+    // EXAMPLE COMBAT CODE
+    // if(!playerToAttack->isInCombat()) {
+    //   playerToAttack->notifySession(PlayerOne->getName() + " wants to fight you\n");
+
+    //   playerToAttack->listenForBeginCombat([](){  // this is a callback
+    //     // called when the player accepts or declines combat
+    //     if(playerToAttack->isInCombat()) {
+    //       // perform combat
+    //     } else {
+    //       PlayerOne->notifySession(playerToAttack->getName() + " declined your request to fight\n");
+    //     }
+
+    //   }); // this is the end of the callback
+    // } else {
+    //   // perform combat like normal(no need to ask someone who is already in combat mobe)
+    // }
+
+
+    // be careful because in this case we will return from the function before the code inside the callback is called
+    // this could result in weird errors.
+    // might wana return something like "waiting for other play to enter combat"
+    return result;
   }
 }
 
@@ -121,9 +182,30 @@ string CommandParser::validateTossArgv(std::vector<std::string>& cmd){
      return PlayerOne->tossItem(cmd.at(1));
   }
 }
+
 string CommandParser::validateHelpArgv(std::vector<std::string>& cmd){
     return "USE: move, look, check, toss, take\n";
 }
+
+string CommandParser::validateSayArgv(std::vector<std::string>& cmd){
+  string name = PlayerOne->getUserName();
+  string message = "";
+
+  // probably want to use another method for this like a string builder.
+  // start at index 1 to skip the actual command (say) portion in the command
+  for(int i = 1; i < cmd.size(); i++) {
+    message += cmd.at(i) + " ";
+  }
+
+  message += "\n";
+
+  // send message to everyone in the room
+  PlayerOne->getRoom()->broadcastMessage(PlayerOne.get(), name + " says: " + message);
+  // return the message so the calling player can use it. (I think that is how the class works)
+  return "You said: " + message;
+}
+
+
 string CommandParser::validateAliasArgv(std::vector<std::string> &cmd){
   if(cmd.size() == 3){
     //user defined
@@ -245,9 +327,13 @@ bool CommandParser::isTossCmd(std::vector<std::string>& words){
 }
 
 bool CommandParser::isHelpCmd(std::vector<std::string> &words){
-  return words.front().compare("help") ==0;
+  return words.front().compare("help") == 0;
 }
 
+bool CommandParser::isSayCmd(std::vector<std::string> &words){
+  vector<string> cmd_alias = getGlobalCmdAlias("say");
+  return findMatch(cmd_alias, words.front());
+}
 
 /*entry point for the cmd_module api*/
 string CommandParser::processCommand(string &in){
@@ -282,6 +368,9 @@ string CommandParser::processCommand(string &in){
    }
    else if(isHelpCmd(words)){
     return validateHelpArgv(words);
+   } 
+   else if(isSayCmd(words)){
+    return validateSayArgv(words);
    }
    else {
     return "invalid command";

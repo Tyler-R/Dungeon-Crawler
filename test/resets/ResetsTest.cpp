@@ -7,8 +7,6 @@
 
 #include <memory>
 
-using namespace std::chrono;
-
 
 void testNPCResetWithMultipleResets() {
 
@@ -20,23 +18,19 @@ void testNPCResetWithMultipleResets() {
     NPCReset reset1(room, npc1, 3);
     NPCReset reset2(room, npc2, 2);
 
-    auto noResetTime =  milliseconds( 0 );
 
-    reset1.setTimeBetweenResets( noResetTime );
-    reset2.setTimeBetweenResets( noResetTime );
-
-    reset1.performReset(noResetTime);
-    reset1.performReset(noResetTime);
-    reset1.performReset(noResetTime);
-    reset1.performReset(noResetTime);
-    reset1.performReset(noResetTime);
+    reset1.performReset();
+    reset1.performReset();
+    reset1.performReset();
+    reset1.performReset();
+    reset1.performReset();
 
 
-    reset2.performReset(noResetTime);
-    reset2.performReset(noResetTime);
-    reset2.performReset(noResetTime);    
-    reset2.performReset(noResetTime);
-    reset2.performReset(noResetTime);
+    reset2.performReset();
+    reset2.performReset();
+    reset2.performReset();    
+    reset2.performReset();
+    reset2.performReset();
 
 
     if(room->getNumberOfNPCsWithID("50") == 3) {
@@ -80,12 +74,7 @@ void testNPCReset() {
     shared_ptr<NPC> npc = make_shared<NPC>("50");
 
     NPCReset reset(room, npc, 3);
-
-    auto noResetTime =  milliseconds( 0 );
-
-    reset.setTimeBetweenResets( noResetTime );
-
-    reset.performReset( noResetTime );
+    reset.performReset( );
 
     if(room->getNumberOfNPCsWithID("50") == 1) {
         cout << "test passed: after 1 reset npc count = 1" << endl;
@@ -93,7 +82,7 @@ void testNPCReset() {
         cout << "test failed: npc count != 1" << endl;
     }
 
-    reset.performReset( noResetTime );
+    reset.performReset(  );
 
     if(room->getNumberOfNPCsWithID("50") == 2) {
         cout << "test passed: after 3 reset npc count = 2" << endl;
@@ -101,7 +90,7 @@ void testNPCReset() {
         cout << "test failed: npc count != 2" << endl;
     }
 
-    reset.performReset( noResetTime );
+    reset.performReset(  );
 
     if(room->getNumberOfNPCsWithID("50") == 3) {
         cout << "test passed: after 3 resets npc count = 3" << endl;
@@ -109,7 +98,7 @@ void testNPCReset() {
         cout << "test failed: npc count != 3" << endl;
     }
 
-    reset.performReset( noResetTime );
+    reset.performReset(  );
 
     if(room->getNumberOfNPCsWithID("50") == 3) {
         cout << "test passed: after 4 resets npc count = 3" << endl;
@@ -125,9 +114,6 @@ void testNPCResetWithNPCLimitZero() {
     shared_ptr<NPC> npc = make_shared<NPC>("50");
 
     NPCReset reset(room, npc, 0);
-    
-    auto noResetTime =  milliseconds( 0 );
-    reset.setTimeBetweenResets( noResetTime );
 
     auto npcsInRoom = room->getNPCs( );
 
@@ -137,7 +123,7 @@ void testNPCResetWithNPCLimitZero() {
         cout << "test failed: room has npc in it upon itialization" << endl;
     }
 
-    reset.performReset( noResetTime );
+    reset.performReset(  );
 
     npcsInRoom = room->getNPCs();
 
@@ -148,38 +134,10 @@ void testNPCResetWithNPCLimitZero() {
     }
 }
 
-void testNPCResetWithTimer() {
-    shared_ptr<Room> room = make_shared<Room>();
-    shared_ptr<NPC> npc = make_shared<NPC>("50");
-
-    NPCReset reset(room, npc, 10);
-
-    reset.setTimeBetweenResets( milliseconds(10) );
-
-    reset.performReset( milliseconds(0) );
-
-    if( room->getNPCs( ).size( ) == 0 ) {
-        cout << "test passed: reset timer working properly" << endl;
-    } else {
-        cout << "test failed: npc added to room when it should not have been" << endl; 
-    }
-
-    reset.performReset( milliseconds( 10 ) );
-
-    if( room->getNPCs( ).size( ) == 1 ) {
-        cout << "test passed: npc added properly with timing" << endl;
-    } else {
-        cout << "test failed: npc not added" << endl; 
-    }
- 
-
-}
-
 void performNPCResetTests() {
     testNPCResetWithNPCLimitZero();
     testNPCReset();
     testNPCResetWithMultipleResets();
-    testNPCResetWithTimer();
     cout << endl;
 }
 
@@ -191,10 +149,6 @@ void testDoorResetLocking() {
 
     DoorReset reset(room1, 0, "Lock");
 
-    auto noResetTime =  milliseconds( 0 );
-
-    // first reset is always performed so we dont need to set reset time
-    reset.performReset( noResetTime );
 
     // no real way to check that the change occured
     // should test what the locking / unlocking of doors does
@@ -214,8 +168,6 @@ void testItemReset() {
     shared_ptr<Room> room = make_shared<Room>();
     shared_ptr<Item> item = make_shared<Item>("20");
 
-    auto noResetTime = milliseconds( 0 );
-
 
     ItemReset reset(room, item);
 
@@ -225,7 +177,7 @@ void testItemReset() {
         cout << "test failed: item exists in room before reset" << endl;
     }
 
-    reset.performReset( milliseconds( 60 ) );
+    reset.performReset( );
 
     if( room->doesItemExist( "20" ) ) {
         cout << "test passed: item now exists in room" << endl;

@@ -1,0 +1,4 @@
+---
+  attack: [attack, atk]
+  look: [look, lk]
+  move: [move, mv, go, north, south, east, west]

@@ -88,13 +88,12 @@ void Session::offerOptionToRegisterOrLogin() {
             registerNewPlayer();
         } else {
             sendMessage("that is not an option. try again.\n");
+            exit(1);
             offerOptionToRegisterOrLogin();
         }
     };
 
     sendMessage("Enter 1 to login or 2 to register\n");
-
-
 }
 
 void Session::askForUsername(std::string message, std::function<void(void)> onSuccess) {
@@ -119,16 +118,38 @@ void Session::attemptLogin() {
 
         loggedIn = true;
         sendMessage("You are logged in as " + username + "\n");
-        shared_ptr<User> PlayerOne( new User(false, username, password, myWorld->getRoom(0), "This is PlayerOne."));
-        usr = PlayerOne;
-        myWorld->getRoom(0)->addUser(usr);
-        // st::make_shared<CommandParser> (usr);
-        commandParser = std::make_shared<CommandParser>(usr);
+        user = make_shared< User >( false, username, password, myWorld->getRoom(0), "This is PlayerOne." );
+
+        std::function< void( std::string ) > sendMessageCallback = std::bind(&Session::sendMessage, this, std::placeholders::_1);
+        user->setMessageDisplayer( sendMessageCallback );
+
+        std::function< void ( std::function< void( void ) > ) > listenForBeginCombat = std::bind( &Session::listenForBeginCombat, this, std::placeholders::_1 );
+        user->setBeginCombatListener(listenForBeginCombat);
+
+        myWorld->getRoom( 0 )->addUser( user );
+
+        commandParser = std::make_shared< CommandParser >( user );
 
     } else {
         sendMessage("Incorrect username or password. Try again.\n");
         login();
     }
+}
+
+void Session::listenForBeginCombat(std::function<void(void)> messsageReceived) {
+    messageReceivedCallback = [this, messsageReceived]() {
+        std::string message = getNextCommand();
+
+        if(message.length() > 0 && message.at(0) == 'y') {
+            user->setInCombat(true);
+        } 
+
+        messsageReceived();
+
+        messageReceivedCallback = []() {
+            
+        };
+    };
 }
 
 void Session::login() {
@@ -168,9 +189,12 @@ void Session::registerNewPlayer() {
 
 void Session::sendMessage(std::string message) {
 
+
+
     boost::system::error_code error;
     size_t bitesWritten = boost::asio::write(socket, boost::asio::buffer(message), boost::asio::transfer_all(), error);
 
+    std::cout << "sending message: " << message << " - with length = " << bitesWritten << " - " << " with size = " << message.size() << std::endl;
     if(error) {
         kill();
         throw boost::system::system_error(error);
