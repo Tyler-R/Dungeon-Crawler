@@ -83,6 +83,18 @@ shared_ptr<Item> resetLibrary::searchItem(string itemID, vector<shared_ptr<Item>
 	return NULL;
 }
 
+vector<shared_ptr<Room>> resetLibrary::searchDoor(string roomID, vector<shared_ptr<Room>> roomList){
+	vector<shared_ptr<Room>> roomsAffected;
+	for(auto & room:roomList){
+		for(auto & door : room->getDoorList() ){
+			if (roomID == door->getId()){
+				roomsAffected.push_back(room);
+			}
+		}
+	}
+	return roomsAffected;
+}
+
 // shared_ptr<Reset> resetLibrary::get(string id){
 // 	for (auto & reset :resetList){
 // 		if (reset->getID() == resetId){
@@ -157,7 +169,7 @@ void resetLibrary::parseYaml(vector<shared_ptr<NPC>> npcList, vector<shared_ptr<
 			slot = "NULL";
 		}
 
-		YAML::Node lockNode = resetNodes[i]["lock"];
+		YAML::Node lockNode = resetNodes[i]["state"];
 		if(lockNode != NULL){
 			lock = lockNode.as<string>();
 		}
@@ -192,10 +204,10 @@ void resetLibrary::parseYaml(vector<shared_ptr<NPC>> npcList, vector<shared_ptr<
 
 		if (action == "door"){
 			//Create Door Reset
+			for (auto & affectedRoom: searchDoor(room, roomList)){
+				resetList.push_back(make_shared<DoorReset>(affectedRoom, stoi(resetId),lock));
+			}
 		}
-
-    	//create(action, comment, resetId,limit, room, slot, lock);
-    	// resetSpliter(resetList);
 
 	}
 }

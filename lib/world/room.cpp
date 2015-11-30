@@ -276,8 +276,12 @@ string Room::lookAt(string objName){
 }
 
 void Room::setDoorState(int doorNumber, string newState) {
-	assert(doorNumber < doorList.size());
-	doorList[doorNumber]->setState(newState); // probably needs tweaking
+	//assert(doorNumber < doorList.size());
+	for (auto &door : doorList){
+		if(doorNumber == stoi(getId())){
+			door->setState(newState);
+		}
+	}
 }
 
 void Room::addUser(shared_ptr<User> user){

@@ -28,6 +28,8 @@ class resetLibrary{
 		shared_ptr<NPC> searchNPC(string npcID, vector<shared_ptr<NPC>> npcList);
 		shared_ptr<Room> searchRoom(string roomID, vector<shared_ptr<Room>> roomList);
 		shared_ptr<Item> searchItem(string itemID, vector<shared_ptr<Item>> itemList);
+		vector<shared_ptr<Room>> searchDoor(string roomID, vector<shared_ptr<Room>> roomList);
+
 		void parseYaml(vector<shared_ptr<NPC>> npcList, vector<shared_ptr<Room>> roomList, vector<shared_ptr<Item>> itemList);
 
 
