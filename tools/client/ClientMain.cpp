@@ -52,7 +52,7 @@ int main() {
 		auto message = (std::string) buffer;
 		message = message.substr(0, length);
 
-		display->displayServerResponse(buffer);
+		display->displayServerResponse(message.c_str());
 	};
 
 	client->setHandleServerCallback(exampleCallback);
