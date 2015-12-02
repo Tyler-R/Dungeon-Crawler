@@ -1,1 +1,1 @@
-add_library(fromulaLibrary Formula.cpp randomHealthFormula.cpp Dice.cpp)
+add_library(formulaLibrary Formula.cpp randomHealthFormula.cpp Dice.cpp)

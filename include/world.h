@@ -15,6 +15,7 @@ Created By: Sarah Kim Dao
 #include "roomLibrary.h"
 #include "itemLibrary.h"
 #include "resetLibrary.h"
+#include "spellsLibrary.h"
 
 using namespace std;
 
@@ -28,6 +29,7 @@ class World {
 		shared_ptr<npcLibrary> NPCLib;
 		shared_ptr<roomLibrary> roomLib;
 		shared_ptr<itemLibrary> itemLib;
+		shared_ptr<spellsLibrary> spellsLib;
 		shared_ptr<resetLibrary> resetLib;
 	public:
 		World();
@@ -52,5 +54,6 @@ class World {
 		string moveTo(string dir);
 
 		shared_ptr<npcLibrary> getNPCLib();
+		shared_ptr<spellsLibrary> getSpellsLib();
 
 };

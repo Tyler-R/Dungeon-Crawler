@@ -4,4 +4,4 @@ target_link_libraries(battleTest
                        world
 		       )
 
-target_link_libraries(battleTest resetLibrary)
+target_link_libraries(battleTest resetLibrary spellLibrary formulaLibrary)
