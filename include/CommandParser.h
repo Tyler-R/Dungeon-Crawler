@@ -10,13 +10,13 @@
 class CommandParser{
 public:
     CommandParser();
-    CommandParser(shared_ptr<User> player, shared_ptr<SpellsLibrary> spellLibrary);
+    CommandParser(shared_ptr<User> player, shared_ptr<spellsLibrary> spellLibrary);
     std::string processCommand(std::string &in);
 
 
  private:
     shared_ptr<User> PlayerOne;
-    shared_ptr<SpellsLibrary> spellLibrary;
+    shared_ptr<spellsLibrary> spellLibrary;
 
 
     std::vector<std::string> tokenizeInput(std::string &in);

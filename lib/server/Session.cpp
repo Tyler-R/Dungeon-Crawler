@@ -128,7 +128,7 @@ void Session::attemptLogin() {
 
         myWorld->getRoom( 0 )->addUser( user );
 
-        commandParser = std::make_shared< CommandParser >( user, world->getSpellsLib() );
+        commandParser = std::make_shared< CommandParser >( user, myWorld->getSpellsLib() );
 
     } else {
         sendMessage("Incorrect username or password. Try again.\n");

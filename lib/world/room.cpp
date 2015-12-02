@@ -93,10 +93,18 @@ vector<shared_ptr<User>> Room::getUsers(){
 
 shared_ptr<Entity> Room::getEntity(string entityName) {
 	for(auto user : userList) {
-		if(user->getUserName().compare(entityName)) {
+		if(user->getUserName().compare(entityName) == 0) {
 			return user;
 		}
 	}
+
+	for(auto npc : npcList) {
+		if(npc->searchKeyword(entityName)) {
+			return npc;
+		}
+	}
+
+	return nullptr;
 }
 
 

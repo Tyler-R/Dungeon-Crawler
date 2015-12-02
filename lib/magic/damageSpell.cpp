@@ -9,6 +9,8 @@ DamageSpell::~DamageSpell() {
 }
 
 void DamageSpell::castSpell( User *caster, Entity *target ) {
+    std::cout << "casting damage spell" << std::endl;
+
 	int damage = getFormula()->calculateValue( caster );
 	caster->notifySession( "you cast " + getName() + " dealing " + to_string( damage ) + " damage" );
 

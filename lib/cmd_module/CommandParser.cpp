@@ -6,7 +6,7 @@ CommandParser::CommandParser(){
 
 }
 
-CommandParser::CommandParser(shared_ptr<User> user, shared_ptr<SpellsLibrary> spellLibrary){
+CommandParser::CommandParser(shared_ptr<User> user, shared_ptr<spellsLibrary> spellLibrary){
   PlayerOne = user;
   this->spellLibrary = spellLibrary;
 }
@@ -224,18 +224,37 @@ string CommandParser::validateAliasArgv(std::vector<std::string> &cmd){
 }
 
 string CommandParser::validateSpellArgv(std::vector<std::string> &cmd) {
-  if(cmd.size() != 3) {
+  if(cmd.size() < 3) {
     return "enter: cast <spellName> <target>";
   }
-  auto spellName = cmd.at(1);
-  auto targetName = cmd.at(2);
+  std::string spellName = "";
+ std::cout << "casting spell" << std::endl;
+
+  for(int i = 1; i < cmd.size() - 2; i++) {
+    spellName += cmd.at(i) + " ";
+  }
+      std::cout << "casting spell" << std::endl;
+
+  spellName += cmd.at(cmd.size() - 2);
+      std::cout << "casting spell" << std::endl;
+
+  auto targetName = cmd.at(cmd.size() - 1);
+      std::cout << "casting spell" << std::endl;
 
   auto spell = spellLibrary->getSpell(spellName);
+      std::cout << "casting spell" << std::endl;
 
   auto enemy = PlayerOne->getRoom()->getEntity(targetName);
+      std::cout << "casting spell" << std::endl;
 
-  spell.castSpell(PlayerOne.get(), enemy);
+  if(spell && enemy) {
+      std::cout << "casting spell" << std::endl;
+      spell->castSpell(PlayerOne.get(), enemy.get());
+  } else {
+    return "Spell failed";
+  }
 
+  return "";
 }
 void CommandParser::reformatTokens(vector<string>& words){
     if (words.size() == 2) return;
@@ -355,7 +374,7 @@ bool CommandParser::isSayCmd(std::vector<std::string> &words){
 }
 
 bool CommandParser::isSpellCmd(std::vector<std::string> &words) {
-  return words.front().compare("cast");
+  return words.front().compare("cast") == 0;
 }
 
 /*entry point for the cmd_module api*/
