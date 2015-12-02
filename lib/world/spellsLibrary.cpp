@@ -6,27 +6,26 @@
 #include <string>
 #include <vector>
 #include <limits.h>
+#include "spellsLibrary.h"
+#include "Formula/Formula.h"
+
 
 using namespace std;
 
 spellsLibrary::spellsLibrary(){
-	cout << "--Creating Item Library ...";
-	parseYaml();
+	cout << "--Creating Spells Library ...";
+	parseDefenseSpellsYaml();
+	parseOffenseSpellsYaml();
 	cout << "Done!" << endl;
 }
 
-shared_ptr<Item> itemLibrary::create(string objectId, vector<string> objectKeywords, string objectLongDesc, string objectShortDesc, string extra){
-	shared_ptr<Item> item (new Item(objectId));
-	item->addKeywords(objectKeywords);
-	item->addLongDesc(objectLongDesc);
-	item->addShortDesc(objectShortDesc);
-	item->addExtraDesc(extra);
-	return item;
-}
+// shared_ptr<Spells> spellsLibrary::create(string objectId, vector<string> objectKeywords, string objectLongDesc, string objectShortDesc, string extra){
+
+// }
 
 
 
-void itemLibrary::parseDefenseSpellsYaml(){
+void spellsLibrary::parseDefenseSpellsYaml(){
 	using namespace std;
 	YAML::Node allNode = YAML::LoadFile("gameYaml/spells.yaml");
 	YAML::Node spellsNode = allNode["defense"];
@@ -74,8 +73,8 @@ void itemLibrary::parseDefenseSpellsYaml(){
 			duration = "No Duration";
 		}
 
-		if (spellsNode[i]["MinLevel"]){
-			minLevel = spellsNode[i]["MinLevel"].as<string>();
+		if (spellsNode[i]["Minlevel"]){
+			minLevel = spellsNode[i]["Minlevel"].as<string>();
 		}		
 		else {
 			minLevel = "No minLevel";
@@ -83,18 +82,30 @@ void itemLibrary::parseDefenseSpellsYaml(){
 
 		mana = spellsNode[i]["Mana"].as<string>();
 		name = spellsNode[i]["Name"].as<string>();
+
+		// cout << "----DEFENSE SPELLS " << " -----" << endl;
+		// cout << "Name:" << name << endl << endl;
+		// cout << "Hitvict: " << hitchar << endl << endl;
+		// cout << "Hitchar: " << hitvict << endl << endl;
+		// cout << "Mana: " << mana << endl << endl;
+		// cout << "Effect: " << effect << endl << endl;
+		// cout << "minLevel: " << minLevel << endl << endl;
+		// cout << "duration: " << duration << endl << endl;
+
+
+		make_shared<HealingSpell>(stoi(mana), stoi(minLevel),name,make_shared<Formula>(2,2,2,2));
+
+		//int manaCost, int minimiumLevel, std::string name, std::shared_ptr<Formula> formula
 		
-		cout << "----DEFENSE SPELLS " << " -----" << endl;
-		cout << "Name:" << name << endl << endl;
-		cout << "Hitvict: " << hitchar << endl << endl;
-		cout << "Hitchar: " << hitvict << endl << endl;
-		cout << "Mana: " << mana << endl << endl;
-		cout << "Effect: " << effect << endl << endl;
-		cout << "minLevel: " << minLevel << endl << endl;
-		cout << "duration: " << duration << endl << endl;
+
+	}
 }
 
-void itemLibrary::parseOffenseSpellsYaml(){
+vector<shared_ptr<Spell>> spellsLibrary::getSpellsList(){
+	return spellsList;
+}
+
+void spellsLibrary::parseOffenseSpellsYaml(){
 	YAML::Node allNode = YAML::LoadFile("gameYaml/spells.yaml");
 	YAML::Node spellsNode = allNode["offense"];
 
@@ -144,9 +155,9 @@ void itemLibrary::parseOffenseSpellsYaml(){
 		} 
 
 
-		if (spellsNode[i]["MinLevel"]){
-			minLevel = spellsNode[i]["MinLevel"].as<string>();
-		}		
+		if (spellsNode[i]["Minlevel"]){
+			minLevel = spellsNode[i]["Minlevel"].as<string>();
+		}			
 		else {
 			minLevel = "No minLevel";
 		} 
@@ -160,12 +171,6 @@ void itemLibrary::parseOffenseSpellsYaml(){
 
 		name = spellsNode[i]["Name"].as<string>();
 		
-		cout << "----Offense SPELLS " << " -----" << endl;
-		cout << "Name:" << name << endl << endl;
-		cout << "Damage " << damage << endl << endl;
-		cout << "Mana: " << mana << endl << endl;
-		cout << "Damage message: " << dammsg << endl << endl;
-		cout << "minLevel: " << minLevel << endl << endl;
-		cout << "duration: " << duration << endl << endl;
+		make_shared<DamageSpell>(stoi(mana), stoi(minLevel),name,make_shared<Formula>(2,2,2,2));
 	}
 }

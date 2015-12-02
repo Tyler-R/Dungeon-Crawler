@@ -6,4 +6,6 @@ target_link_libraries(npcLibTest
 
 target_link_libraries(npcLibTest 
                        resetLibrary
+			spellLibrary 
+			formulaLibrary
 		       )
