@@ -76,9 +76,12 @@ string CommandParser::validateAttackNPCArgv(vector<string> &cmd){
     // return "attack NPC" + cmd.at(1) + "\n";
 
     auto room = PlayerOne->getRoom( );
+
     auto npcToAttack = room->getNPC( cmd.at( 1 ) );
 
-
+    if (!npcToAttack){
+      return "Could not find target to attack.\n";
+    }
     auto userDamage = PlayerOne->getStrength();
     npcToAttack->damage( userDamage );
 
@@ -93,12 +96,12 @@ string CommandParser::validateAttackNPCArgv(vector<string> &cmd){
     string result = "";
 
     // inform user how much damage they did to the NPC
-    string message = " dealt " + to_string(userDamage) + " to " + npcShortDesc + ". \n";
-    message += npcShortDesc + " has " + to_string( npcToAttack->getHealth( ) ) + " health remainin\n";
+    string message = " dealt " + to_string(userDamage) + " damage to " + npcShortDesc + ". \n";
+    message += npcShortDesc + " has " + to_string( npcToAttack->getHealth( ) ) + " health remaining\n";
 
     room->broadcastMessage(PlayerOne.get(), PlayerOne->getUserName() + message );
 
-    result += "you " + message;
+    result += "You " + message;
 
     // player is dead
     if( !PlayerOne->isAlive() ) {
