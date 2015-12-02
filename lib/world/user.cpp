@@ -195,7 +195,7 @@ string User::moveTo(string dir){
       getRoom()->transferOutUser(getUserName(), door->getLeadsTo());
       setRoom(door->getLeadsTo());
       getRoom()->broadcastMessage(this, getUserName() + " has entered the room."+ "\n");
-      return "You are now in the " + getRoom()->getName() + ".\n" + getRoom()->getDesc()+ "\n";
+      return "You are now in the " + getRoom()->getName() + ".\n\n" + getRoom()->getDesc()+ "\n";
     }
   }
   return "Cannot go there!\n"; 
@@ -231,11 +231,11 @@ string User::takeItem(string itemKeyword){
     if(item->searchKeyword(itemKeyword)){
       inventory->addItem(item);
       getRoom()->removeItem(item->getID());
-      getRoom()->broadcastMessage(this, getUserName() + " took a " + item->getShortDesc() + "."+ "\n");
-      return "You took a " + item->getShortDesc() + "\n";
+      getRoom()->broadcastMessage(this, getUserName() + " took " + item->getShortDesc() + "."+ "\n");
+      return "\nYou took " + item->getShortDesc() + "\n";
     }
   }
-  return "Cannot take that item.\n";
+  return "\nCannot take that item.\n";
 }
 
 /*INVENTORY INTERACTION METHODS*/
@@ -293,7 +293,7 @@ string User::attackNPC(string npcName){ // DEPRECATED
     } 
     //THIS SHOULD NEVER OCCUR BUT WE'LL SEE
   }
-  return "Somehow the NPC could not be found\n";
+  return "\nSomehow the NPC could not be found\n";
     
   
 }
@@ -302,7 +302,7 @@ string User::getAttacked(int NPCAttack, string NPCShortDesc){ // DEPRECATED
   if(NPCAttack == 0){
     getRoom()->broadcastMessage(this, getUserName() + " just killed " + NPCShortDesc+ "\n");
     increaseXP(KILLED_NPC_EXPERIENCE);
-    return "You have just succeeded in killing\n";
+    return "\nYou have just succeeded in killing\n";
   }
   else{
     string result;

@@ -48,7 +48,7 @@ string Inventory::getItemName(string itemKeyword){
 
 string Inventory::lookAtInventory(){
   string inventoryDescOutput = "";
-  inventoryDescOutput = inventoryDescOutput + "Your inventory contains: \n";
+  inventoryDescOutput = inventoryDescOutput + "\nYour inventory contains: \n";
 
   if(getSize() == 0){
     inventoryDescOutput + "NOTHING";
@@ -62,7 +62,7 @@ string Inventory::lookAtInventory(){
       inventoryDescOutput = inventoryDescOutput + "\n";
     }
   }
-
+  inventoryDescOutput = inventoryDescOutput + "\n";
   return inventoryDescOutput;
 }
 
@@ -72,13 +72,13 @@ void Inventory::addItem(shared_ptr<Item> item){
 
 // TODO
 string Inventory::removeItem(string itemKeyword){
-  string result = "Item was not in your inventory";
+  string result = "\nItem was not in your inventory\n";
 
   vector<shared_ptr<Item>>::iterator it = inventory.begin();
   for(it; it < inventory.end(); advance(it, 1)){
     shared_ptr<Item> item = *it;
     if(item->searchKeyword(itemKeyword)){
-      result = item->getShortDesc() + " was removed from your inventory";
+      result = "\n" + item->getShortDesc() + " was removed from your inventory\n";
       inventory.erase(it);
       return result;
     }
@@ -102,7 +102,7 @@ string Inventory::getItemDescription(string itemKeyword){
 string Inventory::useItem(string itemKeyword){
   //FILL IN RETRIEVAL OF ITEM EFFECTS  
 
-  return (removeItem(itemKeyword) + " and used. \n");
+  return ("\n" + removeItem(itemKeyword) + " and used. \n");
 }
 
 int Inventory::getSize() {

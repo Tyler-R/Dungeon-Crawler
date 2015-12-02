@@ -36,13 +36,13 @@ World::World(){
 
 	//Set Current Room
 	cout << endl <<"--World Instantiation Complete! Now setting up Current Room--" << endl;
-	currentRoom = roomList.front(); 
+	//currentRoom = roomList.front(); 
 
 	//currentRoom->addNPC(NPCLib->spawn("103"));
-	//currentRoom->addNPC(NPCLib->spawn("104"));
+	//roomList.front()->addNPC(NPCLib->spawn("104"));
 
-	// currentRoom->addItem(itemLib->spawn("3000"));
-	// currentRoom->addItem(itemLib->spawn("3001"));
+	roomList.front()->addItem(itemLib->spawn("3000"));
+	roomList.front()->addItem(itemLib->spawn("3001"));
 }
 
 World::~World(){

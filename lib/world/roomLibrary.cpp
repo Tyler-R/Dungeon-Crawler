@@ -92,7 +92,6 @@ void roomLibrary::parseYaml(){
 				roomExtDesc += ext_descNode[j].as<string>();
 				roomExtDesc += "\n";
 			}
-
 			YAML::Node ext_keyNode = extdescNode[a]["keywords"];
 			for(int k = 0; k < ext_keyNode.size(); k++){
 				roomKeywords.push_back(ext_keyNode[k].as<string>());
