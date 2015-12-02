@@ -6,8 +6,9 @@ CommandParser::CommandParser(){
 
 }
 
-CommandParser::CommandParser(shared_ptr<User> user){
+CommandParser::CommandParser(shared_ptr<User> user, shared_ptr<SpellsLibrary> spellLibrary){
   PlayerOne = user;
+  this->spellLibrary = spellLibrary;
 }
 
 string CommandParser::validateLookArgv(vector<string> &cmd){
@@ -338,6 +339,10 @@ bool CommandParser::isSayCmd(std::vector<std::string> &words){
   return findMatch(cmd_alias, words.front());
 }
 
+bool CommandParser::isSpellCmd(std::vector<std::string> &words) {
+  return words.front().compare("cast");
+}
+
 /*entry point for the cmd_module api*/
 string CommandParser::processCommand(string &in){
     if(in.empty()){
@@ -374,6 +379,9 @@ string CommandParser::processCommand(string &in){
    } 
    else if(isSayCmd(words)){
     return validateSayArgv(words);
+   } 
+   else if(isSpellCmd(words)){
+    return validateSpellArgv(words);
    }
    else {
     return "invalid command";

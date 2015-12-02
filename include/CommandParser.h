@@ -4,17 +4,19 @@
 #include <memory>
 #include <boost/tokenizer.hpp>
 #include "user.h"
+#include "SpellsLibrary.h"
 // #include "CommandSet.h"
 
 class CommandParser{
 public:
     CommandParser();
-    CommandParser(shared_ptr<User> player);
+    CommandParser(shared_ptr<User> player, shared_ptr<SpellsLibrary> spellLibrary);
     std::string processCommand(std::string &in);
 
 
  private:
     shared_ptr<User> PlayerOne;
+    shared_ptr<SpellsLibrary> spellLibrary;
 
 
     std::vector<std::string> tokenizeInput(std::string &in);
