@@ -58,6 +58,8 @@ class Room {
 		vector<shared_ptr<Item>> getItems();
 		vector<shared_ptr<User>> getUsers();	
 
+		shared_ptr<Entity> getEntity(string entityName);
+
 		int getNumberOfNPCsWithID(string npcID);
 
 		

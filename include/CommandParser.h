@@ -4,7 +4,7 @@
 #include <memory>
 #include <boost/tokenizer.hpp>
 #include "user.h"
-#include "SpellsLibrary.h"
+#include "spellsLibrary.h"
 // #include "CommandSet.h"
 
 class CommandParser{
@@ -34,6 +34,8 @@ public:
     std::string validateCheckArgv(std::vector<std::string>& cmd);
     std::string validateTossArgv(std::vector<std::string>& cmd);
     std::string validateSayArgv(std::vector<std::string>& cmd);
+    std::string validateSpellArgv(std::vector<std::string> &cmd);
+
 
     //these not
     std::string validateAliasArgv(std::vector<std::string>& cmd);
@@ -47,6 +49,7 @@ public:
     bool isCheckCmd(std::vector<std::string>& word);
     bool isTossCmd(std::vector<std::string>& word);
     bool isSayCmd(std::vector<std::string>& word);
+    bool isSpellCmd(std::vector<std::string>& word);
 
 
     bool isAliasCmd(std::vector<std::string>& word);

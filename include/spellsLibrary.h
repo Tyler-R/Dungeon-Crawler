@@ -5,9 +5,8 @@
 #include <vector>
 #include "item.h"
 #include <memory>
-#include "magic/spell.h"
-#include "magic/healingspell.h"
-#include "magic/damagespell.h"
+#include "magic/healingSpell.h"
+#include "magic/damageSpell.h"
 
 using namespace std;
 

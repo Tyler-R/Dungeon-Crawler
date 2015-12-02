@@ -222,6 +222,21 @@ string CommandParser::validateAliasArgv(std::vector<std::string> &cmd){
     return "Usage: <alias> <generic_cmd> <custom alias command>\n";
   }
 }
+
+string CommandParser::validateSpellArgv(std::vector<std::string> &cmd) {
+  if(cmd.size() != 3) {
+    return "enter: cast <spellName> <target>";
+  }
+  auto spellName = cmd.at(1);
+  auto targetName = cmd.at(2);
+
+  auto spell = spellLibrary->getSpell(spellName);
+
+  auto enemy = PlayerOne->getRoom()->getEntity(targetName);
+
+  spell.castSpell(PlayerOne.get(), enemy);
+
+}
 void CommandParser::reformatTokens(vector<string>& words){
     if (words.size() == 2) return;
     else{
