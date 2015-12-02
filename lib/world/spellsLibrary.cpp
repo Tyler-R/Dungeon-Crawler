@@ -8,6 +8,7 @@
 #include <limits.h>
 #include "spellsLibrary.h"
 #include "Formula/Formula.h"
+#include <strings.h>
 
 
 using namespace std;
@@ -93,7 +94,7 @@ void spellsLibrary::parseDefenseSpellsYaml(){
 		// cout << "duration: " << duration << endl << endl;
 
 
-		make_shared<HealingSpell>(stoi(mana), stoi(minLevel),name,make_shared<Formula>(2,2,2,2));
+		spellsList.push_back(make_shared<HealingSpell>(stoi(mana), stoi(minLevel),name,make_shared<Formula>(2,2,2,2)));
 
 		//int manaCost, int minimiumLevel, std::string name, std::shared_ptr<Formula> formula
 		
@@ -103,6 +104,16 @@ void spellsLibrary::parseDefenseSpellsYaml(){
 
 vector<shared_ptr<Spell>> spellsLibrary::getSpellsList(){
 	return spellsList;
+}
+
+shared_ptr<Spell> spellsLibrary::getSpell(string spellName){
+	for (auto & spell : spellsList){
+		if(0 == strcasecmp(spell->getName().c_str(), spellName.c_str())){
+			return spell;
+		}
+	}
+	
+	return nullptr;
 }
 
 void spellsLibrary::parseOffenseSpellsYaml(){
@@ -171,6 +182,6 @@ void spellsLibrary::parseOffenseSpellsYaml(){
 
 		name = spellsNode[i]["Name"].as<string>();
 		
-		make_shared<DamageSpell>(stoi(mana), stoi(minLevel),name,make_shared<Formula>(2,2,2,2));
+		spellsList.push_back(make_shared<DamageSpell>(stoi(mana), stoi(minLevel),name,make_shared<Formula>(2,2,2,2)));
 	}
 }
