@@ -17,8 +17,9 @@ class spellsLibrary{
 
 		void parseDefenseSpellsYaml();
 		void parseOffenseSpellsYaml();
-		
+
 	public:
 		spellsLibrary();
 		vector<shared_ptr<Spell>> getSpellsList();
+		shared_ptr<Spell> getSpell(string spellName);
 };
