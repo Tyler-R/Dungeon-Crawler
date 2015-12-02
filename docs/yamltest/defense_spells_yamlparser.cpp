@@ -1,4 +1,3 @@
-
 //Test run with g++ -I. -g spells_yamlparser.cpp -lyaml-cpp -std=c++11 -L. -o yamltest
 // ./yamltest
 
@@ -22,6 +21,8 @@ int main()
 	string name;
 	string minLevel;
 	string duration;
+	string hitchar;
+	string hitvict;
 
 
 	for(int i = 0; (unsigned)i < spellsNode.size(); i++) {
@@ -35,7 +36,21 @@ int main()
 		}		
 		else {
 			effect = "No effect";
+		}		
+
+		if (spellsNode[i]["Hitchar"]){
+			hitchar = spellsNode[i]["Hitchar"].as<string>();
+		}		
+		else {
+			hitchar = "No Hitchar";
 		}			
+
+		if (spellsNode[i]["Hitvict"]){
+			hitvict = spellsNode[i]["Hitvict"].as<string>();
+		}		
+		else {
+			hitvict = "No Hitvict";
+		}		
 
 		if (spellsNode[i]["Duration"]){
 			duration = spellsNode[i]["Duration"].as<string>();
@@ -56,7 +71,9 @@ int main()
 		
 		cout << "----DEFENSE SPELLS " << " -----" << endl;
 		cout << "Name:" << name << endl << endl;
-		cout << "mana: " << mana << endl << endl;
+		cout << "Hitvict: " << hitchar << endl << endl;
+		cout << "Hitchar: " << hitvict << endl << endl;
+		cout << "Mana: " << mana << endl << endl;
 		cout << "Effect: " << effect << endl << endl;
 		cout << "minLevel: " << minLevel << endl << endl;
 		cout << "duration: " << duration << endl << endl;

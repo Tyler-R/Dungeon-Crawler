@@ -33,7 +33,7 @@ string CommandParser::validateLookArgv(vector<string> &cmd){
     }
     else {
       // return "look at the current room\n";
-      return PlayerOne->getRoom()->getDesc();
+      return "\n" + PlayerOne->getRoom()->getDesc() + "\n";
     }
 }
 
@@ -69,16 +69,19 @@ string CommandParser::validateMoveArgv(vector<string> &cmd){
 
 string CommandParser::validateAttackNPCArgv(vector<string> &cmd){
   if(cmd.size()==1){
-      return "Usage: <attack> <NPC's name>\n";
+      return "\nUsage: <attack> <NPC's name>\n";
    }
   else{
     reformatTokens(cmd);
     // return "attack NPC" + cmd.at(1) + "\n";
 
     auto room = PlayerOne->getRoom( );
+
     auto npcToAttack = room->getNPC( cmd.at( 1 ) );
 
-
+    if (!npcToAttack){
+      return "\nCould not find target to attack.\n";
+    }
     auto userDamage = PlayerOne->getStrength();
     npcToAttack->damage( userDamage );
 
@@ -87,18 +90,18 @@ string CommandParser::validateAttackNPCArgv(vector<string> &cmd){
 
 
     string npcShortDesc = npcToAttack->getShortDesc();
-    room->broadcastMessage(PlayerOne.get(), PlayerOne->getUserName() + " just attacked " + npcShortDesc+ "\n");
+    room->broadcastMessage(PlayerOne.get(), "\n" + PlayerOne->getUserName() + " just attacked " + npcShortDesc+ "\n");
 
 
     string result = "";
 
     // inform user how much damage they did to the NPC
-    string message = " dealt " + to_string(userDamage) + " to " + npcShortDesc + ". \n";
-    message += npcShortDesc + " has " + to_string( npcToAttack->getHealth( ) ) + " health remainin\n";
+    string message = "dealt " + to_string(userDamage) + " damage to " + npcShortDesc + ". \n";
+    message += npcShortDesc + " has " + to_string( npcToAttack->getHealth( ) ) + " health remaining\n";
 
     room->broadcastMessage(PlayerOne.get(), PlayerOne->getUserName() + message );
 
-    result += "you " + message;
+    result += "\nYou " + message;
 
     // player is dead
     if( !PlayerOne->isAlive() ) {

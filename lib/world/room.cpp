@@ -188,6 +188,7 @@ string Room::getDoorDescList(){
 string Room::getObjList(){
 	//This method returns a list of strings containing the names of every door, npc, item, and user in the room.
 	string result = "";
+	result + "\n";
 	for (auto & door : doorList) {
 	    result = result + (door->getLeadsTo()->getName()) + "\n";
 	}
@@ -203,7 +204,7 @@ string Room::getObjList(){
 	for (auto &item : itemList){
 	    result = result + (item->getShortDesc()) + "\n";
 	}
-
+	result + "\n";
 	return result;
 }
 
@@ -212,7 +213,14 @@ string Room::lookAround(){
 
 		string objRoom = "";
 
-		objRoom += getExtDesc() + "\n"; 
+		objRoom += "\n";
+
+		objRoom += getDesc() + "\n"; 
+
+		for(auto &keyword: keywordList){
+
+			objRoom += "You see a " + keyword + " in the Room.\n";
+		}
 
 		if (!userList.empty()){
 			for(auto &user: userList){
@@ -229,10 +237,10 @@ string Room::lookAround(){
 		if (!itemList.empty()){
 			for(auto &item: itemList){
 
-				objRoom += "You see a " + item->getShortDesc() + " in the Room.\n";
+				objRoom += "You see " + item->getShortDesc() + " in the Room.\n";
 			}
 		}
-
+		objRoom += "\n";
 		return objRoom;
 
 	}
@@ -241,32 +249,32 @@ string Room::lookAt(string objName){
 	//This method is used if the user types the "look <noun>" command.  <noun> can be a valid keyword.
 
 	if ( findKeyword(objName) ){
-		return desc + "\n";
+		return "\n" + getExtDesc() + "\n";
 	}
 
 
 	for (auto & door : doorList) {
 		if ( door->getLeadsTo()->findKeyword(objName) || door->findKeyword(objName)){
-			return door->getLeadsTo()->getDesc() + "\n";
+			return "\n" + door->getDesc() + "\n";
 		}
 	}
 
 	for (auto & npc : npcList) {
 		if ( npc->searchKeyword(objName)){
-			return npc->getDescription() + "\n";
+			return "\n" + npc->getDescription() + "\n";
 		}
 	}
 
 	for (auto & user : userList) {
 		if (0 == strcasecmp(objName.c_str(), user->getUserName().c_str())){
-			return user->getDescription() + "\n";
+			return "\n" + user->getDescription() + "\n";
 		}
 	}
 
 	
 	for (auto &item : itemList){
 		if(item->searchKeyword(objName)){
-			return item->getShortDesc() + "\n";
+			return "\n" + item->getShortDesc() + "\n";
 		}
 	}
 	
