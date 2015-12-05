@@ -4,3 +4,5 @@ target_link_libraries(worldTest
                        world
 			resetLibrary
 		       )
+
+target_link_libraries(worldTest spellLibrary formulaLibrary)

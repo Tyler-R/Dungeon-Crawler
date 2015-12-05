@@ -28,6 +28,11 @@ World::World(){
 	shared_ptr<itemLibrary> iL( new itemLibrary());
 	itemLib = iL;
 
+	//Parsing Spells
+	shared_ptr<spellsLibrary> sL( new spellsLibrary() );
+	spellsLib = sL;
+
+
 	//Parsing Resets
 	shared_ptr<resetLibrary> reL( new resetLibrary(NPCLib->getNPCList(), roomList, itemLib->getItemList() ) );
 	resetLib = reL;
@@ -117,4 +122,8 @@ string World::moveTo(string dir){
 
 shared_ptr<npcLibrary> World::getNPCLib(){
 	return NPCLib;
+}
+
+shared_ptr<spellsLibrary> World::getSpellsLib(){
+	return spellsLib;
 }

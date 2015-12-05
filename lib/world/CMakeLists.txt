@@ -12,10 +12,15 @@ add_library(world
 	roomLibrary.cpp
 	itemLibrary.cpp
 	resetLibrary.cpp
+	spellsLibrary.cpp
 	admin.cpp
 	entity.cpp
 )
 
 target_link_libraries(world
 		      ${CMAKE_SOURCE_DIR}/ext/yaml-cpp/libyaml-cpp.a
+			formulaLibrary
 		       )
+target_link_libraries(world spellLibrary formulaLibrary)
+
+

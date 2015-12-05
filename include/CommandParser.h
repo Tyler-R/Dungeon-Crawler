@@ -4,17 +4,19 @@
 #include <memory>
 #include <boost/tokenizer.hpp>
 #include "user.h"
+#include "spellsLibrary.h"
 // #include "CommandSet.h"
 
 class CommandParser{
 public:
     CommandParser();
-    CommandParser(shared_ptr<User> player);
+    CommandParser(shared_ptr<User> player, shared_ptr<spellsLibrary> spellLibrary);
     std::string processCommand(std::string &in);
 
 
  private:
     shared_ptr<User> PlayerOne;
+    shared_ptr<spellsLibrary> spellLibrary;
 
 
     std::vector<std::string> tokenizeInput(std::string &in);
@@ -32,6 +34,8 @@ public:
     std::string validateCheckArgv(std::vector<std::string>& cmd);
     std::string validateTossArgv(std::vector<std::string>& cmd);
     std::string validateSayArgv(std::vector<std::string>& cmd);
+    std::string validateSpellArgv(std::vector<std::string> &cmd);
+
 
     //these not
     std::string validateAliasArgv(std::vector<std::string>& cmd);
@@ -45,6 +49,7 @@ public:
     bool isCheckCmd(std::vector<std::string>& word);
     bool isTossCmd(std::vector<std::string>& word);
     bool isSayCmd(std::vector<std::string>& word);
+    bool isSpellCmd(std::vector<std::string>& word);
 
 
     bool isAliasCmd(std::vector<std::string>& word);

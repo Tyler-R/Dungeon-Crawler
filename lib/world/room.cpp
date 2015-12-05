@@ -91,6 +91,22 @@ vector<shared_ptr<User>> Room::getUsers(){
 	return userList;
 }
 
+shared_ptr<Entity> Room::getEntity(string entityName) {
+	for(auto user : userList) {
+		if(user->getUserName().compare(entityName) == 0) {
+			return user;
+		}
+	}
+
+	for(auto npc : npcList) {
+		if(npc->searchKeyword(entityName)) {
+			return npc;
+		}
+	}
+
+	return nullptr;
+}
+
 
 void Room::setId(string s){
 	id = s;
