@@ -6,6 +6,8 @@
 Welcome to textadventure_Game's documentation!
 ==============================================
 
+This game is an adventure game based on texts. Multi players can intract with each other over the network to experience an interactive fiction game.
+
 Contents:
 
 .. toctree::
@@ -13,16 +15,4 @@ Contents:
 
    setupAndinstallation
    gameIntroduction
-   howtoplay
    extrahelp
-
-
-
-.. Indices and tables
-.. ==================
-
-.. * :ref:`genindex`
-.. * :ref:`modindex`
-.. * :ref:`search`
-
-
