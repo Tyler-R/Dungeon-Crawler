@@ -6,6 +6,7 @@ bin/
 !ext/CMakeLists.txt
 *.a
 *.sh
+!scripts/*.sh
 personalNotes.txt
 .DS_Store
 tmpbuild/
