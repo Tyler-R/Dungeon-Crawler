@@ -11,3 +11,4 @@ personalNotes.txt
 tmpbuild/
 CMakeLists.txt~
 *~
+.*
