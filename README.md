@@ -5,7 +5,7 @@
 #### Install boost
 
 ```shell
-$ bash sudoBoostInstall.sh
+$ ./scripts/installBoost.sh
 ```
 
 #### Install curses
