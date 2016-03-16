@@ -1,4 +1,4 @@
-# textadventure
+# Dungeon Crawler
 
 ## Library Dependencies
 
@@ -18,11 +18,11 @@ $ sudo apt-get install libncurses5-dev
 ## Build
 ---
 ```bash
-$ git clone https://csil-git1.cs.surrey.sfu.ca/373-15-3-piragua/textadventure.git
-$ cd textadventure
-$ mkdir <tmpbuild>
-$ cd <tmpbuild>
-$ cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ /path/to/project/
+$ git clone https://github.com/Tyler-R/Dungeon-Crawler
+$ cd Dungeon-Crawler
+$ mkdir build_Dungeon-Crawler
+$ cd build_Dungeon-Crawler
+$ cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ ../Dungeon-Crawler
 ```
 
 
