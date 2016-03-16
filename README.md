@@ -2,8 +2,6 @@
 
 ## Library Dependencies
 ---
-* **Discalimer!!!: don't run sudo on school computers, IT will be notified.**
-* **REQUIRE SUDO access**
 
 #### Install boost
 
