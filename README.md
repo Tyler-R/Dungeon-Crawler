@@ -1,7 +1,6 @@
 # textadventure
 
 ## Library Dependencies
----
 
 #### Install boost
 
