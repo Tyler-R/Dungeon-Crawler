@@ -26,11 +26,6 @@ $ cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ ../Dungeon-Crawler
 ```
 
 
-## To see documentation
----
-In project folder go to docs/textadventureDocumentation/_build/html/index.html
-
-
 ## Iterations
 ---
 1. **Oct 14**
