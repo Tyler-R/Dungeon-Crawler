@@ -24,10 +24,3 @@ $ mkdir build_Dungeon-Crawler
 $ cd build_Dungeon-Crawler
 $ cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ ../Dungeon-Crawler
 ```
-
-
-## Iterations
----
-1. **Oct 14**
-2. **Nov 4**
-3. **Dec 2**
