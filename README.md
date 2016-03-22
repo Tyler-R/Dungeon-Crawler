@@ -26,10 +26,10 @@ $ make
 
 #### Server
 ```bash
-./bin/server
+$ ./bin/server
 ```
 
 #### Client
 ```bash
-./bin/client
+$ ./bin/client
 ```
