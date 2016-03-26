@@ -81,7 +81,7 @@ class Room {
 		string getDoorDescList();	
 		string getObjList();
 	
-		string lookAround();
+		string lookAround(User &self);
 		string lookAt(string objName);
 
 		void setDoorState(int doorNumber, string newState);

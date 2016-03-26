@@ -206,7 +206,7 @@ string User::lookAt(string itemKeyword){
 }
 
 string User::lookAround(){
-  return getRoom()->lookAround();
+  return getRoom()->lookAround(*this);
 }
 
 string User::lookExits(){

@@ -224,7 +224,7 @@ string Room::getObjList(){
 	return result;
 }
 
-string Room::lookAround(){
+string Room::lookAround(User &self){
 		//This method is used if the user types the "look <noun>" command and <noun> is their current room.
 
 		string objRoom = "";
@@ -240,7 +240,9 @@ string Room::lookAround(){
 
 		if (!userList.empty()){
 			for(auto &user: userList){
-				objRoom += "You see " + user->getUserName() + " in the Room.\n";
+				if(user.get() != &self) { // compare references
+					objRoom += "You see " + user->getUserName() + " in the Room.\n";
+				}
 			}
 		}
 
