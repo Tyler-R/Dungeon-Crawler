@@ -11,5 +11,5 @@ Formula::~Formula() {
 }
 
 int Formula::calculateValue( User *caster ) {
-	return (dice.getDiceRollValue() + (caster->getLevel() * levelMultiplier) + constant);
+	return (int) (dice.getDiceRollValue() + (caster->getLevel() * levelMultiplier) + constant);
 }

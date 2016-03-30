@@ -15,8 +15,8 @@ RandomHealthFormula::~RandomHealthFormula() {
 int RandomHealthFormula::calculateValue( User *caster ) {
 	srand (time(NULL));
 
-	int min = ( ( caster->getHealth() * randomMinMultiplier) + randomMinConstant );
-	int max = ( ( caster->getHealth() * randomMaxMultiplier) + randomMaxConstant );
+	int min = (int) ( ( caster->getHealth() * randomMinMultiplier) + randomMinConstant );
+	int max = (int) ( ( caster->getHealth() * randomMaxMultiplier) + randomMaxConstant );
 
 	int random = ( rand() % ( min - max ) ) + min;
 
