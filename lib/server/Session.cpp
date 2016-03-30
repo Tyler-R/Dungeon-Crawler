@@ -33,6 +33,15 @@ void Session::listenForCommands() {
             } else {
                 //handle client disconnecting
                 std::cout << "client disconnected" << std::endl;
+
+                if( isLoggedIn() ) {
+                    // remove user from room they are currently in
+                    user->getRoom()->removeUser( user->getUserName() );
+                }
+
+
+
+
                 return;
             }
 
